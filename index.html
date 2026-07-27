@@ -51,7 +51,7 @@
                             foreground: 'hsl(var(--foreground))',
                             muted: 'hsl(var(--muted))',
                             'muted-foreground': 'hsl(var(--muted-foreground))',
-                            accent: '#a8d946',
+                            accent: '#ff9f2b',
                             frame: 'hsl(var(--frame))',
                             border: 'hsl(var(--border))',
                             'card-primary': 'hsl(var(--card-primary))',
@@ -78,7 +78,7 @@
                 --card-secondary: 0 0% 7%;
                 --card-foreground: 0 0% 98%;
                 --card-foreground-muted: 0 0% 60%;
-                --accent: 79 86% 67%; /* Lime green #bef264 */
+                --accent: 33 100% 58%; /* Light orange #ff9f2b */
             }
             body {
                 background-color: hsl(var(--background));
@@ -231,9 +231,24 @@
             <button class="w-12 h-12 rounded-full bg-foreground/10 opacity-30 cursor-not-allowed" aria-label="Toggle theme" disabled=""></button>
         </div>
 
-        <main id="main-content" class="flex-1">
+        <main id="main-content" class="flex-1 relative overflow-hidden">
+            <!-- Global Seamless Background Underlay -->
+            <!-- Global Multi-Intensity Orange Grid -->
+            <div class="absolute inset-0 pointer-events-none -z-20 bg-background overflow-hidden" aria-hidden="true">
+                <!-- Faint Minor Grid (64px) -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,159,43,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,159,43,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+                <!-- Intense Major Grid (256px) -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,159,43,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,159,43,0.08)_1px,transparent_1px)] bg-[size:256px_256px]"></div>
+                
+                <!-- Structured Edge Vignette for depth (keeps the center slightly brighter) -->
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#000000_100%)] opacity-80"></div>
+                
+                <!-- Hero Bleed over the grid -->
+                <div class="absolute top-0 w-full h-[600px] bg-[linear-gradient(to_bottom,rgba(255,159,43,0.1),transparent)]"></div>
+            </div>
+            
             <section class="flex flex-col relative" style="color-scheme:light">
-                <div id="hero-magnetic-bg" class="absolute inset-0 min-[850px]:inset-2.5 bg-cover bg-center bg-no-repeat -z-10 brightness-125 rounded-br-4xl rounded-bl-4xl" aria-hidden="true" style="background-image:url('https://res.cloudinary.com/djxbxhgat/image/upload/v1785142156/BG_m1typg.jpg'); transform: scale(1.1);"></div>
+                <div id="hero-magnetic-bg" class="absolute inset-0 min-[850px]:inset-2.5 bg-cover bg-center bg-no-repeat -z-10 brightness-125 hue-rotate-[-45deg] saturate-[1.2] rounded-br-4xl rounded-bl-4xl" aria-hidden="true" style="background-image:url('https://res.cloudinary.com/djxbxhgat/image/upload/v1785142156/BG_m1typg.jpg'); transform: scale(1.1);"></div>
                 <div class="flex items-start justify-center px-6 pt-40 max-[850px]:pt-28">
                     <div class="flex flex-col items-center max-[850px]:items-start text-center max-[850px]:text-left max-w-4xl max-[850px]:w-full">
                         <div class="inline-flex items-center gap-1.5 pl-4 pr-3 py-1.5 rounded-xl border border-black/10 bg-white text-black text-sm font-medium mb-6" style="opacity:0;filter:blur(8px);transform:translateY(20px)">
@@ -260,8 +275,8 @@
                 </div>
                 <div class="relative px-6 mt-24 max-[850px]:mt-10" style="opacity:0;transform:translateY(40px)">
                     <div class="relative max-w-5xl mx-auto">
-                        <div class="relative dark:mix-blend-darken rounded-2xl overflow-hidden border border-neutral-200 shadow-2xl/5 mask-[linear-gradient(to_bottom,black_50%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]">
-                            <img alt="Dashboard preview" width="1920" height="1080" decoding="async" data-nimg="1" class="w-full h-auto invert dark:invert-0 dark:contrast-100 contrast-125" style="color:transparent"  src="https://res.cloudinary.com/djxbxhgat/image/upload/v1785144026/149de2ff-a4e9-48e5-a223-c7572a43ef38.png"/>
+                        <div class="relative mix-blend-darken rounded-2xl overflow-hidden border border-neutral-200/50 shadow-2xl/5 mask-[linear-gradient(to_bottom,black_50%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]">
+                            <img alt="Dashboard preview" width="1920" height="1080" decoding="async" data-nimg="1" class="w-full h-auto contrast-125 opacity-90" style="color:transparent"  src="https://res.cloudinary.com/djxbxhgat/image/upload/v1785144026/149de2ff-a4e9-48e5-a223-c7572a43ef38.png"/>
                         </div>
                     </div>
                 </div>
@@ -358,7 +373,9 @@
                     </div>
                 </div>
             </section>
-            <section class="w-full bg-background px-6 py-24">
+            <section class="relative w-full bg-transparent px-6 py-24">
+                <!-- Top Right Fade (Shifted away from text) -->
+                <div class="absolute top-0 right-0 w-full max-w-[1200px] h-[1500px] pointer-events-none -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(255,159,43,0.25)_0%,transparent_70%)]"></div>
                 <div class="mx-auto max-w-5xl">
                     <p id="reveal-text" class="text-3xl font-medium text-left leading-snug tracking-tight text-foreground sm:text-4xl lg:text-5xl lg:leading-snug">
                         <span class="mr-2 inline-block lg:mr-3" style="opacity:0.15;filter:blur(8px);transition:opacity 75ms, filter 75ms">Operating</span>
@@ -381,7 +398,7 @@
                     </p>
                 </div>
             </section>
-            <section id="solutions" class="w-full px-6 mb-32 bg-background scroll-mt-24">
+            <section id="solutions" class="relative w-full px-6 mb-32 bg-transparent scroll-mt-24">
                 <div class="max-w-5xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4">
                         <div class="group bg-accent text-black rounded-4xl p-8 pb-0 overflow-hidden min-h-140 md:row-span-2 flex flex-col" style="opacity:0;transform:translateY(40px)">
@@ -429,7 +446,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="group bg-[#131f0e] text-white rounded-4xl p-8 overflow-hidden min-h-80 relative flex flex-col md:block" style="opacity:0;transform:translateY(40px)">
+                        <div class="group bg-[#2a1804] text-white rounded-4xl p-8 overflow-hidden min-h-80 relative flex flex-col md:block" style="opacity:0;transform:translateY(40px)">
                             <div class="relative z-10 max-w-48 transition-transform duration-500 ease-out group-hover:scale-105">
                                 <h3 class="text-xl md:text-2xl whitespace-nowrap font-medium text-card-foreground leading-tight mb-3">CapEx Optimizer</h3>
                                 <p class="text-card-foreground-muted text-sm">Multi-objective modeling for ROI and AI-readiness</p>
@@ -532,9 +549,9 @@
                     animation-play-state: paused;
                 }
             </style>
-            <section class="w-full bg-frame border-t border-b border-accent/15 py-24 sm:py-32 overflow-hidden relative" id="value-props">
+            <section class="w-full bg-transparent border-t border-b border-accent/15 py-24 sm:py-32 overflow-hidden relative" id="value-props">
                 <div class="mx-auto max-w-7xl px-6">
-                    <h2 class="mb-12 text-4xl leading-tight font-medium text-neutral-900 sm:text-5xl lg:text-6xl dark:text-neutral-50 scroll-animate" style="opacity:0">Why Hadron Quantum?</h2>
+                    <h2 class="mb-12 text-4xl leading-tight font-medium text-white sm:text-5xl lg:text-6xl scroll-animate" style="opacity:0">Why Hadron Quantum?</h2>
                 </div>
                 
                 <!-- Marquee Container -->
@@ -602,7 +619,12 @@
                     <div class="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-frame to-transparent z-20"></div>
                 </div>
             </section>
-            <section id="workflow" class="relative w-full bg-background scroll-mt-24">
+            <section id="workflow" class="relative w-full bg-transparent scroll-mt-24">
+                <!-- Mirror Gradient for Pricing Section -->
+                <div class="absolute bottom-0 right-0 w-full max-w-[800px] aspect-square bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,159,43,0.3),_transparent_60%)] pointer-events-none -z-10"></div>
+                <!-- Honeycomb SVG Background Effect -->
+                <div class="absolute inset-0 pointer-events-none -z-10 [mask-image:radial-gradient(ellipse_at_center,white_20%,transparent_80%)]" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'104\' viewBox=\'0 0 60 104\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 26l30-17v-17H0v17zm0 52l30-17v-17H0v17zm30-34.5V26.25l-30 17.25-30-17.25v17.25l30 17.25z\' fill=\'none\' stroke=\'%23ff9f2b\' stroke-width=\'1\' stroke-opacity=\'0.15\'/%3E%3C/svg%3E'); background-position: center; background-repeat: repeat; opacity: 0.5;"></div>
+
                 <div class="mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-2 lg:gap-20">
                     <div class="lg:sticky lg:top-48 lg:h-fit lg:self-start">
                         <h2 class="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">Optimization Workflow</h2>
@@ -668,7 +690,10 @@
                     </div>
                 </div>
             </section>
-            <section id="pricing" class="w-full bg-background px-6 py-20 sm:py-28 scroll-mt-24">
+            <section id="pricing" class="relative w-full bg-transparent px-6 py-20 sm:py-28 scroll-mt-24">
+                <!-- Double-sided radial glow -->
+                <div class="absolute top-0 right-0 w-full max-w-[800px] aspect-square bg-[radial-gradient(ellipse_at_top_right,_rgba(255,159,43,0.3),_transparent_60%)] pointer-events-none -z-10"></div>
+                <div class="absolute bottom-0 left-0 w-full max-w-[800px] aspect-square bg-[radial-gradient(ellipse_at_bottom_left,_rgba(255,159,43,0.3),_transparent_60%)] pointer-events-none -z-10"></div>
                 <div class="mx-auto max-w-5xl">
                     <div class="mb-12 text-center sm:mb-16" style="opacity:0;transform:translateY(20px)">
                         <span class="text-sm font-medium text-muted-foreground">Our Solutions</span>
@@ -867,7 +892,7 @@
             <footer id="contact" class="relative mt-48 mx-2.5 max-[850px]:mx-0">
                 <div class="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 w-full max-w-5xl px-6 max-[850px]:px-4 z-20">
                     <div class="relative w-full rounded-3xl overflow-hidden shadow-2xl/15 border border-white/10">
-                        <div class="absolute inset-0 bg-center bg-no-repeat brightness-150 blur scale-125" style="background-image:url('https://res.cloudinary.com/djxbxhgat/image/upload/v1785142156/BG_m1typg.jpg');background-size:150%" aria-hidden="true"></div>
+                        <div class="absolute inset-0 bg-center bg-no-repeat brightness-150 blur scale-125 hue-rotate-[-45deg] saturate-[1.2]" style="background-image:url('https://res.cloudinary.com/djxbxhgat/image/upload/v1785142156/BG_m1typg.jpg');background-size:150%" aria-hidden="true"></div>
                         <div class="relative z-10 flex flex-col items-center text-center px-12 py-24 max-[850px]:px-6 max-[850px]:py-6 max-[850px]:pt-12">
                             <h2 class="text-6xl max-[850px]:text-3xl text-black font-medium tracking-tight max-w-2xl mb-14 max-[850px]:mb-8">Start building something truly amazing today</h2>
                             <form class="flex items-center w-full max-w-md bg-background rounded-xl p-1.5 shadow-lg max-[850px]:flex-col max-[850px]:p-3 max-[850px]:gap-3 max-[850px]:max-w-none">
