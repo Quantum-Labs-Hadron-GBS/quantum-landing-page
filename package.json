@@ -18,6 +18,6 @@
   "homepage": "https://github.com/Quantum-Labs-Hadron-GBS/quantum-landing-page#readme",
   "description": "",
   "dependencies": {
-    "nodemailer": "^9.0.3"
+    "resend": "^6.18.1"
   }
 }
