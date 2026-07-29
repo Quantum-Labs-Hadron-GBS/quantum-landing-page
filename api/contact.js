@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port: process.env.SMTP_PORT || 465,
-    secure: true,
+    secure: process.env.SMTP_PORT === '465',
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
@@ -63,3 +63,4 @@ export default async function handler(req, res) {
     return res.status(500).json({ success: false, message: 'Failed to send message. Please try again later.' });
   }
 }
+
