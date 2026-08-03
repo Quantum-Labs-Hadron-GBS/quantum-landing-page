@@ -103,8 +103,8 @@
     <!-- Header / Nav -->
     <header class="fixed shadow-2xl/20 rounded-b-4xl top-2.5 left-1/2 -translate-x-1/2 w-full max-w-5xl max-[1200px]:max-w-2xl bg-frame max-[850px]:top-0 max-[850px]:left-0 max-[850px]:right-0 max-[850px]:translate-x-0 max-[850px]:w-full max-[850px]:max-w-none max-[850px]:rounded-none max-[850px]:rounded-b-4xl max-[850px]:overflow-hidden" style="z-index: 9999;">
         <div class="h-20 max-[850px]:h-18 flex items-center justify-between px-4 max-[850px]:px-6">
-            <a href="index.html" class="flex items-center gap-2 ml-4 max-[850px]:ml-0" aria-label="Hadron Quantum home">
-                <img src="https://res.cloudinary.com/djxbxhgat/image/upload/v1784806399/hadron_logo_white_jsl37p.png" alt="Hadron" class="h-6 w-auto" />
+            <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="flex items-center gap-2 ml-4 max-[850px]:ml-0" aria-label="Hadron Quantum home">
+                <img src="https://res.cloudinary.com/djxbxhgat/image/upload/v1784806399/hadron_logo_white_jsl37p.png" alt="Hadron" class="h-[1.8rem] w-auto" />
             </a>
             <nav class="flex items-center gap-1 max-[1200px]:gap-0 max-[850px]:hidden">
                 <a href="index.html#solutions" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Solutions</a>
@@ -134,12 +134,17 @@
     </header>
 
     <main>
-        <!-- Background Grid -->
+        <!-- Background Grid + Gradients -->
         <div class="absolute inset-0 pointer-events-none -z-20 bg-background overflow-hidden" aria-hidden="true">
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,159,43,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,159,43,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,159,43,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,159,43,0.07)_1px,transparent_1px)] bg-[size:256px_256px]"></div>
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,159,43,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,159,43,0.05)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,159,43,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,159,43,0.12)_1px,transparent_1px)] bg-[size:256px_256px]"></div>
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#000000_100%)] opacity-80"></div>
-            <div class="absolute top-0 w-full h-[500px] bg-[linear-gradient(to_bottom,rgba(255,159,43,0.08),transparent)]"></div>
+            <!-- Top orange bleed -->
+            <div class="absolute top-0 w-full h-[600px] bg-[linear-gradient(to_bottom,rgba(255,159,43,0.15),transparent)]"></div>
+            <!-- Top-right radial glow -->
+            <div class="absolute top-0 right-0 w-full max-w-[900px] h-[800px] bg-[radial-gradient(ellipse_at_top_right,rgba(255,159,43,0.35)_0%,transparent_65%)] pointer-events-none"></div>
+            <!-- Bottom-left radial glow -->
+            <div class="absolute bottom-0 left-0 w-full max-w-[700px] h-[600px] bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,159,43,0.30)_0%,transparent_65%)] pointer-events-none"></div>
         </div>
 
         <!-- Contact Form Section -->
