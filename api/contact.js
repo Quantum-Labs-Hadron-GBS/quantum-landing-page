@@ -21,7 +21,7 @@ module.exports = async function handler(req, res) {
   try {
     const { data, error } = await resend.emails.send({
       from: 'Hadron Quantum <contact@hadrongbs.com>', // Must be a verified domain in Resend
-      to: ['quantum.labs@hadrongbs.com', 'info@hadrongbs.com'],
+      to: ['quantum.lab@hadrongbs.com', 'info@hadrongbs.com'],
       subject: `New Contact Request from ${name} (${organization || 'N/A'})`,
       html: `
         <h2>New Contact Request</h2>
