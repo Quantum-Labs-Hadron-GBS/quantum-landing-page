@@ -298,18 +298,18 @@
             </nav>
             <div class="flex items-center gap-4 max-[850px]:hidden">
                 <a href="contact.html"
-                    class="flex items-center rounded-full bg-white p-1 pr-1 pl-4 h-10 gap-2 transition-transform hover:scale-105 group">
-                    <span class="text-sm font-semibold text-black">Contact Us</span>
-                    <div
-                        class="flex items-center justify-center h-8 w-10 bg-accent rounded-full text-black transition-transform group-hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-arrow-down-right">
-                            <path d="m7 7 10 10" />
-                            <path d="M17 7v10H7" />
-                        </svg>
-                    </div>
-                </a>
+                        class="group relative inline-flex items-center max-[850px]:w-full" tabindex="0"
+                        style="opacity:0;transform:scale(0.95)">
+                        <div class="flex items-center max-[850px]:w-full justify-between rounded-2xl bg-black p-1.5 pl-6 transition-transform group-hover:scale-[1.02] border border-black/10">
+                            <span class="text-white font-semibold mr-6">Contact Us</span>
+                            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-accent text-black transition-transform group-hover:-rotate-45">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="m7 7 10 10"></path>
+                                    <path d="M17 7v10H7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
             </div>
             <button class="hidden max-[850px]:flex items-center justify-center w-10 h-10" aria-label="Open menu"
                 >
@@ -400,7 +400,7 @@
                             Infrastructure <span class="text-accent">Optimization</span>
                         </span>
                     </h1>
-                    <p class="text-lg text-neutral-600 mb-8 max-w-2xl"
+                    <p class="text-lg md:text-xl text-neutral-800 font-medium mb-8 max-w-2xl"
                         style="opacity:0;filter:blur(8px);transform:translateY(20px)">Operating above existing
                         schedulers to maximize fleet-wide utilization, minimize fragmentation, and prepare your
                         enterprise for Post-Quantum Cryptography.</p>
