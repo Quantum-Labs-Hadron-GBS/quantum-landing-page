@@ -312,10 +312,10 @@
                 </a>
             </div>
             <button class="hidden max-[850px]:flex items-center justify-center w-10 h-10" aria-label="Open menu"
-                aria-expanded="false">
+                >
                 <div class="w-8 h-4 relative flex flex-col justify-between cursor-pointer">
-                    <span class="block h-0.5 w-full bg-foreground origin-center rounded-full"></span>
-                    <span class="block h-0.5 w-full bg-foreground origin-center rounded-full"></span>
+                    <span class="block h-0.5 w-full bg-foreground origin-center rounded-full transition-transform duration-300"></span>
+                    <span class="block h-0.5 w-full bg-foreground origin-center rounded-full transition-transform duration-300"></span>
                 </div>
             </button>
         </div>
@@ -332,6 +332,25 @@
             </path>
         </svg>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-background/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10" aria-hidden="true">
+        <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
+            <a href="index.html" class="mobile-link text-white/70 hover:text-white transition-colors">Home</a>
+            <a href="index.html#solutions" class="mobile-link text-white/70 hover:text-white transition-colors">Solutions</a>
+            <a href="index.html#workflow" class="mobile-link text-white/70 hover:text-white transition-colors">Workflow</a>
+            <a href="index.html#pricing" class="mobile-link text-white/70 hover:text-white transition-colors">Offerings</a>
+            <a href="index.html#faq-accordion" class="mobile-link text-white/70 hover:text-white transition-colors">FAQ</a>
+            <a href="contact.html" class="mobile-link text-accent hover:text-accent/80 transition-colors">Contact Us</a>
+            <div class="h-[1px] w-12 bg-white/10 my-2"></div>
+            <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-white/40 hover:text-white transition-colors flex items-center gap-2 text-xl">
+                Hadron GBS Main Site
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            </a>
+        </nav>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,159,43,0.15),transparent_60%)] pointer-events-none -z-10"></div>
+    </div>
+
     <div class="fixed bottom-6 right-6 z-50">
         <button class="w-12 h-12 rounded-full bg-foreground/10 opacity-30 cursor-not-allowed" aria-label="Toggle theme"
             disabled=""></button>
@@ -1102,7 +1121,7 @@
                         </div>
                     </div>
                     <div class="faq-item cursor-pointer rounded-2xl bg-frame border border-white/5 p-5 shadow-sm sm:p-6 transition-all duration-300 hover:border-accent/45"
-                        role="button" tabindex="0" aria-expanded="false" style="opacity:0;transform:translateY(20px)">
+                        role="button" tabindex="0"  style="opacity:0;transform:translateY(20px)">
                         <div class="flex w-full items-center justify-between gap-4 text-left">
                             <span class="text-base font-medium text-foreground sm:text-lg">Does Hadron require
                                 control-plane write access or proprietary agent installs?</span>
@@ -1125,7 +1144,7 @@
                         </div>
                     </div>
                     <div class="faq-item cursor-pointer rounded-2xl bg-frame border border-white/5 p-5 shadow-sm sm:p-6 transition-all duration-300 hover:border-accent/45"
-                        role="button" tabindex="0" aria-expanded="false" style="opacity:0;transform:translateY(20px)">
+                        role="button" tabindex="0"  style="opacity:0;transform:translateY(20px)">
                         <div class="flex w-full items-center justify-between gap-4 text-left">
                             <span class="text-base font-medium text-foreground sm:text-lg">How is the Post-Quantum
                                 Cryptography (PQC) Readiness Audit conducted?</span>
@@ -1149,7 +1168,7 @@
                         </div>
                     </div>
                     <div class="faq-item cursor-pointer rounded-2xl bg-frame border border-white/5 p-5 shadow-sm sm:p-6 transition-all duration-300 hover:border-accent/45"
-                        role="button" tabindex="0" aria-expanded="false" style="opacity:0;transform:translateY(20px)">
+                        role="button" tabindex="0"  style="opacity:0;transform:translateY(20px)">
                         <div class="flex w-full items-center justify-between gap-4 text-left">
                             <span class="text-base font-medium text-foreground sm:text-lg">What thermal and power
                                 constraints does the Capacity Optimizer handle?</span>
@@ -1599,6 +1618,50 @@
             });
         });
     </script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('button[aria-label="Open menu"]');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                const lines = mobileMenuBtn.querySelectorAll('span');
+                let isMenuOpen = false;
+
+                function toggleMenu() {
+                    isMenuOpen = !isMenuOpen;
+                    mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen);
+                    
+                    if (isMenuOpen) {
+                        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                        mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                        document.body.style.overflow = 'hidden'; 
+                        
+                        lines[0].style.transform = 'translateY(6px) rotate(45deg)';
+                        lines[1].style.transform = 'translateY(-6px) rotate(-45deg)';
+                    } else {
+                        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                        document.body.style.overflow = '';
+                        
+                        lines[0].style.transform = 'translateY(0) rotate(0)';
+                        lines[1].style.transform = 'translateY(0) rotate(0)';
+                    }
+                }
+
+                mobileMenuBtn.addEventListener('click', toggleMenu);
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (isMenuOpen) toggleMenu();
+                    });
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>
