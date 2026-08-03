@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Quantum-Labs-Hadron-GBS/quantum-landing-page#readme",
   "description": "",
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "resend": "^6.18.1"
   }
 }
