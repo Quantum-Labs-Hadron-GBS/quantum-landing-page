@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@layer base {
+  body {
+    background-color: #0a0a0a;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Fix for TipTap Editor Text Color to ensure everything is bright white */
+.tiptap p, 
+.tiptap h1, 
+.tiptap h2, 
+.tiptap h3, 
+.tiptap h4, 
+.tiptap h5, 
+.tiptap h6, 
+.tiptap li, 
+.tiptap blockquote,
+.tiptap span {
+  color: #ffffff !important;
+}
+
+.tiptap strong, 
+.tiptap b {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.tiptap code {
+  color: #e5e7eb !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+}
+
+.tiptap pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.tiptap a {
+  color: #3b82f6 !important;
+  text-decoration: underline;
+}
+
+/* Editor Focus Outline Removal */
+.ProseMirror-focused {
+  outline: none !important;
+}

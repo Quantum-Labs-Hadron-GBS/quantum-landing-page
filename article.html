@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>Article | Hadron Quantum Labs</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hq: {
+                            dark: '#0a0a0a',
+                            panel: '#111111',
+                            accent: '#3b82f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Basic prose styles for the rendered HTML from the editor -->
+    <style>
+        .prose h1 { font-size: 2.25rem; font-weight: 700; margin-top: 2em; margin-bottom: 1em; color: white; }
+        .prose h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2em; margin-bottom: 1em; color: white; }
+        .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5em; margin-bottom: 0.5em; color: white; }
+        .prose p { margin-top: 1.25em; margin-bottom: 1.25em; line-height: 1.75; color: #9ca3af; }
+        .prose a { color: #3b82f6; text-decoration: underline; }
+        .prose ul { list-style-type: disc; padding-left: 1.625em; margin-top: 1.25em; margin-bottom: 1.25em; color: #9ca3af; }
+        .prose ol { list-style-type: decimal; padding-left: 1.625em; margin-top: 1.25em; margin-bottom: 1.25em; color: #9ca3af; }
+        .prose blockquote { border-left-width: 4px; border-color: #374151; padding-left: 1em; font-style: italic; color: #d1d5db; margin-top: 1.6em; margin-bottom: 1.6em; }
+        .prose pre { background-color: #111111; border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1em; overflow-x: auto; color: #e5e7eb; font-family: monospace; font-size: 0.875em; margin-top: 1.7142857em; margin-bottom: 1.7142857em; }
+        .prose code { color: #f3f4f6; background-color: rgba(255,255,255,0.1); padding: 0.2em 0.4em; border-radius: 0.25rem; font-size: 0.875em; }
+        .prose pre code { background-color: transparent; padding: 0; border-radius: 0; color: inherit; }
+        .prose img { margin-top: 2em; margin-bottom: 2em; border-radius: 0.5rem; max-width: 100%; height: auto; }
+        .prose hr { border-color: rgba(255,255,255,0.1); margin-top: 3em; margin-bottom: 3em; }
+    </style>
+</head>
+<body class="bg-hq-dark text-white font-sans antialiased min-h-screen flex flex-col">
+    <nav class="border-b border-white/10 bg-hq-dark/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="/" class="font-bold text-xl tracking-tight">Hadron Quantum</a>
+            <div class="space-x-6 text-sm font-medium">
+                <a href="/blogs" class="text-gray-400 hover:text-white transition-colors">&larr; Back to Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="article-container">
+        <!-- Skeleton -->
+        <div class="animate-pulse mt-8">
+            <div class="h-10 bg-white/10 rounded w-3/4 mb-6"></div>
+            <div class="flex gap-4 mb-12">
+                <div class="h-4 bg-white/10 rounded w-24"></div>
+                <div class="h-4 bg-white/10 rounded w-32"></div>
+            </div>
+            <div class="space-y-4">
+                <div class="h-4 bg-white/10 rounded w-full"></div>
+                <div class="h-4 bg-white/10 rounded w-full"></div>
+                <div class="h-4 bg-white/10 rounded w-5/6"></div>
+                <br>
+                <div class="h-4 bg-white/10 rounded w-full"></div>
+                <div class="h-4 bg-white/10 rounded w-4/5"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/10 bg-hq-dark py-12 mt-auto">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            &copy; 2026 Hadron Global Business Solutions. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const SUPABASE_URL = 'https://clihxetmljczwldiupqv.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_MbLstDAvPAB0A7bKJdDubw_niZ807sl';
+
+        async function fetchArticle() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+
+            if (!slug) {
+                document.getElementById('article-container').innerHTML = '<div class="text-center py-20 text-red-400">Article not found.</div>';
+                return;
+            }
+
+            try {
+                // Fetch the article by slug
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/documents?slug=eq.${slug}&select=*`, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    }
+                });
+                
+                if (!response.ok) throw new Error('Failed to fetch article');
+                
+                const data = await response.json();
+                
+                if (data.length === 0) {
+                    document.getElementById('article-container').innerHTML = '<div class="text-center py-20 text-gray-500">This article does not exist or has been removed.</div>';
+                    return;
+                }
+
+                const doc = data[0];
+
+                // Update page metadata
+                document.title = `${doc.title} | Hadron Quantum Labs`;
+                if(doc.seo_metadata?.description) {
+                    let metaDesc = document.querySelector('meta[name="description"]');
+                    if(metaDesc) metaDesc.content = doc.seo_metadata.description;
+                }
+
+                // Render article
+                const dateStr = new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                
+                let html = `
+                    <header class="mb-14">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold tracking-wide uppercase">${doc.type_id}</span>
+                            <span class="text-gray-500 text-sm">${dateStr}</span>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">${doc.title}</h1>
+                    </header>
+                `;
+
+                if (doc.cover_image) {
+                    html += `
+                    <div class="w-full aspect-video rounded-2xl overflow-hidden mb-14 border border-white/10">
+                        <img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover" />
+                    </div>`;
+                }
+
+                html += `
+                    <article class="prose prose-invert prose-lg max-w-none">
+                        ${doc.html || doc.markdown || '<p>No content available.</p>'}
+                    </article>
+                `;
+
+                document.getElementById('article-container').innerHTML = html;
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('article-container').innerHTML = '<div class="text-center py-20 text-red-400">Error loading the article. Please try again later.</div>';
+            }
+        }
+
+        fetchArticle();
+    </script>
+</body>
+</html>

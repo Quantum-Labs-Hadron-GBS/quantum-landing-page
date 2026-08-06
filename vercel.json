@@ -1,4 +1,9 @@
 {
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/studio/(.*)", "destination": "/studio/index.html" },
+    { "source": "/studio", "destination": "/studio/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -25,7 +30,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; frame-src 'self' https://maps.google.com https://www.google.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://res.cloudinary.com; connect-src 'self' https://formspree.io;"
+          "value": "default-src 'self'; frame-src 'self' https://maps.google.com https://www.google.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://res.cloudinary.com; connect-src 'self' https://formspree.io https://clihxetmljczwldiupqv.supabase.co;"
         }
       ]
     }
