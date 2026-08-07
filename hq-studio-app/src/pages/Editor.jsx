@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { Markdown } from 'tiptap-markdown'
-import { ArrowLeft, Save, Globe } from 'lucide-react'
+import { ArrowLeft, Save, Globe, Check } from 'lucide-react'
 import Image from '@tiptap/extension-image'
 import { Table } from '@tiptap/extension-table'
 import { TableRow } from '@tiptap/extension-table-row'
@@ -26,6 +26,16 @@ export default function Editor() {
   const [saving, setSaving] = useState(false)
   const [lastSaved, setLastSaved] = useState(null)
   
+  // Dirty tracking: after a save/publish, block the Publish button until something changes
+  const [isDirty, setIsDirty] = useState(false)
+  const isLoadingDoc = useRef(false)
+  
+  const markDirty = useCallback(() => {
+    if (!isLoadingDoc.current) {
+      setIsDirty(true)
+    }
+  }, [])
+  
   const editor = useEditor({
     extensions: [
       StarterKit, 
@@ -42,15 +52,19 @@ export default function Editor() {
         class: 'prose prose-invert prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none min-h-[500px] text-white p-4 border border-white/10 rounded-lg bg-[#111111]',
       },
     },
+    onUpdate: () => {
+      markDirty()
+    },
   })
 
   useEffect(() => {
-    if (docId && docId !== 'new') {
+    if (docId && docId !== 'new' && editor) {
       loadDocument(docId)
     }
-  }, [docId])
+  }, [docId, editor])
 
   const loadDocument = async (documentId) => {
+    isLoadingDoc.current = true
     const { data, error } = await supabase
       .from('documents')
       .select('*')
@@ -69,6 +83,11 @@ export default function Editor() {
         editor.commands.setContent(data.markdown)
       }
     }
+    // Allow a tick for all state to settle before enabling dirty tracking
+    setTimeout(() => {
+      isLoadingDoc.current = false
+      setIsDirty(false)
+    }, 100)
   }
 
   const generateSlug = (text) => {
@@ -77,6 +96,7 @@ export default function Editor() {
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value)
+    markDirty()
     if (!docId) {
       setSlug(generateSlug(e.target.value))
     }
@@ -114,6 +134,7 @@ export default function Editor() {
       if (!error) {
         setLastSaved(new Date())
         setStatusId(newStatusId)
+        setIsDirty(false)
       } else {
         alert('Save failed: ' + error.message)
       }
@@ -124,6 +145,7 @@ export default function Editor() {
         setDocId(data.id)
         setLastSaved(new Date())
         setStatusId(newStatusId)
+        setIsDirty(false)
         window.history.replaceState(null, '', `/studio/editor/${data.id}`)
       } else {
         alert(error?.message || 'Error saving')
@@ -131,6 +153,9 @@ export default function Editor() {
     }
     setSaving(false)
   }
+
+  // Publish button should be disabled if already published AND no changes have been made
+  const isPublishDisabled = saving || (statusId === 3 && !isDirty)
 
   return (
     <div className="flex h-[calc(100vh)] overflow-hidden bg-[#0a0a0a]">
@@ -149,18 +174,31 @@ export default function Editor() {
             <button 
               onClick={() => handleSave(1)}
               disabled={saving}
-              className="flex items-center gap-2 px-4 py-2 bg-transparent text-gray-300 text-sm font-medium rounded-lg border border-white/20 hover:bg-white/5 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-transparent text-gray-300 text-sm font-medium rounded-lg border border-white/20 hover:bg-white/5 transition-colors disabled:opacity-50"
             >
               <Save size={16} />
               {saving ? 'Saving...' : 'Save Draft'}
             </button>
             <button 
               onClick={() => handleSave(3)}
-              disabled={saving}
-              className="flex items-center gap-2 px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors"
+              disabled={isPublishDisabled}
+              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                isPublishDisabled
+                  ? 'bg-green-500/20 text-green-400 border border-green-500/30 cursor-not-allowed'
+                  : 'bg-white text-black hover:bg-gray-200'
+              }`}
             >
-              <Globe size={16} />
-              Publish
+              {statusId === 3 && !isDirty ? (
+                <>
+                  <Check size={16} />
+                  Published
+                </>
+              ) : (
+                <>
+                  <Globe size={16} />
+                  {statusId === 3 ? 'Update Live' : 'Publish'}
+                </>
+              )}
             </button>
           </div>
         </header>
@@ -249,7 +287,7 @@ export default function Editor() {
             <input 
               type="text"
               value={slug}
-              onChange={(e) => setSlug(e.target.value)}
+              onChange={(e) => { setSlug(e.target.value); markDirty(); }}
               className="w-full bg-black border border-white/10 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-white/30 text-gray-300"
             />
           </div>
@@ -260,7 +298,7 @@ export default function Editor() {
               type="text"
               placeholder="e.g. Cloudinary link"
               value={coverImage}
-              onChange={(e) => setCoverImage(e.target.value)}
+              onChange={(e) => { setCoverImage(e.target.value); markDirty(); }}
               className="w-full bg-black border border-white/10 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-white/30 text-gray-300 mb-2"
             />
             {coverImage && (
@@ -276,7 +314,7 @@ export default function Editor() {
               type="text"
               placeholder="e.g. Dr. Jane Doe"
               value={author}
-              onChange={(e) => setAuthor(e.target.value)}
+              onChange={(e) => { setAuthor(e.target.value); markDirty(); }}
               className="w-full bg-black border border-white/10 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-white/30 text-gray-300 mb-2"
             />
           </div>
@@ -285,7 +323,7 @@ export default function Editor() {
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Document Type</label>
             <select 
               value={typeId}
-              onChange={(e) => setTypeId(e.target.value)}
+              onChange={(e) => { setTypeId(e.target.value); markDirty(); }}
               className="w-full bg-black border border-white/10 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-white/30 text-gray-300"
             >
               <option value="BLOG">Blog Post</option>
@@ -303,6 +341,20 @@ export default function Editor() {
               {statusId === 3 ? 'Published' : 'Draft'}
             </div>
           </div>
+
+          {statusId === 3 && (
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Live URL</label>
+              <a 
+                href={`/article.html?slug=${slug}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm text-orange-400 hover:text-orange-300 underline underline-offset-4 break-all transition-colors"
+              >
+                /article.html?slug={slug}
+              </a>
+            </div>
+          )}
         </div>
       </aside>
     </div>

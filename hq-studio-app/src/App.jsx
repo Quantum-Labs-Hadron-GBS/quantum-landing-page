@@ -40,8 +40,6 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/documents" element={<Documents />} />
-          <Route path="/media" element={<div className="p-8">Media library goes here...</div>} />
-          <Route path="/settings" element={<div className="p-8">Settings go here...</div>} />
         </Route>
         {/* Editor runs outside the sidebar layout for maximum screen space */}
         <Route path="/editor/:id" element={<Editor />} />

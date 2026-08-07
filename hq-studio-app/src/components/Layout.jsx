@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, FileText, Settings, LogOut, Image as ImageIcon } from 'lucide-react'
+import { LayoutDashboard, FileText, LogOut } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 
 export default function Layout() {
@@ -8,8 +8,6 @@ export default function Layout() {
   const navItems = [
     { name: 'Overview', path: '/', icon: LayoutDashboard },
     { name: 'Documents', path: '/documents', icon: FileText },
-    { name: 'Media', path: '/media', icon: ImageIcon },
-    { name: 'Settings', path: '/settings', icon: Settings },
   ]
 
   return (
