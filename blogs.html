@@ -13,119 +13,631 @@
                 extend: {
                     colors: {
                         hq: {
-                            dark: '#0a0a0a',
-                            panel: '#111111',
-                            accent: '#3b82f6'
+                            light: '#fffdfa',
                         }
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
                     }
                 }
             }
         }
     </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fffdfa; }
+        ::-webkit-scrollbar-thumb { background: #fed7aa; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #fb923c; }
+
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Decorative Page Bezels and Corners */
+        .site-frame {
+            position: fixed;
+            background-color: white;
+            z-index: 9998 !important;
+            pointer-events: none;
+        }
+
+        .site-frame--top { top: 0; left: 0; right: 0; height: 10px; }
+        .site-frame--bottom { bottom: 0; left: 0; right: 0; height: 10px; }
+        .site-frame--left { top: 0; bottom: 0; left: 0; width: 10px; }
+        .site-frame--right { top: 0; bottom: 0; right: 0; width: 10px; }
+
+        .site-corner {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            color: white;
+            z-index: 9998 !important;
+            pointer-events: none;
+        }
+
+        .site-corner--top-left { top: 10px; left: 10px; transform: rotate(90deg); }
+        .site-corner--top-right { top: 10px; right: 10px; transform: rotate(180deg); }
+        .site-corner--bottom-right { bottom: 10px; right: 10px; transform: rotate(-90deg); }
+        .site-corner--bottom-left { bottom: 10px; left: 10px; transform: rotate(0deg); }
+
+        @media (max-width: 850px) {
+            .site-frame,
+            .site-corner {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
-<body class="bg-hq-dark text-white font-sans antialiased min-h-screen flex flex-col">
-    <!-- Navbar (Simplified version of main navbar for the blog) -->
-    <nav class="border-b border-white/10 bg-hq-dark/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <a href="/" class="font-bold text-xl tracking-tight">Hadron Quantum</a>
-            <div class="space-x-6 text-sm font-medium">
-                <a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a>
-                <a href="/blogs" class="text-white">Blogs</a>
-                <a href="/studio" class="text-hq-accent hover:text-blue-400 transition-colors">HQ Studio</a>
+<body class="bg-hq-light text-gray-900 font-sans antialiased min-h-screen flex flex-col selection:bg-orange-200 selection:text-orange-900">
+    <!-- Decorative Page Frames & Corners -->
+    <div class="site-frame site-frame--top" aria-hidden="true"></div>
+    <div class="site-frame site-frame--bottom" aria-hidden="true"></div>
+    <div class="site-frame site-frame--left" aria-hidden="true"></div>
+    <div class="site-frame site-frame--right" aria-hidden="true"></div>
+    <svg class="site-corner site-corner--top-left" width="50" height="50" viewBox="0 0 50 50" fill="none"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path>
+    </svg>
+    <svg class="site-corner site-corner--top-right" width="50" height="50" viewBox="0 0 50 50" fill="none"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path>
+    </svg>
+    <svg class="site-corner site-corner--bottom-left" width="50" height="50" viewBox="0 0 50 50" fill="none"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path>
+    </svg>
+    <svg class="site-corner site-corner--bottom-right" width="50" height="50" viewBox="0 0 50 50" fill="none"
+        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path>
+    </svg>
+
+    <!-- Floating Navbar -->
+    <header
+        class="fixed shadow-2xl/20 rounded-b-4xl top-2.5 left-1/2 -translate-x-1/2 w-full max-w-5xl max-[1200px]:max-w-2xl bg-white max-[850px]:top-0 max-[850px]:left-0 max-[850px]:right-0 max-[850px]:translate-x-0 max-[850px]:w-full max-[850px]:max-w-none max-[850px]:rounded-none max-[850px]:rounded-b-4xl max-[850px]:overflow-hidden transition-all duration-300"
+        style="z-index: 9999;">
+        <div class="h-20 max-[850px]:h-18 flex items-center justify-between px-4 max-[850px]:px-6">
+            <a href="/" class="flex items-center gap-2 ml-4 max-[850px]:ml-0 font-bold text-xl tracking-tight text-gray-900">
+                Hadron Quantum
+            </a>
+            <nav class="flex items-center gap-1 max-[1200px]:gap-0 max-[850px]:hidden">
+                <a href="/" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100">Home</a>
+                <a href="/blogs.html" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-orange-500 transition-colors rounded-full bg-orange-50">Blogs</a>
+                <a href="/studio" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100">HQ Studio</a>
+            </nav>
+            <div class="flex items-center gap-4 max-[850px]:hidden">
+                <a href="/contact.html" class="group relative inline-flex items-center" tabindex="0">
+                    <div class="flex items-center justify-between rounded-full bg-black p-1.5 pl-6 transition-all duration-300 hover:bg-black/90 shadow-xl border border-black/10">
+                        <span class="text-white font-semibold mr-6 text-sm md:text-base">Contact Us</span>
+                        <div class="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full bg-orange-500 text-black transition-transform duration-300 group-hover:-rotate-45">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 7 10 10"></path><path d="M17 7v10H7"></path></svg>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
-    </nav>
+        <!-- Left SVG Corner -->
+        <svg class="absolute top-0 -left-12.25 pointer-events-none max-[850px]:hidden"
+            style="transform: rotate(180deg); color: white; left: -49px;" width="50" height="50"
+            viewBox="0 0 50 50" fill="none" aria-hidden="true">
+            <path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path>
+        </svg>
+        <!-- Right SVG Corner -->
+        <svg class="absolute top-0 -right-12.25 pointer-events-none max-[850px]:hidden"
+            style="transform: rotate(90deg); color: white; right: -49px;" width="50" height="50"
+            viewBox="0 0 50 50" fill="none" aria-hidden="true">
+            <path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path>
+        </svg>
+    </header>
 
-    <!-- Main Content -->
-    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-        <div class="mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Latest Insights</h1>
-            <p class="text-xl text-gray-400 max-w-2xl">Discover research, whitepapers, and thought leadership from the Hadron Quantum team.</p>
+    <!-- Edge-to-Edge Hero Section -->
+    <div class="relative w-full h-[500px] md:h-[600px] mb-16 shadow-lg rounded-b-[3rem] overflow-hidden mt-0">
+        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80" alt="Quantum Computer" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+        
+        <div class="absolute inset-0 flex flex-col justify-end p-8 md:p-16 pb-24 max-w-7xl mx-auto w-full">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-[1.1]">
+                    Quantum Insights & <br/><span class="text-white/70">Research</span>
+                </h1>
+                <p class="text-xl text-gray-300 max-w-2xl">Explore our latest breakthroughs in quantum architecture, AI data center optimization, and post-quantum cryptography.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Carousel Section -->
+    <div id="featured-section" class="w-full max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-sm font-bold text-gray-800 tracking-widest uppercase">Featured Insights</h2>
+            <div class="flex items-center gap-4 text-sm font-medium text-gray-500">
+                <button id="carousel-prev" class="p-2 rounded-md hover:bg-gray-100 transition-colors border border-gray-200">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <span id="carousel-counter">1 / 3</span>
+                <button id="carousel-next" class="p-2 rounded-md hover:bg-gray-100 transition-colors border border-gray-200">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
         </div>
 
-        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Skeleton Loading -->
-            <div class="animate-pulse">
-                <div class="bg-white/10 h-48 rounded-xl mb-4"></div>
-                <div class="h-6 bg-white/10 rounded w-3/4 mb-3"></div>
-                <div class="h-4 bg-white/10 rounded w-full mb-2"></div>
-                <div class="h-4 bg-white/10 rounded w-2/3"></div>
+        <!-- Carousel Container -->
+        <div class="relative w-full h-[500px] md:h-[400px] rounded-[2rem] shadow-xl shadow-gray-200/50 bg-white overflow-hidden group">
+            <div id="featured-carousel" class="w-full h-full flex transition-transform duration-500 ease-in-out">
+                <!-- Skeleton -->
+                <div class="min-w-full flex flex-col md:flex-row h-full">
+                    <div class="w-full md:w-2/5 h-1/2 md:h-full bg-gray-200 animate-pulse"></div>
+                    <div class="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center h-1/2 md:h-full">
+                        <div class="h-8 bg-gray-200 rounded w-3/4 mb-4 animate-pulse"></div>
+                        <div class="h-4 bg-gray-200 rounded w-full mb-2 animate-pulse"></div>
+                        <div class="h-4 bg-gray-200 rounded w-5/6 mb-8 animate-pulse"></div>
+                        <div class="h-4 bg-gray-200 rounded w-24 animate-pulse"></div>
+                    </div>
+                </div>
             </div>
-            <div class="animate-pulse">
-                <div class="bg-white/10 h-48 rounded-xl mb-4"></div>
-                <div class="h-6 bg-white/10 rounded w-3/4 mb-3"></div>
-                <div class="h-4 bg-white/10 rounded w-full mb-2"></div>
-                <div class="h-4 bg-white/10 rounded w-2/3"></div>
-            </div>
-            <div class="animate-pulse hidden md:block">
-                <div class="bg-white/10 h-48 rounded-xl mb-4"></div>
-                <div class="h-6 bg-white/10 rounded w-3/4 mb-3"></div>
-                <div class="h-4 bg-white/10 rounded w-full mb-2"></div>
-                <div class="h-4 bg-white/10 rounded w-2/3"></div>
-            </div>
+        </div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 mb-12">
+        <div class="flex flex-wrap items-center gap-3" id="category-filters">
+            <!-- Filter buttons will be injected by JS -->
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6">
+        <!-- Grid Section -->
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 items-start">
+            <!-- Loading Skeleton -->
+            <div class="animate-pulse bg-white border border-gray-200/50 rounded-[2rem] h-[500px]"></div>
+            <div class="animate-pulse bg-white border border-gray-200/50 rounded-[2rem] h-[500px]"></div>
+            <div class="animate-pulse bg-white border border-gray-200/50 rounded-[2rem] h-[500px]"></div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/10 bg-hq-dark py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-            &copy; 2026 Hadron Global Business Solutions. All rights reserved.
-        </div>
-    </footer>
+        <!-- RICH FOOTER -->
+        <footer id="contact" class="relative overflow-hidden bg-white border border-gray-200 shadow-xl shadow-gray-200/50 rounded-[2.5rem] max-w-[1400px] mx-4 sm:mx-6 xl:mx-auto mb-8 mt-16">
+            <!-- Fading Gradient Border -->
+            <div class="absolute inset-0 pointer-events-none rounded-[2.5rem] border-[3px] border-transparent" style="background: linear-gradient(to top, rgba(255,159,43, 1) 0%, rgba(255,159,43, 0.4) 30%, transparent 70%) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; z-index: 50;"></div>
 
-    <!-- Fetch Logic -->
-    <script>
-        // Replace with your actual Supabase URL and Anon Key if you didn't inject them during build
-        // For security, the anon key is safe to be public as RLS protects the database.
+            <!-- Big BG Word -->
+            <div aria-hidden="true"
+                class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center overflow-hidden select-none">
+                <span
+                    class="text-[clamp(80px,20vw,220px)] font-black tracking-tighter text-black/[0.03] leading-none pb-2 translate-y-6">HADRON</span>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-8">
+
+                <!-- Top Section CTA Banner -->
+                <div class="relative rounded-3xl overflow-hidden mb-20">
+                    <div class="absolute inset-0 bg-center bg-no-repeat brightness-150 blur scale-125 hue-rotate-[-45deg] saturate-[1.2]"
+                        style="background-image:url('https://res.cloudinary.com/djxbxhgat/image/upload/v1785142156/BG_m1typg.jpg');background-size:150%"
+                        aria-hidden="true"></div>
+                    <div class="absolute inset-0 bg-white/10 backdrop-blur-[2px]"></div>
+                    <div
+                        class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 px-8 py-10 sm:px-12">
+                        <div>
+                            <h2 class="text-2xl sm:text-3xl font-medium text-black tracking-tight">Ready to optimize
+                                your enterprise infrastructure?</h2>
+                            <p class="text-black/60 mt-1 text-sm">Speak to the Hadron Quantum Labs team today.</p>
+                        </div>
+                        <a href="contact.html"
+                            class="shrink-0 inline-flex items-center gap-2 bg-black text-gray-900 px-6 py-3 rounded-xl text-sm font-semibold hover:bg-black/80 transition-colors">
+                            Contact Us
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m7 7 10 10" />
+                                <path d="M17 7v10H7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Main Footer Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr_1.4fr] gap-12 lg:gap-8 mb-16">
+
+                    <!-- Col 1: Brand + Map -->
+                    <div>
+                        <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="inline-block mb-5">
+                            <img src="https://res.cloudinary.com/djxbxhgat/image/upload/v1784806399/hadron_logo_white_jsl37p.png"
+                                alt="Hadron GBS" class="h-7 w-auto opacity-90" />
+                        </a>
+                        <p class="text-sm text-gray-900/70 leading-relaxed mb-3 max-w-sm">
+                            Hadron Quantum Labs is the quantum division of <a href="https://www.hadrongbs.com"
+                                target="_blank" rel="noopener"
+                                class="text-accent hover:text-accent transition-colors">Hadron Global Business
+                                Solutions</a>, delivering AI infrastructure optimization and Post-Quantum Cryptography
+                            readiness audits for enterprise data centers worldwide.
+                        </p>
+                        <p class="text-xs text-gray-900/60 tracking-widest uppercase mb-6">Quantum Division &mdash; Hadron
+                            GBS</p>
+
+                        <!-- Office Map Tabs -->
+                        <div>
+                            <p class="text-xs font-medium text-gray-900/60 uppercase tracking-widest mb-3">Global Offices —
+                                Interactive Map</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3" id="map-tabs">
+                                <button
+                                    onclick="switchMap('pune','https://maps.google.com/maps?q=Hadron%20GBS%20India%20Office&t=&z=14&ie=UTF8&iwloc=&output=embed')"
+                                    class="map-tab map-tab-active px-3 py-1 rounded-lg text-xs font-medium transition-colors"
+                                    data-office="pune">Pune</button>
+                                <button
+                                    onclick="switchMap('singapore','https://maps.google.com/maps?q=7+Temasek+Boulevard,Suntec+Tower,Singapore&t=&z=14&ie=UTF8&iwloc=&output=embed')"
+                                    class="map-tab px-3 py-1 rounded-lg text-xs font-medium transition-colors"
+                                    data-office="singapore">Singapore</button>
+                                <button
+                                    onclick="switchMap('dubai','https://maps.google.com/maps?q=Westburry+Tower+1,Business+Bay,Dubai&t=&z=14&ie=UTF8&iwloc=&output=embed')"
+                                    class="map-tab px-3 py-1 rounded-lg text-xs font-medium transition-colors"
+                                    data-office="dubai">Dubai</button>
+                                <button
+                                    onclick="switchMap('usa','https://maps.google.com/maps?q=8+The+Green,Dover,DE&t=&z=14&ie=UTF8&iwloc=&output=embed')"
+                                    class="map-tab px-3 py-1 rounded-lg text-xs font-medium transition-colors"
+                                    data-office="usa">USA</button>
+                            </div>
+                            <div class="rounded-xl overflow-hidden border border-white/[0.07]">
+                                <iframe id="office-map"
+                                    src="https://maps.google.com/maps?q=Hadron%20GBS%20India%20Office&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                                    width="100%" height="200"
+                                    style="border:0;display:block;filter:grayscale(0.7) contrast(1.1) brightness(0.9);"
+                                    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                                    title="Hadron GBS Office Map">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Col 2: Quick Links + Contact -->
+                    <div class="flex flex-col gap-8">
+                        <div>
+                            <p class="text-xs font-medium text-gray-900/60 uppercase tracking-widest mb-4">Quick Links</p>
+                            <ul class="space-y-2.5">
+                                <li><a href="index.html"
+                                        class="text-sm text-gray-900/80 hover:text-gray-900 transition-colors">Home</a></li>
+                                <li><a href="index.html#solutions"
+                                        class="text-sm text-gray-900/80 hover:text-gray-900 transition-colors">Solutions</a>
+                                </li>
+                                <li><a href="index.html#workflow"
+                                        class="text-sm text-gray-900/80 hover:text-gray-900 transition-colors">Workflow</a>
+                                </li>
+                                <li><a href="index.html#pricing"
+                                        class="text-sm text-gray-900/80 hover:text-gray-900 transition-colors">Offerings</a>
+                                </li>
+                                <li><a href="index.html#faq-accordion"
+                                        class="text-sm text-gray-900/80 hover:text-gray-900 transition-colors">FAQ</a></li>
+                                <li><a href="contact.html"
+                                        class="text-sm text-gray-900/80 hover:text-gray-900 transition-colors">Contact Us</a>
+                                </li>
+                                <li><a href="https://www.hadrongbs.com" target="_blank" rel="noopener"
+                                        class="text-sm text-accent hover:text-accent transition-colors flex items-center gap-1">Hadron
+                                        GBS <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M15 3h6v6" />
+                                            <path d="M10 14 21 3" />
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        </svg></a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-gray-900/60 uppercase tracking-widest mb-4">Get In Touch</p>
+                            <ul class="space-y-2.5">
+                                <li>
+                                    <a href="mailto:quantum.lab@hadrongbs.com"
+                                        class="text-sm text-gray-900/80 hover:text-gray-900 transition-colors flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                                            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                                        </svg>
+                                        quantum.lab@hadrongbs.com
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:info@hadrongbs.com"
+                                        class="text-sm text-gray-900/80 hover:text-gray-900 transition-colors flex items-center gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+                                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                                            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                                        </svg>
+                                        info@hadrongbs.com
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Col 3: Global Offices -->
+                    <div>
+                        <p class="text-xs font-medium text-gray-900/60 uppercase tracking-widest mb-4">Global Offices</p>
+                        <div class="space-y-5">
+                            <div class="group">
+                                <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">Pune —
+                                    HQ</p>
+                                <p class="text-xs font-medium text-gray-900/60">Hadron Global Business Solutions Pvt Ltd
+                                </p>
+                                <p class="text-xs text-gray-900/35 leading-relaxed mt-0.5">Pyramid Axis 10th Floor,
+                                    Veerbhadra Nagar, Baner, Pune, Maharashtra 411045</p>
+                            </div>
+                            <div class="group">
+                                <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">Pune —
+                                    Hinjewadi</p>
+                                <p class="text-xs font-medium text-gray-900/60">Hadron Global Business Solutions Pvt Ltd
+                                </p>
+                                <p class="text-xs text-gray-900/35 leading-relaxed mt-0.5">A 1004, High Mont, Phase 2,
+                                    Hinjewadi, Pune, Maharashtra 411057</p>
+                            </div>
+                            <div class="group">
+                                <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">
+                                    Singapore</p>
+                                <p class="text-xs font-medium text-gray-900/60">Hadron GBS Pte Ltd</p>
+                                <p class="text-xs text-gray-900/35 leading-relaxed mt-0.5">7 Temasek Boulevard, Suntec
+                                    Tower One, Singapore 038987</p>
+                            </div>
+                            <div class="group">
+                                <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">Dubai,
+                                    UAE</p>
+                                <p class="text-xs font-medium text-gray-900/60">Hadron Technologies LLC</p>
+                                <p class="text-xs text-gray-900/35 leading-relaxed mt-0.5">303, Westburry Tower 1, Business
+                                    Bay, Dubai, UAE</p>
+                            </div>
+                            <div class="group">
+                                <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">USA</p>
+                                <p class="text-xs font-medium text-gray-900/60">Hadron GBS Inc.</p>
+                                <p class="text-xs text-gray-900/35 leading-relaxed mt-0.5">8 The Green, Ste R, Dover, DE
+                                    19901, USA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="border-t border-white/[0.06] mb-6"></div>
+
+                <!-- Bottom Bar -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p class="text-xs text-gray-900/25 text-center sm:text-left">
+                        © 2026 Hadron Quantum Labs — A Division of <a href="https://www.hadrongbs.com" target="_blank"
+                            rel="noopener" class="hover:text-gray-900/50 transition-colors">Hadron Global Business
+                            Solutions (GBS)</a>. All rights reserved.
+                    </p>
+                    <!-- Social Links -->
+                    <div class="flex items-center gap-2">
+                        <a href="https://x.com/HadronGBS" target="_blank" rel="noopener noreferrer"
+                            aria-label="X (Twitter)"
+                            class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.06] flex items-center justify-center text-gray-900/70 hover:text-gray-900 transition-all text-xs font-bold">𝕏</a>
+                        <a href="https://www.linkedin.com/showcase/quantum-labs-hadron-gbs" target="_blank" rel="noopener noreferrer" aria-label="Quantum Labs LinkedIn" title="Quantum Labs LinkedIn" class="h-8 px-3 rounded-lg bg-accent/10 hover:bg-accent/20 border border-accent/20 flex items-center justify-center text-accent transition-all text-xs font-bold mr-2">in <span class="ml-1 text-[10px] uppercase font-semibold">Quantum</span></a>
+                        <a href="https://www.linkedin.com/company/hadron-gbs/" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                            class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.06] flex items-center justify-center text-gray-900/70 hover:text-gray-900 transition-all text-xs font-bold">in</a>
+                        <a href="https://www.youtube.com/@HadronGBS" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube"
+                            class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.06] flex items-center justify-center text-gray-900/70 hover:text-gray-900 transition-all text-xs">▶</a>
+                        <a href="https://www.facebook.com/profile.php?id=61560719736422" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"
+                            class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.06] flex items-center justify-center text-gray-900/70 hover:text-gray-900 transition-all text-xs font-bold">f</a>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .map-tab {
+                    background: rgba(255, 255, 255, 0.04);
+                    border: 1px solid rgba(255, 255, 255, 0.07);
+                    color: rgba(255, 255, 255, 0.4);
+                    cursor: pointer;
+                }
+
+                .map-tab:hover {
+                    background: rgba(255, 255, 255, 0.08);
+                    color: rgba(255, 255, 255, 0.7);
+                }
+
+                .map-tab-active {
+                    background: rgba(255, 159, 43, 0.15) !important;
+                    border-color: rgba(255, 159, 43, 0.3) !important;
+                    color: #ff9f2b !important;
+                }
+            </style>
+            <script>
+                function switchMap(office, url) {
+                    document.getElementById('office-map').src = url;
+                    document.querySelectorAll('.map-tab').forEach(btn => {
+                        btn.classList.remove('map-tab-active');
+                        if (btn.dataset.office === office) btn.classList.add('map-tab-active');
+                    });
+                }
+            </script>
+        </footer>
+
+<script>
         const SUPABASE_URL = 'https://clihxetmljczwldiupqv.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_MbLstDAvPAB0A7bKJdDubw_niZ807sl';
 
+        let allArticles = [];
+        let featuredArticles = [];
+        let gridArticles = [];
+        let currentFilter = 'ALL';
+        
+        let currentSlide = 0;
+        let carouselInterval = null;
+
         async function fetchBlogs() {
             try {
-                // Fetch only published documents (status_id = 3) of type BLOG
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/documents?status_id=eq.3&type_id=eq.BLOG&order=published_at.desc`, {
-                    headers: {
-                        'apikey': SUPABASE_ANON_KEY,
-                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-                    }
+                // Remove type_id filter from query to fetch all document types
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/documents?status_id=eq.3&order=published_at.desc`, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
                 });
-                
                 if (!response.ok) throw new Error('Failed to fetch blogs');
                 
-                const data = await response.json();
-                const grid = document.getElementById('blog-grid');
+                allArticles = await response.json();
                 
-                if (data.length === 0) {
-                    grid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12 border border-white/10 rounded-xl bg-hq-panel">No blogs published yet.</div>';
+                if (allArticles.length === 0) {
+                    document.getElementById('blog-grid').innerHTML = '<div class="col-span-full text-center text-gray-500 py-12 rounded-[2rem] bg-white border border-gray-200/50">No articles published yet.</div>';
+                    document.getElementById('featured-section').style.display = 'none';
                     return;
                 }
 
-                grid.innerHTML = data.map(doc => `
-                    <a href="/article.html?slug=${doc.slug}" class="group block bg-hq-panel rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all hover:-translate-y-1">
-                        <div class="aspect-video bg-black flex items-center justify-center relative overflow-hidden">
-                            ${doc.cover_image 
-                                ? `<img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>`
-                                : `<div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
-                                   <span class="text-white/20 font-bold text-4xl group-hover:scale-110 transition-transform">HQ</span>`
-                            }
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold tracking-wide uppercase">${doc.type_id}</span>
-                                <span class="text-xs text-gray-500">${new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                            </div>
-                            <h2 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">${doc.title}</h2>
-                            <p class="text-gray-400 text-sm line-clamp-3">${doc.excerpt || 'Read the full article to learn more...'}</p>
-                        </div>
-                    </a>
-                `).join('');
+                featuredArticles = allArticles.slice(0, 3);
+                gridArticles = allArticles.slice(3);
+                
+                if (featuredArticles.length === 0) {
+                    document.getElementById('featured-section').style.display = 'none';
+                } else {
+                    renderFeaturedCarousel();
+                }
+                
+                renderCategoryFilters();
+                renderGrid();
 
             } catch (err) {
                 console.error(err);
-                document.getElementById('blog-grid').innerHTML = '<div class="col-span-full text-center text-red-400">Error loading articles.</div>';
+                document.getElementById('blog-grid').innerHTML = '<div class="col-span-full text-center text-red-500">Error loading articles.</div>';
             }
         }
-
+        
+        function renderFeaturedCarousel() {
+            const container = document.getElementById('featured-carousel');
+            
+            container.innerHTML = featuredArticles.map(doc => {
+                const dateStr = new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                return `
+                <div class="min-w-full flex flex-col md:flex-row h-full items-stretch">
+                    <div class="w-full md:w-2/5 h-[200px] md:h-full relative overflow-hidden shrink-0">
+                        ${doc.cover_image 
+                            ? `<img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover" />`
+                            : `<div class="w-full h-full bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center text-orange-500 font-bold text-4xl">HQ</div>`
+                        }
+                    </div>
+                    <div class="w-full md:w-3/5 p-8 md:p-16 flex flex-col justify-center bg-white relative">
+                        <span class="px-4 py-1.5 bg-[#f4f5f7] w-max rounded-full text-[10px] font-extrabold tracking-widest uppercase text-gray-600 mb-6 shadow-sm border border-gray-200/50">${(doc.type_id || 'BLOG').replace(/_/g, ' ')}</span>
+                        <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">${doc.title}</h2>
+                        <p class="text-gray-500 mb-8 line-clamp-2 md:line-clamp-3 text-base md:text-lg">${dateStr}</p>
+                        <a href="/article.html?slug=${doc.slug}" class="inline-flex items-center text-sm font-bold text-gray-900 border-b-2 border-gray-900 pb-1 w-max group-hover:text-orange-500 group-hover:border-orange-500 transition-colors">
+                            Read More <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+                `;
+            }).join('');
+            
+            updateCarouselCounter();
+            startCarousel();
+        }
+        
+        function updateCarouselCounter() {
+            const counter = document.getElementById('carousel-counter');
+            if (counter) {
+                counter.innerText = `${currentSlide + 1} / ${featuredArticles.length}`;
+            }
+        }
+        
+        function setSlide(index) {
+            if (featuredArticles.length === 0) return;
+            currentSlide = (index + featuredArticles.length) % featuredArticles.length;
+            const container = document.getElementById('featured-carousel');
+            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateCarouselCounter();
+        }
+        
+        function nextSlide() {
+            setSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            setSlide(currentSlide - 1);
+        }
+        
+        function startCarousel() {
+            stopCarousel();
+            if (featuredArticles.length > 1) {
+                carouselInterval = setInterval(nextSlide, 2500);
+            }
+        }
+        
+        function stopCarousel() {
+            if (carouselInterval) clearInterval(carouselInterval);
+        }
+        
+        document.getElementById('carousel-next')?.addEventListener('click', () => { nextSlide(); startCarousel(); });
+        document.getElementById('carousel-prev')?.addEventListener('click', () => { prevSlide(); startCarousel(); });
+        
+        const featuredSection = document.getElementById('featured-section');
+        if (featuredSection) {
+            featuredSection.addEventListener('mouseenter', stopCarousel);
+            featuredSection.addEventListener('mouseleave', startCarousel);
+        }
+        
+        function renderCategoryFilters() {
+            const filterContainer = document.getElementById('category-filters');
+            if (!filterContainer) return;
+            
+            const types = [...new Set(allArticles.map(a => a.type_id || 'BLOG'))];
+            
+            let html = `<button class="px-6 py-2 rounded-full text-sm font-semibold transition-colors ${currentFilter === 'ALL' ? 'bg-gray-900 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}" onclick="setFilter('ALL')">All Updates</button>`;
+            
+            types.forEach(type => {
+                const isActive = currentFilter === type;
+                const label = type.replace(/_/g, ' '); // Format CASE_STUDY to CASE STUDY
+                html += `<button class="px-6 py-2 rounded-full text-sm font-semibold transition-colors ${isActive ? 'bg-gray-900 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}" onclick="setFilter('${type}')">${label}</button>`;
+            });
+            
+            filterContainer.innerHTML = html;
+        }
+        
+        window.setFilter = function(type) {
+            currentFilter = type;
+            renderCategoryFilters(); 
+            renderGrid();
+        }
+        
+        function renderGrid() {
+            const grid = document.getElementById('blog-grid');
+            
+            const filtered = currentFilter === 'ALL' 
+                ? gridArticles 
+                : gridArticles.filter(a => (a.type_id || 'BLOG') === currentFilter);
+                
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12 bg-white rounded-[2rem] border border-gray-200/50 shadow-sm">No articles found in this category.</div>';
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(doc => {
+                const dateStr = new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const hasImage = !!doc.cover_image;
+                
+                return `
+                <a href="/article.html?slug=${doc.slug}" class="group block bg-white rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${hasImage ? 'h-[450px]' : 'h-[300px]'} flex flex-col relative border border-gray-200/50 shadow-sm">
+                    
+                    <div class="p-8 flex-1 z-10 relative">
+                        <div class="flex items-start justify-between mb-6">
+                            <span class="px-4 py-1.5 bg-[#f4f5f7] border border-gray-200/50 rounded-full text-[10px] font-extrabold tracking-widest uppercase text-gray-600 shadow-sm">${(doc.type_id || 'BLOG').replace(/_/g, ' ')}</span>
+                            <div class="w-10 h-10 bg-[#f4f5f7] border border-gray-200/50 rounded-full flex items-center justify-center shadow-sm group-hover:bg-orange-500 group-hover:border-orange-500 group-hover:text-white transition-colors text-gray-400">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                            </div>
+                        </div>
+                        
+                        <h2 class="text-2xl font-bold text-gray-900 leading-snug mb-3 ${hasImage ? 'line-clamp-3' : 'line-clamp-4'} group-hover:text-orange-500 transition-colors">${doc.title}</h2>
+                        <p class="text-gray-500 text-sm font-medium">${dateStr}</p>
+                    </div>
+                    
+                    ${hasImage ? `
+                    <div class="h-[220px] w-full mt-auto relative z-0">
+                        <img src="${doc.cover_image}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="${doc.title}" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-transparent to-white opacity-90"></div>
+                    </div>
+                    ` : ''}
+                </a>
+            `}).join('');
+        }
+        
         fetchBlogs();
     </script>
 </body>
