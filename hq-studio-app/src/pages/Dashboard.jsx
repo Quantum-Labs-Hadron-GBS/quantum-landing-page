@@ -46,7 +46,7 @@ export default function Dashboard() {
     <div className="p-8 max-w-6xl mx-auto">
       <header className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Overview</h1>
-        <p className="text-gray-400">Welcome to Hadron Quantum Publisher.</p>
+        <p className="text-gray-400">Welcome to Quantum Labs Publisher.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

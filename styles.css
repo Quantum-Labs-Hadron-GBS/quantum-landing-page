@@ -1,1 +1,11 @@
 /* V2 Formal Styles */
+@font-face {
+    font-family: 'Bank Gothic';
+    src: local('Bank Gothic'), local('BankGothic Md BT'), local('BankGothic');
+}
+
+.font-bank-gothic {
+    font-family: 'Bank Gothic', 'Orbitron', 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
