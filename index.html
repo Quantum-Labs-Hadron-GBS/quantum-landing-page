@@ -128,8 +128,8 @@
                 <!-- Golden Orange Gradient that fades in at the bottom (BEHIND VIDEO) -->
                 <div id="hero-glow" class="absolute inset-0 bg-gradient-to-t from-brand-orange/90 via-brand-orange/20 to-transparent opacity-0"></div>
 
-                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover mix-blend-screen opacity-90">
-                    <source src="https://res.cloudinary.com/ax6dtcht/video/upload/v1787914644/Can_you_make_the_exact_video_I_kiga2f.mp4" type="video/mp4">
+                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                    <source src="https://res.cloudinary.com/ax6dtcht/video/upload/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4" type="video/mp4">
                 </video>
                 <div class="absolute inset-0 bg-black/10"></div>
 
@@ -273,6 +273,43 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         TRANSITION SECTION: The Observers
+         ===================================================== -->
+    <div id="transition-section" class="relative z-30 w-full overflow-hidden" style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #ffedd5 60%, #f59e0b 100%);">
+        
+        <!-- Text -->
+        <div class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center">
+            <h2 class="text-5xl md:text-7xl font-medium tracking-tight text-brand-dark mb-6 leading-tight">
+                Witness the <br>Next Generation
+            </h2>
+            <p class="text-xl md:text-2xl text-brand-dark/70 font-light tracking-wide max-w-2xl mx-auto">
+                As the world looks on, we are building the foundation of tomorrow's compute.
+            </p>
+        </div>
+
+        <!-- Composition -->
+        <div class="relative w-full flex justify-center items-end" style="height: 65vh; min-height: 500px;">
+            
+            <!-- Layer 1 (Background): Quantum Computer Core -->
+            <!-- mix-blend-multiply hides white background -->
+            <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" 
+                 alt="Quantum Computer Core" 
+                 class="absolute z-0 w-auto object-contain"
+                 style="height: 110%; top: -15%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply;">
+            
+            <!-- Layer 2 (Foreground): People looking up -->
+            <!-- mix-blend-multiply turns white skies into the golden orange gradient -->
+            <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787909936/ChatGPT_Image_Aug_27_2026_07_22_36_PM_1_ep9mqo.png" 
+                 alt="People looking up" 
+                 class="absolute z-10 w-full object-cover object-bottom"
+                 style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply;">
+
+            <!-- Bottom dark fade to transition into the next #0a0a0a section perfectly -->
+            <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-20 pointer-events-none"></div>
         </div>
     </div>
 
