@@ -3,446 +3,74 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
-    <title>Contact Us | Hadron Quantum Labs — Quantum Division of Hadron GBS</title>
-    <meta name="description" content="Contact Hadron Quantum Labs — the quantum division of Hadron GBS. Reach us for AI infrastructure optimization, CapEx planning, and PQC readiness audits."/>
-    <meta name="author" content="Hadron GBS - Quantum Labs Division"/>
-    <meta name="keywords" content="Hadron Quantum Labs, Hadron GBS, Contact, AI Infrastructure, PQC Readiness, Quantum Division"/>
-    <meta name="publisher" content="Hadron Global Business Solutions (GBS)"/>
-    <meta name="robots" content="index, follow"/>
-    <meta property="og:title" content="Contact Hadron Quantum Labs | Quantum Division of Hadron GBS"/>
-    <meta property="og:description" content="Get in touch with Hadron Quantum Labs for enterprise AI infrastructure optimization and PQC security audits."/>
-    <meta property="og:url" content="https://quantum.hadrongbs.com/contact.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://res.cloudinary.com/djxbxhgat/image/upload/v1785142156/BG_m1typg.jpg" />
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Contact | Hadron Quantum Labs"/>
-    <meta name="twitter:description" content="Reach Hadron Quantum Labs — the quantum division of Hadron GBS."/>
-    <meta name="twitter:image" content="https://res.cloudinary.com/djxbxhgat/image/upload/v1785142156/BG_m1typg.jpg"/>
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="canonical" href="https://quantum.hadrongbs.com/contact.html"/>
+    <title>Contact Us | Hadron Quantum V2</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        background: 'hsl(var(--background))',
-                        foreground: 'hsl(var(--foreground))',
-                        muted: 'hsl(var(--muted))',
-                        'muted-foreground': 'hsl(var(--muted-foreground))',
-                        accent: '#ff9f2b',
-                        frame: 'hsl(var(--frame))',
-                        border: 'hsl(var(--border))',
-                    },
-                    borderRadius: { '4xl': '2rem' }
-                }
-            }
-        }
-    </script>
-    <style>
-        :root {
-            --background: 0 0% 4%;
-            --foreground: 0 0% 100%;
-            --muted: 0 0% 15%;
-            --muted-foreground: 0 0% 60%;
-            --frame: 0 0% 4%;
-            --border: 0 0% 15%;
-            --accent: 33 100% 58%;
-        }
-        body {
-            background-color: hsl(var(--background));
-            color: hsl(var(--foreground));
-            overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-        .site-frame {
-            position: fixed;
-            background-color: hsl(var(--frame));
-            z-index: 9998;
-            pointer-events: none;
-        }
-        .site-frame--top { top: 0; left: 0; right: 0; height: 10px; }
-        .site-frame--bottom { bottom: 0; left: 0; right: 0; height: 10px; }
-        .site-frame--left { top: 0; bottom: 0; left: 0; width: 10px; }
-        .site-frame--right { top: 0; bottom: 0; right: 0; width: 10px; }
-        .site-corner {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            color: hsl(var(--frame));
-            z-index: 9998;
-            pointer-events: none;
-        }
-        .site-corner--top-left { top: 10px; left: 10px; transform: rotate(90deg); }
-        .site-corner--top-right { top: 10px; right: 10px; transform: rotate(180deg); }
-        .site-corner--bottom-right { bottom: 10px; right: 10px; transform: rotate(-90deg); }
-        .site-corner--bottom-left { bottom: 10px; left: 10px; transform: rotate(0deg); }
-        @media (max-width: 850px) { .site-frame, .site-corner { display: none !important; } }
-
-        /* Input & Select focus styles */
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #ff9f2b;
-            box-shadow: 0 0 0 3px rgba(255, 159, 43, 0.12);
-        }
-        select option { background: #0a0a0a; color: white; }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "name": "Contact Hadron Quantum Labs",
-      "description": "Contact Hadron Quantum Labs for enterprise AI infrastructure optimization and PQC security audits.",
-      "url": "https://quantum.hadrongbs.com/contact.html",
-      "mainEntity": {
-        "@type": "Organization",
-        "name": "Hadron Quantum Labs",
-        "email": ["quantum.lab@hadrongbs.com", "info@hadrongbs.com"]
-      }
-    }
-    </script>
-    <!-- Vercel Analytics & Speed Insights -->
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <link rel="stylesheet" href="./styles.css">
 </head>
-<body class="min-h-screen bg-background text-foreground antialiased">
-    <!-- Decorative Frames -->
-    <div class="site-frame site-frame--top" aria-hidden="true"></div>
-    <div class="site-frame site-frame--bottom" aria-hidden="true"></div>
-    <div class="site-frame site-frame--left" aria-hidden="true"></div>
-    <div class="site-frame site-frame--right" aria-hidden="true"></div>
-    <svg class="site-corner site-corner--top-left" width="50" height="50" viewBox="0 0 50 50" fill="none" aria-hidden="true"><path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path></svg>
-    <svg class="site-corner site-corner--top-right" width="50" height="50" viewBox="0 0 50 50" fill="none" aria-hidden="true"><path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path></svg>
-    <svg class="site-corner site-corner--bottom-left" width="50" height="50" viewBox="0 0 50 50" fill="none" aria-hidden="true"><path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path></svg>
-    <svg class="site-corner site-corner--bottom-right" width="50" height="50" viewBox="0 0 50 50" fill="none" aria-hidden="true"><path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path></svg>
-
-    <!-- Header / Nav -->
-    <header class="fixed shadow-2xl/20 rounded-b-4xl top-2.5 left-1/2 -translate-x-1/2 w-full max-w-5xl max-[1200px]:max-w-2xl bg-frame max-[850px]:top-0 max-[850px]:left-0 max-[850px]:right-0 max-[850px]:translate-x-0 max-[850px]:w-full max-[850px]:max-w-none max-[850px]:rounded-none max-[850px]:rounded-b-4xl max-[850px]:overflow-hidden" style="z-index: 9999;">
-        <div class="h-20 max-[850px]:h-18 flex items-center justify-between px-4 max-[850px]:px-6">
-            <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="flex items-center gap-2 ml-4 max-[850px]:ml-0">                    <img src="./favicon.svg" alt="Hadron" class="h-[2.2rem] w-auto" />                </a>                <nav class="flex items-center gap-1 max-[1200px]:gap-0 max-[850px]:hidden">                    <a href="index.html" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Home</a>
-                <a href="index.html#solutions" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Solutions</a>
-                <a href="index.html#workflow" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Workflow</a>
-                <a href="index.html#pricing" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">Offerings</a>
-                <a href="index.html#faq-accordion" class="px-4 py-2 max-[1200px]:px-3 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors rounded-full hover:bg-foreground/5">FAQ</a>
-            </nav>
-            <div class="flex items-center gap-4 max-[850px]:hidden">
-                <a href="contact.html" class="flex items-center rounded-full bg-white p-1 pr-1 pl-4 h-10 gap-2 transition-transform hover:scale-105 group">
-                    <span class="text-sm font-semibold text-black">Contact Us</span>
-                    <div class="flex items-center justify-center h-8 w-10 bg-accent rounded-full text-black transition-transform group-hover:scale-110">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m7 7 10 10"/><path d="M17 7v10H7"/>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-            <button class="hidden max-[850px]:flex items-center justify-center w-10 h-10" aria-label="Open menu">
-                <div class="w-8 h-4 relative flex flex-col justify-between cursor-pointer">
-                    <span class="block h-0.5 w-full bg-foreground origin-center rounded-full transition-transform duration-300"></span>
-                    <span class="block h-0.5 w-full bg-foreground origin-center rounded-full transition-transform duration-300"></span>
-                </div>
-            </button>
-        </div>
-        <svg class="absolute top-0 pointer-events-none max-[850px]:hidden" style="transform: rotate(180deg); color: hsl(var(--frame)); left: -49px;" width="50" height="50" viewBox="0 0 50 50" fill="none" aria-hidden="true"><path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path></svg>
-        <svg class="absolute top-0 pointer-events-none max-[850px]:hidden" style="transform: rotate(90deg); color: hsl(var(--frame)); right: -49px;" width="50" height="50" viewBox="0 0 50 50" fill="none" aria-hidden="true"><path d="M5.50871e-06 0C-0.00788227 37.3001 8.99616 50.0116 50 50H5.50871e-06V0Z" fill="currentColor"></path></svg>
-    </header>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-background/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10" aria-hidden="true">
-        <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
-            <a href="index.html" class="mobile-link text-white/70 hover:text-white transition-colors">Home</a>
-            <a href="index.html#solutions" class="mobile-link text-white/70 hover:text-white transition-colors">Solutions</a>
-            <a href="index.html#workflow" class="mobile-link text-white/70 hover:text-white transition-colors">Workflow</a>
-            <a href="index.html#pricing" class="mobile-link text-white/70 hover:text-white transition-colors">Offerings</a>
-            <a href="index.html#faq-accordion" class="mobile-link text-white/70 hover:text-white transition-colors">FAQ</a>
-            <a href="contact.html" class="mobile-link text-accent hover:text-accent/80 transition-colors">Contact Us</a>
-            <div class="h-[1px] w-12 bg-white/10 my-2"></div>
-            <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-white/40 hover:text-white transition-colors flex items-center gap-2 text-xl">
-                Hadron GBS Main Site
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-            </a>
-        </nav>
-        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,159,43,0.15),transparent_60%)] pointer-events-none -z-10"></div>
-    </div>
-
-
-    <main>
-        <!-- Background Grid + Gradients -->
-        <div class="absolute inset-0 pointer-events-none -z-20 bg-background overflow-hidden" aria-hidden="true">
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,159,43,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,159,43,0.05)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,159,43,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,159,43,0.12)_1px,transparent_1px)] bg-[size:256px_256px]"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#000000_100%)] opacity-80"></div>
-            <!-- Top orange bleed -->
-            <div class="absolute top-0 w-full h-[600px] bg-[linear-gradient(to_bottom,rgba(255,159,43,0.15),transparent)]"></div>
-            <!-- Top-right radial glow -->
-            <div class="absolute top-0 right-0 w-full max-w-[900px] h-[800px] bg-[radial-gradient(ellipse_at_top_right,rgba(255,159,43,0.35)_0%,transparent_65%)] pointer-events-none"></div>
-            <!-- Bottom-left radial glow -->
-            <div class="absolute bottom-0 left-0 w-full max-w-[700px] h-[600px] bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,159,43,0.30)_0%,transparent_65%)] pointer-events-none"></div>
-        </div>
-
-        <!-- Contact Form Section -->
-        <section class="min-h-screen flex flex-col items-center justify-center px-6 py-40 relative">
-            <!-- Page header -->
-            <div class="text-center mb-12">
-                <p class="text-xs text-white/35 tracking-widest uppercase mb-6">Quantum Division &mdash; Hadron GBS</p>
-                <h1 class="text-5xl md:text-6xl font-medium tracking-tight text-white mb-4">Contact Us</h1>
-                <p class="text-muted-foreground text-lg max-w-md mx-auto">Tell us about your infrastructure challenges. We'll be in touch within 24 hours.</p>
-            </div>
-
-            <!-- Form Card -->
-            <div class="w-full max-w-2xl bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-3xl p-8 md:p-12 shadow-2xl">
-                <form id="contact-page-form" class="space-y-6" novalidate>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="space-y-1.5">
-                            <label for="contact-name" class="block text-sm font-medium text-white/70">Full Name <span class="text-accent">*</span></label>
-                            <input type="text" id="contact-name" name="name" required autocomplete="name"
-                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/25 text-sm transition-colors"
-                                placeholder="John Smith">
-                        </div>
-                        <div class="space-y-1.5">
-                            <label for="contact-email" class="block text-sm font-medium text-white/70">Work Email <span class="text-accent">*</span></label>
-                            <input type="email" id="contact-email" name="email" required autocomplete="email"
-                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/25 text-sm transition-colors"
-                                placeholder="john@company.com">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div class="space-y-1.5">
-                            <label for="contact-org" class="block text-sm font-medium text-white/70">Organization</label>
-                            <input type="text" id="contact-org" name="organization" autocomplete="organization"
-                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/25 text-sm transition-colors"
-                                placeholder="Enterprise Corp">
-                        </div>
-                        <div class="space-y-1.5">
-                            <label for="contact-service" class="block text-sm font-medium text-white/70">Interested Service</label>
-                            <div class="relative">
-                                <select id="contact-service" name="service"
-                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white/60 text-sm transition-colors appearance-none cursor-pointer">
-                                    <option value="" disabled selected>Select a Service</option>
-                                    <option value="Capacity & AI Infrastructure Optimizer">Capacity & AI Infrastructure Optimizer</option>
-                                    <option value="Enterprise CapEx Optimizer">Enterprise CapEx Optimizer</option>
-                                    <option value="PQC Readiness Audit">PQC Readiness Audit</option>
-                                    <option value="General Inquiry">General Inquiry</option>
-                                </select>
-                                <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-1.5">
-                        <label for="contact-desc" class="block text-sm font-medium text-white/70">Message</label>
-                        <textarea id="contact-desc" name="description" rows="4"
-                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/25 text-sm transition-colors resize-none"
-                            placeholder="Describe your infrastructure challenges or questions..."></textarea>
-                    </div>
-
-                    <!-- Status Message -->
-                    <div id="form-status" class="hidden text-sm font-medium p-4 rounded-xl text-center"></div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" id="submit-btn"
-                        class="w-full bg-white text-black font-semibold py-4 rounded-xl hover:bg-white/90 active:scale-[0.99] transition-all flex justify-center items-center gap-2 text-sm">
-                        Send Message
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                    </button>
-
-                    <p class="text-center text-xs text-white/25">Your submission will be received by the Hadron Quantum Labs team. We respond within 24 hours on business days.</p>
-                </form>
-            </div>
-
-            <!-- Contact Detail Chips -->
-            <div class="flex flex-wrap items-center justify-center gap-4 mt-10">
-                <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.06] text-sm text-white/50">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/></svg>
-                    quantum.lab@hadrongbs.com
-                </div>
-                <div class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.06] text-sm text-white/50">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/></svg>
-                    info@hadrongbs.com
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
+<body class="min-h-screen bg-white text-black font-sans antialiased p-8">
     
-    <!-- RICH FOOTER -->
-    <footer id="contact" class="relative overflow-hidden bg-[#080808] shadow-2xl rounded-[2.5rem] max-w-[1400px] mx-4 sm:mx-6 xl:mx-auto mb-8 mt-16">
-            <!-- Fading Gradient Border -->
-            <div class="absolute inset-0 pointer-events-none rounded-[2.5rem] border-[3px] border-transparent" style="background: linear-gradient(to top, rgba(255,159,43, 1) 0%, rgba(255,159,43, 0.4) 30%, transparent 70%) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; z-index: 50;"></div>
+    <main class="max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold mb-8">Contact Us (V2)</h1>
         
-        <!-- Big BG Word -->
-        <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center overflow-hidden select-none">
-            <span class="text-[clamp(80px,20vw,220px)] font-black tracking-tighter text-white/[0.025] leading-none pb-2 translate-y-6">HADRON</span>
+        <!-- Form Retained for Functionality -->
+        <div class="bg-gray-100 p-8 rounded-xl">
+            <form id="contact-page-form" class="space-y-6" novalidate>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-1.5">
+                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name <span class="text-orange-500">*</span></label>
+                        <input type="text" id="contact-name" name="name" required autocomplete="name"
+                            class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm"
+                            placeholder="John Smith">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Work Email <span class="text-orange-500">*</span></label>
+                        <input type="email" id="contact-email" name="email" required autocomplete="email"
+                            class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm"
+                            placeholder="john@company.com">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="space-y-1.5">
+                        <label for="contact-org" class="block text-sm font-medium text-gray-700">Organization</label>
+                        <input type="text" id="contact-org" name="organization" autocomplete="organization"
+                            class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm"
+                            placeholder="Enterprise Corp">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label for="contact-service" class="block text-sm font-medium text-gray-700">Interested Service</label>
+                        <div class="relative">
+                            <select id="contact-service" name="service"
+                                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm appearance-none cursor-pointer">
+                                <option value="" disabled selected>Select a Service</option>
+                                <option value="Capacity & AI Infrastructure Optimizer">Capacity & AI Infrastructure Optimizer</option>
+                                <option value="Enterprise CapEx Optimizer">Enterprise CapEx Optimizer</option>
+                                <option value="PQC Readiness Audit">PQC Readiness Audit</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <label for="contact-desc" class="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea id="contact-desc" name="description" rows="4"
+                        class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm resize-none"
+                        placeholder="Describe your infrastructure challenges or questions..."></textarea>
+                </div>
+
+                <!-- Status Message -->
+                <div id="form-status" class="hidden text-sm font-medium p-4 rounded-xl text-center"></div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submit-btn"
+                    class="w-full bg-black text-white font-semibold py-4 rounded-xl hover:bg-gray-800 transition-all flex justify-center items-center gap-2 text-sm">
+                    Send Message
+                </button>
+            </form>
         </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-8">
-
-            <!-- Top Section CTA Banner -->
-            <div class="relative rounded-3xl overflow-hidden mb-20">
-                <div class="absolute inset-0 bg-center bg-no-repeat brightness-150 blur scale-125 hue-rotate-[-45deg] saturate-[1.2]" style="background-image:url('https://res.cloudinary.com/djxbxhgat/image/upload/v1785142156/BG_m1typg.jpg');background-size:150%" aria-hidden="true"></div>
-                <div class="absolute inset-0 bg-white/10 backdrop-blur-[2px]"></div>
-                <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 px-8 py-10 sm:px-12">
-                    <div>
-                        <h2 class="text-2xl sm:text-3xl font-medium text-black tracking-tight">Ready to optimize your enterprise infrastructure?</h2>
-                        <p class="text-black/60 mt-1 text-sm">Speak to the Hadron Quantum Labs team today.</p>
-                    </div>
-                    <a href="index.html" class="shrink-0 inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-black/80 transition-colors">
-                        Contact Us
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10"/><path d="M17 7v10H7"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Main Footer Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr_1.4fr] gap-12 lg:gap-8 mb-16">
-
-                <!-- Col 1: Brand + Map -->
-                <div>
-                    <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="inline-block mb-5">
-                        <img src="./favicon.svg" alt="Hadron Quantum" class="h-7 w-auto opacity-90" />
-                    </a>
-                    <p class="text-sm text-white/70 leading-relaxed mb-3 max-w-sm">
-                        Hadron Quantum Labs is the quantum division of <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-accent hover:text-accent transition-colors">Hadron Global Business Solutions</a>, delivering AI infrastructure optimization and Post-Quantum Cryptography readiness audits for enterprise data centers worldwide.
-                    </p>
-                    <p class="text-xs text-white/60 tracking-widest uppercase mb-6">Quantum Division &mdash; Hadron GBS</p>
-
-                    <!-- Office Map Tabs -->
-                    <div>
-                        <p class="text-xs font-medium text-white/60 uppercase tracking-widest mb-3">Global Offices — Interactive Map</p>
-                        <div class="flex flex-wrap gap-1.5 mb-3" id="map-tabs">
-                            <button onclick="switchMap('pune','https://maps.google.com/maps?q=Hadron%20GBS%20India%20Office&t=&z=14&ie=UTF8&iwloc=&output=embed')" class="map-tab map-tab-active px-3 py-1 rounded-lg text-xs font-medium transition-colors" data-office="pune">Pune</button>
-                            <button onclick="switchMap('singapore','https://maps.google.com/maps?q=7+Temasek+Boulevard,Suntec+Tower,Singapore&t=&z=14&ie=UTF8&iwloc=&output=embed')" class="map-tab px-3 py-1 rounded-lg text-xs font-medium transition-colors" data-office="singapore">Singapore</button>
-                            <button onclick="switchMap('dubai','https://maps.google.com/maps?q=Westburry+Tower+1,Business+Bay,Dubai&t=&z=14&ie=UTF8&iwloc=&output=embed')" class="map-tab px-3 py-1 rounded-lg text-xs font-medium transition-colors" data-office="dubai">Dubai</button>
-                            <button onclick="switchMap('usa','https://maps.google.com/maps?q=8+The+Green,Dover,DE&t=&z=14&ie=UTF8&iwloc=&output=embed')" class="map-tab px-3 py-1 rounded-lg text-xs font-medium transition-colors" data-office="usa">USA</button>
-                        </div>
-                        <div class="rounded-xl overflow-hidden border border-white/[0.07]">
-                            <iframe id="office-map" 
-                                src="https://maps.google.com/maps?q=Hadron%20GBS%20India%20Office&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                                width="100%" height="200" 
-                                style="border:0;display:block;filter:grayscale(0.7) contrast(1.1) brightness(0.9);" 
-                                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                                title="Hadron GBS Office Map">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Col 2: Quick Links + Contact -->
-                <div class="flex flex-col gap-8">
-                    <div>
-                        <p class="text-xs font-medium text-white/60 uppercase tracking-widest mb-4">Quick Links</p>
-                        <ul class="space-y-2.5">
-                            <li><a href="index.html" class="text-sm text-white/80 hover:text-white transition-colors">Home</a></li>
-                            <li><a href="index.html#solutions" class="text-sm text-white/80 hover:text-white transition-colors">Solutions</a></li>
-                            <li><a href="index.html#workflow" class="text-sm text-white/80 hover:text-white transition-colors">Workflow</a></li>
-                            <li><a href="index.html#pricing" class="text-sm text-white/80 hover:text-white transition-colors">Offerings</a></li>
-                            <li><a href="index.html#faq-accordion" class="text-sm text-white/80 hover:text-white transition-colors">FAQ</a></li>
-                            <li><a href="contact.html" class="text-sm text-white/80 hover:text-white transition-colors">Contact Us</a></li>
-                            <li><a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-sm text-accent hover:text-accent transition-colors flex items-center gap-1">Hadron GBS <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="text-xs font-medium text-white/60 uppercase tracking-widest mb-4">Get In Touch</p>
-                        <ul class="space-y-2.5">
-                            <li>
-                                <a href="mailto:quantum.lab@hadrongbs.com" class="text-sm text-white/80 hover:text-white transition-colors flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/></svg>
-                                    quantum.lab@hadrongbs.com
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mailto:info@hadrongbs.com" class="text-sm text-white/80 hover:text-white transition-colors flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/></svg>
-                                    info@hadrongbs.com
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Col 3: Global Offices -->
-                <div>
-                    <p class="text-xs font-medium text-white/60 uppercase tracking-widest mb-4">Global Offices</p>
-                    <div class="space-y-5">
-                        <div class="group">
-                            <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">Pune — HQ</p>
-                            <p class="text-xs font-medium text-white/60">Hadron Global Business Solutions Pvt Ltd</p>
-                            <p class="text-xs text-white/35 leading-relaxed mt-0.5">Pyramid Axis 10th Floor, Veerbhadra Nagar, Baner, Pune, Maharashtra 411045</p>
-                        </div>
-                        <div class="group">
-                            <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">Pune — Hinjewadi</p>
-                            <p class="text-xs font-medium text-white/60">Hadron Global Business Solutions Pvt Ltd</p>
-                            <p class="text-xs text-white/35 leading-relaxed mt-0.5">A 1004, High Mont, Phase 2, Hinjewadi, Pune, Maharashtra 411057</p>
-                        </div>
-                        <div class="group">
-                            <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">Singapore</p>
-                            <p class="text-xs font-medium text-white/60">Hadron GBS Pte Ltd</p>
-                            <p class="text-xs text-white/35 leading-relaxed mt-0.5">7 Temasek Boulevard, Suntec Tower One, Singapore 038987</p>
-                        </div>
-                        <div class="group">
-                            <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">Dubai, UAE</p>
-                            <p class="text-xs font-medium text-white/60">Hadron Technologies LLC</p>
-                            <p class="text-xs text-white/35 leading-relaxed mt-0.5">303, Westburry Tower 1, Business Bay, Dubai, UAE</p>
-                        </div>
-                        <div class="group">
-                            <p class="text-xs font-semibold text-accent/80 uppercase tracking-widest mb-0.5">USA</p>
-                            <p class="text-xs font-medium text-white/60">Hadron GBS Inc.</p>
-                            <p class="text-xs text-white/35 leading-relaxed mt-0.5">8 The Green, Ste R, Dover, DE 19901, USA</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="border-t border-white/[0.06] mb-6"></div>
-
-            <!-- Bottom Bar -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p class="text-xs text-white/25 text-center sm:text-left">
-                    © 2026 Hadron Quantum Labs — A Division of <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="hover:text-white/50 transition-colors">Hadron Global Business Solutions (GBS)</a>. All rights reserved.
-                </p>
-                <!-- Social Links -->
-                <div class="flex items-center gap-2">
-                    <a href="https://x.com/HadronGBS" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.06] flex items-center justify-center text-white/70 hover:text-white transition-all text-xs font-bold">𝕏</a>
-                    <a href="https://www.linkedin.com/showcase/quantum-labs-hadron-gbs" target="_blank" rel="noopener noreferrer" aria-label="Quantum Labs LinkedIn" title="Quantum Labs LinkedIn" class="h-8 px-3 rounded-lg bg-accent/10 hover:bg-accent/20 border border-accent/20 flex items-center justify-center text-accent transition-all text-xs font-bold mr-2">in <span class="ml-1 text-[10px] uppercase font-semibold">Quantum</span></a>
-                        <a href="https://www.linkedin.com/company/hadron-gbs/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.06] flex items-center justify-center text-white/70 hover:text-white transition-all text-xs font-bold">in</a>
-                    <a href="https://www.youtube.com/@HadronGBS" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.06] flex items-center justify-center text-white/70 hover:text-white transition-all text-xs">▶</a>
-                    <a href="https://www.facebook.com/profile.php?id=61560719736422" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-8 h-8 rounded-lg bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.06] flex items-center justify-center text-white/70 hover:text-white transition-all text-xs font-bold">f</a>
-                </div>
-            </div>
-        </div>
-
-        <style>
-            .map-tab {
-                background: rgba(255,255,255,0.04);
-                border: 1px solid rgba(255,255,255,0.07);
-                color: rgba(255,255,255,0.4);
-                cursor: pointer;
-            }
-            .map-tab:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
-            .map-tab-active { background: rgba(255,159,43,0.15) !important; border-color: rgba(255,159,43,0.3) !important; color: #ff9f2b !important; }
-        </style>
-        <script>
-            function switchMap(office, url) {
-                document.getElementById('office-map').src = url;
-                document.querySelectorAll('.map-tab').forEach(btn => {
-                    btn.classList.remove('map-tab-active');
-                    if (btn.dataset.office === office) btn.classList.add('map-tab-active');
-                });
-            }
-        </script>
-    </footer>
+    </main>
 
     <script>
         document.getElementById('contact-page-form').addEventListener('submit', async (e) => {
@@ -451,7 +79,7 @@
             const statusEl = document.getElementById('form-status');
             
             btn.disabled = true;
-            btn.innerHTML = '<svg class="animate-spin w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg> Sending...';
+            btn.innerHTML = 'Sending...';
             
             const formData = {
                 name: document.getElementById('contact-name').value,
@@ -471,63 +99,19 @@
 
                 if (!response.ok || !result.success) throw new Error(result.message || 'Send failed');
 
-                statusEl.classList.remove('hidden', 'bg-red-500/10', 'text-red-400', 'border-red-500/20');
-                statusEl.classList.add('bg-accent/10', 'text-accent', 'border', 'border-accent/20');
+                statusEl.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'border-red-200');
+                statusEl.classList.add('bg-green-100', 'text-green-700', 'border', 'border-green-200');
                 statusEl.innerText = '✓ Message sent! We\'ll be in touch within 24 hours.';
                 document.getElementById('contact-page-form').reset();
             } catch (error) {
-                statusEl.classList.remove('hidden', 'bg-accent/10', 'text-accent', 'border-accent/20');
-                statusEl.classList.add('bg-red-500/10', 'text-red-400', 'border', 'border-red-500/20');
+                statusEl.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'border-green-200');
+                statusEl.classList.add('bg-red-100', 'text-red-700', 'border', 'border-red-200');
                 statusEl.innerText = '✕ Something went wrong. Please email us directly at quantum.lab@hadrongbs.com';
             } finally {
                 btn.disabled = false;
-                btn.innerHTML = 'Send Message <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
+                btn.innerHTML = 'Send Message';
             }
         });
     </script>
-
-    <!-- Mobile Menu Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuBtn = document.querySelector('button[aria-label="Open menu"]');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            
-            if (mobileMenuBtn && mobileMenu) {
-                const lines = mobileMenuBtn.querySelectorAll('span');
-                let isMenuOpen = false;
-
-                function toggleMenu() {
-                    isMenuOpen = !isMenuOpen;
-                    mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen);
-                    
-                    if (isMenuOpen) {
-                        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-                        mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
-                        document.body.style.overflow = 'hidden'; 
-                        
-                        lines[0].style.transform = 'translateY(6px) rotate(45deg)';
-                        lines[1].style.transform = 'translateY(-6px) rotate(-45deg)';
-                    } else {
-                        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
-                        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-                        document.body.style.overflow = '';
-                        
-                        lines[0].style.transform = 'translateY(0) rotate(0)';
-                        lines[1].style.transform = 'translateY(0) rotate(0)';
-                    }
-                }
-
-                mobileMenuBtn.addEventListener('click', toggleMenu);
-
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        if (isMenuOpen) toggleMenu();
-                    });
-                });
-            }
-        });
-    </script>
-
 </body>
 </html>
