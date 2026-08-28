@@ -295,11 +295,11 @@
         <div class="relative w-full flex justify-center items-end" style="height: 65vh; min-height: 500px;">
             
             <!-- Layer 1 (Background): Quantum Computer Core -->
-            <!-- mix-blend-multiply hides white background -->
+            <!-- mix-blend-multiply hides white background, mask-image fades the bottom out -->
             <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" 
                  alt="Quantum Computer Core" 
                  class="absolute z-0 w-auto object-contain"
-                 style="height: 110%; top: -15%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply;">
+                 style="height: 95%; top: -25%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); mask-image: linear-gradient(to bottom, black 50%, transparent 90%);">
             
             <!-- Layer 2 (Foreground): People looking up -->
             <!-- mix-blend-multiply turns white skies into the golden orange gradient -->
@@ -308,10 +308,13 @@
                  class="absolute z-10 w-full object-cover object-bottom"
                  style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply;">
 
-            <!-- Bottom dark fade to transition into the next #0a0a0a section perfectly -->
-            <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-20 pointer-events-none"></div>
+            <!-- Cinematic tall dark fade to transition smoothly into total black -->
+            <div class="absolute bottom-0 left-0 w-full h-[40vh] bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent z-20 pointer-events-none"></div>
         </div>
     </div>
+
+    <!-- Cinematic Spacer to perfect the pacing before the 3D Component -->
+    <div class="relative z-30 w-full bg-[#0a0a0a]" style="height: 35vh;"></div>
 
     <!-- =====================================================
          STICKY 3D QUANTUM COMPUTER SECTION
