@@ -311,7 +311,7 @@
     </div>
 
     <!-- Full Dark Section for future content (before 3D component) -->
-    <div id="future-content-section" class="relative z-30 w-full flex items-center justify-center" style="height: 100vh; background: linear-gradient(180deg, #0a0a0a 0%, #0d2240 100%);">
+    <div id="future-content-section" class="relative z-30 w-full flex items-center justify-center" style="height: 100vh; background: linear-gradient(180deg, #0a0a0a 0%, #331700 100%);">
         <!-- Content will go here later -->
         <div class="text-white/20 font-mono text-sm uppercase tracking-widest text-center border border-white/10 p-12 rounded-lg">
             [ Content Section Reserved ]
@@ -320,14 +320,29 @@
 
     <!-- =====================================================
          STICKY 3D QUANTUM COMPUTER SECTION (Sharplink Style)
-         Left: Native scrolling blocks with borders | Right: Sticky 3D Model
+         Left: Sticky 3D Model | Right: Native scrolling blocks with borders
          ===================================================== -->
-    <div id="quantum-section" class="relative z-40 w-full bg-[#0d2240]">
+    <div id="quantum-section" class="relative z-40 w-full bg-gradient-to-b from-[#331700] to-[#0a0a0a]">
         
         <div class="max-w-[1500px] mx-auto flex items-start relative">
             
-            <!-- Left: Scrolling Text Blocks -->
-            <div class="w-1/2 flex flex-col border-r border-white/10 relative z-20">
+            <!-- Left: Sticky 3D Model -->
+            <div class="w-1/2 h-screen sticky top-0 flex items-center justify-center overflow-hidden z-10">
+                <!-- CSS Mask feathers the edges of the iframe -->
+                <div class="w-full h-full relative" style="-webkit-mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 80%); mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 80%);">
+                    <iframe
+                        id="sketchfab-iframe"
+                        title="Quantum Computer"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; xr-spatial-tracking"
+                        src="https://sketchfab.com/models/82006aac41744663a161ab844264ac2a/embed?autostart=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&dnt=1&autospin=0&preload=1"
+                        style="position:absolute; top:-10%; left:-10%; width:120%; height:120%; border:none; pointer-events:none;"
+                    ></iframe>
+                </div>
+            </div>
+
+            <!-- Right: Scrolling Text Blocks -->
+            <div class="w-1/2 flex flex-col border-l border-white/10 relative z-20">
                 
                 <!-- Slide 1 -->
                 <div class="h-screen flex flex-col justify-center pl-8 md:pl-16 pr-12 border-b border-white/10">
@@ -373,21 +388,6 @@
                     </p>
                 </div>
 
-            </div>
-
-            <!-- Right: Sticky 3D Model -->
-            <div class="w-1/2 h-screen sticky top-0 flex items-center justify-center overflow-hidden z-10">
-                <!-- CSS Mask feathers the edges of the iframe -->
-                <div class="w-full h-full relative" style="-webkit-mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 80%); mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 80%);">
-                    <iframe
-                        id="sketchfab-iframe"
-                        title="Quantum Computer"
-                        frameborder="0"
-                        allow="autoplay; fullscreen; xr-spatial-tracking"
-                        src="https://sketchfab.com/models/82006aac41744663a161ab844264ac2a/embed?autostart=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&dnt=1&autospin=0&preload=1"
-                        style="position:absolute; top:-10%; left:-10%; width:120%; height:120%; border:none; pointer-events:none;"
-                    ></iframe>
-                </div>
             </div>
 
         </div>
