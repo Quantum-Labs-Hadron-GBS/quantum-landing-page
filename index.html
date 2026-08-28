@@ -279,7 +279,7 @@
     <!-- =====================================================
          TRANSITION SECTION: The Observers
          ===================================================== -->
-    <div id="transition-section" class="relative z-30 w-full overflow-hidden" style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #ffedd5 60%, #f59e0b 100%);">
+    <div id="transition-section" class="relative z-30 w-full overflow-hidden" style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #ffedd5 50%, #f59e0b 80%, #0a0a0a 100%);">
         
         <!-- Text -->
         <div class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center">
@@ -302,19 +302,21 @@
                  style="height: 95%; top: -25%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); mask-image: linear-gradient(to bottom, black 50%, transparent 90%);">
             
             <!-- Layer 2 (Foreground): People looking up -->
-            <!-- mix-blend-multiply turns white skies into the golden orange gradient -->
+            <!-- mix-blend-multiply turns white skies into the golden orange gradient, and fades perfectly to black at the bottom -->
             <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787909936/ChatGPT_Image_Aug_27_2026_07_22_36_PM_1_ep9mqo.png" 
                  alt="People looking up" 
                  class="absolute z-10 w-full object-cover object-bottom"
                  style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply;">
-
-            <!-- Cinematic tall dark fade to transition smoothly into total black -->
-            <div class="absolute bottom-0 left-0 w-full h-[40vh] bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent z-20 pointer-events-none"></div>
         </div>
     </div>
 
-    <!-- Cinematic Spacer to perfect the pacing before the 3D Component -->
-    <div class="relative z-30 w-full bg-[#0a0a0a]" style="height: 35vh;"></div>
+    <!-- Full Dark Section for future content (before 3D component) -->
+    <div id="future-content-section" class="relative z-30 w-full bg-[#0a0a0a] flex items-center justify-center" style="height: 100vh;">
+        <!-- Content will go here later -->
+        <div class="text-white/20 font-mono text-sm uppercase tracking-widest text-center border border-white/10 p-12 rounded-lg">
+            [ Content Section Reserved ]
+        </div>
+    </div>
 
     <!-- =====================================================
          STICKY 3D QUANTUM COMPUTER SECTION
