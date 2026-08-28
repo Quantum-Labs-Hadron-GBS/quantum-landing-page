@@ -311,7 +311,7 @@
     </div>
 
     <!-- Full Dark Section for future content (before 3D component) -->
-    <div id="future-content-section" class="relative z-30 w-full bg-[#0a0a0a] flex items-center justify-center" style="height: 100vh;">
+    <div id="future-content-section" class="relative z-30 w-full flex items-center justify-center" style="height: 100vh; background: linear-gradient(180deg, #0a0a0a 0%, #0d2240 100%);">
         <!-- Content will go here later -->
         <div class="text-white/20 font-mono text-sm uppercase tracking-widest text-center border border-white/10 p-12 rounded-lg">
             [ Content Section Reserved ]
@@ -319,77 +319,75 @@
     </div>
 
     <!-- =====================================================
-         STICKY 3D QUANTUM COMPUTER SECTION
-         Left: text slides scroll | Right: 3D model fixed + rotates
+         STICKY 3D QUANTUM COMPUTER SECTION (Sharplink Style)
+         Left: Native scrolling blocks with borders | Right: Sticky 3D Model
          ===================================================== -->
-    <div id="quantum-section" class="relative z-40" style="height: 400vh; background: #0a0a0a;">
-
-        <!-- Sticky viewport -->
-        <div class="sticky top-0 h-screen overflow-hidden flex items-stretch">
-
-            <!-- Left: scrolling text panel -->
-            <div class="w-1/2 flex items-center pl-16 md:pl-24 relative z-10 overflow-hidden">
-                <div id="qs-slides" class="relative w-full" style="height: 320px;">
-
-                    <!-- Slide 1 -->
-                    <div class="qs-slide absolute inset-0 flex flex-col justify-center" data-slide="0">
-                        <p class="sharplink-mono text-white/50 mb-5">PROPOSITIONS</p>
-                        <h2 class="sharplink-h2 text-white leading-tight mb-6">
-                            The Stack for<br>Quantum Scale
-                        </h2>
-                        <p class="sharplink-body text-white/60 max-w-sm">
-                            Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter, more productive path to scale.
-                        </p>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="qs-slide absolute inset-0 flex flex-col justify-center opacity-0" data-slide="1">
-                        <p class="sharplink-mono text-white/50 mb-5">LEADERSHIP</p>
-                        <h2 class="sharplink-h2 text-white leading-tight mb-6">
-                            Built by<br>Proven Pioneers
-                        </h2>
-                        <p class="sharplink-body text-white/60 max-w-sm">
-                            Hadron is led by quantum computing researchers and enterprise infrastructure veterans, combining deep science with institutional-grade execution.
-                        </p>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="qs-slide absolute inset-0 flex flex-col justify-center opacity-0" data-slide="2">
-                        <p class="sharplink-mono text-white/50 mb-5">OPERATIONS</p>
-                        <h2 class="sharplink-h2 text-white leading-tight mb-6">
-                            Compute as an<br>Operating System
-                        </h2>
-                        <p class="sharplink-body text-white/60 max-w-sm">
-                            We run optimization, scheduling, and resource allocation in-house — allowing the platform to be built with speed, precision, and total control.
-                        </p>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="qs-slide absolute inset-0 flex flex-col justify-center opacity-0" data-slide="3">
-                        <p class="sharplink-mono text-white/50 mb-5">TRANSPARENCY</p>
-                        <h2 class="sharplink-h2 text-white leading-tight mb-6">
-                            Committed to<br>Real-time Clarity
-                        </h2>
-                        <p class="sharplink-body text-white/60 max-w-sm">
-                            Full visibility into compute deployment, efficiency generation, and resource management — trackable day by day.
-                        </p>
-                    </div>
-
+    <div id="quantum-section" class="relative z-40 w-full bg-[#0d2240]">
+        
+        <div class="max-w-[1500px] mx-auto flex items-start relative">
+            
+            <!-- Left: Scrolling Text Blocks -->
+            <div class="w-1/2 flex flex-col border-r border-white/10 relative z-20">
+                
+                <!-- Slide 1 -->
+                <div class="h-screen flex flex-col justify-center pl-8 md:pl-16 pr-12 border-b border-white/10">
+                    <p class="text-white/50 text-xs font-bold tracking-widest uppercase mb-6">PROPOSITIONS</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-8 leading-tight">
+                        The Stack for<br>Quantum Scale
+                    </h2>
+                    <p class="text-lg text-white/60 max-w-md leading-relaxed">
+                        Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter, more productive path to scale.
+                    </p>
                 </div>
+
+                <!-- Slide 2 -->
+                <div class="h-screen flex flex-col justify-center pl-8 md:pl-16 pr-12 border-b border-white/10">
+                    <p class="text-white/50 text-xs font-bold tracking-widest uppercase mb-6">LEADERSHIP</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-8 leading-tight">
+                        Built by<br>Proven Pioneers
+                    </h2>
+                    <p class="text-lg text-white/60 max-w-md leading-relaxed">
+                        Hadron is led by quantum computing researchers and enterprise infrastructure veterans, combining deep science with institutional-grade execution.
+                    </p>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="h-screen flex flex-col justify-center pl-8 md:pl-16 pr-12 border-b border-white/10">
+                    <p class="text-white/50 text-xs font-bold tracking-widest uppercase mb-6">OPERATIONS</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-8 leading-tight">
+                        Compute as an<br>Operating System
+                    </h2>
+                    <p class="text-lg text-white/60 max-w-md leading-relaxed">
+                        We run optimization, scheduling, and resource allocation in-house — allowing the platform to be built with speed, precision, and total control.
+                    </p>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="h-screen flex flex-col justify-center pl-8 md:pl-16 pr-12">
+                    <p class="text-white/50 text-xs font-bold tracking-widest uppercase mb-6">TRANSPARENCY</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-8 leading-tight">
+                        Committed to<br>Real-time Clarity
+                    </h2>
+                    <p class="text-lg text-white/60 max-w-md leading-relaxed">
+                        Full visibility into compute deployment, efficiency generation, and resource management — trackable day by day.
+                    </p>
+                </div>
+
             </div>
 
-    <!-- Right: Sticky Sketchfab quantum computer (Viewer API) -->
-            <!-- CSS Mask feathers the edges of the iframe so the rectangular background disappears smoothly -->
-            <div class="w-1/2 relative overflow-hidden" style="height:100vh; -webkit-mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%); mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%);">
-                <!-- Scale iframe up to push Sketchfab UI off-screen, pointer-events-none so it doesn't trap scroll -->
-                <iframe
-                    id="sketchfab-iframe"
-                    title="Quantum Computer"
-                    frameborder="0"
-                    allow="autoplay; fullscreen; xr-spatial-tracking"
-                    src="https://sketchfab.com/models/82006aac41744663a161ab844264ac2a/embed?autostart=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&dnt=1&autospin=0&preload=1"
-                    style="position:absolute; top:-10%; left:-10%; width:120%; height:120%; border:none; pointer-events:none;"
-                ></iframe>
+            <!-- Right: Sticky 3D Model -->
+            <div class="w-1/2 h-screen sticky top-0 flex items-center justify-center overflow-hidden z-10">
+                <!-- CSS Mask feathers the edges of the iframe -->
+                <div class="w-full h-full relative" style="-webkit-mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 80%); mask-image: radial-gradient(circle at 50% 50%, black 50%, transparent 80%);">
+                    <iframe
+                        id="sketchfab-iframe"
+                        title="Quantum Computer"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; xr-spatial-tracking"
+                        src="https://sketchfab.com/models/82006aac41744663a161ab844264ac2a/embed?autostart=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&dnt=1&autospin=0&preload=1"
+                        style="position:absolute; top:-10%; left:-10%; width:120%; height:120%; border:none; pointer-events:none;"
+                    ></iframe>
+                </div>
             </div>
 
         </div>
@@ -406,35 +404,15 @@
 
     <!-- Slide crossfade + Sketchfab scroll-driven rotation -->
     <script>
-        // Propositions section: crossfade text slides on scroll
+        // Propositions section: Sketchfab scroll-driven rotation
         (function() {
             var section = document.getElementById('quantum-section');
-            var slides  = document.querySelectorAll('.qs-slide');
-            if (!section || !slides.length) return;
-            var N = slides.length;
+            if (!section) return;
 
             function getSectionProgress() {
                 var rect  = section.getBoundingClientRect();
                 var total = section.offsetHeight - window.innerHeight;
                 return Math.max(0, Math.min(1, -rect.top / total));
-            }
-
-            // ── Text slide crossfade ──────────────────────────────
-            function updateSlides(p) {
-                var sf = p * (N - 0.001);
-                var si = Math.floor(sf);
-                var sp = sf - si;
-                slides.forEach(function(s, i) {
-                    var op = 0;
-                    if (i === si) {
-                        op = (i === 0) ? 1 : Math.min(Math.max((sp - 0.15) / 0.3, 0), 1);
-                        if (sp > 0.75) op = Math.max(1 - (sp - 0.75) / 0.2, 0);
-                    } else if (i === si + 1) {
-                        op = Math.min(Math.max((sp - 0.6) / 0.3, 0), 1);
-                    }
-                    s.style.opacity   = op;
-                    s.style.transform = (i < si) ? 'translateY(-12px)' : (i > si) ? 'translateY(12px)' : 'translateY(0)';
-                });
             }
 
             // ── Sketchfab Viewer API: scroll-driven camera orbit ──
@@ -496,7 +474,6 @@
                 if (!ticking) {
                     requestAnimationFrame(function() {
                         var p = getSectionProgress();
-                        updateSlides(p);
                         updateCamera(p);
                         ticking = false;
                     });
