@@ -558,26 +558,21 @@
     <!-- =====================================================
          BUFFER SECTION: Smooth Long Transition Spacer
          ===================================================== -->
-    <div id="buffer-section" class="relative z-30 w-full overflow-hidden" style="min-height: 100vh; background-color: #d9943d;">
+    <div id="buffer-section" class="relative z-30 w-full overflow-hidden" style="
+        min-height: 100vh;
+        background: 
+            radial-gradient(ellipse 100% 55% at 50% 100%, #0a0a0a 0%, #0a0a0a 20%, transparent 100%),
+            linear-gradient(180deg,
+                #d9943d 0%,
+                #b87a2e 15%,
+                #8a5a1e 30%,
+                #5c3d14 45%,
+                #3a250d 58%,
+                #1f1408 70%,
+                #120c05 82%,
+                #0a0a0a 95%);
+    ">
         
-        <!-- Layer 1: Background Gradient (Moves Slowest — creates depth) -->
-        <div id="parallax-bg" class="absolute inset-0 w-full pointer-events-none" style="
-            height: 120%;
-            top: 0;
-            background: 
-                radial-gradient(ellipse 100% 55% at 50% 100%, #0a0a0a 0%, #0a0a0a 20%, transparent 100%),
-                linear-gradient(180deg,
-                    #d9943d 0%,
-                    #b87a2e 15%,
-                    #8a5a1e 30%,
-                    #5c3d14 45%,
-                    #3a250d 58%,
-                    #1f1408 70%,
-                    #120c05 82%,
-                    #0a0a0a 95%);
-            will-change: transform;
-        "></div>
-
         <!-- Layer 2: Floating Ambient Glow Assets (Moves Fastest — foreground depth) -->
         <div id="parallax-assets" class="absolute inset-0 w-full h-full pointer-events-none" style="will-change: transform;">
             <div class="absolute top-[15%] left-[2%] w-[45vw] h-[45vw] rounded-full bg-brand-orange/8 blur-[140px]"></div>
@@ -1446,7 +1441,6 @@
         (function() {
             // Buffer section layers
             const bufferSection = document.getElementById('buffer-section');
-            const parallaxBg = document.getElementById('parallax-bg');
             const parallaxText = document.getElementById('parallax-text');
             const parallaxAssets = document.getElementById('parallax-assets');
 
@@ -1461,6 +1455,10 @@
             const scrubWords = document.querySelectorAll('.scrub-word');
             const scrubLabel = document.getElementById('scrub-label');
             const scrubText = document.getElementById('scrub-text');
+
+            // Additional sections for parallax
+            const blogSection = document.getElementById('blog-section');
+            const faqSection = document.getElementById('faq-section');
 
             let targetScroll = window.scrollY;
             let currentScroll = window.scrollY;
@@ -1491,42 +1489,39 @@
                         const tProgress = (wh - tSmoothTop) / (wh + tRect.height);
 
                         // Text scrolls up faster (lifts off)
-                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.25 * tRect.height)) + 'px,0)';
+                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.40 * tRect.height)) + 'px,0)';
 
                         // Quantum computer drifts up slowly (mid-layer)
                         if (obsQuantum) {
-                            obsQuantum.style.transform = 'translateX(-50%) translate3d(0,' + (-(tProgress * 0.12 * tRect.height)) + 'px,0)';
+                            obsQuantum.style.transform = 'translateX(-50%) translate3d(0,' + (-(tProgress * 0.20 * tRect.height)) + 'px,0)';
                         }
 
                         // People drift up even slower (closest to camera)
                         if (obsPeople) {
-                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.05 * tRect.height)) + 'px,0)';
+                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.10 * tRect.height)) + 'px,0)';
                         }
                     }
                 }
 
                 // --- Buffer Section: Content parallax ---
-                if (bufferSection && parallaxBg) {
+                if (bufferSection) {
                     const bRect = bufferSection.getBoundingClientRect();
                     const bSmoothTop = bRect.top + scrollDiff;
 
                     if (bSmoothTop <= wh && (bSmoothTop + bRect.height) >= 0) {
                         const bProgress = (wh - bSmoothTop) / (wh + bRect.height);
-
-                        // Gradient background shifts down for depth
-                        parallaxBg.style.transform = 'translate3d(0,' + (bProgress * 0.25 * bRect.height) + 'px,0)';
                         
                         // Text drifts up smoothly
                         if (parallaxText) {
-                            parallaxText.style.transform = 'translate3d(0,' + (-(bProgress * 0.15 * bRect.height)) + 'px,0)';
+                            parallaxText.style.transform = 'translate3d(0,' + (-(bProgress * 0.25 * bRect.height)) + 'px,0)';
                         }
 
                         // Ambient orbs move at completely different individual speeds for "flow"
                         if (parallaxAssets) {
                             const assets = parallaxAssets.children;
-                            if (assets.length > 0) assets[0].style.transform = 'translate3d(0,' + (-(bProgress * 0.45 * bRect.height)) + 'px,0)';
-                            if (assets.length > 1) assets[1].style.transform = 'translate3d(0,' + (-(bProgress * 0.20 * bRect.height)) + 'px,0)';
-                            if (assets.length > 2) assets[2].style.transform = 'translate3d(0,' + (-(bProgress * 0.35 * bRect.height)) + 'px,0)';
+                            if (assets.length > 0) assets[0].style.transform = 'translate3d(0,' + (-(bProgress * 0.70 * bRect.height)) + 'px,0)';
+                            if (assets.length > 1) assets[1].style.transform = 'translate3d(0,' + (-(bProgress * 0.35 * bRect.height)) + 'px,0)';
+                            if (assets.length > 2) assets[2].style.transform = 'translate3d(0,' + (-(bProgress * 0.55 * bRect.height)) + 'px,0)';
                         }
                     }
                 }
@@ -1565,6 +1560,40 @@
                             scrubText.style.opacity = 1;
                             scrubLabel.style.opacity = 0.5;
                         }
+                    }
+                }
+
+                // --- Blog Section: Content parallax ---
+                if (blogSection) {
+                    const blRect = blogSection.getBoundingClientRect();
+                    const blSmoothTop = blRect.top + scrollDiff;
+                    if (blSmoothTop <= wh && (blSmoothTop + blRect.height) >= 0) {
+                        const blProgress = (wh - blSmoothTop) / (wh + blRect.height);
+                        
+                        // Separate header and grid to create distinct depth
+                        const blogHeader = blogSection.querySelector('.flex.flex-col.md\\:flex-row');
+                        const blogGrid = blogSection.querySelector('.grid');
+                        
+                        // Centered parallax: 0 in the middle, pushes down when entering, up when leaving
+                        if (blogHeader) blogHeader.style.transform = 'translate3d(0,' + ((0.5 - blProgress) * 0.10 * blRect.height) + 'px,0)';
+                        if (blogGrid) blogGrid.style.transform = 'translate3d(0,' + ((0.5 - blProgress) * 0.30 * blRect.height) + 'px,0)';
+                    }
+                }
+
+                // --- FAQ Section: Content parallax ---
+                if (faqSection) {
+                    const fRect = faqSection.getBoundingClientRect();
+                    const fSmoothTop = fRect.top + scrollDiff;
+                    if (fSmoothTop <= wh && (fSmoothTop + fRect.height) >= 0) {
+                        const fProgress = (wh - fSmoothTop) / (wh + fRect.height);
+                        
+                        // Separate left heading column from right accordion column
+                        const faqHeading = faqSection.querySelector('.grid > div:first-child');
+                        const faqAccordion = faqSection.querySelector('.grid > div:nth-child(2)');
+                        
+                        // Centered parallax with different speeds
+                        if (faqHeading) faqHeading.style.transform = 'translate3d(0,' + ((0.5 - fProgress) * 0.12 * fRect.height) + 'px,0)';
+                        if (faqAccordion) faqAccordion.style.transform = 'translate3d(0,' + ((0.5 - fProgress) * 0.28 * fRect.height) + 'px,0)';
                     }
                 }
 
