@@ -349,6 +349,11 @@
                 class="absolute inset-0 z-10 bg-black shadow-2xl overflow-hidden pointer-events-none"
                 style="clip-path: inset(0px 0px 0px 0px);">
 
+                <!-- Golden Orange Gradient that fades in behind the video -->
+                <div id="hero-glow"
+                    class="absolute inset-0 bg-gradient-to-t from-brand-orange/90 via-brand-orange/20 to-transparent opacity-0">
+                </div>
+
                 <video
                     id="hero-video"
                     src="https://res.cloudinary.com/ax6dtcht/video/upload/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4"
@@ -1203,6 +1208,7 @@
             }
             const heroContent = document.getElementById('hero-content');
             const graphContent = document.getElementById('graph-content');
+            const heroGlow = document.getElementById('hero-glow');
 
             const gridBgPattern = document.getElementById('grid-bg-pattern');
             const leftCol = document.getElementById('left-col');
@@ -1440,6 +1446,7 @@
                         graphContent.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                         graphContent.style.transform = 'none'; // Desktop doesn't slide graph up
                     }
+                    heroGlow.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                     gridBgPattern.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
 
                 } else if (animatedTop > 0) {
@@ -1449,6 +1456,7 @@
                     heroCard.style.transform = `none`;
                     heroContent.style.opacity = 1;
                     heroVideo.style.opacity = 1;
+                    heroGlow.style.opacity = 0;
                     if (!isMobile) graphContent.style.opacity = 0;
                     gridBgPattern.style.opacity = 0;
                     leftCol.style.opacity = 0;
