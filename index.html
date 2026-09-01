@@ -1312,14 +1312,12 @@
 
                         // Navbar logo color swap on scroll
                         if (currentTopClip > 30) {
-                            // Over light background — flip to dark
                             mainHeader.style.transform = `translateY(${Math.min(currentTopClip * 0.2, 10)}px)`;
                             headerLogo.style.filter = 'brightness(0)';
                             headerText.style.color = '#0a0a0a';
                             headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
                             navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
                         } else {
-                            // Over dark hero — white
                             mainHeader.style.transform = 'translateY(0px)';
                             headerLogo.style.filter = 'invert(1) brightness(0) invert(1)';
                             headerText.style.color = '#ffffff';
@@ -1327,11 +1325,9 @@
                             navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
                         }
 
-                        // Start Y is just from the middle of the screen to give it that "middle section" feel
                         const startY = window.innerHeight / 4;
                         const currentY = mapRange(progress, phase1End, phase2End, startY, 0);
 
-                        // Left Column
                         const fadeProgress = mapRange(progress, fadeStart, phase1End, 0, 1);
                         leftOrange.style.opacity = fadeProgress;
                         leftPara.style.opacity = fadeProgress;
@@ -1343,70 +1339,116 @@
 
                         leftCol.style.transform = `translateY(${currentY}px)`;
 
-                        // Card 1
                         card1.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                         card1.style.transform = `translateY(${currentY}px)`;
 
-                        // Card 2
-                        const c2Op = progress <= phase1End
-                            ? mapRange(progress, fadeStart, phase1End, 0, 0.5)
-                            : mapRange(progress, phase1End, phase2End, 0.5, 1);
+                        const c2Op = progress <= phase1End ? mapRange(progress, fadeStart, phase1End, 0, 0.5) : mapRange(progress, phase1End, phase2End, 0.5, 1);
                         const c2X = mapRange(progress, phase1End, phase2End, 50, 0);
                         card2.style.opacity = c2Op;
                         card2.style.transform = `translate(${c2X}px, ${currentY}px)`;
 
-                        // Card 3
-                        const c3Op = progress <= phase1End
-                            ? mapRange(progress, fadeStart, phase1End, 0, 0.25)
-                            : mapRange(progress, phase1End, phase2End, 0.25, 1);
+                        const c3Op = progress <= phase1End ? mapRange(progress, fadeStart, phase1End, 0, 0.25) : mapRange(progress, phase1End, phase2End, 0.25, 1);
                         const c3X = mapRange(progress, phase1End, phase2End, 100, 0);
                         card3.style.opacity = c3Op;
                         card3.style.transform = `translate(${c3X}px, ${currentY}px)`;
 
-                        // Card 4
-                        const c4Op = progress <= phase1End
-                            ? mapRange(progress, fadeStart, phase1End, 0, 0)
-                            : mapRange(progress, phase1End, phase2End, 0, 1);
+                        const c4Op = progress <= phase1End ? 0 : mapRange(progress, phase1End, phase2End, 0, 1);
                         const c4X = mapRange(progress, phase1End, phase2End, 150, 0);
                         card4.style.opacity = c4Op;
                         card4.style.transform = `translate(${c4X}px, ${currentY}px)`;
 
                     } else {
-                        const scale = 1 - (0.05 * p1);
-                        heroCard.style.clipPath = `inset(0px 0px 0px 0px)`;
-                        heroCard.style.transform = `scale(${scale})`;
-                        leftOrange.style.opacity = progress;
-                        leftPara.style.opacity = progress;
-                        letterSpans.forEach(span => span.style.opacity = progress);
-                        card1.style.opacity = progress;
-                        card2.style.opacity = progress;
-                        card3.style.opacity = progress;
-                        card4.style.opacity = progress;
+                        // Mobile specific animation mapping
+                        // 1. Clip the hero video into a nice horizontal banner at the very top
+                        const targetTopClip = 20; // 20px from top
+                        const targetLeftClip = 20; // 20px from left
+                        const targetRightClip = 20; // 20px from right
+                        const targetBottomClip = window.innerHeight * 0.75; // Hide bottom 75%
+
+                        const currentTopClip = targetTopClip * p1;
+                        const currentBottomClip = targetBottomClip * p1;
+                        const currentLeftClip = targetLeftClip * p1;
+                        const currentRightClip = targetRightClip * p1;
+                        
+                        heroCard.style.clipPath = `inset(${currentTopClip}px ${currentRightClip}px ${currentBottomClip}px ${currentLeftClip}px)`;
+                        
+                        if (p1 > 0.5) {
+                            heroCard.style.borderRadius = `${(p1 - 0.5) * 40}px`; // Smoothly round corners as it shrinks
+                        } else {
+                            heroCard.style.borderRadius = '0px';
+                        }
+
+                        // Navbar color swap (same logic as desktop based on clip)
+                        if (currentTopClip > 10) {
+                            headerLogo.style.filter = 'brightness(0)';
+                            headerText.style.color = '#0a0a0a';
+                            headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
+                        } else {
+                            headerLogo.style.filter = 'invert(1) brightness(0) invert(1)';
+                            headerText.style.color = '#ffffff';
+                            headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                        }
+
+                        // 2. Content sliding up
+                        const mobileStartY = 100; // Slide up 100px
+                        const currentY = mapRange(progress, phase1End, phase2End, mobileStartY, 0);
+                        
+                        const fadeProgress = mapRange(progress, fadeStart, phase1End, 0, 1);
+                        leftOrange.style.opacity = fadeProgress;
+                        leftPara.style.opacity = fadeProgress;
+                        letterSpans.forEach(span => {
+                            const th = parseFloat(span.dataset.threshold);
+                            span.style.opacity = mapRange(fadeProgress, th, th + 0.2, 0, 1);
+                        });
+                        leftCol.style.transform = `translateY(${currentY * 0.5}px)`; // Slower parallax for text
+
+                        // Stagger the 4 cards sliding up
+                        const staggerGap = (phase2End - phase1End) / 4;
+                        
+                        card1.style.opacity = mapRange(progress, phase1End, phase1End + staggerGap*2, 0, 1);
+                        card1.style.transform = `translateY(${mapRange(progress, phase1End, phase1End + staggerGap*2, mobileStartY, 0)}px)`;
+
+                        card2.style.opacity = mapRange(progress, phase1End + staggerGap, phase1End + staggerGap*3, 0, 1);
+                        card2.style.transform = `translateY(${mapRange(progress, phase1End + staggerGap, phase1End + staggerGap*3, mobileStartY, 0)}px)`;
+
+                        card3.style.opacity = mapRange(progress, phase1End + staggerGap*2, phase2End, 0, 1);
+                        card3.style.transform = `translateY(${mapRange(progress, phase1End + staggerGap*2, phase2End, mobileStartY, 0)}px)`;
+
+                        card4.style.opacity = mapRange(progress, phase1End + staggerGap*3, phase2End + staggerGap, 0, 1);
+                        card4.style.transform = `translateY(${mapRange(progress, phase1End + staggerGap*3, phase2End + staggerGap, mobileStartY, 0)}px)`;
                     }
 
                     // Hero original text fades out and gets cropped
                     heroContent.style.opacity = mapRange(progress, 0, fadeStart, 1, 0);
 
-                    // Video fades out to let the gradient take over completely
+                    // Video fades out
                     heroVideo.style.opacity = mapRange(progress, 0, phase1End, 1, 0);
 
                     // Graph overlay and grid background fade in
-                    graphContent.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
+                    if (!isMobile) {
+                        graphContent.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
+                    }
                     gridBgPattern.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
 
                 } else if (animatedTop > 0) {
                     // Reset to initial state
                     heroCard.style.clipPath = `inset(0px 0px 0px 0px)`;
+                    heroCard.style.borderRadius = '0px';
                     heroCard.style.transform = `none`;
                     heroContent.style.opacity = 1;
                     heroVideo.style.opacity = 1;
-                    graphContent.style.opacity = 0;
+                    if (!isMobile) graphContent.style.opacity = 0;
                     gridBgPattern.style.opacity = 0;
                     leftCol.style.opacity = 0;
+                    leftCol.style.transform = `translateY(0)`;
                     card1.style.opacity = 0;
+                    card1.style.transform = `translateY(0)`;
                     card2.style.opacity = 0;
+                    card2.style.transform = `translateY(0)`;
                     card3.style.opacity = 0;
+                    card3.style.transform = `translateY(0)`;
                     card4.style.opacity = 0;
+                    card4.style.transform = `translateY(0)`;
 
                     // Reset: white text on dark hero
                     mainHeader.style.transform = 'translateY(0px)';
