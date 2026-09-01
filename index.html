@@ -349,9 +349,9 @@
                 class="absolute inset-0 z-10 bg-black shadow-2xl overflow-hidden pointer-events-none"
                 style="clip-path: inset(0px 0px 0px 0px);">
 
-                <video id="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                <video id="hero-video" autoplay loop muted playsinline webkit-playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
                     <source
-                        src="https://res.cloudinary.com/ax6dtcht/video/upload/q_auto,f_auto/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4"
+                        src="https://res.cloudinary.com/ax6dtcht/video/upload/q_auto,vc_h264/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4"
                         type="video/mp4">
                 </video>
 
@@ -1163,17 +1163,21 @@
 
             const heroVideo = document.getElementById('hero-video');
             if (heroVideo) {
-                // Force play aggressively to bypass strict browser autoplay policies
-                const attemptPlay = () => {
-                    let playPromise = heroVideo.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(e => {
-                            console.warn('Hero video autoplay blocked, retrying in 1s...', e);
-                            setTimeout(attemptPlay, 1000);
-                        });
-                    }
-                };
-                attemptPlay();
+                heroVideo.muted = true;
+                heroVideo.setAttribute('muted', '');
+                heroVideo.setAttribute('playsinline', '');
+
+                heroVideo.addEventListener('canplay', () => {
+                    heroVideo.play().catch(err => {
+                        console.warn('Hero video could not autoplay:', err);
+                    });
+                });
+
+                heroVideo.addEventListener('error', () => {
+                    console.error('Hero video error:', heroVideo.error);
+                });
+
+                heroVideo.load();
             }
             const heroContent = document.getElementById('hero-content');
             const graphContent = document.getElementById('graph-content');
