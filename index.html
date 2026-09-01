@@ -858,120 +858,123 @@
     <!-- =====================================================
          FAQ SECTION
          ===================================================== -->
-    <section class="relative z-40 w-full bg-brand-light py-24 sm:py-32" id="faq-section">
-        <div
-            class="max-w-[1400px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 items-start">
+    <section class="relative z-40 w-full bg-[#f3f5f8] py-24 sm:py-32" id="faq-section">
+        <!-- Subtle vertical grid lines matching screenshot -->
+        <div class="absolute inset-0 pointer-events-none flex justify-center max-w-[1400px] mx-auto opacity-20">
+            <div class="w-1/3 h-full border-l border-r border-black/10"></div>
+            <div class="w-1/3 h-full border-r border-black/10"></div>
+        </div>
 
+        <div class="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-24 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start">
+            
             <!-- Left Column: FAQ Heading -->
             <div>
-                <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-brand-dark mb-6 leading-tight"
-                    style="font-family: 'Archivo', sans-serif;">
-                    Frequently<br>Asked Questions
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-2 h-2" style="background-color: #d9943d;"></div>
+                </div>
+                <h2 class="text-[4rem] md:text-[5rem] font-medium tracking-tight text-brand-dark leading-none"
+                    style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+                    FAQ
                 </h2>
-                <p class="text-brand-dark/70 text-lg leading-relaxed mb-8" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
-                    Everything you need to know about Hadron Quantum's enterprise infrastructure platform.
-                </p>
-                <a href="contact.html" class="sl-btn sl-btn--light">
-                    CONTACT SUPPORT
-                </a>
             </div>
 
             <!-- Right Column: Accordion -->
-            <div class="flex flex-col border-t border-brand-dark/10" id="faq-accordion">
-                <!-- FAQ Item 1 -->
-                <div class="faq-item border-b border-brand-dark/10">
-                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
-                        onclick="toggleFaq(this)">
-                        <span
-                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">How
-                            does Hadron integrate with existing Kubernetes and Slurm schedulers?</span>
-                        <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
-                            <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
-                            <div
-                                class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus">
-                            </div>
-                        </div>
-                    </button>
-                    <div class="faq-answer overflow-hidden transition-all duration-300"
-                        style="max-height: 0px; opacity: 0;">
-                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
-                            Hadron operates as an intelligence layer above existing schedulers. It ingests queue state
-                            and cluster metadata via read-only APIs, formulates QUBO optimization problems, and outputs
-                            optimal placement directives into your standard scheduler workflow without needing
-                            kernel-level modifications.
-                        </p>
-                    </div>
+            <div class="pt-2">
+                <!-- Top Row: Got more questions? -->
+                <div class="flex justify-between items-center mb-8 w-full border-b border-black/10 pb-6 lg:border-none lg:pb-0">
+                    <p class="text-brand-dark/50 text-[10px] font-bold tracking-[0.15em] uppercase m-0 leading-none">
+                        Got more questions?
+                    </p>
+                    <a href="contact.html" class="flex items-center gap-3 px-4 py-2 bg-black/5 hover:bg-black/10 transition-colors text-brand-dark text-[10px] font-bold tracking-[0.15em] uppercase rounded-sm">
+                        Reach Us
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
                 </div>
 
-                <!-- FAQ Item 2 -->
-                <div class="faq-item border-b border-brand-dark/10">
-                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
-                        onclick="toggleFaq(this)">
-                        <span
-                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Does
-                            Hadron require control-plane write access or proprietary agent installs?</span>
-                        <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
-                            <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
-                            <div
-                                class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus">
+                <!-- FAQ List -->
+                <div class="flex flex-col gap-1" id="faq-accordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item bg-black/[0.03]">
+                        <button class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
+                            <div class="flex items-center gap-5">
+                                <span class="bg-black/10 px-[6px] py-[4px] text-[10px] font-bold text-brand-dark/50 tracking-wider">01</span>
+                                <span class="text-[15px] md:text-base font-medium text-brand-dark pr-4 group-hover:text-brand-orange transition-colors" style="font-family: 'Inter', system-ui, sans-serif;">How does Hadron integrate with existing Kubernetes and Slurm schedulers?</span>
                             </div>
+                            <div class="w-8 h-8 bg-[#0a0a0a] flex items-center justify-center shrink-0">
+                                <div class="relative w-3 h-3 flex items-center justify-center">
+                                    <div class="absolute w-full h-[1.5px] bg-white transition-transform duration-300"></div>
+                                    <div class="absolute w-[1.5px] h-full bg-white transition-transform duration-300 faq-plus"></div>
+                                </div>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                            <p class="pb-6 px-6 pl-[4.5rem] text-brand-dark/70 text-sm leading-relaxed" style="font-family: 'Inter', system-ui, sans-serif;">
+                                Hadron operates as an intelligence layer above existing schedulers. It ingests queue state and cluster metadata via read-only APIs, formulates QUBO optimization problems, and outputs optimal placement directives into your standard scheduler workflow without needing kernel-level modifications.
+                            </p>
                         </div>
-                    </button>
-                    <div class="faq-answer overflow-hidden transition-all duration-300"
-                        style="max-height: 0px; opacity: 0;">
-                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
-                            No. Hadron uses a zero-trust, read-only telemetry architecture. It connects via standard
-                            DCIM API feeds and metrics collectors (e.g. Prometheus, DCGM), ensuring zero control-plane
-                            write risk and no inline performance degradation.
-                        </p>
                     </div>
-                </div>
 
-                <!-- FAQ Item 3 -->
-                <div class="faq-item border-b border-brand-dark/10">
-                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
-                        onclick="toggleFaq(this)">
-                        <span
-                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">How
-                            is the Post-Quantum Cryptography (PQC) Readiness Audit conducted?</span>
-                        <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
-                            <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
-                            <div
-                                class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus">
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item bg-black/[0.03]">
+                        <button class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
+                            <div class="flex items-center gap-5">
+                                <span class="bg-black/10 px-[6px] py-[4px] text-[10px] font-bold text-brand-dark/50 tracking-wider">02</span>
+                                <span class="text-[15px] md:text-base font-medium text-brand-dark pr-4 group-hover:text-brand-orange transition-colors" style="font-family: 'Inter', system-ui, sans-serif;">Does Hadron require control-plane write access or proprietary agent installs?</span>
                             </div>
+                            <div class="w-8 h-8 bg-[#0a0a0a] flex items-center justify-center shrink-0">
+                                <div class="relative w-3 h-3 flex items-center justify-center">
+                                    <div class="absolute w-full h-[1.5px] bg-white transition-transform duration-300"></div>
+                                    <div class="absolute w-[1.5px] h-full bg-white transition-transform duration-300 faq-plus"></div>
+                                </div>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                            <p class="pb-6 px-6 pl-[4.5rem] text-brand-dark/70 text-sm leading-relaxed" style="font-family: 'Inter', system-ui, sans-serif;">
+                                No. Hadron uses a zero-trust, read-only telemetry architecture. It connects via standard DCIM API feeds and metrics collectors (e.g. Prometheus, DCGM), ensuring zero control-plane write risk and no inline performance degradation.
+                            </p>
                         </div>
-                    </button>
-                    <div class="faq-answer overflow-hidden transition-all duration-300"
-                        style="max-height: 0px; opacity: 0;">
-                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
-                            Our PQC Audit maps your encryption algorithms, key distribution mechanisms, and data
-                            transport layers against government and regulatory mandates (NIST, CERT-In, RBI Q-Safe). We
-                            deliver an actionable vulnerability matrix and migration roadmap to quantum-safe algorithms.
-                        </p>
                     </div>
-                </div>
 
-                <!-- FAQ Item 4 -->
-                <div class="faq-item border-b border-brand-dark/10">
-                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
-                        onclick="toggleFaq(this)">
-                        <span
-                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">What
-                            thermal and power constraints does the Capacity Optimizer handle?</span>
-                        <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
-                            <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
-                            <div
-                                class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus">
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item bg-black/[0.03]">
+                        <button class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
+                            <div class="flex items-center gap-5">
+                                <span class="bg-black/10 px-[6px] py-[4px] text-[10px] font-bold text-brand-dark/50 tracking-wider">03</span>
+                                <span class="text-[15px] md:text-base font-medium text-brand-dark pr-4 group-hover:text-brand-orange transition-colors" style="font-family: 'Inter', system-ui, sans-serif;">How is the Post-Quantum Cryptography (PQC) Readiness Audit conducted?</span>
                             </div>
+                            <div class="w-8 h-8 bg-[#0a0a0a] flex items-center justify-center shrink-0">
+                                <div class="relative w-3 h-3 flex items-center justify-center">
+                                    <div class="absolute w-full h-[1.5px] bg-white transition-transform duration-300"></div>
+                                    <div class="absolute w-[1.5px] h-full bg-white transition-transform duration-300 faq-plus"></div>
+                                </div>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                            <p class="pb-6 px-6 pl-[4.5rem] text-brand-dark/70 text-sm leading-relaxed" style="font-family: 'Inter', system-ui, sans-serif;">
+                                Our PQC Audit maps your encryption algorithms, key distribution mechanisms, and data transport layers against government and regulatory mandates (NIST, CERT-In, RBI Q-Safe). We deliver an actionable vulnerability matrix and migration roadmap to quantum-safe algorithms.
+                            </p>
                         </div>
-                    </button>
-                    <div class="faq-answer overflow-hidden transition-all duration-300"
-                        style="max-height: 0px; opacity: 0;">
-                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
-                            The solver accounts for per-rack power budgets, cooling bounds, thermal-interference terms
-                            between adjacent racks, and redundancy/availability-zone constraints to prevent thermal
-                            hotspots and stranded capacity.
-                        </p>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item bg-black/[0.03]">
+                        <button class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
+                            <div class="flex items-center gap-5">
+                                <span class="bg-black/10 px-[6px] py-[4px] text-[10px] font-bold text-brand-dark/50 tracking-wider">04</span>
+                                <span class="text-[15px] md:text-base font-medium text-brand-dark pr-4 group-hover:text-brand-orange transition-colors" style="font-family: 'Inter', system-ui, sans-serif;">What thermal and power constraints does the Capacity Optimizer handle?</span>
+                            </div>
+                            <div class="w-8 h-8 bg-[#0a0a0a] flex items-center justify-center shrink-0">
+                                <div class="relative w-3 h-3 flex items-center justify-center">
+                                    <div class="absolute w-full h-[1.5px] bg-white transition-transform duration-300"></div>
+                                    <div class="absolute w-[1.5px] h-full bg-white transition-transform duration-300 faq-plus"></div>
+                                </div>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                            <p class="pb-6 px-6 pl-[4.5rem] text-brand-dark/70 text-sm leading-relaxed" style="font-family: 'Inter', system-ui, sans-serif;">
+                                The solver accounts for per-rack power budgets, cooling bounds, thermal-interference terms between adjacent racks, and redundancy/availability-zone constraints to prevent thermal hotspots and stranded capacity.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
