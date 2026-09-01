@@ -1604,18 +1604,21 @@
 
                     if (tSmoothTop <= wh && (tSmoothTop + tRect.height) >= 0) {
                         const tProgress = (wh - tSmoothTop) / (wh + tRect.height);
+                        
+                        // Centered parallax (0.5 to -0.5) keeps elements inside padding when section top is visible
+                        const centeredProgress = 0.5 - tProgress; 
 
-                        // Text scrolls up faster (lifts off)
-                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.40 * tRect.height)) + 'px,0)';
+                        // Text scrolls up fastest (lifts off dramatically)
+                        obsText.style.transform = 'translate3d(0,' + (centeredProgress * 0.50 * tRect.height) + 'px,0)';
 
-                        // Quantum computer drifts up slowly (mid-layer)
+                        // Quantum computer drifts up at medium speed (mid-layer)
                         if (obsQuantum) {
-                            obsQuantum.style.transform = 'translateX(-50%) translate3d(0,' + (-(tProgress * 0.20 * tRect.height)) + 'px,0)';
+                            obsQuantum.style.transform = 'translateX(-50%) translate3d(0,' + (centeredProgress * 0.30 * tRect.height) + 'px,0)';
                         }
 
-                        // People drift up even slower (closest to camera)
+                        // People drift up slowest (closest to camera, anchors the scene)
                         if (obsPeople) {
-                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.10 * tRect.height)) + 'px,0)';
+                            obsPeople.style.transform = 'translate3d(0,' + (centeredProgress * 0.10 * tRect.height) + 'px,0)';
                         }
                     }
                 }
