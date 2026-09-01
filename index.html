@@ -613,78 +613,72 @@
          STICKY 3D QUANTUM COMPUTER SECTION
          Left: text slides scroll | Right: 3D model fixed + rotates
          ===================================================== -->
-    <div id="quantum-section" class="relative z-40" style="height: 400vh; background: #0a0a0a;">
+    <div id="quantum-section" class="relative z-40 w-full flex flex-col md:flex-row items-stretch" style="background: #0a0a0a;">
 
-        <!-- Sticky viewport -->
-        <div class="sticky top-0 h-screen overflow-hidden flex items-stretch">
+        <!-- Left: scrolling text panel -->
+        <div class="w-full md:w-1/2 flex flex-col pl-16 md:pl-24 pr-8 pt-[40vh] pb-[60vh] gap-[40vh] relative z-10">
 
-            <!-- Left: scrolling text panel -->
-            <div class="w-1/2 flex items-center pl-16 md:pl-24 relative z-10 overflow-hidden">
-                <div id="qs-slides" class="relative w-full" style="height: 320px;">
-
-                    <!-- Slide 1 -->
-                    <div class="qs-slide absolute inset-0 flex flex-col justify-center" data-slide="0">
-                        <p class="sharplink-mono text-white/50 mb-5">PROPOSITIONS</p>
-                        <h2 class="sharplink-h2 text-white leading-tight mb-6">
-                            The Stack for<br>Quantum Scale
-                        </h2>
-                        <p class="sharplink-body text-white/60 max-w-sm">
-                            Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter,
-                            more productive path to scale.
-                        </p>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="qs-slide absolute inset-0 flex flex-col justify-center opacity-0" data-slide="1">
-                        <p class="sharplink-mono text-white/50 mb-5">LEADERSHIP</p>
-                        <h2 class="sharplink-h2 text-white leading-tight mb-6">
-                            Built by<br>Proven Pioneers
-                        </h2>
-                        <p class="sharplink-body text-white/60 max-w-sm">
-                            Hadron is led by quantum computing researchers and enterprise infrastructure veterans,
-                            combining deep science with institutional-grade execution.
-                        </p>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="qs-slide absolute inset-0 flex flex-col justify-center opacity-0" data-slide="2">
-                        <p class="sharplink-mono text-white/50 mb-5">OPERATIONS</p>
-                        <h2 class="sharplink-h2 text-white leading-tight mb-6">
-                            Compute as an<br>Operating System
-                        </h2>
-                        <p class="sharplink-body text-white/60 max-w-sm">
-                            We run optimization, scheduling, and resource allocation in-house — allowing the platform to
-                            be built with speed, precision, and total control.
-                        </p>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="qs-slide absolute inset-0 flex flex-col justify-center opacity-0" data-slide="3">
-                        <p class="sharplink-mono text-white/50 mb-5">TRANSPARENCY</p>
-                        <h2 class="sharplink-h2 text-white leading-tight mb-6">
-                            Committed to<br>Real-time Clarity
-                        </h2>
-                        <p class="sharplink-body text-white/60 max-w-sm">
-                            Full visibility into compute deployment, efficiency generation, and resource management —
-                            trackable day by day.
-                        </p>
-                    </div>
-
-                </div>
+            <!-- Slide 1 -->
+            <div class="qs-slide max-w-md">
+                <p class="sharplink-mono text-white/50 mb-5">PROPOSITIONS</p>
+                <h2 class="sharplink-h2 text-white leading-tight mb-6">
+                    The Stack for<br>Quantum Scale
+                </h2>
+                <p class="sharplink-body text-white/60">
+                    Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter,
+                    more productive path to scale.
+                </p>
             </div>
 
-            <!-- Right: Sticky Sketchfab quantum computer (Viewer API) -->
-            <!-- CSS Mask feathers the edges of the iframe so the rectangular background disappears smoothly -->
-            <div class="w-1/2 relative overflow-hidden"
-                style="height:100vh; -webkit-mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%); mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%);">
+            <!-- Slide 2 -->
+            <div class="qs-slide max-w-md">
+                <p class="sharplink-mono text-white/50 mb-5">LEADERSHIP</p>
+                <h2 class="sharplink-h2 text-white leading-tight mb-6">
+                    Built by<br>Proven Pioneers
+                </h2>
+                <p class="sharplink-body text-white/60">
+                    Hadron is led by quantum computing researchers and enterprise infrastructure veterans,
+                    combining deep science with institutional-grade execution.
+                </p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="qs-slide max-w-md">
+                <p class="sharplink-mono text-white/50 mb-5">OPERATIONS</p>
+                <h2 class="sharplink-h2 text-white leading-tight mb-6">
+                    Compute as an<br>Operating System
+                </h2>
+                <p class="sharplink-body text-white/60">
+                    We run optimization, scheduling, and resource allocation in-house — allowing the platform to
+                    be built with speed, precision, and total control.
+                </p>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="qs-slide max-w-md">
+                <p class="sharplink-mono text-white/50 mb-5">TRANSPARENCY</p>
+                <h2 class="sharplink-h2 text-white leading-tight mb-6">
+                    Committed to<br>Real-time Clarity
+                </h2>
+                <p class="sharplink-body text-white/60">
+                    Full visibility into compute deployment, efficiency generation, and resource management —
+                    trackable day by day.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Right: Sticky Sketchfab quantum computer (Viewer API) -->
+        <div class="w-full md:w-1/2 relative z-0 hidden md:block">
+            <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden" style="-webkit-mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%); mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%);">
                 <!-- Scale iframe up to push Sketchfab UI off-screen, pointer-events-none so it doesn't trap scroll -->
                 <iframe id="sketchfab-iframe" title="Quantum Computer" frameborder="0"
                     allow="autoplay; fullscreen; xr-spatial-tracking"
                     src="https://sketchfab.com/models/82006aac41744663a161ab844264ac2a/embed?autostart=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&dnt=1&autospin=0&preload=1&ui_help=0"
                     style="position:absolute; top:-5%; left:-10%; width:120%; height:120%; border:none; pointer-events:none; clip-path: inset(0px 0px 15% 0px);"></iframe>
             </div>
-
         </div>
+
     </div>
 
     <!-- =====================================================
@@ -912,23 +906,7 @@
                     return Math.max(0, Math.min(1, -rect.top / total));
                 }
 
-                // ── Text slide crossfade ──────────────────────────────
-                function updateSlides(p) {
-                    var sf = p * (N - 0.001);
-                    var si = Math.floor(sf);
-                    var sp = sf - si;
-                    slides.forEach(function (s, i) {
-                        var op = 0;
-                        if (i === si) {
-                            op = (i === 0) ? 1 : Math.min(Math.max((sp - 0.15) / 0.3, 0), 1);
-                            if (sp > 0.75) op = Math.max(1 - (sp - 0.75) / 0.2, 0);
-                        } else if (i === si + 1) {
-                            op = Math.min(Math.max((sp - 0.6) / 0.3, 0), 1);
-                        }
-                        s.style.opacity = op;
-                        s.style.transform = (i < si) ? 'translateY(-12px)' : (i > si) ? 'translateY(12px)' : 'translateY(0)';
-                    });
-                }
+                // ── Text slide logic removed (slides scroll naturally via layout) ──
 
                 // ── Sketchfab Viewer API: scroll-driven camera orbit ──
                 var sfApi = null;
@@ -989,7 +967,6 @@
                     if (!ticking) {
                         requestAnimationFrame(function () {
                             var p = getSectionProgress();
-                            updateSlides(p);
                             updateCamera(p);
                             ticking = false;
                         });
@@ -997,8 +974,8 @@
                     }
                 }, { passive: true });
 
-                // Init slides
-                updateSlides(0);
+                // Init
+                updateCamera(0);
             })();
         document.addEventListener('DOMContentLoaded', () => {
             const scrollContainer = document.getElementById('scroll-sequence');
