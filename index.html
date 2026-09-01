@@ -292,16 +292,18 @@
                     </a>
                     <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
                         style="height: 44px;" id="header-nav">
-                        <a href="#about"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">ABOUT</a>
-                        <a href="#investors"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">INVESTORS</a>
+                        <a href="/"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOME</a>
+                        <a href="/blogs.html"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">BLOGS</a>
                         <a href="#solutions"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">OPPORTUNITY</a>
-                        <a href="#news"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">NEWS</a>
-                        <a href="#dashboard"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">PLATFORM</a>
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">SOLUTIONS</a>
+                        <a href="#workflow"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">WORKFLOW</a>
+                        <a href="#pricing"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">OFFERINGS</a>
+                        <a href="#faq-accordion"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">FAQ</a>
                         <a href="contact.html"
                             class="nav-link flex items-center px-5 border-r border-white/20 hover:bg-white/20 transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -310,8 +312,33 @@
                             </svg>
                         </a>
                     </nav>
+                    <button id="mobile-menu-btn" class="flex md:hidden items-center justify-center w-12 h-12 text-white absolute right-4 top-2 z-[60] transition-colors" aria-label="Open menu">
+                        <div class="w-6 h-3.5 relative flex flex-col justify-between cursor-pointer">
+                            <span class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
+                            <span class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
+                        </div>
+                    </button>
                 </div>
             </header>
+
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10" aria-hidden="true">
+                <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
+                    <a href="/" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Home</a>
+                    <a href="/blogs.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Blogs</a>
+                    <a href="#solutions" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Solutions</a>
+                    <a href="#workflow" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Workflow</a>
+                    <a href="#pricing" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Offerings</a>
+                    <a href="#faq-accordion" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">FAQ</a>
+                    <a href="contact.html" class="mobile-link text-brand-orange hover:text-brand-orange/80 transition-colors">Contact Us</a>
+                    <div class="h-[1px] w-12 bg-brand-dark/10 my-2"></div>
+                    <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-brand-dark/40 hover:text-brand-dark transition-colors flex items-center gap-2 text-xl">
+                        Hadron GBS Main Site
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                    </a>
+                </nav>
+                <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,159,43,0.15),transparent_60%)] pointer-events-none -z-10"></div>
+            </div>
 
             <!-- LAYER 1: Light Grid Background (z-0) -->
             <div id="grid-bg-pattern" class="absolute inset-0 bg-brand-light bg-grid-pattern z-0 opacity-0"></div>
@@ -345,7 +372,7 @@
                             <div class="mt-20 md:mt-24">
                                 <h1
                                     class="text-5xl md:text-7xl font-medium tracking-tight mb-8 leading-[1.05] text-white">
-                                    Infrastructure<br>with an Edge
+                                    Quantum-Inspired<br>Infrastructure <span class="text-brand-orange">Optimization</span>
                                 </h1>
 
                                 <div class="flex flex-col gap-[2px] w-fit">
@@ -416,11 +443,10 @@
                         <div id="left-col" class="absolute top-0 left-0 w-full flex flex-col pointer-events-auto mt-2">
                             <div id="left-orange" class="w-2 h-2 bg-brand-orange mb-6 opacity-0"></div>
                             <h2 id="animated-title" class="sharplink-h2 text-brand-dark mb-8">
-                                Pioneering<br>Productivity
+                                Why Hadron<br>Quantum?
                             </h2>
                             <p id="left-para" class="sharplink-body text-brand-dark/70 max-w-sm pb-12 opacity-0">
-                                By combining quantum-inspired optimization, hardware awareness, and enterprise-grade
-                                infrastructure planning, we set a new standard for how AI workloads utilize resources.
+                                Operating above existing schedulers to maximize fleet-wide utilization, minimize fragmentation, and prepare your enterprise for Post-Quantum Cryptography.
                             </p>
                         </div>
                     </div>
@@ -476,10 +502,11 @@
                     <div id="right-col" class="relative w-full h-[700px] flex flex-col gap-3 pointer-events-auto mt-2">
                         <!-- Card 1 -->
                         <div id="card-1"
-                            class="sl-card has-pin has-pin--tr p-8 relative overflow-hidden group opacity-0">
-                            <span class="sl-label text-brand-dark/40 mb-4 block" style="font-size: 11px;">01</span>
-                            <h3 class="text-xl font-medium text-brand-dark mb-10" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Optimized since day one</h3>
-                            <div class="absolute -bottom-10 -right-10 w-44 h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity">
+                            class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
+                            <span class="sl-label text-brand-dark/40 mb-3 md:mb-4 block" style="font-size: 11px;">01</span>
+                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-2" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Infrastructure-First Approach</h3>
+                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[85%] relative z-10">Works seamlessly with existing data center infrastructure, no hardware replacement or operational disruption required.</p>
+                            <div class="absolute -bottom-10 -right-10 w-32 h-32 md:w-44 md:h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity z-0 pointer-events-none">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
                                     <circle cx="50" cy="50" r="40" />
@@ -490,10 +517,11 @@
                         </div>
                         <!-- Card 2 -->
                         <div id="card-2"
-                            class="sl-card has-pin has-pin--tr p-8 relative overflow-hidden group opacity-0">
-                            <span class="sl-label text-brand-dark/40 mb-4 block" style="font-size: 11px;">02</span>
-                            <h3 class="text-xl font-medium text-brand-dark mb-10" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Enhanced capacity incentives</h3>
-                            <div class="absolute -bottom-10 -right-10 w-44 h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity">
+                            class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
+                            <span class="sl-label text-brand-dark/40 mb-3 md:mb-4 block" style="font-size: 11px;">02</span>
+                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-2" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Enterprise-Wide Intelligence</h3>
+                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[85%] relative z-10">Optimizes decisions across racks, clusters, and multiple data centers instead of individual systems.</p>
+                            <div class="absolute -bottom-10 -right-10 w-32 h-32 md:w-44 md:h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity z-0 pointer-events-none">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
                                     <polygon points="50,15 90,80 10,80" />
@@ -503,15 +531,34 @@
                         </div>
                         <!-- Card 3 -->
                         <div id="card-3"
-                            class="sl-card has-pin has-pin--tr p-8 relative overflow-hidden group opacity-0">
-                            <span class="sl-label text-brand-dark/40 mb-4 block" style="font-size: 11px;">03</span>
-                            <h3 class="text-xl font-medium text-brand-dark mb-10" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Trackable day-by-day</h3>
-                            <div class="absolute -bottom-10 -right-10 w-44 h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity">
+                            class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
+                            <span class="sl-label text-brand-dark/40 mb-3 md:mb-4 block" style="font-size: 11px;">03</span>
+                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-2" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Future-Ready Optimization</h3>
+                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[85%] relative z-10">Built on a solver-agnostic architecture supporting classical optimization today and quantum methods as they mature.</p>
+                            <div class="absolute -bottom-10 -right-10 w-32 h-32 md:w-44 md:h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity z-0 pointer-events-none">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
                                     <rect x="20" y="20" width="60" height="60" />
                                     <line x1="20" y1="40" x2="80" y2="40" />
                                     <line x1="40" y1="40" x2="40" y2="80" />
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div id="card-4"
+                            class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
+                            <span class="sl-label text-brand-dark/40 mb-3 md:mb-4 block" style="font-size: 11px;">04</span>
+                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-2" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Measurable Business Value</h3>
+                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[85%] relative z-10">Improves infrastructure utilization, delays unnecessary CapEx, and enables smarter operational planning.</p>
+                            <div class="absolute -bottom-10 -right-10 w-32 h-32 md:w-44 md:h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity z-0 pointer-events-none">
+                                <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
+                                    stroke="currentColor" stroke-width="1">
+                                    <circle cx="50" cy="50" r="30" stroke-dasharray="6 6" />
+                                    <circle cx="50" cy="50" r="10" />
+                                    <line x1="50" y1="20" x2="50" y2="10" />
+                                    <line x1="50" y1="80" x2="50" y2="90" />
+                                    <line x1="20" y1="50" x2="10" y2="50" />
+                                    <line x1="80" y1="50" x2="90" y2="50" />
                                 </svg>
                             </div>
                         </div>
@@ -565,16 +612,16 @@
         <!-- Background Grid -->
         <div class="absolute inset-0 w-full h-full pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 100px 100px;"></div>
         
-        <div class="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
+        <div class="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
             <!-- Section Header -->
-            <div class="w-full px-8 md:px-24 pt-40 pb-12 flex-shrink-0 z-10">
+            <div class="w-full px-8 md:px-24 pb-8 md:pb-12 flex-shrink-0 z-10">
                 <h2 class="text-5xl md:text-6xl text-white/50 font-medium tracking-tight" style="font-family: 'Inter', system-ui, sans-serif;">
                     The Architecture for <strong class="text-white font-semibold">Quantum Scale.</strong>
                 </h2>
             </div>
 
             <!-- Horizontal Track -->
-            <div id="quantum-track" class="flex items-center w-[max-content] h-full px-8 md:px-24 pr-[15vw] md:pr-[25vw] gap-8 md:gap-16 pb-24 will-change-transform">
+            <div id="quantum-track" class="flex items-center w-[max-content] h-[500px] md:h-[600px] px-8 md:px-24 pr-[15vw] md:pr-[25vw] gap-8 md:gap-16 will-change-transform">
                 
                 <!-- Card 1 -->
                 <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
@@ -1154,6 +1201,7 @@
             const card1 = document.getElementById('card-1');
             const card2 = document.getElementById('card-2');
             const card3 = document.getElementById('card-3');
+            const card4 = document.getElementById('card-4');
 
             // Setup randomized letter spans for title
             const words = leftTitle.innerHTML.split('<br>');
@@ -1296,6 +1344,14 @@
                         card3.style.opacity = c3Op;
                         card3.style.transform = `translate(${c3X}px, ${currentY}px)`;
 
+                        // Card 4
+                        const c4Op = progress <= phase1End
+                            ? mapRange(progress, fadeStart, phase1End, 0, 0)
+                            : mapRange(progress, phase1End, phase2End, 0, 1);
+                        const c4X = mapRange(progress, phase1End, phase2End, 150, 0);
+                        card4.style.opacity = c4Op;
+                        card4.style.transform = `translate(${c4X}px, ${currentY}px)`;
+
                     } else {
                         const scale = 1 - (0.05 * p1);
                         heroCard.style.clipPath = `inset(0px 0px 0px 0px)`;
@@ -1306,6 +1362,7 @@
                         card1.style.opacity = progress;
                         card2.style.opacity = progress;
                         card3.style.opacity = progress;
+                        card4.style.opacity = progress;
                     }
 
                     // Hero original text fades out and gets cropped
@@ -1332,6 +1389,7 @@
                     card1.style.opacity = 0;
                     card2.style.opacity = 0;
                     card3.style.opacity = 0;
+                    card4.style.opacity = 0;
 
                     // Reset: white text on dark hero
                     mainHeader.style.transform = 'translateY(0px)';
@@ -1378,6 +1436,9 @@
 
                     card3.style.opacity = 1;
                     card3.style.transform = `translate(0px, 0px)`;
+                    
+                    card4.style.opacity = 1;
+                    card4.style.transform = `translate(0px, 0px)`;
                 }
             }
 
@@ -1530,6 +1591,45 @@
             // Start loop
             renderParallax();
         })();
+
+        // Mobile Menu Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                let isOpen = false;
+                mobileMenuBtn.addEventListener('click', () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                        const lines = mobileMenuBtn.querySelectorAll('span');
+                        lines[0].style.transform = 'translateY(7px) rotate(45deg)';
+                        lines[1].style.transform = 'translateY(-7px) rotate(-45deg)';
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                        const lines = mobileMenuBtn.querySelectorAll('span');
+                        lines[0].style.transform = 'translateY(0) rotate(0)';
+                        lines[1].style.transform = 'translateY(0) rotate(0)';
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Close menu when clicking a link
+                const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        isOpen = false;
+                        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                        const lines = mobileMenuBtn.querySelectorAll('span');
+                        lines[0].style.transform = 'translateY(0) rotate(0)';
+                        lines[1].style.transform = 'translateY(0) rotate(0)';
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+        });
     </script>
 </body>
 
