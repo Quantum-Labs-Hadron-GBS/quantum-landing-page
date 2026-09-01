@@ -408,25 +408,24 @@
     <!-- =====================================================
          BUFFER SECTION: Smooth Long Transition Spacer
          ===================================================== -->
-    <div id="buffer-section" class="relative z-30 w-full overflow-hidden" style="min-height: 140vh;">
+    <div id="buffer-section" class="relative z-30 w-full overflow-hidden" style="min-height: 100vh;">
         
         <!-- Layer 1: Background Gradient (Moves Slowest — creates depth) -->
         <div id="parallax-bg" class="absolute inset-0 w-full pointer-events-none" style="
-            height: 140%;
-            top: -20%;
+            height: 130%;
+            top: -15%;
             background: 
                 radial-gradient(ellipse 100% 55% at 50% 100%, #0a0a0a 0%, #0a0a0a 20%, transparent 100%),
                 linear-gradient(180deg,
                     #f3c069 0%,
-                    #e8a945 12%,
-                    #d9943d 25%,
-                    #b87a2e 38%,
-                    #8a5a1e 50%,
-                    #5c3d14 62%,
-                    #3a250d 72%,
-                    #1f1408 82%,
-                    #120c05 90%,
-                    #0a0a0a 100%);
+                    #d9943d 15%,
+                    #b87a2e 30%,
+                    #8a5a1e 42%,
+                    #5c3d14 54%,
+                    #3a250d 64%,
+                    #1f1408 74%,
+                    #120c05 84%,
+                    #0a0a0a 95%);
             will-change: transform;
         "></div>
 
@@ -438,7 +437,7 @@
         </div>
 
         <!-- Layer 3: Text Content (Moves at Medium Speed — readable drift) -->
-        <div id="parallax-text" class="relative z-10 flex items-center" style="min-height: 140vh; will-change: transform;">
+        <div id="parallax-text" class="relative z-10 pt-16 pb-32" style="will-change: transform;">
             <div class="max-w-[1400px] mx-auto w-full px-8 md:px-12">
                 <div class="max-w-4xl">
                     <p class="text-white/60 text-xs font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
