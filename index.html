@@ -1287,28 +1287,45 @@
             const obsQuantum = document.getElementById('observers-quantum');
             const obsPeople = document.getElementById('observers-people');
 
-            let ticking = false;
+            let targetScroll = window.scrollY;
+            let currentScroll = window.scrollY;
+            let isInitialized = false;
 
-            function updateAllParallax() {
+            window.addEventListener('scroll', () => {
+                targetScroll = window.scrollY;
+            }, { passive: true });
+
+            function renderParallax() {
+                if (!isInitialized) {
+                    currentScroll = targetScroll;
+                    isInitialized = true;
+                }
+
+                // Lerp for smooth water flow feel
+                currentScroll += (targetScroll - currentScroll) * 0.07;
+                const scrollDiff = targetScroll - currentScroll;
+                
                 const wh = window.innerHeight;
 
                 // --- Transition Section: Observers parallax ---
                 if (transSection && obsText) {
                     const tRect = transSection.getBoundingClientRect();
-                    if (tRect.top <= wh && tRect.bottom >= 0) {
-                        const tProgress = (wh - tRect.top) / (wh + tRect.height);
+                    const tSmoothTop = tRect.top + scrollDiff;
+
+                    if (tSmoothTop <= wh && (tSmoothTop + tRect.height) >= 0) {
+                        const tProgress = (wh - tSmoothTop) / (wh + tRect.height);
 
                         // Text scrolls up faster (lifts off)
-                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.15 * tRect.height)) + 'px,0)';
+                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.25 * tRect.height)) + 'px,0)';
 
                         // Quantum computer drifts up slowly (mid-layer)
                         if (obsQuantum) {
-                            obsQuantum.style.transform = 'translateX(-50%) translate3d(0,' + (-(tProgress * 0.08 * tRect.height)) + 'px,0)';
+                            obsQuantum.style.transform = 'translateX(-50%) translate3d(0,' + (-(tProgress * 0.12 * tRect.height)) + 'px,0)';
                         }
 
-                        // People drift up even slower (closest to camera = barely moves)
+                        // People drift up even slower (closest to camera)
                         if (obsPeople) {
-                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.04 * tRect.height)) + 'px,0)';
+                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.05 * tRect.height)) + 'px,0)';
                         }
                     }
                 }
@@ -1316,30 +1333,34 @@
                 // --- Buffer Section: Content parallax ---
                 if (bufferSection && parallaxBg) {
                     const bRect = bufferSection.getBoundingClientRect();
-                    if (bRect.top <= wh && bRect.bottom >= 0) {
-                        const bProgress = (wh - bRect.top) / (wh + bRect.height);
+                    const bSmoothTop = bRect.top + scrollDiff;
 
-                        parallaxBg.style.transform = 'translate3d(0,' + (bProgress * 0.2 * bRect.height) + 'px,0)';
-                        if (parallaxAssets) {
-                            parallaxAssets.style.transform = 'translate3d(0,' + (-(bProgress * 0.2 * bRect.height)) + 'px,0)';
-                        }
+                    if (bSmoothTop <= wh && (bSmoothTop + bRect.height) >= 0) {
+                        const bProgress = (wh - bSmoothTop) / (wh + bRect.height);
+
+                        // Gradient background shifts down for depth
+                        parallaxBg.style.transform = 'translate3d(0,' + (bProgress * 0.25 * bRect.height) + 'px,0)';
+                        
+                        // Text drifts up smoothly
                         if (parallaxText) {
-                            parallaxText.style.transform = 'translate3d(0,' + (-(bProgress * 0.1 * bRect.height)) + 'px,0)';
+                            parallaxText.style.transform = 'translate3d(0,' + (-(bProgress * 0.15 * bRect.height)) + 'px,0)';
+                        }
+
+                        // Ambient orbs move at completely different individual speeds for "flow"
+                        if (parallaxAssets) {
+                            const assets = parallaxAssets.children;
+                            if (assets.length > 0) assets[0].style.transform = 'translate3d(0,' + (-(bProgress * 0.45 * bRect.height)) + 'px,0)';
+                            if (assets.length > 1) assets[1].style.transform = 'translate3d(0,' + (-(bProgress * 0.20 * bRect.height)) + 'px,0)';
+                            if (assets.length > 2) assets[2].style.transform = 'translate3d(0,' + (-(bProgress * 0.35 * bRect.height)) + 'px,0)';
                         }
                     }
                 }
 
-                ticking = false;
+                requestAnimationFrame(renderParallax);
             }
 
-            window.addEventListener('scroll', function() {
-                if (!ticking) {
-                    requestAnimationFrame(updateAllParallax);
-                    ticking = true;
-                }
-            }, { passive: true });
-
-            updateAllParallax();
+            // Start loop
+            renderParallax();
         })();
     </script>
 </body>
