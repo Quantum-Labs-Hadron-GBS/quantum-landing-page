@@ -891,11 +891,7 @@
         </div>
     </footer>
 
-    <style>
-        .qs-slide {
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-    </style>
+
     <!-- Sketchfab Viewer API -->
     <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
 
@@ -976,6 +972,18 @@
                         requestAnimationFrame(function () {
                             var p = getSectionProgress();
                             updateCamera(p);
+
+                            // Scroll-driven opacity for qs-slides
+                            var wh = window.innerHeight;
+                            var cy = wh / 2;
+                            slides.forEach(function(s) {
+                                var r = s.getBoundingClientRect();
+                                var sc = r.top + r.height / 2;
+                                var dist = Math.abs(sc - cy);
+                                var op = 1 - (dist / (wh * 0.35));
+                                s.style.opacity = Math.max(0.15, Math.min(1, op));
+                            });
+
                             ticking = false;
                         });
                         ticking = true;
@@ -984,6 +992,15 @@
 
                 // Init
                 updateCamera(0);
+                var whInit = window.innerHeight;
+                var cyInit = whInit / 2;
+                slides.forEach(function(s) {
+                    var r = s.getBoundingClientRect();
+                    var sc = r.top + r.height / 2;
+                    var dist = Math.abs(sc - cyInit);
+                    var op = 1 - (dist / (whInit * 0.35));
+                    s.style.opacity = Math.max(0.15, Math.min(1, op));
+                });
             })();
         document.addEventListener('DOMContentLoaded', () => {
             const scrollContainer = document.getElementById('scroll-sequence');
