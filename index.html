@@ -1181,7 +1181,7 @@
                     if (bRect.top <= wh && bRect.bottom >= 0) {
                         const bProgress = (wh - bRect.top) / (wh + bRect.height);
 
-                        parallaxBg.style.transform = 'translate3d(0,' + (bProgress * 0.08 * bRect.height) + 'px,0)';
+                        parallaxBg.style.transform = 'translate3d(0,' + (bProgress * 0.2 * bRect.height) + 'px,0)';
                         if (parallaxAssets) {
                             parallaxAssets.style.transform = 'translate3d(0,' + (-(bProgress * 0.2 * bRect.height)) + 'px,0)';
                         }
