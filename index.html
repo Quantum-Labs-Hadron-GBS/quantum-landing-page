@@ -1608,9 +1608,9 @@
                         // Text scrolls up faster (lifts off)
                         obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.40 * tRect.height)) + 'px,0)';
 
-                        // Quantum computer starts 25% lower and drifts up into place
+                        // Quantum computer starts lower and drifts up rapidly into place
                         if (obsQuantum) {
-                            const quantumY = (tRect.height * 0.25) - (tProgress * tRect.height * 0.50);
+                            const quantumY = (tRect.height * 0.35) - (tProgress * tRect.height * 0.85);
                             obsQuantum.style.transform = `translateX(-50%) translate3d(0, ${quantumY}px, 0)`;
                         }
 
