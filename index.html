@@ -690,6 +690,48 @@
     </div>
 
     <!-- =====================================================
+         SCRUB TEXT SECTION
+         ===================================================== -->
+    <div id="scrub-section" class="relative z-40 w-full" style="height: 300vh; background-color: #0a0a0a; will-change: background-color;">
+        <div class="sticky top-0 h-screen w-full flex items-center justify-center px-8 md:px-24 overflow-hidden">
+            <div id="scrub-content" class="max-w-[1200px] text-center">
+                <p id="scrub-label" class="text-white text-xs font-bold tracking-[0.2em] uppercase mb-10 opacity-50">
+                    The Opportunity of a Generation
+                </p>
+                <h2 id="scrub-text" class="text-4xl md:text-[54px] font-medium leading-[1.3] tracking-tight text-white flex flex-wrap justify-center gap-x-[0.28em] gap-y-[0.15em]" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+                    <span class="scrub-word" style="opacity: 0.15">Quantum-assisted</span>
+                    <span class="scrub-word" style="opacity: 0.15">AI</span>
+                    <span class="scrub-word" style="opacity: 0.15">infrastructure</span>
+                    <span class="scrub-word" style="opacity: 0.15">makes</span>
+                    <span class="scrub-word" style="opacity: 0.15">it</span>
+                    <span class="scrub-word" style="opacity: 0.15">the</span>
+                    <span class="scrub-word" style="opacity: 0.15">most</span>
+                    <span class="scrub-word" style="opacity: 0.15">compelling</span>
+                    <span class="scrub-word" style="opacity: 0.15">compute</span>
+                    <span class="scrub-word" style="opacity: 0.15">opportunity</span>
+                    <span class="scrub-word" style="opacity: 0.15">of</span>
+                    <span class="scrub-word" style="opacity: 0.15">our</span>
+                    <span class="scrub-word" style="opacity: 0.15">lifetime.</span>
+                    <span class="scrub-word" style="opacity: 0.15">The</span>
+                    <span class="scrub-word" style="opacity: 0.15">platform</span>
+                    <span class="scrub-word" style="opacity: 0.15">is</span>
+                    <span class="scrub-word" style="opacity: 0.15">the</span>
+                    <span class="scrub-word" style="opacity: 0.15">world's</span>
+                    <span class="scrub-word" style="opacity: 0.15">future</span>
+                    <span class="scrub-word" style="opacity: 0.15">workload</span>
+                    <span class="scrub-word" style="opacity: 0.15">scheduler,</span>
+                    <span class="scrub-word" style="opacity: 0.15">and</span>
+                    <span class="scrub-word" style="opacity: 0.15">this</span>
+                    <span class="scrub-word" style="opacity: 0.15">is</span>
+                    <span class="scrub-word" style="opacity: 0.15">just</span>
+                    <span class="scrub-word" style="opacity: 0.15">the</span>
+                    <span class="scrub-word" style="opacity: 0.15">beginning.</span>
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================
          FAQ SECTION
          ===================================================== -->
     <section class="relative z-40 w-full bg-brand-light py-24 sm:py-32" id="faq-section">
@@ -1289,6 +1331,12 @@
             const obsQuantum = document.getElementById('observers-quantum');
             const obsPeople = document.getElementById('observers-people');
 
+            // Scrub section layers
+            const scrubSection = document.getElementById('scrub-section');
+            const scrubWords = document.querySelectorAll('.scrub-word');
+            const scrubLabel = document.getElementById('scrub-label');
+            const scrubText = document.getElementById('scrub-text');
+
             let targetScroll = window.scrollY;
             let currentScroll = window.scrollY;
             let isInitialized = false;
@@ -1354,6 +1402,67 @@
                             if (assets.length > 0) assets[0].style.transform = 'translate3d(0,' + (-(bProgress * 0.45 * bRect.height)) + 'px,0)';
                             if (assets.length > 1) assets[1].style.transform = 'translate3d(0,' + (-(bProgress * 0.20 * bRect.height)) + 'px,0)';
                             if (assets.length > 2) assets[2].style.transform = 'translate3d(0,' + (-(bProgress * 0.35 * bRect.height)) + 'px,0)';
+                        }
+                    }
+                }
+
+                // --- Scrub Section: Background transition & text reveal ---
+                if (scrubSection && scrubWords.length) {
+                    const sRect = scrubSection.getBoundingClientRect();
+                    const sSmoothTop = sRect.top + scrollDiff;
+                    // Progress from 0 (top of section hits top of screen) to 1 (bottom hits bottom)
+                    const sProgress = -sSmoothTop / (sRect.height - wh);
+                    
+                    if (sProgress > -0.2 && sProgress < 1.2) {
+                        const p = Math.max(0, Math.min(1, sProgress));
+                        
+                        // Phase 1 (0 to 0.2): Background Black to Orange
+                        // Phase 2 (0.8 to 1.0): Background Orange to White, text fades to 0
+                        let bgColor = '#0a0a0a';
+
+                        if (p < 0.2) {
+                            // interpolate Black (#0a0a0a) to Orange (#d9943d)
+                            const ratio = p / 0.2;
+                            const r = Math.round(10 + ratio * (217 - 10)); 
+                            const g = Math.round(10 + ratio * (148 - 10)); 
+                            const b = Math.round(10 + ratio * (61 - 10));  
+                            bgColor = `rgb(${r},${g},${b})`;
+                        } else if (p < 0.8) {
+                            bgColor = '#d9943d';
+                        } else {
+                            // interpolate Orange to White (#ffffff)
+                            const ratio = (p - 0.8) / 0.2;
+                            const r = Math.round(217 + ratio * (255 - 217));
+                            const g = Math.round(148 + ratio * (255 - 148));
+                            const b = Math.round(61 + ratio * (255 - 61));
+                            bgColor = `rgb(${r},${g},${b})`;
+                        }
+                        
+                        scrubSection.style.backgroundColor = bgColor;
+
+                        // Text scrub logic (0.2 to 0.8)
+                        const scrubP = Math.max(0, Math.min(1, (p - 0.2) / 0.6));
+                        const totalWords = scrubWords.length;
+                        
+                        scrubWords.forEach((word, idx) => {
+                            const wordStart = idx / totalWords;
+                            const wordEnd = (idx + 1.5) / totalWords; // overlapping fade
+                            
+                            let opacity = 0.15;
+                            if (scrubP > wordStart) {
+                                opacity = 0.15 + 0.85 * Math.min(1, (scrubP - wordStart) / (wordEnd - wordStart));
+                            }
+                            word.style.opacity = opacity;
+                        });
+
+                        // Final fade out to match white bg
+                        if (p > 0.8) {
+                            const fadeRatio = 1 - ((p - 0.8) / 0.2); // 1 to 0
+                            scrubText.style.opacity = fadeRatio;
+                            scrubLabel.style.opacity = fadeRatio * 0.5;
+                        } else {
+                            scrubText.style.opacity = 1;
+                            scrubLabel.style.opacity = 0.5;
                         }
                     }
                 }
