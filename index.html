@@ -401,10 +401,10 @@
             </div>
 
         </div>
-
-        <!-- Bottom gradient bleed to smooth the boundary into buffer section -->
-        <div class="absolute bottom-0 left-0 w-full h-[80px] z-20 pointer-events-none" style="background: linear-gradient(180deg, transparent 0%, #f3c069 100%);"></div>
     </div>
+
+    <!-- Seamless color bridge between Transition and Buffer sections -->
+    <div class="relative z-30 w-full h-[200px]" style="background: linear-gradient(180deg, #f3c069 0%, #e8a945 40%, #d9943d 100%);"></div>
 
     <!-- =====================================================
          BUFFER SECTION: Smooth Long Transition Spacer
@@ -413,19 +413,18 @@
         
         <!-- Layer 1: Background Gradient (Moves Slowest — creates depth) -->
         <div id="parallax-bg" class="absolute inset-0 w-full pointer-events-none" style="
-            height: 130%;
-            top: -15%;
+            height: 120%;
+            top: 0;
             background: 
                 radial-gradient(ellipse 100% 55% at 50% 100%, #0a0a0a 0%, #0a0a0a 20%, transparent 100%),
                 linear-gradient(180deg,
-                    #f3c069 0%,
-                    #d9943d 15%,
-                    #b87a2e 30%,
-                    #8a5a1e 42%,
-                    #5c3d14 54%,
-                    #3a250d 64%,
-                    #1f1408 74%,
-                    #120c05 84%,
+                    #d9943d 0%,
+                    #b87a2e 15%,
+                    #8a5a1e 30%,
+                    #5c3d14 45%,
+                    #3a250d 58%,
+                    #1f1408 70%,
+                    #120c05 82%,
                     #0a0a0a 95%);
             will-change: transform;
         "></div>
