@@ -747,12 +747,7 @@
     <!-- =====================================================
          BLOG SECTION
          ===================================================== -->
-    <section id="blog-section" class="relative z-40 w-full py-32 bg-[#f3f5f8]">
-        <!-- Subtle vertical grid lines matching screenshot -->
-        <div class="absolute inset-0 pointer-events-none flex justify-center max-w-[1400px] mx-auto opacity-20">
-            <div class="w-1/3 h-full border-l border-r border-black/10"></div>
-            <div class="w-1/3 h-full border-r border-black/10"></div>
-        </div>
+    <section id="blog-section" class="relative z-40 w-full py-32 bg-[#f3f5f8] bg-grid-pattern">
 
         <div class="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-24">
             
@@ -779,7 +774,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
                 
                 <!-- Blog Card 1 -->
-                <a href="#article" class="group flex flex-col gap-6 pt-0">
+                <a href="#article" class="group flex flex-col gap-6 pt-0 has-pin has-pin--tr bg-white border border-black/5 p-4 shadow-sm hover:shadow-md transition-shadow">
                     <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
                         <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 mix-blend-screen">
                         <!-- Gradient overlay for text contrast -->
@@ -804,7 +799,7 @@
                 </a>
 
                 <!-- Blog Card 2 -->
-                <a href="#article" class="group hidden md:flex flex-col gap-6 pt-0">
+                <a href="#article" class="group hidden md:flex flex-col gap-6 pt-0 has-pin has-pin--tr bg-white border border-black/5 p-4 shadow-sm hover:shadow-md transition-shadow">
                     <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
                         <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 mix-blend-screen filter hue-rotate-180">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
@@ -828,7 +823,7 @@
                 </a>
 
                 <!-- Blog Card 3 -->
-                <a href="#article" class="group hidden lg:flex flex-col gap-6 pt-0">
+                <a href="#article" class="group hidden lg:flex flex-col gap-6 pt-0 has-pin has-pin--tr bg-white border border-black/5 p-4 shadow-sm hover:shadow-md transition-shadow">
                     <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
                         <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 mix-blend-screen grayscale">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
@@ -858,12 +853,7 @@
     <!-- =====================================================
          FAQ SECTION
          ===================================================== -->
-    <section class="relative z-40 w-full bg-[#f3f5f8] py-24 sm:py-32" id="faq-section">
-        <!-- Subtle vertical grid lines matching screenshot -->
-        <div class="absolute inset-0 pointer-events-none flex justify-center max-w-[1400px] mx-auto opacity-20">
-            <div class="w-1/3 h-full border-l border-r border-black/10"></div>
-            <div class="w-1/3 h-full border-r border-black/10"></div>
-        </div>
+    <section class="relative z-40 w-full bg-[#f3f5f8] bg-grid-pattern py-24 sm:py-32" id="faq-section">
 
         <div class="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-24 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start">
             
@@ -894,7 +884,7 @@
                 <!-- FAQ List -->
                 <div class="flex flex-col gap-1" id="faq-accordion">
                     <!-- FAQ Item 1 -->
-                    <div class="faq-item bg-black/[0.03]">
+                    <div class="faq-item bg-white/70 has-pin has-pin--tr border border-black/5">
                         <button class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
                             <div class="flex items-center gap-5">
                                 <span class="bg-black/10 px-[6px] py-[4px] text-[10px] font-bold text-brand-dark/50 tracking-wider">01</span>
@@ -915,7 +905,7 @@
                     </div>
 
                     <!-- FAQ Item 2 -->
-                    <div class="faq-item bg-black/[0.03]">
+                    <div class="faq-item bg-white/70 has-pin has-pin--tr border border-black/5">
                         <button class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
                             <div class="flex items-center gap-5">
                                 <span class="bg-black/10 px-[6px] py-[4px] text-[10px] font-bold text-brand-dark/50 tracking-wider">02</span>
@@ -936,7 +926,7 @@
                     </div>
 
                     <!-- FAQ Item 3 -->
-                    <div class="faq-item bg-black/[0.03]">
+                    <div class="faq-item bg-white/70 has-pin has-pin--tr border border-black/5">
                         <button class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
                             <div class="flex items-center gap-5">
                                 <span class="bg-black/10 px-[6px] py-[4px] text-[10px] font-bold text-brand-dark/50 tracking-wider">03</span>
@@ -957,7 +947,7 @@
                     </div>
 
                     <!-- FAQ Item 4 -->
-                    <div class="faq-item bg-black/[0.03]">
+                    <div class="faq-item bg-white/70 has-pin has-pin--tr border border-black/5">
                         <button class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
                             <div class="flex items-center gap-5">
                                 <span class="bg-black/10 px-[6px] py-[4px] text-[10px] font-bold text-brand-dark/50 tracking-wider">04</span>
