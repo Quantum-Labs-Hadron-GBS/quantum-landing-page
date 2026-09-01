@@ -1328,10 +1328,10 @@
                         const startY = window.innerHeight / 4;
                         const leftY = mapRange(progress, phase1End, phase2End, startY, 0);
 
-                        // Calculate dynamic endY for right column to ensure 20% gap below 4th card
+                        // Calculate dynamic endY for right column to ensure 50% gap below 4th card
                         const rightColEl = document.getElementById('right-col');
                         const rightColBottom = 130 + rightColEl.offsetHeight; // 130px is approx top offset
-                        const targetBottom = window.innerHeight * 0.8; // 20% gap below
+                        const targetBottom = window.innerHeight * 0.5; // 50% gap below
                         const endY = Math.min(0, targetBottom - rightColBottom);
                         
                         const rightY = mapRange(progress, phase1End, phase2End, startY, endY);
