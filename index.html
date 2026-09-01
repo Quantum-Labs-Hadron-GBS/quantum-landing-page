@@ -1695,31 +1695,35 @@
                 if (grid) {
                     grid.innerHTML = articles.map((doc, index) => {
                     const dateStr = new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                    const displayClass = index === 0 ? 'block' : index === 1 ? 'hidden md:block' : 'hidden lg:block';
+                    const displayClass = index === 0 ? 'flex' : index === 1 ? 'hidden md:flex' : 'hidden lg:flex';
                     const typeLabel = (doc.type_id || 'BLOG').replace(/_/g, ' ');
                     const hasImage = !!doc.cover_image;
                     
                     return `
-                        <a href="/article.html?slug=${doc.slug}" class="group ${displayClass} bg-white rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${hasImage ? 'h-[450px]' : 'h-[300px]'} flex flex-col relative border border-gray-200/50 shadow-sm">
-                            
-                            <div class="p-8 flex-1 z-10 relative">
-                                <div class="flex items-start justify-between mb-6">
-                                    <span class="px-4 py-1.5 bg-[#f4f5f7] border border-gray-200/50 rounded-full text-[10px] font-extrabold tracking-widest uppercase text-gray-600 shadow-sm">${typeLabel}</span>
-                                    <div class="w-10 h-10 bg-[#f4f5f7] border border-gray-200/50 rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#d9943d] group-hover:border-[#d9943d] group-hover:text-white transition-colors text-gray-400">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-                                    </div>
+                        <a href="/article.html?slug=${doc.slug}" class="group ${displayClass} flex-col gap-6 pt-0 has-pin has-pin--tr bg-white border border-black/5 p-4 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
+                                ${hasImage 
+                                    ? `<img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90">`
+                                    : `<div class="w-full h-full bg-gradient-to-br from-[#d9943d] to-[#121212] flex items-center justify-center text-white font-bold text-3xl group-hover:scale-105 transition-transform duration-700">HQ</div>`
+                                }
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-6 text-white z-10">
+                                    <p class="text-[1.35rem] font-medium tracking-tight leading-[1.2] line-clamp-3" style="font-family: 'Inter', system-ui, sans-serif;">${doc.title}</p>
                                 </div>
-                                
-                                <h2 class="text-2xl font-bold text-gray-900 leading-snug mb-3 ${hasImage ? 'line-clamp-3' : 'line-clamp-4'} group-hover:text-[#d9943d] transition-colors">${doc.title}</h2>
-                                <p class="text-gray-500 text-sm font-medium">${dateStr}</p>
                             </div>
                             
-                            ${hasImage ? `
-                            <div class="h-[220px] w-full mt-auto relative z-0">
-                                <img src="${doc.cover_image}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="${doc.title}" />
-                                <div class="absolute inset-0 bg-gradient-to-t from-transparent to-white opacity-90"></div>
+                            <div class="flex justify-between items-center w-full">
+                                <span class="border border-black/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em] uppercase text-brand-dark/70 bg-white/50">${typeLabel}</span>
+                                <span class="border border-black/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em] uppercase text-brand-dark/70 bg-white/50">${dateStr}</span>
                             </div>
-                            ` : ''}
+                            
+                            <h3 class="text-2xl font-medium leading-[1.3] tracking-tight text-brand-dark group-hover:text-[#d9943d] transition-colors line-clamp-2" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+                                ${doc.title}
+                            </h3>
+                            
+                            <div class="w-8 h-8 bg-black/5 flex items-center justify-center group-hover:bg-[#d9943d] group-hover:text-white transition-colors mt-auto rounded-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </div>
                         </a>
                     `;
                 }).join('');
