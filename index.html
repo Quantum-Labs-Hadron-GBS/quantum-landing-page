@@ -370,8 +370,8 @@
     <div id="transition-section" class="relative z-30 w-full overflow-hidden"
         style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #f4dec1 60%, #f3c069 100%);">
 
-        <!-- Text -->
-        <div class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center">
+        <!-- Text (parallax: moves faster than scroll) -->
+        <div id="observers-text" class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center" style="will-change: transform;">
             <h2 class="text-5xl md:text-7xl font-medium tracking-tight text-brand-dark mb-6 leading-tight">
                 Witness the <br>Next Generation
             </h2>
@@ -384,25 +384,26 @@
         <div class="relative w-full flex justify-center items-end" style="height: 65vh; min-height: 500px;">
 
             <!-- Layer 1 (Background): Quantum Computer Core -->
-            <!-- mix-blend-multiply hides white background, mask-image fades the bottom out -->
-            <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png"
+            <img id="observers-quantum" src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png"
                 alt="Quantum Computer Core" class="absolute z-0 w-auto object-contain"
-                style="height: 95%; top: -25%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); mask-image: linear-gradient(to bottom, black 50%, transparent 90%);">
+                style="height: 95%; top: -25%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); mask-image: linear-gradient(to bottom, black 50%, transparent 90%); will-change: transform;">
 
             <!-- Layer 2 (Foreground): People looking up -->
-            <!-- Wrapper uses multiply blend mode. The white gradient inside smoothly turns the silhouettes into the background orange -->
-            <div class="absolute z-10 w-full"
-                style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply;">
+            <div id="observers-people" class="absolute z-10 w-full"
+                style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply; will-change: transform;">
                 <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787909936/ChatGPT_Image_Aug_27_2026_07_22_36_PM_1_ep9mqo.png"
                     alt="People looking up" class="w-full h-full object-cover object-bottom">
 
-                <!-- Curved white fade at the bottom. Multiply turns this white perfectly into the golden background -->
+                <!-- Curved white fade at the bottom -->
                 <div class="absolute bottom-0 left-0 w-full h-[60vh] pointer-events-none"
                     style="background: radial-gradient(ellipse 150% 100% at 50% 100%, white 10%, rgba(255,255,255,0.9) 30%, transparent 80%);">
                 </div>
             </div>
 
         </div>
+
+        <!-- Bottom gradient bleed to smooth the boundary into buffer section -->
+        <div class="absolute bottom-0 left-0 w-full h-[80px] z-20 pointer-events-none" style="background: linear-gradient(180deg, transparent 0%, #f3c069 100%);"></div>
     </div>
 
     <!-- =====================================================
@@ -1134,50 +1135,73 @@
             }
         }
 
-        // Parallax Logic for Buffer Section (Sharplink-inspired multi-speed layers)
+        // Parallax Logic — unified handler for Transition + Buffer sections
         (function() {
+            // Buffer section layers
             const bufferSection = document.getElementById('buffer-section');
             const parallaxBg = document.getElementById('parallax-bg');
             const parallaxText = document.getElementById('parallax-text');
             const parallaxAssets = document.getElementById('parallax-assets');
-            if (!bufferSection || !parallaxBg) return;
 
-            // Speed multipliers — each layer moves at a different rate
-            const BG_SPEED = 0.08;     // Background: slowest (barely drifts)
-            const ASSETS_SPEED = 0.25;  // Glowing orbs: fastest (creates depth)
-            const TEXT_SPEED = 0.12;    // Text: medium (readable but alive)
+            // Transition section layers
+            const transSection = document.getElementById('transition-section');
+            const obsText = document.getElementById('observers-text');
+            const obsQuantum = document.getElementById('observers-quantum');
+            const obsPeople = document.getElementById('observers-people');
 
             let ticking = false;
 
-            function updateParallax() {
-                const rect = bufferSection.getBoundingClientRect();
+            function updateAllParallax() {
                 const wh = window.innerHeight;
 
-                if (rect.top <= wh && rect.bottom >= 0) {
-                    // Normalized scroll progress through the section: 0 → 1
-                    const progress = (wh - rect.top) / (wh + rect.height);
+                // --- Transition Section: Observers parallax ---
+                if (transSection && obsText) {
+                    const tRect = transSection.getBoundingClientRect();
+                    if (tRect.top <= wh && tRect.bottom >= 0) {
+                        const tProgress = (wh - tRect.top) / (wh + tRect.height);
 
-                    // Background drifts down slowly (compensates for the -20% top offset)
-                    parallaxBg.style.transform = 'translate3d(0,' + (progress * BG_SPEED * rect.height) + 'px,0)';
+                        // Text scrolls up faster (lifts off)
+                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.15 * tRect.height)) + 'px,0)';
 
-                    // Assets float upward faster — creates foreground depth separation
-                    parallaxAssets.style.transform = 'translate3d(0,' + (-(progress * ASSETS_SPEED * rect.height)) + 'px,0)';
+                        // Quantum computer drifts up slowly (mid-layer)
+                        if (obsQuantum) {
+                            obsQuantum.style.transform = 'translateX(-50%) translate3d(0,' + (-(tProgress * 0.08 * tRect.height)) + 'px,0)';
+                        }
 
-                    // Text drifts up subtly — alive but still readable
-                    parallaxText.style.transform = 'translate3d(0,' + (-(progress * TEXT_SPEED * rect.height)) + 'px,0)';
+                        // People drift up even slower (closest to camera = barely moves)
+                        if (obsPeople) {
+                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.04 * tRect.height)) + 'px,0)';
+                        }
+                    }
                 }
+
+                // --- Buffer Section: Content parallax ---
+                if (bufferSection && parallaxBg) {
+                    const bRect = bufferSection.getBoundingClientRect();
+                    if (bRect.top <= wh && bRect.bottom >= 0) {
+                        const bProgress = (wh - bRect.top) / (wh + bRect.height);
+
+                        parallaxBg.style.transform = 'translate3d(0,' + (bProgress * 0.08 * bRect.height) + 'px,0)';
+                        if (parallaxAssets) {
+                            parallaxAssets.style.transform = 'translate3d(0,' + (-(bProgress * 0.2 * bRect.height)) + 'px,0)';
+                        }
+                        if (parallaxText) {
+                            parallaxText.style.transform = 'translate3d(0,' + (-(bProgress * 0.1 * bRect.height)) + 'px,0)';
+                        }
+                    }
+                }
+
                 ticking = false;
             }
 
             window.addEventListener('scroll', function() {
                 if (!ticking) {
-                    requestAnimationFrame(updateParallax);
+                    requestAnimationFrame(updateAllParallax);
                     ticking = true;
                 }
             }, { passive: true });
 
-            // Initial call
-            updateParallax();
+            updateAllParallax();
         })();
     </script>
 </body>
