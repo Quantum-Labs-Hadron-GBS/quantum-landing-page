@@ -1610,8 +1610,8 @@
                         // Assuming section height ~ viewport height, this happens at tProgress = 0.5.
                         const centerProgress = 0.5 - tProgress; // +0.5 at entry, 0 at center, -0.5 at exit
 
-                        // Text starts much lower (+30%) and scrolls up
-                        const textY = centerProgress * 0.60 * tRect.height;
+                        // Text starts much lower (+30%) and scrolls up. Forcefully shifted up by 50px.
+                        const textY = (centerProgress * 0.60 * tRect.height) - 50;
                         obsText.style.transform = `translate3d(0, ${textY}px, 0)`;
 
                         // Quantum computer starts 25% lower (+25%) and drifts up
