@@ -412,23 +412,22 @@
 
                         <!-- Right Column -->
                         <div class="hidden lg:flex flex-col justify-end h-full">
-                            <div
+                            <a id="hero-news-link" href="#news"
                                 class="bg-[#2a303c]/80 backdrop-blur-lg p-8 w-full group cursor-pointer hover:bg-[#2a303c] transition-colors text-white relative shadow-2xl">
                                 <div class="absolute top-0 left-0 w-8 h-[3px] bg-brand-orange"></div>
                                 <div class="flex justify-between items-start mb-6">
-                                    <p class="text-xs font-bold tracking-widest uppercase">
+                                    <p id="hero-news-type" class="text-xs font-bold tracking-widest uppercase">
                                         Company News
                                     </p>
-                                    <p class="text-xs text-white/50 font-bold tracking-widest uppercase">AUG 28, 2026
+                                    <p id="hero-news-date" class="text-xs text-white/50 font-bold tracking-widest uppercase">AUG 28, 2026
                                     </p>
                                 </div>
-                                <p class="text-[15px] font-medium leading-relaxed max-w-[85%] pr-8">Hadron Quantum
-                                    releases Phase II CapEx Optimizer and Enterprise AI Readiness Tool.</p>
+                                <p id="hero-news-title" class="text-[15px] font-medium leading-relaxed max-w-[85%] pr-8">Loading latest news...</p>
                                 <div
                                     class="absolute right-8 bottom-8 w-10 h-10 bg-white/10 flex items-center justify-center text-white group-hover:bg-brand-orange transition-colors">
                                     →
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                     </div>
@@ -1676,11 +1675,25 @@
                 const grid = document.getElementById('home-blog-grid');
                 
                 if (articles.length === 0) {
-                    grid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12">No articles published yet.</div>';
+                    if (grid) grid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-12">No articles published yet.</div>';
                     return;
                 }
 
-                grid.innerHTML = articles.map((doc, index) => {
+                // Update Hero News (if exists)
+                const heroLink = document.getElementById('hero-news-link');
+                if (heroLink && articles[0]) {
+                    const heroDoc = articles[0];
+                    heroLink.href = `/article.html?slug=${heroDoc.slug}`;
+                    const heroType = document.getElementById('hero-news-type');
+                    if (heroType) heroType.innerText = (heroDoc.type_id || 'NEWS').replace(/_/g, ' ');
+                    const heroDate = document.getElementById('hero-news-date');
+                    if (heroDate) heroDate.innerText = new Date(heroDoc.published_at || heroDoc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    const heroTitle = document.getElementById('hero-news-title');
+                    if (heroTitle) heroTitle.innerText = heroDoc.title;
+                }
+
+                if (grid) {
+                    grid.innerHTML = articles.map((doc, index) => {
                     const dateStr = new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
                     const displayClass = index === 0 ? 'flex' : index === 1 ? 'hidden md:flex' : 'hidden lg:flex';
                     const typeLabel = (doc.type_id || 'BLOG').replace(/_/g, ' ');
