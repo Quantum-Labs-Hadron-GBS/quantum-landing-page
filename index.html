@@ -745,6 +745,117 @@
     </div>
 
     <!-- =====================================================
+         BLOG SECTION
+         ===================================================== -->
+    <section id="blog-section" class="relative z-40 w-full py-32 bg-[#f3f5f8]">
+        <!-- Subtle vertical grid lines matching screenshot -->
+        <div class="absolute inset-0 pointer-events-none flex justify-center max-w-[1400px] mx-auto opacity-20">
+            <div class="w-1/3 h-full border-l border-r border-black/10"></div>
+            <div class="w-1/3 h-full border-r border-black/10"></div>
+        </div>
+
+        <div class="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-24">
+            
+            <!-- Header Row -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+                <div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-2 h-2" style="background-color: #d9943d;"></div>
+                        <p class="text-brand-dark/60 text-xs font-bold tracking-[0.15em] uppercase m-0 leading-none mt-1">
+                            Insights from the blog
+                        </p>
+                    </div>
+                    <h2 class="text-[3.5rem] md:text-[4.5rem] font-medium leading-none tracking-tight text-brand-dark" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+                        Latest News
+                    </h2>
+                </div>
+                <a href="#blog" class="flex items-center gap-3 px-5 py-3 bg-black/5 hover:bg-black/10 transition-colors text-brand-dark text-[11px] font-bold tracking-[0.15em] uppercase rounded-sm">
+                    Visit Our Blog
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+                
+                <!-- Blog Card 1 -->
+                <a href="#article" class="group flex flex-col gap-6 pt-0">
+                    <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
+                        <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 mix-blend-screen">
+                        <!-- Gradient overlay for text contrast -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <p class="text-[1.35rem] font-medium tracking-tight leading-[1.2]" style="font-family: 'Inter', system-ui, sans-serif;">Hadron Quantum<br>Enterprise Compute Fund</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center w-full">
+                        <span class="border border-black/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em] uppercase text-brand-dark/70 bg-white/50">News</span>
+                        <span class="border border-black/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em] uppercase text-brand-dark/70 bg-white/50">May 11, 2026</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-medium leading-[1.3] tracking-tight text-brand-dark group-hover:text-brand-orange transition-colors" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+                        The Hadron Quantum Enterprise Compute Fund
+                    </h3>
+                    
+                    <div class="w-8 h-8 bg-black/5 flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-colors mt-auto rounded-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </a>
+
+                <!-- Blog Card 2 -->
+                <a href="#article" class="group hidden md:flex flex-col gap-6 pt-0">
+                    <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
+                        <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 mix-blend-screen filter hue-rotate-180">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <p class="text-[1.35rem] font-medium tracking-tight leading-[1.2]" style="font-family: 'Inter', system-ui, sans-serif;">Advancing Qubit<br>Error Correction</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center w-full">
+                        <span class="border border-black/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em] uppercase text-brand-dark/70 bg-white/50">Research</span>
+                        <span class="border border-black/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em] uppercase text-brand-dark/70 bg-white/50">April 24, 2026</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-medium leading-[1.3] tracking-tight text-brand-dark group-hover:text-brand-orange transition-colors" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+                        Breakthroughs in Qubit Error Correction Algorithms
+                    </h3>
+                    
+                    <div class="w-8 h-8 bg-black/5 flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-colors mt-auto rounded-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </a>
+
+                <!-- Blog Card 3 -->
+                <a href="#article" class="group hidden lg:flex flex-col gap-6 pt-0">
+                    <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
+                        <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" alt="News Image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 mix-blend-screen grayscale">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <p class="text-[1.35rem] font-medium tracking-tight leading-[1.2]" style="font-family: 'Inter', system-ui, sans-serif;">New Leadership<br>Announcement</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center w-full">
+                        <span class="border border-black/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em] uppercase text-brand-dark/70 bg-white/50">Company</span>
+                        <span class="border border-black/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em] uppercase text-brand-dark/70 bg-white/50">April 12, 2026</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-medium leading-[1.3] tracking-tight text-brand-dark group-hover:text-brand-orange transition-colors" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+                        Welcoming Dr. Sarah Chen to Hadron Executive Team
+                    </h3>
+                    
+                    <div class="w-8 h-8 bg-black/5 flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-colors mt-auto rounded-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
          FAQ SECTION
          ===================================================== -->
     <section class="relative z-40 w-full bg-brand-light py-24 sm:py-32" id="faq-section">
