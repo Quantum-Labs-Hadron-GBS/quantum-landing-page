@@ -453,9 +453,9 @@
 
                     <!-- Middle Column & Graph Text -->
                     <div id="middle-col-placeholder"
-                        class="relative w-full h-[700px] hidden lg:block pointer-events-none">
+                        class="relative w-full h-[350px] lg:h-[700px] pointer-events-none mt-4 lg:mt-0">
                         <div id="graph-content"
-                            class="absolute inset-0 opacity-0 flex flex-col p-10 pointer-events-auto">
+                            class="absolute inset-0 opacity-0 flex flex-col p-8 lg:p-10 pointer-events-auto bg-[#1a1a1a] rounded-[2rem] lg:bg-transparent lg:rounded-none shadow-2xl lg:shadow-none">
                             <div class="flex justify-between items-start mb-8 text-white">
                                 <p class="text-sm font-semibold tracking-widest uppercase text-white/70">Optimized
                                     Capacity</p>
@@ -1359,11 +1359,12 @@
 
                     } else {
                         // Mobile specific animation mapping
+                        
                         // 1. Clip the hero video into a nice horizontal banner at the very top
-                        const targetTopClip = 20; // 20px from top
-                        const targetLeftClip = 20; // 20px from left
-                        const targetRightClip = 20; // 20px from right
-                        const targetBottomClip = window.innerHeight * 0.75; // Hide bottom 75%
+                        const targetTopClip = 16; 
+                        const targetLeftClip = 16; 
+                        const targetRightClip = 16; 
+                        const targetBottomClip = window.innerHeight * 0.75; 
 
                         const currentTopClip = targetTopClip * p1;
                         const currentBottomClip = targetBottomClip * p1;
@@ -1373,12 +1374,11 @@
                         heroCard.style.clipPath = `inset(${currentTopClip}px ${currentRightClip}px ${currentBottomClip}px ${currentLeftClip}px)`;
                         
                         if (p1 > 0.5) {
-                            heroCard.style.borderRadius = `${(p1 - 0.5) * 40}px`; // Smoothly round corners as it shrinks
+                            heroCard.style.borderRadius = `${(p1 - 0.5) * 40}px`; 
                         } else {
                             heroCard.style.borderRadius = '0px';
                         }
 
-                        // Navbar color swap (same logic as desktop based on clip)
                         if (currentTopClip > 10) {
                             headerLogo.style.filter = 'brightness(0)';
                             headerText.style.color = '#0a0a0a';
@@ -1389,33 +1389,44 @@
                             headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
                         }
 
-                        // 2. Content sliding up
-                        const mobileStartY = 100; // Slide up 100px
-                        const currentY = mapRange(progress, phase1End, phase2End, mobileStartY, 0);
+                        // 2. Sequential Sliding for Mobile: Left -> Middle -> Right
+                        const mobileStartY = 120; // Distance elements slide up from
                         
-                        const fadeProgress = mapRange(progress, fadeStart, phase1End, 0, 1);
-                        leftOrange.style.opacity = fadeProgress;
-                        leftPara.style.opacity = fadeProgress;
+                        // Phase 1: Left Column (Why Hadron Quantum) -> 0.2 to 0.45
+                        const leftOp = mapRange(progress, 0.2, 0.45, 0, 1);
+                        const leftY = mapRange(progress, 0.2, 0.45, mobileStartY, 0);
+                        
+                        leftOrange.style.opacity = leftOp;
+                        leftPara.style.opacity = leftOp;
                         letterSpans.forEach(span => {
                             const th = parseFloat(span.dataset.threshold);
-                            span.style.opacity = mapRange(fadeProgress, th, th + 0.2, 0, 1);
+                            span.style.opacity = mapRange(leftOp, th, th + 0.2, 0, 1);
                         });
-                        leftCol.style.transform = `translateY(${currentY * 0.5}px)`; // Slower parallax for text
+                        leftCol.style.transform = `translateY(${leftY}px)`;
 
-                        // Stagger the 4 cards sliding up
-                        const staggerGap = (phase2End - phase1End) / 4;
-                        
-                        card1.style.opacity = mapRange(progress, phase1End, phase1End + staggerGap*2, 0, 1);
-                        card1.style.transform = `translateY(${mapRange(progress, phase1End, phase1End + staggerGap*2, mobileStartY, 0)}px)`;
+                        // Phase 2: Middle Column (Graph) -> 0.45 to 0.65
+                        const midOp = mapRange(progress, 0.45, 0.65, 0, 1);
+                        const midY = mapRange(progress, 0.45, 0.65, mobileStartY, 0);
+                        graphContent.style.opacity = midOp;
+                        graphContent.style.transform = `translateY(${midY}px)`;
 
-                        card2.style.opacity = mapRange(progress, phase1End + staggerGap, phase1End + staggerGap*3, 0, 1);
-                        card2.style.transform = `translateY(${mapRange(progress, phase1End + staggerGap, phase1End + staggerGap*3, mobileStartY, 0)}px)`;
+                        // Phase 3: Right Column (4 Cards) -> 0.65 to 0.85
+                        // Stagger the 4 cards within this phase
+                        const p3Start = 0.65;
+                        const p3End = 0.85;
+                        const stagger = (p3End - p3Start) / 4;
 
-                        card3.style.opacity = mapRange(progress, phase1End + staggerGap*2, phase2End, 0, 1);
-                        card3.style.transform = `translateY(${mapRange(progress, phase1End + staggerGap*2, phase2End, mobileStartY, 0)}px)`;
+                        card1.style.opacity = mapRange(progress, p3Start, p3Start + stagger*2, 0, 1);
+                        card1.style.transform = `translateY(${mapRange(progress, p3Start, p3Start + stagger*2, mobileStartY, 0)}px)`;
 
-                        card4.style.opacity = mapRange(progress, phase1End + staggerGap*3, phase2End + staggerGap, 0, 1);
-                        card4.style.transform = `translateY(${mapRange(progress, phase1End + staggerGap*3, phase2End + staggerGap, mobileStartY, 0)}px)`;
+                        card2.style.opacity = mapRange(progress, p3Start + stagger, p3Start + stagger*3, 0, 1);
+                        card2.style.transform = `translateY(${mapRange(progress, p3Start + stagger, p3Start + stagger*3, mobileStartY, 0)}px)`;
+
+                        card3.style.opacity = mapRange(progress, p3Start + stagger*2, p3End, 0, 1);
+                        card3.style.transform = `translateY(${mapRange(progress, p3Start + stagger*2, p3End, mobileStartY, 0)}px)`;
+
+                        card4.style.opacity = mapRange(progress, p3Start + stagger*3, p3End + stagger, 0, 1);
+                        card4.style.transform = `translateY(${mapRange(progress, p3Start + stagger*3, p3End + stagger, mobileStartY, 0)}px)`;
                     }
 
                     // Hero original text fades out and gets cropped
@@ -1427,6 +1438,7 @@
                     // Graph overlay and grid background fade in
                     if (!isMobile) {
                         graphContent.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
+                        graphContent.style.transform = 'none'; // Desktop doesn't slide graph up
                     }
                     gridBgPattern.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
 
