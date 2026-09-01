@@ -284,11 +284,8 @@
                 style="transition: none;">
                 <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
                     <a href="/" class="flex items-center gap-2 py-3 md:py-4">
-                        <img id="header-logo" src="./favicon.svg" alt="Hadron"
-                            class="h-5 w-auto filter invert brightness-0" style="transition: filter 0.3s;" />
-                        <span id="header-text"
-                            class="text-lg md:text-xl font-bold tracking-tight text-white font-bank-gothic"
-                            style="transition: color 0.3s;">Quantum Labs</span>
+                        <img id="header-logo" src="https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png" alt="Hadron Quantum Labs"
+                            class="h-9 md:h-10 w-auto" style="transition: filter 0.3s;" />
                     </a>
                     <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
                         style="height: 44px;" id="header-nav">
@@ -444,7 +441,7 @@
                     class="max-w-[1400px] mx-auto h-full grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-8 lg:gap-16 items-start pt-[100px] lg:pt-[120px] px-6 md:px-8">
 
                     <!-- Left Column -->
-                    <div class="w-full h-full relative">
+                    <div class="w-full h-full relative lg:col-start-auto col-start-1 row-start-1">
                         <div id="left-col" class="absolute top-0 left-0 w-full flex flex-col pointer-events-auto mt-2">
                             <div id="left-orange" class="w-2 h-2 bg-brand-orange mb-6 opacity-0"></div>
                             <h2 id="animated-title" class="text-4xl lg:text-5xl font-medium tracking-tight text-brand-dark mb-6 lg:mb-8 leading-tight">
@@ -458,7 +455,7 @@
 
                     <!-- Middle Column & Graph Text -->
                     <div id="middle-col-placeholder"
-                        class="relative w-full h-[350px] lg:h-[700px] pointer-events-none mt-4 lg:mt-0">
+                        class="relative w-full h-[350px] lg:h-[700px] pointer-events-none mt-4 lg:mt-0 lg:col-start-auto col-start-1 row-start-1">
                         <div id="graph-content"
                             class="absolute inset-0 opacity-0 flex flex-col p-8 lg:p-10 pointer-events-auto bg-[#1a1a1a] rounded-[2rem] lg:bg-transparent lg:rounded-none shadow-2xl lg:shadow-none">
                             <div class="flex justify-between items-start mb-8 text-white">
@@ -504,7 +501,7 @@
                     </div>
 
                     <!-- Right Column (Cards wrapper) -->
-                    <div id="right-col" class="relative w-full h-auto lg:h-[700px] flex flex-col gap-3 pointer-events-auto mt-2">
+                    <div id="right-col" class="relative w-full h-auto lg:h-[700px] flex flex-col gap-3 pointer-events-auto mt-2 lg:col-start-auto col-start-1 row-start-1 pt-12 lg:pt-0">
                         <!-- Card 1 -->
                         <div id="card-1"
                             class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
@@ -1218,7 +1215,6 @@
 
             const mainHeader = document.getElementById('main-header');
             const headerLogo = document.getElementById('header-logo');
-            const headerText = document.getElementById('header-text');
             const headerNav = document.getElementById('header-nav');
             const navLinks = document.querySelectorAll('.nav-link');
             const headerCta = document.getElementById('header-cta');
@@ -1303,11 +1299,11 @@
                     const fadeStart = phase1End * 0.75;
 
                     if (!isMobile) {
-                        const phRect = placeholder.getBoundingClientRect();
-                        const targetTopClip = phRect.top;
-                        const targetBottomClip = window.innerHeight - phRect.bottom;
-                        const targetLeftClip = phRect.left;
-                        const targetRightClip = window.innerWidth - phRect.right;
+                        // Use offset properties which remain stable relative to the container even when it unpins
+                        const targetTopClip = placeholder.offsetTop;
+                        const targetLeftClip = placeholder.offsetLeft;
+                        const targetRightClip = window.innerWidth - (placeholder.offsetLeft + placeholder.offsetWidth);
+                        const targetBottomClip = window.innerHeight - (placeholder.offsetTop + placeholder.offsetHeight);
 
                         const currentTopClip = targetTopClip * p1;
                         const currentBottomClip = targetBottomClip * p1;
@@ -1319,20 +1315,26 @@
                         // Navbar logo color swap on scroll
                         if (currentTopClip > 30) {
                             mainHeader.style.transform = `translateY(${Math.min(currentTopClip * 0.2, 10)}px)`;
-                            headerLogo.style.filter = 'brightness(0)';
-                            headerText.style.color = '#0a0a0a';
+                            headerLogo.style.filter = 'invert(1) brightness(0)'; // Make white logo black
                             headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
                             navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
                         } else {
                             mainHeader.style.transform = 'translateY(0px)';
-                            headerLogo.style.filter = 'invert(1) brightness(0) invert(1)';
-                            headerText.style.color = '#ffffff';
+                            headerLogo.style.filter = 'none'; // Keep it white
                             headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
                             navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
                         }
 
                         const startY = window.innerHeight / 4;
-                        const currentY = mapRange(progress, phase1End, phase2End, startY, 0);
+                        const leftY = mapRange(progress, phase1End, phase2End, startY, 0);
+
+                        // Calculate dynamic endY for right column to ensure 20% gap below 4th card
+                        const rightColEl = document.getElementById('right-col');
+                        const rightColBottom = 130 + rightColEl.offsetHeight; // 130px is approx top offset
+                        const targetBottom = window.innerHeight * 0.8; // 20% gap below
+                        const endY = Math.min(0, targetBottom - rightColBottom);
+                        
+                        const rightY = mapRange(progress, phase1End, phase2End, startY, endY);
 
                         const fadeProgress = mapRange(progress, fadeStart, phase1End, 0, 1);
                         leftOrange.style.opacity = fadeProgress;
@@ -1343,110 +1345,126 @@
                             span.style.opacity = mapRange(fadeProgress, th, th + 0.2, 0, 1);
                         });
 
-                        leftCol.style.transform = `translateY(${currentY}px)`;
+                        leftCol.style.transform = `translateY(${leftY}px)`;
 
                         card1.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
-                        card1.style.transform = `translateY(${currentY}px)`;
+                        card1.style.transform = `translateY(${rightY}px)`;
 
                         const c2Op = progress <= phase1End ? mapRange(progress, fadeStart, phase1End, 0, 0.5) : mapRange(progress, phase1End, phase2End, 0.5, 1);
                         const c2X = mapRange(progress, phase1End, phase2End, 50, 0);
                         card2.style.opacity = c2Op;
-                        card2.style.transform = `translate(${c2X}px, ${currentY}px)`;
+                        card2.style.transform = `translate(${c2X}px, ${rightY}px)`;
 
                         const c3Op = progress <= phase1End ? mapRange(progress, fadeStart, phase1End, 0, 0.25) : mapRange(progress, phase1End, phase2End, 0.25, 1);
                         const c3X = mapRange(progress, phase1End, phase2End, 100, 0);
                         card3.style.opacity = c3Op;
-                        card3.style.transform = `translate(${c3X}px, ${currentY}px)`;
+                        card3.style.transform = `translate(${c3X}px, ${rightY}px)`;
 
                         const c4Op = progress <= phase1End ? 0 : mapRange(progress, phase1End, phase2End, 0, 1);
                         const c4X = mapRange(progress, phase1End, phase2End, 150, 0);
                         card4.style.opacity = c4Op;
-                        card4.style.transform = `translate(${c4X}px, ${currentY}px)`;
+                        card4.style.transform = `translate(${c4X}px, ${rightY}px)`;
 
                     } else {
-                        // Mobile specific animation mapping
+                        // Mobile specific animation mapping (Sequential Vertical Scrolling)
                         
-                        // 1. Clip the hero video into a nice horizontal banner at the very top
-                        const targetTopClip = 16; 
-                        const targetLeftClip = 16; 
-                        const targetRightClip = 16; 
-                        const targetBottomClip = window.innerHeight * 0.75; 
+                        // 1. Hero Section goes up completely
+                        // Let's use progress 0 to 0.25 to slide hero up by 100vh
+                        const heroScroll = Math.min(progress / 0.25, 1);
+                        heroCard.style.transform = `translateY(-${heroScroll * window.innerHeight}px)`;
+                        heroCard.style.clipPath = `inset(0px 0px 0px 0px)`;
+                        heroCard.style.borderRadius = '0px';
 
-                        const currentTopClip = targetTopClip * p1;
-                        const currentBottomClip = targetBottomClip * p1;
-                        const currentLeftClip = targetLeftClip * p1;
-                        const currentRightClip = targetRightClip * p1;
-                        
-                        heroCard.style.clipPath = `inset(${currentTopClip}px ${currentRightClip}px ${currentBottomClip}px ${currentLeftClip}px)`;
-                        
-                        if (p1 > 0.5) {
-                            heroCard.style.borderRadius = `${(p1 - 0.5) * 40}px`; 
-                        } else {
-                            heroCard.style.borderRadius = '0px';
-                        }
-
-                        if (currentTopClip > 10) {
-                            headerLogo.style.filter = 'brightness(0)';
-                            headerText.style.color = '#0a0a0a';
+                        if (heroScroll > 0.1) {
+                            headerLogo.style.filter = 'invert(1) brightness(0)';
                             headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
                         } else {
-                            headerLogo.style.filter = 'invert(1) brightness(0) invert(1)';
-                            headerText.style.color = '#ffffff';
+                            headerLogo.style.filter = 'none';
                             headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
                         }
 
-                        // 2. Sequential Sliding for Mobile: Left -> Middle -> Right
-                        const mobileStartY = 120; // Distance elements slide up from
+                        // 2. Left Col (Why Hadron)
+                        // Starts at 0.2 (when hero is 20% from leaving), centers by 0.35, goes off by 0.5
+                        let leftY = window.innerHeight;
+                        let leftOp = 0;
+                        if (progress >= 0.2 && progress < 0.35) {
+                            const p = (progress - 0.2) / 0.15;
+                            leftY = mapRange(p, 0, 1, window.innerHeight * 0.8, window.innerHeight * 0.1);
+                            leftOp = mapRange(p, 0, 1, 0, 1);
+                        } else if (progress >= 0.35 && progress < 0.5) {
+                            const p = (progress - 0.35) / 0.15;
+                            leftY = mapRange(p, 0, 1, window.innerHeight * 0.1, -window.innerHeight * 0.5);
+                            leftOp = mapRange(p, 0, 1, 1, 0);
+                        } else if (progress < 0.2) {
+                            leftY = window.innerHeight * 0.8;
+                        } else {
+                            leftY = -window.innerHeight * 0.5;
+                        }
                         
-                        // Phase 1: Left Column (Why Hadron Quantum) -> 0.2 to 0.45
-                        const leftOp = mapRange(progress, 0.2, 0.45, 0, 1);
-                        const leftY = mapRange(progress, 0.2, 0.45, mobileStartY, 0);
-                        
+                        leftCol.style.transform = `translateY(${leftY}px)`;
                         leftOrange.style.opacity = leftOp;
                         leftPara.style.opacity = leftOp;
                         letterSpans.forEach(span => {
                             const th = parseFloat(span.dataset.threshold);
                             span.style.opacity = mapRange(leftOp, th, th + 0.2, 0, 1);
                         });
-                        leftCol.style.transform = `translateY(${leftY}px)`;
+                        leftCol.style.pointerEvents = leftOp > 0.5 ? 'auto' : 'none';
 
-                        // Phase 2: Middle Column (Graph) -> 0.45 to 0.65
-                        const midOp = mapRange(progress, 0.45, 0.65, 0, 1);
-                        const midY = mapRange(progress, 0.45, 0.65, mobileStartY, 0);
+                        // 3. Middle Box (Graph)
+                        // Starts at 0.45, centers at 0.6, goes off by 0.75
+                        let midY = window.innerHeight;
+                        let midOp = 0;
+                        if (progress >= 0.45 && progress < 0.6) {
+                            const p = (progress - 0.45) / 0.15;
+                            midY = mapRange(p, 0, 1, window.innerHeight * 0.8, window.innerHeight * 0.2);
+                            midOp = mapRange(p, 0, 1, 0, 1);
+                        } else if (progress >= 0.6 && progress < 0.75) {
+                            const p = (progress - 0.6) / 0.15;
+                            midY = mapRange(p, 0, 1, window.innerHeight * 0.2, -window.innerHeight * 0.5);
+                            midOp = mapRange(p, 0, 1, 1, 0);
+                        } else if (progress < 0.45) {
+                            midY = window.innerHeight * 0.8;
+                        } else {
+                            midY = -window.innerHeight * 0.5;
+                        }
+
                         graphContent.style.opacity = midOp;
                         graphContent.style.transform = `translateY(${midY}px)`;
+                        graphContent.style.pointerEvents = midOp > 0.5 ? 'auto' : 'none';
 
-                        // Phase 3: Right Column (4 Cards) -> 0.65 to 0.85
-                        // Stagger the 4 cards within this phase
-                        const p3Start = 0.65;
-                        const p3End = 0.85;
-                        const stagger = (p3End - p3Start) / 4;
+                        // 4. Right Col (Cards)
+                        // Translates entire right column up smoothly.
+                        // At progress = 1.0, the LAST card crosses 50% of the screen.
+                        const rightColContainer = document.getElementById('right-col');
+                        const targetEndRightY = (window.innerHeight * 0.5) - rightColContainer.offsetHeight;
+                        const rightColY = mapRange(progress, 0.6, 1.0, window.innerHeight, targetEndRightY);
+                        rightColContainer.style.transform = `translateY(${rightColY}px)`;
 
-                        card1.style.opacity = mapRange(progress, p3Start, p3Start + stagger*2, 0, 1);
-                        card1.style.transform = `translateY(${mapRange(progress, p3Start, p3Start + stagger*2, mobileStartY, 0)}px)`;
-
-                        card2.style.opacity = mapRange(progress, p3Start + stagger, p3Start + stagger*3, 0, 1);
-                        card2.style.transform = `translateY(${mapRange(progress, p3Start + stagger, p3Start + stagger*3, mobileStartY, 0)}px)`;
-
-                        card3.style.opacity = mapRange(progress, p3Start + stagger*2, p3End, 0, 1);
-                        card3.style.transform = `translateY(${mapRange(progress, p3Start + stagger*2, p3End, mobileStartY, 0)}px)`;
-
-                        card4.style.opacity = mapRange(progress, p3Start + stagger*3, p3End + stagger, 0, 1);
-                        card4.style.transform = `translateY(${mapRange(progress, p3Start + stagger*3, p3End + stagger, mobileStartY, 0)}px)`;
+                        const rightScroll = mapRange(progress, 0.6, 1.0, 0, 1);
+                        card1.style.opacity = mapRange(rightScroll, 0.0, 0.15, 0, 1);
+                        card2.style.opacity = mapRange(rightScroll, 0.1, 0.25, 0, 1);
+                        card3.style.opacity = mapRange(rightScroll, 0.2, 0.35, 0, 1);
+                        card4.style.opacity = mapRange(rightScroll, 0.3, 0.45, 0, 1);
+                        
+                        card1.style.transform = 'translateY(0)';
+                        card2.style.transform = 'translateY(0)';
+                        card3.style.transform = 'translateY(0)';
+                        card4.style.transform = 'translateY(0)';
                     }
 
                     // Hero original text fades out and gets cropped
                     heroContent.style.opacity = mapRange(progress, 0, fadeStart, 1, 0);
 
-                    // Video fades out
-                    heroVideo.style.opacity = mapRange(progress, 0, phase1End, 1, 0);
-
-                    // Graph overlay and grid background fade in
+                    // Video fades out (Only on Desktop since mobile scrolls it away)
                     if (!isMobile) {
+                        heroVideo.style.opacity = mapRange(progress, 0, phase1End, 1, 0);
+                        heroGlow.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                         graphContent.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                         graphContent.style.transform = 'none'; // Desktop doesn't slide graph up
+                    } else {
+                        heroVideo.style.opacity = 1;
+                        heroGlow.style.opacity = 0;
                     }
-                    heroGlow.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                     gridBgPattern.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
 
                 } else if (animatedTop > 0) {
@@ -1479,17 +1497,15 @@
                 } else if (animatedTop <= -maxScrollDistance) {
                     // Lock to final state
                     if (!isMobile) {
-                        const phRect = placeholder.getBoundingClientRect();
-                        const targetTopClip = phRect.top;
-                        const targetBottomClip = window.innerHeight - phRect.bottom;
-                        const targetLeftClip = phRect.left;
-                        const targetRightClip = window.innerWidth - phRect.right;
-                        heroCard.style.clipPath = `inset(${targetTopClip}px ${targetRightClip}px ${targetBottomClip}px ${targetLeftClip}px)`;
+                        const tTop = placeholder.offsetTop;
+                        const tLeft = placeholder.offsetLeft;
+                        const tRight = window.innerWidth - (placeholder.offsetLeft + placeholder.offsetWidth);
+                        const tBottom = window.innerHeight - (placeholder.offsetTop + placeholder.offsetHeight);
+                        heroCard.style.clipPath = `inset(${tTop}px ${tRight}px ${tBottom}px ${tLeft}px)`;
 
                         // Locked final: dark text on light bg
                         mainHeader.style.transform = 'translateY(10px)';
-                        headerLogo.style.filter = 'brightness(0)';
-                        headerText.style.color = '#0a0a0a';
+                        headerLogo.style.filter = 'invert(1) brightness(0)';
                         headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
                         navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
                     } else {
