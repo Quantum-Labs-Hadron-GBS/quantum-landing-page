@@ -408,48 +408,63 @@
     <!-- =====================================================
          BUFFER SECTION: Smooth Long Transition Spacer
          ===================================================== -->
-    <div id="buffer-section" class="relative z-30 w-full overflow-hidden flex items-center py-24" style="min-height: 120vh;">
+    <div id="buffer-section" class="relative z-30 w-full overflow-hidden" style="min-height: 140vh;">
         
-        <!-- Background Layer (Moves Slowest) -->
-        <div id="parallax-bg" class="absolute inset-0 w-full h-[130%] -top-[15%] pointer-events-none" style="
+        <!-- Layer 1: Background Gradient (Moves Slowest — creates depth) -->
+        <div id="parallax-bg" class="absolute inset-0 w-full pointer-events-none" style="
+            height: 140%;
+            top: -20%;
             background: 
-                radial-gradient(ellipse 120% 70% at 50% 100%, #0a0a0a 0%, #0a0a0a 15%, transparent 100%),
-                linear-gradient(180deg, #f3c069 0%, #d9943d 35%, #6b3e02 65%, #1a0f05 85%, #0a0a0a 100%);
+                radial-gradient(ellipse 100% 55% at 50% 100%, #0a0a0a 0%, #0a0a0a 20%, transparent 100%),
+                linear-gradient(180deg,
+                    #f3c069 0%,
+                    #e8a945 12%,
+                    #d9943d 25%,
+                    #b87a2e 38%,
+                    #8a5a1e 50%,
+                    #5c3d14 62%,
+                    #3a250d 72%,
+                    #1f1408 82%,
+                    #120c05 90%,
+                    #0a0a0a 100%);
             will-change: transform;
         "></div>
 
-        <!-- Floating Assets Layer (Moves Fastest) -->
-        <div id="parallax-assets" class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden" style="will-change: transform;">
-            <div class="absolute top-[20%] left-[5%] w-[40vw] h-[40vw] rounded-full bg-brand-orange/5 blur-[120px]"></div>
-            <div class="absolute bottom-[20%] right-[5%] w-[50vw] h-[50vw] rounded-full bg-brand-orange/5 blur-[150px]"></div>
+        <!-- Layer 2: Floating Ambient Glow Assets (Moves Fastest — foreground depth) -->
+        <div id="parallax-assets" class="absolute inset-0 w-full h-full pointer-events-none" style="will-change: transform;">
+            <div class="absolute top-[15%] left-[2%] w-[45vw] h-[45vw] rounded-full bg-brand-orange/8 blur-[140px]"></div>
+            <div class="absolute bottom-[10%] right-[0%] w-[55vw] h-[55vw] rounded-full bg-brand-orange/6 blur-[180px]"></div>
+            <div class="absolute top-[50%] left-[40%] w-[30vw] h-[30vw] rounded-full bg-amber-600/4 blur-[100px]"></div>
         </div>
 
-        <!-- Text Layer (Moves Normal/Medium) -->
-        <div id="parallax-text" class="max-w-[1400px] mx-auto w-full px-8 md:px-12 relative z-10 flex flex-col justify-center" style="will-change: transform;">
-            <div class="max-w-4xl">
-                <p class="text-white/60 text-xs font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
-                    <span class="w-1.5 h-1.5 bg-brand-orange"></span>
-                    The AI Infrastructure Imperative
-                </p>
-                <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.1] text-white mb-8"
-                    style="font-family: 'Archivo', sans-serif;">
-                    Operating above existing schedulers to maximize fleet-wide utilization, minimize fragmentation, and
-                    prepare your enterprise for Post-Quantum Cryptography.
-                </h2>
-                <p class="text-xl md:text-2xl text-white/50 font-light tracking-wide max-w-3xl leading-relaxed mb-12">
-                    Quantum-inspired algorithms solving multi-objective placement problems for the data centers of
-                    tomorrow.
-                </p>
+        <!-- Layer 3: Text Content (Moves at Medium Speed — readable drift) -->
+        <div id="parallax-text" class="relative z-10 flex items-center" style="min-height: 140vh; will-change: transform;">
+            <div class="max-w-[1400px] mx-auto w-full px-8 md:px-12">
+                <div class="max-w-4xl">
+                    <p class="text-white/60 text-xs font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                        <span class="w-1.5 h-1.5 bg-brand-orange"></span>
+                        The AI Infrastructure Imperative
+                    </p>
+                    <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.1] text-white mb-8"
+                        style="font-family: 'Archivo', sans-serif;">
+                        Operating above existing schedulers to maximize fleet-wide utilization, minimize fragmentation, and
+                        prepare your enterprise for Post-Quantum Cryptography.
+                    </h2>
+                    <p class="text-xl md:text-2xl text-white/50 font-light tracking-wide max-w-3xl leading-relaxed mb-12">
+                        Quantum-inspired algorithms solving multi-objective placement problems for the data centers of
+                        tomorrow.
+                    </p>
 
-                <a href="#solutions"
-                    class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 h-12 text-xs font-bold tracking-widest uppercase hover:bg-white/20 transition-colors group">
-                    LEARN MORE
-                    <svg class="w-4 h-4 ml-3 opacity-70 group-hover:translate-x-1 transition-transform" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
-                        </path>
-                    </svg>
-                </a>
+                    <a href="#solutions"
+                        class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 h-12 text-xs font-bold tracking-widest uppercase hover:bg-white/20 transition-colors group">
+                        LEARN MORE
+                        <svg class="w-4 h-4 ml-3 opacity-70 group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -1120,34 +1135,51 @@
             }
         }
 
-        // Parallax Logic for Buffer Section
-        window.addEventListener('scroll', function() {
+        // Parallax Logic for Buffer Section (Sharplink-inspired multi-speed layers)
+        (function() {
             const bufferSection = document.getElementById('buffer-section');
             const parallaxBg = document.getElementById('parallax-bg');
             const parallaxText = document.getElementById('parallax-text');
             const parallaxAssets = document.getElementById('parallax-assets');
-            
-            if(!bufferSection || !parallaxBg) return;
+            if (!bufferSection || !parallaxBg) return;
 
-            const rect = bufferSection.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            
-            // Only animate if section is in viewport
-            if (rect.top <= windowHeight && rect.bottom >= 0) {
-                // Calculate progress from 0 (just entered bottom) to 1 (just left top)
-                const scrollProgress = 1 - ((rect.bottom) / (windowHeight + rect.height));
-                
-                // Background moves slightly slower than scroll (parallax down)
-                // Range: 0 to 15% of its own height to compensate for the -15% top
-                parallaxBg.style.transform = `translateY(${scrollProgress * 10}%)`;
-                
-                // Assets move faster (parallax up)
-                parallaxAssets.style.transform = `translateY(${-(scrollProgress * 15)}%)`;
-                
-                // Text moves at a tiny offset for a subtle float effect
-                parallaxText.style.transform = `translateY(${-(scrollProgress * 5)}%)`;
+            // Speed multipliers — each layer moves at a different rate
+            const BG_SPEED = 0.08;     // Background: slowest (barely drifts)
+            const ASSETS_SPEED = 0.25;  // Glowing orbs: fastest (creates depth)
+            const TEXT_SPEED = 0.12;    // Text: medium (readable but alive)
+
+            let ticking = false;
+
+            function updateParallax() {
+                const rect = bufferSection.getBoundingClientRect();
+                const wh = window.innerHeight;
+
+                if (rect.top <= wh && rect.bottom >= 0) {
+                    // Normalized scroll progress through the section: 0 → 1
+                    const progress = (wh - rect.top) / (wh + rect.height);
+
+                    // Background drifts down slowly (compensates for the -20% top offset)
+                    parallaxBg.style.transform = 'translate3d(0,' + (progress * BG_SPEED * rect.height) + 'px,0)';
+
+                    // Assets float upward faster — creates foreground depth separation
+                    parallaxAssets.style.transform = 'translate3d(0,' + (-(progress * ASSETS_SPEED * rect.height)) + 'px,0)';
+
+                    // Text drifts up subtly — alive but still readable
+                    parallaxText.style.transform = 'translate3d(0,' + (-(progress * TEXT_SPEED * rect.height)) + 'px,0)';
+                }
+                ticking = false;
             }
-        }, { passive: true });
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Initial call
+            updateParallax();
+        })();
     </script>
 </body>
 
