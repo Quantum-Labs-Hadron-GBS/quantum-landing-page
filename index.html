@@ -327,7 +327,7 @@
                     class="absolute inset-0 bg-gradient-to-t from-brand-orange/90 via-brand-orange/20 to-transparent opacity-0">
                 </div>
 
-                <video id="hero-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                <video id="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover">
                     <source
                         src="https://res.cloudinary.com/ax6dtcht/video/upload/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4"
                         type="video/mp4">
@@ -1122,8 +1122,17 @@
 
             const heroVideo = document.getElementById('hero-video');
             if (heroVideo) {
-                // Force play to bypass strict browser autoplay policies on deployed environments
-                heroVideo.play().catch(e => console.warn('Hero video autoplay blocked:', e));
+                // Force play aggressively to bypass strict browser autoplay policies
+                const attemptPlay = () => {
+                    let playPromise = heroVideo.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(e => {
+                            console.warn('Hero video autoplay blocked, retrying in 1s...', e);
+                            setTimeout(attemptPlay, 1000);
+                        });
+                    }
+                };
+                attemptPlay();
             }
             const heroContent = document.getElementById('hero-content');
             const graphContent = document.getElementById('graph-content');
