@@ -327,7 +327,7 @@
                     class="absolute inset-0 bg-gradient-to-t from-brand-orange/90 via-brand-orange/20 to-transparent opacity-0">
                 </div>
 
-                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                <video id="hero-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
                     <source
                         src="https://res.cloudinary.com/ax6dtcht/video/upload/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4"
                         type="video/mp4">
@@ -524,8 +524,7 @@
     <!-- =====================================================
          TRANSITION SECTION: The Observers
          ===================================================== -->
-    <div id="transition-section" class="relative z-30 w-full overflow-hidden"
-        style="background: linear-gradient(180deg, #ffffff 0%, #ffffff 25%, #fdfbf7 35%, #f4dec1 65%, #d9943d 100%);">
+    <div id="transition-section" class="relative z-50 w-full overflow-hidden rounded-b-[2.5rem] md:rounded-b-[4rem] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
         <!-- Text (parallax: moves faster than scroll) -->
         <div id="observers-text" class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center" style="will-change: transform;">
             <h2 class="text-5xl md:text-7xl font-medium tracking-tight text-brand-dark mb-6 leading-tight">
@@ -549,200 +548,152 @@
                 style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply; will-change: transform;">
                 <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787909936/ChatGPT_Image_Aug_27_2026_07_22_36_PM_1_ep9mqo.png"
                     alt="People looking up" class="w-full h-full object-cover object-bottom">
-
-            </div>
-
-        </div>
-    </div>
-
-    <!-- =====================================================
-         BUFFER SECTION: Smooth Long Transition Spacer
-         ===================================================== -->
-    <div id="buffer-section" class="relative z-30 w-full overflow-hidden" style="
-        min-height: 100vh;
-        background: 
-            radial-gradient(ellipse 100% 55% at 50% 100%, #0a0a0a 0%, #0a0a0a 20%, transparent 100%),
-            linear-gradient(180deg,
-                #d9943d 0%,
-                #b87a2e 15%,
-                #8a5a1e 30%,
-                #5c3d14 45%,
-                #3a250d 58%,
-                #1f1408 70%,
-                #120c05 82%,
-                #0a0a0a 95%);
-    ">
-        
-        <!-- Layer 2: Floating Ambient Glow Assets (Moves Fastest — foreground depth) -->
-        <div id="parallax-assets" class="absolute inset-0 w-full h-full pointer-events-none" style="will-change: transform;">
-            <div class="absolute top-[15%] left-[2%] w-[45vw] h-[45vw] rounded-full bg-brand-orange/8 blur-[140px]"></div>
-            <div class="absolute bottom-[10%] right-[0%] w-[55vw] h-[55vw] rounded-full bg-brand-orange/6 blur-[180px]"></div>
-            <div class="absolute top-[50%] left-[40%] w-[30vw] h-[30vw] rounded-full bg-amber-600/4 blur-[100px]"></div>
-        </div>
-
-        <!-- Layer 3: Text Content (Moves at Medium Speed — readable drift) -->
-        <div id="parallax-text" class="relative z-10 pt-16 pb-32" style="will-change: transform;">
-            <div class="max-w-[1400px] mx-auto w-full px-8 md:px-12">
-                <div class="max-w-4xl">
-                    <p class="text-white/60 text-xs font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
-                        <span class="w-1.5 h-1.5 bg-brand-orange"></span>
-                        The AI Infrastructure Imperative
-                    </p>
-                    <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.1] text-white mb-8"
-                        style="font-family: 'Archivo', sans-serif;">
-                        Operating above existing schedulers to maximize fleet-wide utilization, minimize fragmentation, and
-                        prepare your enterprise for Post-Quantum Cryptography.
-                    </h2>
-                    <p class="text-xl md:text-2xl text-white/50 font-light tracking-wide max-w-3xl leading-relaxed mb-12">
-                        Quantum-inspired algorithms solving multi-objective placement problems for the data centers of
-                        tomorrow.
-                    </p>
-
-                    <a href="#solutions"
-                        class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 h-12 text-xs font-bold tracking-widest uppercase hover:bg-white/20 transition-colors group">
-                        LEARN MORE
-                        <svg class="w-4 h-4 ml-3 opacity-70 group-hover:translate-x-1 transition-transform" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- =====================================================
-         STICKY 3D QUANTUM COMPUTER SECTION
-         Left: text slides scroll | Right: 3D model fixed + rotates
-         ===================================================== -->
-    <div id="quantum-section" class="relative z-40 w-full flex flex-col md:flex-row items-stretch" style="background: #0a0a0a;">
-
-        <!-- Left: scrolling text panel -->
-        <div class="w-full md:w-1/2 flex flex-col pl-16 md:pl-24 pr-16 pt-[30vh] pb-[60vh] gap-0 relative z-10">
-
-            <!-- Slide 1 -->
-            <div class="qs-slide w-full border-b border-white/20 py-24 flex flex-col gap-8">
-                <p class="text-white/50 text-xs font-bold tracking-[0.2em] uppercase">PROPOSITIONS</p>
-                <div class="grid grid-cols-1 xl:grid-cols-[1fr_1.2fr] gap-8 xl:gap-16 items-start">
-                    <h2 class="text-4xl md:text-[2.75rem] text-white font-medium leading-tight tracking-tight" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                        The Stack for<br>Quantum Scale
-                    </h2>
-                    <p class="text-[17px] text-white/60 leading-relaxed font-normal xl:pt-2" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                        Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter,
-                        more productive path to scale.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="qs-slide w-full border-b border-white/20 py-24 flex flex-col gap-8">
-                <p class="text-white/50 text-xs font-bold tracking-[0.2em] uppercase">LEADERSHIP</p>
-                <div class="grid grid-cols-1 xl:grid-cols-[1fr_1.2fr] gap-8 xl:gap-16 items-start">
-                    <h2 class="text-4xl md:text-[2.75rem] text-white font-medium leading-tight tracking-tight" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                        Built by<br>Proven Pioneers
-                    </h2>
-                    <p class="text-[17px] text-white/60 leading-relaxed font-normal xl:pt-2" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                        Hadron is led by quantum computing researchers and enterprise infrastructure veterans,
-                        combining deep science with institutional-grade execution.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="qs-slide w-full border-b border-white/20 py-24 flex flex-col gap-8">
-                <p class="text-white/50 text-xs font-bold tracking-[0.2em] uppercase">OPERATIONS</p>
-                <div class="grid grid-cols-1 xl:grid-cols-[1fr_1.2fr] gap-8 xl:gap-16 items-start">
-                    <h2 class="text-4xl md:text-[2.75rem] text-white font-medium leading-tight tracking-tight" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                        Compute as an<br>Operating System
-                    </h2>
-                    <p class="text-[17px] text-white/60 leading-relaxed font-normal xl:pt-2" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                        We run optimization, scheduling, and resource allocation in-house — allowing the platform to
-                        be built with speed, precision, and total control.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="qs-slide w-full border-b border-white/20 py-24 flex flex-col gap-8">
-                <p class="text-white/50 text-xs font-bold tracking-[0.2em] uppercase">TRANSPARENCY</p>
-                <div class="grid grid-cols-1 xl:grid-cols-[1fr_1.2fr] gap-8 xl:gap-16 items-start">
-                    <h2 class="text-4xl md:text-[2.75rem] text-white font-medium leading-tight tracking-tight" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                        Committed to<br>Real-time Clarity
-                    </h2>
-                    <p class="text-[17px] text-white/60 leading-relaxed font-normal xl:pt-2" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                        Full visibility into compute deployment, efficiency generation, and resource management —
-                        trackable day by day.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Right: Sticky Sketchfab quantum computer (Viewer API) -->
-        <div class="w-full md:w-1/2 relative z-0 hidden md:block">
-            <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden" style="-webkit-mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%); mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%);">
-                <!-- Scale iframe up to push Sketchfab UI off-screen, pointer-events-none so it doesn't trap scroll -->
-                <iframe id="sketchfab-iframe" title="Quantum Computer" frameborder="0"
-                    allow="autoplay; fullscreen; xr-spatial-tracking"
-                    src="https://sketchfab.com/models/82006aac41744663a161ab844264ac2a/embed?autostart=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&dnt=1&autospin=0&preload=1&ui_help=0"
-                    style="position:absolute; top:-5%; left:-10%; width:120%; height:120%; border:none; pointer-events:none; clip-path: inset(0px 0px 15% 0px);"></iframe>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- =====================================================
-         SCRUB TEXT SECTION
-         ===================================================== -->
-    <div id="scrub-section" class="relative z-40 w-full" style="height: 300vh; background: linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 15%, #d9943d 60%, #f4dec1 85%, #ffffff 100%);">
-        <div class="sticky top-0 h-screen w-full flex items-center justify-start px-8 md:px-24 overflow-hidden">
-            <div id="scrub-content" class="max-w-[1400px] w-full text-left">
                 
-                <!-- Label Row -->
-                <div class="flex justify-between items-center w-full mb-10 transition-opacity duration-300" id="scrub-label" style="opacity: 0.5;">
-                    <div class="flex items-center gap-4">
-                        <div class="w-2 h-2" style="background-color: #d9943d;"></div>
-                        <p class="text-white text-xs font-bold tracking-[0.15em] uppercase m-0 leading-none mt-1">
-                            The Opportunity of a Generation
-                        </p>
+                <!-- White fade overlay at the bottom to blend people into the container edge -->
+                <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white via-white/80 to-transparent z-20 pointer-events-none"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- =====================================================
+         STICKY HORIZONTAL ASCII CAROUSEL
+         ===================================================== -->
+    <div id="quantum-section" class="relative z-40 w-full" style="height: 400vh; background: #0a0a0a;">
+        <!-- Background Grid -->
+        <div class="absolute inset-0 w-full h-full pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 100px 100px;"></div>
+        
+        <div class="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
+            <!-- Section Header -->
+            <div class="w-full px-8 md:px-24 pt-40 pb-12 flex-shrink-0 z-10">
+                <h2 class="text-5xl md:text-6xl text-white/50 font-medium tracking-tight" style="font-family: 'Inter', system-ui, sans-serif;">
+                    The Architecture for <strong class="text-white font-semibold">Quantum Scale.</strong>
+                </h2>
+            </div>
+
+            <!-- Horizontal Track -->
+            <div id="quantum-track" class="flex items-center w-[max-content] h-full px-8 md:px-24 pr-[15vw] md:pr-[25vw] gap-8 md:gap-16 pb-24 will-change-transform">
+                
+                <!-- Card 1 -->
+                <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
+                    <div class="flex flex-col justify-center">
+                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-8">PROPOSITIONS</p>
+                        <h3 class="text-4xl md:text-5xl lg:text-6xl text-brand-dark font-medium leading-tight tracking-tight mb-8" style="font-family: 'Inter', system-ui, sans-serif;">The Stack for Quantum Scale</h3>
+                        <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter, more productive path to scale.</p>
                     </div>
-                    <a href="#opportunity" class="hidden md:flex items-center gap-3 px-5 py-3 border border-white/20 hover:bg-white/10 transition-colors text-white text-[11px] font-bold tracking-[0.15em] uppercase">
-                        Learn More
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
+                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.5rem] p-6 shadow-sm border border-black/[0.03]">
+                        <pre class="text-[0.6rem] leading-[0.7rem] font-mono text-brand-dark/30 tracking-widest text-center">
+          .-----------------.
+         /                   \
+        /_____________________\
+        |  ___  ___  ___  ___ |
+        | |_|_| |_|_| |_|_| |_|
+        |_____________________|
+             |   |   |   |
+             |   |   |   |
+          .--|---|---|---|--.
+         /   |   |   |   |   \
+        /_____________________\
+        |  _   _   _   _   _  |
+        | |_| |_| |_| |_| |_| |
+        |_____________________|
+               |       |
+               |       |
+            .--|-------|--.
+           /   |       |   \
+          /_________________\
+          |   _         _   |
+          |  |_|       |_|  |
+          |_________________|
+                   |
+                  _|_
+                        </pre>
+                    </div>
                 </div>
 
-                <!-- Text -->
-                <h2 id="scrub-text" class="text-[2.25rem] md:text-[3rem] lg:text-[3.25rem] font-medium leading-[1.25] tracking-tight text-white flex flex-wrap justify-start gap-x-[0.25em] gap-y-[0.1em] max-w-[900px]" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-                    <span class="scrub-word" style="opacity: 0.15">Quantum-assisted</span>
-                    <span class="scrub-word" style="opacity: 0.15">AI</span>
-                    <span class="scrub-word" style="opacity: 0.15">infrastructure</span>
-                    <span class="scrub-word" style="opacity: 0.15">makes</span>
-                    <span class="scrub-word" style="opacity: 0.15">it</span>
-                    <span class="scrub-word" style="opacity: 0.15">the</span>
-                    <span class="scrub-word" style="opacity: 0.15">most</span>
-                    <span class="scrub-word" style="opacity: 0.15">compelling</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">compute</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">opportunity</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">of</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">our</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">lifetime.</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">The</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">platform</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">is</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">the</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">world's</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">future</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">workload</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">scheduler,</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">and</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">this</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">is</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">just</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">the</span>
-                    <span class="scrub-word" style="opacity: 0.15 text-white/50">beginning.</span>
-                </h2>
+                <!-- Card 2 -->
+                <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
+                    <div class="flex flex-col justify-center">
+                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-8">LEADERSHIP</p>
+                        <h3 class="text-4xl md:text-5xl lg:text-6xl text-brand-dark font-medium leading-tight tracking-tight mb-8" style="font-family: 'Inter', system-ui, sans-serif;">Built by Proven Pioneers</h3>
+                        <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">Hadron is led by quantum computing researchers and enterprise infrastructure veterans, combining deep science with institutional-grade execution.</p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.5rem] p-6 shadow-sm border border-black/[0.03]">
+                        <pre class="text-[0.6rem] leading-[0.7rem] font-mono text-brand-dark/30 tracking-widest text-center">
+     _________________________
+    |  _____________________  |
+    | |  .----------------. | |
+    | |  | [][][][][][][] | | |
+    | |  |                | | |
+    | |  '----------------' | |
+    | |  .----------------. | |
+    | |  | [][][][][][][] | | |
+    | |  |                | | |
+    | |  '----------------' | |
+    | |  .----------------. | |
+    | |  | [][][][][][][] | | |
+    | |  |                | | |
+    | |  '----------------' | |
+    | |_____________________| |
+    |_________________________|
+                        </pre>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
+                    <div class="flex flex-col justify-center">
+                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-8">OPERATIONS</p>
+                        <h3 class="text-4xl md:text-5xl lg:text-6xl text-brand-dark font-medium leading-tight tracking-tight mb-8" style="font-family: 'Inter', system-ui, sans-serif;">Compute as an Operating System</h3>
+                        <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">We run optimization, scheduling, and resource allocation in-house — allowing the platform to be built with speed, precision, and total control.</p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.5rem] p-6 shadow-sm border border-black/[0.03]">
+                        <pre class="text-[0.6rem] leading-[0.7rem] font-mono text-brand-dark/30 tracking-widest text-center">
+         \           /
+          \         /
+           \       /
+      .-----\-----/-----.
+      |      \   /      |
+      |   .---+-+---.   |
+ -----|   |         |   |-----
+      |   |  Node   |   |
+ -----|   |    A    |   |-----
+      |   '---+-+---'   |
+      |      /   \      |
+      '-----/-----\-----'
+           /       \
+          /         \
+         /           \
+                        </pre>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
+                    <div class="flex flex-col justify-center">
+                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-8">TRANSPARENCY</p>
+                        <h3 class="text-4xl md:text-5xl lg:text-6xl text-brand-dark font-medium leading-tight tracking-tight mb-8" style="font-family: 'Inter', system-ui, sans-serif;">Committed to Real-time Clarity</h3>
+                        <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">Full visibility into compute deployment, efficiency generation, and resource management — trackable day by day.</p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.5rem] p-6 shadow-sm border border-black/[0.03] overflow-hidden">
+                        <pre class="text-[0.7rem] leading-[0.8rem] font-mono text-brand-dark/20 tracking-widest text-center">
+ +--+--+--+--+--+--+--+--+--+
+ |  |  |  |  |  |  |  |  |  |
+ +--+--+--+--+--+--+--+--+--+
+ |  |##|  |##|  |##|  |##|  |
+ +--+--+--+--+--+--+--+--+--+
+ |  |  |  |  |  |  |  |  |  |
+ +--+--+--+--+--+--+--+--+--+
+ |  |##|  |##|  |##|  |##|  |
+ +--+--+--+--+--+--+--+--+--+
+ |  |  |  |  |  |  |  |  |  |
+ +--+--+--+--+--+--+--+--+--+
+                        </pre>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -750,7 +701,7 @@
     <!-- =====================================================
          BLOG SECTION
          ===================================================== -->
-    <section id="blog-section" class="relative z-40 w-full py-32 bg-[#f3f5f8] bg-grid-pattern">
+    <section id="blog-section" class="relative z-50 w-full py-32 bg-[#f3f5f8] bg-grid-pattern rounded-t-[2.5rem] md:rounded-t-[4rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] -mt-12 overflow-hidden">
 
         <div class="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-24">
             
@@ -856,7 +807,7 @@
     <!-- =====================================================
          FAQ SECTION
          ===================================================== -->
-    <section class="relative z-40 w-full bg-[#f3f5f8] bg-grid-pattern py-24 sm:py-32" id="faq-section">
+    <section class="relative z-50 w-full bg-[#f3f5f8] bg-grid-pattern py-24 sm:py-32 rounded-b-[2.5rem] md:rounded-b-[4rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden" id="faq-section">
 
         <div class="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-24 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start">
             
@@ -1169,7 +1120,11 @@
             const heroCard = document.getElementById('hero-card');
             const placeholder = document.getElementById('middle-col-placeholder');
 
-            const heroVideo = heroCard.querySelector('video');
+            const heroVideo = document.getElementById('hero-video');
+            if (heroVideo) {
+                // Force play to bypass strict browser autoplay policies on deployed environments
+                heroVideo.play().catch(e => console.warn('Hero video autoplay blocked:', e));
+            }
             const heroContent = document.getElementById('hero-content');
             const graphContent = document.getElementById('graph-content');
             const heroGlow = document.getElementById('hero-glow');
@@ -1439,10 +1394,7 @@
 
         // Parallax Logic — unified handler for Transition + Buffer sections
         (function() {
-            // Buffer section layers
-            const bufferSection = document.getElementById('buffer-section');
-            const parallaxText = document.getElementById('parallax-text');
-            const parallaxAssets = document.getElementById('parallax-assets');
+
 
             // Transition section layers
             const transSection = document.getElementById('transition-section');
@@ -1450,15 +1402,15 @@
             const obsQuantum = document.getElementById('observers-quantum');
             const obsPeople = document.getElementById('observers-people');
 
-            // Scrub section layers
-            const scrubSection = document.getElementById('scrub-section');
-            const scrubWords = document.querySelectorAll('.scrub-word');
-            const scrubLabel = document.getElementById('scrub-label');
-            const scrubText = document.getElementById('scrub-text');
+
 
             // Additional sections for parallax
             const blogSection = document.getElementById('blog-section');
             const faqSection = document.getElementById('faq-section');
+
+            // Quantum Horizontal Carousel
+            const qSection = document.getElementById('quantum-section');
+            const qTrack = document.getElementById('quantum-track');
 
             let targetScroll = window.scrollY;
             let currentScroll = window.scrollY;
@@ -1503,65 +1455,9 @@
                     }
                 }
 
-                // --- Buffer Section: Content parallax ---
-                if (bufferSection) {
-                    const bRect = bufferSection.getBoundingClientRect();
-                    const bSmoothTop = bRect.top + scrollDiff;
 
-                    if (bSmoothTop <= wh && (bSmoothTop + bRect.height) >= 0) {
-                        const bProgress = (wh - bSmoothTop) / (wh + bRect.height);
-                        
-                        // Text drifts up smoothly
-                        if (parallaxText) {
-                            parallaxText.style.transform = 'translate3d(0,' + (-(bProgress * 0.25 * bRect.height)) + 'px,0)';
-                        }
 
-                        // Ambient orbs move at completely different individual speeds for "flow"
-                        if (parallaxAssets) {
-                            const assets = parallaxAssets.children;
-                            if (assets.length > 0) assets[0].style.transform = 'translate3d(0,' + (-(bProgress * 0.70 * bRect.height)) + 'px,0)';
-                            if (assets.length > 1) assets[1].style.transform = 'translate3d(0,' + (-(bProgress * 0.35 * bRect.height)) + 'px,0)';
-                            if (assets.length > 2) assets[2].style.transform = 'translate3d(0,' + (-(bProgress * 0.55 * bRect.height)) + 'px,0)';
-                        }
-                    }
-                }
 
-                // --- Scrub Section: Background transition & text reveal ---
-                if (scrubSection && scrubWords.length) {
-                    const sRect = scrubSection.getBoundingClientRect();
-                    const sSmoothTop = sRect.top + scrollDiff;
-                    // Progress from 0 (top of section hits top of screen) to 1 (bottom hits bottom)
-                    const sProgress = -sSmoothTop / (sRect.height - wh);
-                    
-                    if (sProgress > -0.2 && sProgress < 1.2) {
-                        const p = Math.max(0, Math.min(1, sProgress));
-                        
-                        // Text scrub logic (0.1 to 0.7)
-                        const scrubP = Math.max(0, Math.min(1, (p - 0.1) / 0.6));
-                        const totalWords = scrubWords.length;
-                        
-                        scrubWords.forEach((word, idx) => {
-                            const wordStart = idx / totalWords;
-                            const wordEnd = (idx + 1.5) / totalWords; // overlapping fade
-                            
-                            let opacity = 0.15;
-                            if (scrubP > wordStart) {
-                                opacity = 0.15 + 0.85 * Math.min(1, (scrubP - wordStart) / (wordEnd - wordStart));
-                            }
-                            word.style.opacity = opacity;
-                        });
-
-                        // Final fade out of text so it doesn't get lost on the white background at the very end
-                        if (p > 0.75) {
-                            const fadeRatio = 1 - ((p - 0.75) / 0.25); // 1 to 0
-                            scrubText.style.opacity = fadeRatio;
-                            scrubLabel.style.opacity = fadeRatio * 0.5;
-                        } else {
-                            scrubText.style.opacity = 1;
-                            scrubLabel.style.opacity = 0.5;
-                        }
-                    }
-                }
 
                 // --- Blog Section: Content parallax ---
                 if (blogSection) {
@@ -1594,6 +1490,28 @@
                         // Centered parallax with different speeds
                         if (faqHeading) faqHeading.style.transform = 'translate3d(0,' + ((0.5 - fProgress) * 0.12 * fRect.height) + 'px,0)';
                         if (faqAccordion) faqAccordion.style.transform = 'translate3d(0,' + ((0.5 - fProgress) * 0.28 * fRect.height) + 'px,0)';
+                    }
+                }
+
+                // --- Quantum Section: Horizontal Carousel ---
+                if (qSection && qTrack) {
+                    const qRect = qSection.getBoundingClientRect();
+                    const qScrollDist = qRect.height - wh;
+                    
+                    if (qScrollDist > 0) {
+                        const qProgress = Math.max(0, Math.min(1, -qRect.top / qScrollDist));
+                        
+                        // Calculate how far the track needs to slide to the left
+                        // Max translation is (track width - viewport width)
+                        // However, flex items might overflow the container, so scrollWidth is better, 
+                        // but scrollWidth might not be available accurately until render.
+                        // We can just use the scrollWidth directly inside the loop.
+                        const maxTranslate = qTrack.scrollWidth - wh;
+                        
+                        if (maxTranslate > 0) {
+                            // Smoothly translate the track horizontally
+                            qTrack.style.transform = `translate3d(-${qProgress * maxTranslate}px, 0, 0)`;
+                        }
                     }
                 }
 
