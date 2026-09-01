@@ -349,10 +349,16 @@
                 class="absolute inset-0 z-10 bg-black shadow-2xl overflow-hidden pointer-events-none"
                 style="clip-path: inset(0px 0px 0px 0px);">
 
-                <video id="hero-video" autoplay loop muted playsinline webkit-playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
-                    <source
-                        src="https://res.cloudinary.com/ax6dtcht/video/upload/q_auto,vc_h264/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4"
-                        type="video/mp4">
+                <video
+                    id="hero-video"
+                    src="https://res.cloudinary.com/ax6dtcht/video/upload/q_auto,vc_h264/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    webkit-playsinline
+                    preload="auto"
+                    class="absolute inset-0 w-full h-full object-cover pointer-events-none">
                 </video>
 
                 <!-- Original Hero Content (Fades out, gets cropped) -->
@@ -1164,17 +1170,33 @@
             const heroVideo = document.getElementById('hero-video');
             if (heroVideo) {
                 heroVideo.muted = true;
-                heroVideo.setAttribute('muted', '');
-                heroVideo.setAttribute('playsinline', '');
+                heroVideo.playsInline = true;
 
-                heroVideo.addEventListener('canplay', () => {
-                    heroVideo.play().catch(err => {
-                        console.warn('Hero video could not autoplay:', err);
+                heroVideo.addEventListener('loadstart', () => {
+                    console.log('VIDEO: loadstart');
+                });
+
+                heroVideo.addEventListener('loadedmetadata', () => {
+                    console.log('VIDEO: metadata loaded', {
+                        duration: heroVideo.duration,
+                        currentSrc: heroVideo.currentSrc
                     });
                 });
 
+                heroVideo.addEventListener('canplay', () => {
+                    console.log('VIDEO: canplay');
+
+                    heroVideo.play()
+                        .then(() => {
+                            console.log('VIDEO: PLAYING');
+                        })
+                        .catch(err => {
+                            console.error('VIDEO: PLAY FAILED', err);
+                        });
+                });
+
                 heroVideo.addEventListener('error', () => {
-                    console.error('Hero video error:', heroVideo.error);
+                    console.error('VIDEO ERROR:', heroVideo.error);
                 });
 
                 heroVideo.load();
