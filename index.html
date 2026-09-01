@@ -517,7 +517,7 @@
          TRANSITION SECTION: The Observers
          ===================================================== -->
     <div id="transition-section" class="relative z-30 w-full overflow-hidden"
-        style="background: linear-gradient(180deg, #edf2f7 0%, #fdfbf7 15%, #f4dec1 60%, #d9943d 100%);">
+        style="background: linear-gradient(180deg, #ffffff 0%, #ffffff 25%, #fdfbf7 35%, #f4dec1 65%, #d9943d 100%);">
         <!-- Text (parallax: moves faster than scroll) -->
         <div id="observers-text" class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center" style="will-change: transform;">
             <h2 class="text-5xl md:text-7xl font-medium tracking-tight text-brand-dark mb-6 leading-tight">
@@ -1302,7 +1302,7 @@
                 }
 
                 // Lerp for smooth water flow feel
-                currentScroll += (targetScroll - currentScroll) * 0.07;
+                currentScroll += (targetScroll - currentScroll) * 0.15;
                 const scrollDiff = targetScroll - currentScroll;
                 
                 const wh = window.innerHeight;
