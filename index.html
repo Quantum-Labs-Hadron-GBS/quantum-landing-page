@@ -1697,18 +1697,21 @@
                     const dateStr = new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
                     const displayClass = index === 0 ? 'flex' : index === 1 ? 'hidden md:flex' : 'hidden lg:flex';
                     const typeLabel = (doc.type_id || 'BLOG').replace(/_/g, ' ');
-                    const hasImage = !!doc.cover_image;
+                    
+                    // Apply the specific quantum computer aesthetic filters based on card index to match the requested design
+                    const qImg = 'https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png';
+                    let imgClasses = 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ';
+                    if (index === 0) imgClasses += 'opacity-90 mix-blend-screen';
+                    else if (index === 1) imgClasses += 'opacity-60 mix-blend-screen filter hue-rotate-180';
+                    else imgClasses += 'opacity-60 mix-blend-screen grayscale';
                     
                     return `
                         <a href="/article.html?slug=${doc.slug}" class="group ${displayClass} flex-col gap-6 pt-0 has-pin has-pin--tr bg-white border border-black/5 p-4 shadow-sm hover:shadow-md transition-shadow">
                             <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
-                                ${hasImage 
-                                    ? `<img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90">`
-                                    : `<div class="w-full h-full bg-gradient-to-br from-[#d9943d] to-[#121212] flex items-center justify-center text-white font-bold text-3xl group-hover:scale-105 transition-transform duration-700">HQ</div>`
-                                }
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                                <img src="${qImg}" alt="${doc.title}" class="${imgClasses}">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                                 <div class="absolute bottom-6 left-6 right-6 text-white z-10">
-                                    <p class="text-[1.35rem] font-medium tracking-tight leading-[1.2] line-clamp-3" style="font-family: 'Inter', system-ui, sans-serif;">${doc.title}</p>
+                                    <p class="text-[1.35rem] font-medium tracking-tight leading-[1.2] line-clamp-2" style="font-family: 'Inter', system-ui, sans-serif;">${doc.title}</p>
                                 </div>
                             </div>
                             
