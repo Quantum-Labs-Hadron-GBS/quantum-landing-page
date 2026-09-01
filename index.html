@@ -1605,18 +1605,25 @@
                     if (tSmoothTop <= wh && (tSmoothTop + tRect.height) >= 0) {
                         const tProgress = (wh - tSmoothTop) / (wh + tRect.height);
 
-                        // Text scrolls up faster (lifts off)
-                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.40 * tRect.height)) + 'px,0)';
+                        // We want all elements to be exactly in their default CSS positions (translateY = 0)
+                        // when the section is perfectly centered on screen.
+                        // Assuming section height ~ viewport height, this happens at tProgress = 0.5.
+                        const centerProgress = 0.5 - tProgress; // +0.5 at entry, 0 at center, -0.5 at exit
 
-                        // Quantum computer starts lower and drifts up rapidly into place
+                        // Text starts much lower (+30%) and scrolls up
+                        const textY = centerProgress * 0.60 * tRect.height;
+                        obsText.style.transform = `translate3d(0, ${textY}px, 0)`;
+
+                        // Quantum computer starts 25% lower (+25%) and drifts up
                         if (obsQuantum) {
-                            const quantumY = (tRect.height * 0.35) - (tProgress * tRect.height * 0.85);
+                            const quantumY = centerProgress * 0.50 * tRect.height;
                             obsQuantum.style.transform = `translateX(-50%) translate3d(0, ${quantumY}px, 0)`;
                         }
 
-                        // People drift up even slower (closest to camera)
+                        // People layer starts slightly lower (+10%)
                         if (obsPeople) {
-                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.10 * tRect.height)) + 'px,0)';
+                            const peopleY = centerProgress * 0.20 * tRect.height;
+                            obsPeople.style.transform = `translate3d(0, ${peopleY}px, 0)`;
                         }
                     }
                 }
