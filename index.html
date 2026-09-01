@@ -71,39 +71,200 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <style>
+        /* ============================================================
+           SHARPLINK DESIGN SYSTEM — exact tokens
+           ============================================================ */
+
+        :root {
+            /* Layout */
+            --layout-columns-count: 4;
+            --layout-columns-gap: 16px;
+            --layout-rows-gap: 8px;
+            --layout-margin: 16px;
+            --layout-width: calc(100vw - var(--layout-margin) * 2);
+            --layout-column-width: calc((var(--layout-width) - ((var(--layout-columns-count) - 1) * var(--layout-columns-gap))) / var(--layout-columns-count));
+            /* Brand */
+            --brand-orange: #ff9f2b;
+            --brand-dark: #0a0a0a;
+            --off-white: #fdfbf7;
+        }
+
+        @media (min-width: 800px) {
+            :root {
+                --layout-columns-count: 12;
+                --layout-columns-gap: 28px;
+                --layout-margin: 28px;
+            }
+        }
+
+        @media (min-width: 1920px) {
+            :root {
+                --layout-width: calc(1920px - var(--layout-margin) * 2);
+            }
+        }
+
+        /* Sharplink exact gradient background */
         body {
-            background-color: #f8fafc;
+            background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5);
+            background-attachment: fixed;
             color: #0a0a0a;
             overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Sharplink Pin Dot System — 6×6px squares at element corners */
+        .has-pin {
+            position: relative;
+        }
+        .has-pin::before {
+            background-color: var(--brand-orange);
+            content: "";
+            height: 6px;
+            pointer-events: none;
+            position: absolute;
+            width: 6px;
+            z-index: 2;
+            left: 0;
+            top: 0;
+        }
+        .has-pin--tr::after {
+            background-color: var(--brand-orange);
+            content: "";
+            height: 6px;
+            pointer-events: none;
+            position: absolute;
+            width: 6px;
+            z-index: 2;
+            right: 0;
+            top: 0;
+        }
+        .has-pin--br::after {
+            background-color: var(--brand-orange);
+            content: "";
+            height: 6px;
+            pointer-events: none;
+            position: absolute;
+            width: 6px;
+            z-index: 2;
+            right: 0;
+            bottom: 0;
+        }
+        /* Dark variant — off-white pins for dark backgrounds */
+        .has-pin--dark::before,
+        .has-pin--dark::after {
+            background-color: var(--off-white);
+        }
+
+        /* Sharplink label style (Archivo Narrow, uppercase) */
+        .sl-label {
+            font-family: 'Archivo Narrow', 'Arial', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1.04px;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        /* Sharplink Button Style */
+        .sl-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Archivo Narrow', 'Arial', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.04px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .sl-btn--light {
+            background-color: var(--brand-dark);
+            color: white;
+            height: 48px;
+            padding: 0 32px;
+        }
+        .sl-btn--light:hover {
+            background-color: var(--brand-orange);
+            color: white;
+        }
+
+        /* Sharplink gradient bg for sticky hero region */
+        .gradient-bg-light {
+            background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5);
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
         }
 
         .bg-grid-pattern {
             background-image:
-                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-            background-size: 64px 64px;
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 56px 56px;
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Sharplink-style scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #b8ccd8; border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: #8aacbc; }
+
+        #hero-card { will-change: clip-path; }
+
+        /* Override Tailwind rounded on cards for sharp rectangles */
+        .sl-card {
+            border-radius: 0 !important;
+            border: 1px solid rgba(0,0,0,0.09);
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .sl-card:hover {
+            border-color: rgba(0,0,0,0.18);
+            background: rgba(255,255,255,0.96);
         }
 
-        ::-webkit-scrollbar-track {
+        /* Sharplink sharp CTA buttons */
+        .sl-btn {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 0;
+            font-family: 'Archivo Narrow', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.04px;
+            text-transform: uppercase;
+            transition: background 0.2s, color 0.2s;
+            cursor: pointer;
+        }
+        .sl-btn--light {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 0 28px;
+            height: 48px;
+        }
+        .sl-btn--light:hover { background: #222; }
+        .sl-btn--ghost {
             background: transparent;
+            color: #0a0a0a;
+            border: 1px solid rgba(0,0,0,0.2);
+            padding: 0 28px;
+            height: 48px;
         }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
+        .sl-btn--ghost:hover { background: rgba(0,0,0,0.04); }
+        .sl-btn--ghost-dark {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 0 28px;
+            height: 48px;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        #hero-card {
-            will-change: clip-path;
-        }
+        .sl-btn--ghost-dark:hover { background: rgba(255,255,255,0.08); }
     </style>
 </head>
 
@@ -113,38 +274,32 @@
     <div id="scroll-sequence" class="relative w-full" style="height: 300vh;">
 
         <!-- Sticky Wrapper -->
-        <div class="sticky top-0 h-screen w-full overflow-hidden bg-brand-light">
+        <div class="sticky top-0 h-screen w-full overflow-hidden" style="background: transparent;">
 
-            <!-- Navbar: fully transparent, only borders between links -->
-            <header id="main-header" class="absolute top-0 left-0 w-full z-50 flex justify-center"
+            <!-- Sharplink gradient background layer (shows through shrinking hero) -->
+            <div class="gradient-bg-light"></div>
+
+            <!-- Sharplink-style Navbar -->
+            <header id="main-header" class="absolute top-0 left-0 w-full z-50"
                 style="transition: none;">
-                <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
-                    <a href="/" class="flex items-center gap-2 py-3 md:py-4">
+                <div class="w-full max-w-[1920px] mx-auto flex items-stretch justify-between" style="height: 56px; padding-left: var(--layout-margin); border-bottom: 1px solid rgba(255,255,255,0.15);" id="navbar-inner">
+
+                    <!-- Logo -->
+                    <a href="/" class="flex items-center gap-2.5" style="transition: opacity 0.2s;">
                         <img id="header-logo" src="./favicon.svg" alt="Hadron"
-                            class="h-5 w-auto filter invert brightness-0" style="transition: filter 0.3s;" />
-                        <span id="header-text"
-                            class="text-lg md:text-xl font-bold tracking-tight text-white font-bank-gothic"
-                            style="transition: color 0.3s;">Quantum Labs</span>
+                            class="h-5 w-auto" style="filter: invert(1); transition: filter 0.3s;" />
+                        <span id="header-text" class="sl-label text-white" style="font-size: 13px; font-weight: 500; letter-spacing: 0.08em; transition: color 0.3s;">Quantum Labs</span>
                     </a>
-                    <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
-                        style="height: 44px;" id="header-nav">
-                        <a href="#about"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">ABOUT</a>
-                        <a href="#investors"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">INVESTORS</a>
-                        <a href="#solutions"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">OPPORTUNITY</a>
-                        <a href="#news"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">NEWS</a>
-                        <a href="#dashboard"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">ETH
-                            DASHBOARD</a>
-                        <a href="contact.html"
-                            class="nav-link flex items-center px-5 border-r border-white/20 hover:bg-white/20 transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
+
+                    <!-- Nav items -->
+                    <nav class="hidden md:flex items-stretch" id="header-nav" style="border-left: 1px solid rgba(255,255,255,0.15);">
+                        <a href="#about" class="nav-link sl-label flex items-center px-6 text-white hover:bg-white/10 transition-colors" style="border-right: 1px solid rgba(255,255,255,0.15); font-size: 11px;">About</a>
+                        <a href="#investors" class="nav-link sl-label flex items-center px-6 text-white hover:bg-white/10 transition-colors" style="border-right: 1px solid rgba(255,255,255,0.15); font-size: 11px;">Investors</a>
+                        <a href="#solutions" class="nav-link sl-label flex items-center px-6 text-white hover:bg-white/10 transition-colors" style="border-right: 1px solid rgba(255,255,255,0.15); font-size: 11px;">Opportunity</a>
+                        <a href="#news" class="nav-link sl-label flex items-center px-6 text-white hover:bg-white/10 transition-colors" style="border-right: 1px solid rgba(255,255,255,0.15); font-size: 11px;">News</a>
+                        <a href="#dashboard" class="nav-link sl-label flex items-center px-6 text-white hover:bg-white/10 transition-colors" style="border-right: 1px solid rgba(255,255,255,0.15); font-size: 11px;">Dashboard</a>
+                        <a href="contact.html" class="nav-link sl-label flex items-center px-6 bg-white/10 text-white hover:bg-white/20 transition-colors" style="font-size: 11px;">Contact
+                            <svg class="ml-2 w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
                     </nav>
                 </div>
@@ -264,7 +419,7 @@
 
                     <!-- Middle Column & Graph Text -->
                     <div id="middle-col-placeholder"
-                        class="relative w-full h-[700px] hidden lg:block rounded-3xl pointer-events-none">
+                        class="relative w-full h-[700px] hidden lg:block pointer-events-none">
                         <div id="graph-content"
                             class="absolute inset-0 opacity-0 flex flex-col p-10 pointer-events-auto">
                             <div class="flex justify-between items-start mb-8 text-white">
@@ -310,15 +465,13 @@
                     </div>
 
                     <!-- Right Column (Cards wrapper) -->
-                    <div id="right-col" class="relative w-full h-[700px] flex flex-col gap-6 pointer-events-auto mt-2">
+                    <div id="right-col" class="relative w-full h-[700px] flex flex-col gap-3 pointer-events-auto mt-2">
                         <!-- Card 1 -->
                         <div id="card-1"
-                            class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
-                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">
-                                ▪ 01</div>
-                            <h3 class="text-xl font-medium text-brand-dark mb-12">Optimized since day one</h3>
-                            <div
-                                class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
+                            class="sl-card has-pin has-pin--tr p-8 relative overflow-hidden group opacity-0">
+                            <span class="sl-label text-brand-dark/40 mb-4 block" style="font-size: 11px;">01</span>
+                            <h3 class="text-xl font-medium text-brand-dark mb-10" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Optimized since day one</h3>
+                            <div class="absolute -bottom-10 -right-10 w-44 h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
                                     <circle cx="50" cy="50" r="40" />
@@ -329,12 +482,10 @@
                         </div>
                         <!-- Card 2 -->
                         <div id="card-2"
-                            class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
-                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">
-                                ▪ 02</div>
-                            <h3 class="text-xl font-medium text-brand-dark mb-12">Enhanced capacity incentives</h3>
-                            <div
-                                class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
+                            class="sl-card has-pin has-pin--tr p-8 relative overflow-hidden group opacity-0">
+                            <span class="sl-label text-brand-dark/40 mb-4 block" style="font-size: 11px;">02</span>
+                            <h3 class="text-xl font-medium text-brand-dark mb-10" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Enhanced capacity incentives</h3>
+                            <div class="absolute -bottom-10 -right-10 w-44 h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
                                     <polygon points="50,15 90,80 10,80" />
@@ -344,15 +495,13 @@
                         </div>
                         <!-- Card 3 -->
                         <div id="card-3"
-                            class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
-                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">
-                                ▪ 03</div>
-                            <h3 class="text-xl font-medium text-brand-dark mb-12">Trackable day-by-day</h3>
-                            <div
-                                class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
+                            class="sl-card has-pin has-pin--tr p-8 relative overflow-hidden group opacity-0">
+                            <span class="sl-label text-brand-dark/40 mb-4 block" style="font-size: 11px;">03</span>
+                            <h3 class="text-xl font-medium text-brand-dark mb-10" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Trackable day-by-day</h3>
+                            <div class="absolute -bottom-10 -right-10 w-44 h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
-                                    <rect x="20" y="20" width="60" height="60" rx="4" />
+                                    <rect x="20" y="20" width="60" height="60" />
                                     <line x1="20" y1="40" x2="80" y2="40" />
                                     <line x1="40" y1="40" x2="40" y2="80" />
                                 </svg>
@@ -368,8 +517,7 @@
          TRANSITION SECTION: The Observers
          ===================================================== -->
     <div id="transition-section" class="relative z-30 w-full overflow-hidden"
-        style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #f4dec1 60%, #d9943d 100%);">
-
+        style="background: linear-gradient(180deg, #edf2f7 0%, #fdfbf7 15%, #f4dec1 60%, #d9943d 100%);">
         <!-- Text (parallax: moves faster than scroll) -->
         <div id="observers-text" class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center" style="will-change: transform;">
             <h2 class="text-5xl md:text-7xl font-medium tracking-tight text-brand-dark mb-6 leading-tight">
@@ -394,10 +542,6 @@
                 <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787909936/ChatGPT_Image_Aug_27_2026_07_22_36_PM_1_ep9mqo.png"
                     alt="People looking up" class="w-full h-full object-cover object-bottom">
 
-                <!-- Curved white fade at the bottom -->
-                <div class="absolute bottom-0 left-0 w-full h-[60vh] pointer-events-none"
-                    style="background: radial-gradient(ellipse 150% 100% at 50% 100%, white 10%, rgba(255,255,255,0.9) 30%, transparent 80%);">
-                </div>
             </div>
 
         </div>
@@ -406,7 +550,7 @@
     <!-- =====================================================
          BUFFER SECTION: Smooth Long Transition Spacer
          ===================================================== -->
-    <div id="buffer-section" class="relative z-30 w-full overflow-hidden" style="min-height: 100vh;">
+    <div id="buffer-section" class="relative z-30 w-full overflow-hidden" style="min-height: 100vh; background-color: #d9943d;">
         
         <!-- Layer 1: Background Gradient (Moves Slowest — creates depth) -->
         <div id="parallax-bg" class="absolute inset-0 w-full pointer-events-none" style="
@@ -556,11 +700,10 @@
                     style="font-family: 'Archivo', sans-serif;">
                     Frequently<br>Asked Questions
                 </h2>
-                <p class="text-brand-dark/70 text-lg leading-relaxed mb-8">
+                <p class="text-brand-dark/70 text-lg leading-relaxed mb-8" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
                     Everything you need to know about Hadron Quantum's enterprise infrastructure platform.
                 </p>
-                <a href="contact.html"
-                    class="inline-flex items-center justify-center bg-brand-dark text-white px-8 h-12 text-xs font-bold tracking-widest uppercase hover:bg-black transition-colors">
+                <a href="contact.html" class="sl-btn sl-btn--light">
                     CONTACT SUPPORT
                 </a>
             </div>
@@ -572,7 +715,7 @@
                     <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
                         onclick="toggleFaq(this)">
                         <span
-                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">How
+                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">How
                             does Hadron integrate with existing Kubernetes and Slurm schedulers?</span>
                         <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
                             <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
@@ -583,7 +726,7 @@
                     </button>
                     <div class="faq-answer overflow-hidden transition-all duration-300"
                         style="max-height: 0px; opacity: 0;">
-                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed">
+                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
                             Hadron operates as an intelligence layer above existing schedulers. It ingests queue state
                             and cluster metadata via read-only APIs, formulates QUBO optimization problems, and outputs
                             optimal placement directives into your standard scheduler workflow without needing
@@ -597,7 +740,7 @@
                     <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
                         onclick="toggleFaq(this)">
                         <span
-                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">Does
+                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Does
                             Hadron require control-plane write access or proprietary agent installs?</span>
                         <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
                             <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
@@ -608,7 +751,7 @@
                     </button>
                     <div class="faq-answer overflow-hidden transition-all duration-300"
                         style="max-height: 0px; opacity: 0;">
-                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed">
+                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
                             No. Hadron uses a zero-trust, read-only telemetry architecture. It connects via standard
                             DCIM API feeds and metrics collectors (e.g. Prometheus, DCGM), ensuring zero control-plane
                             write risk and no inline performance degradation.
@@ -621,7 +764,7 @@
                     <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
                         onclick="toggleFaq(this)">
                         <span
-                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">How
+                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">How
                             is the Post-Quantum Cryptography (PQC) Readiness Audit conducted?</span>
                         <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
                             <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
@@ -632,7 +775,7 @@
                     </button>
                     <div class="faq-answer overflow-hidden transition-all duration-300"
                         style="max-height: 0px; opacity: 0;">
-                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed">
+                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
                             Our PQC Audit maps your encryption algorithms, key distribution mechanisms, and data
                             transport layers against government and regulatory mandates (NIST, CERT-In, RBI Q-Safe). We
                             deliver an actionable vulnerability matrix and migration roadmap to quantum-safe algorithms.
@@ -645,7 +788,7 @@
                     <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
                         onclick="toggleFaq(this)">
                         <span
-                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">What
+                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">What
                             thermal and power constraints does the Capacity Optimizer handle?</span>
                         <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
                             <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
@@ -656,7 +799,7 @@
                     </button>
                     <div class="faq-answer overflow-hidden transition-all duration-300"
                         style="max-height: 0px; opacity: 0;">
-                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed">
+                        <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed" style="font-family: 'Archivo', sans-serif; font-weight: 500;">
                             The solver accounts for per-rack power budgets, cooling bounds, thermal-interference terms
                             between adjacent racks, and redundancy/availability-zone constraints to prevent thermal
                             hotspots and stranded capacity.
@@ -684,17 +827,16 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
                 <!-- Stay Sharp Signup -->
-                <div>
+                <div class="has-pin has-pin--dark has-pin--tl" style="padding-top: 16px;">
                     <h3 class="text-3xl font-medium text-white mb-4" style="font-family: 'Archivo', sans-serif;">Stay
                         optimized.</h3>
-                    <p class="text-white/50 text-lg mb-8 max-w-md">Subscribe to our newsletter for the latest insights
+                    <p class="text-white/50 text-lg mb-8 max-w-md" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Subscribe to our newsletter for the latest insights
                         in enterprise AI infrastructure and quantum tech.</p>
 
-                    <form class="flex flex-col sm:flex-row gap-4 max-w-md" onsubmit="event.preventDefault();">
+                    <form class="flex flex-col sm:flex-row max-w-md" onsubmit="event.preventDefault();">
                         <input type="email" placeholder="Email address" required
-                            class="flex-1 bg-white/5 border border-white/10 text-white px-6 py-4 rounded-none focus:outline-none focus:border-brand-orange transition-colors placeholder:text-white/30 text-sm">
-                        <button type="submit"
-                            class="bg-brand-orange text-white px-8 py-4 font-bold tracking-widest text-xs uppercase hover:bg-[#e68a1f] transition-colors shrink-0">
+                            class="flex-1 bg-white/5 border border-white/10 text-white px-6 py-4 rounded-none focus:outline-none focus:border-brand-orange transition-colors placeholder:text-white/30 text-sm h-[48px]">
+                        <button type="submit" class="sl-btn" style="background: var(--brand-orange); color: #fff; height: 48px; padding: 0 28px;">
                             SIGN UP
                         </button>
                     </form>
@@ -703,28 +845,28 @@
                 <!-- Footer Links -->
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
                     <div class="flex flex-col gap-4">
-                        <h4 class="text-white/40 text-xs font-bold tracking-widest uppercase mb-2">Platform</h4>
+                        <h4 class="sl-label text-white/40 mb-2">Platform</h4>
                         <a href="#solutions"
-                            class="text-white/80 hover:text-white text-sm transition-colors">Optimizer</a>
+                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Optimizer</a>
                         <a href="#dashboard"
-                            class="text-white/80 hover:text-white text-sm transition-colors">Dashboard</a>
-                        <a href="#pqc" class="text-white/80 hover:text-white text-sm transition-colors">PQC Audit</a>
+                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Dashboard</a>
+                        <a href="#pqc" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">PQC Audit</a>
                     </div>
                     <div class="flex flex-col gap-4">
-                        <h4 class="text-white/40 text-xs font-bold tracking-widest uppercase mb-2">Company</h4>
-                        <a href="#about" class="text-white/80 hover:text-white text-sm transition-colors">About Us</a>
-                        <a href="#news" class="text-white/80 hover:text-white text-sm transition-colors">News</a>
+                        <h4 class="sl-label text-white/40 mb-2">Company</h4>
+                        <a href="#about" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">About Us</a>
+                        <a href="#news" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">News</a>
                         <a href="contact.html"
-                            class="text-white/80 hover:text-white text-sm transition-colors">Contact</a>
+                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Contact</a>
                     </div>
                     <div class="flex flex-col gap-4">
-                        <h4 class="text-white/40 text-xs font-bold tracking-widest uppercase mb-2">Connect</h4>
+                        <h4 class="sl-label text-white/40 mb-2">Connect</h4>
                         <a href="https://twitter.com/hadrongbs"
-                            class="text-white/80 hover:text-white text-sm transition-colors">Twitter</a>
+                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Twitter</a>
                         <a href="https://linkedin.com/company/hadrongbs"
-                            class="text-white/80 hover:text-white text-sm transition-colors">LinkedIn</a>
+                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">LinkedIn</a>
                         <a href="https://github.com/hadrongbs"
-                            class="text-white/80 hover:text-white text-sm transition-colors">GitHub</a>
+                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">GitHub</a>
                     </div>
                 </div>
             </div>
