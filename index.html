@@ -590,7 +590,7 @@
             <!-- Layer 1 (Background): Quantum Computer Core -->
             <img id="observers-quantum" src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png"
                 alt="Quantum Computer Core" class="absolute z-0 w-auto object-contain"
-                style="height: 90%; top: -5%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); mask-image: linear-gradient(to bottom, black 50%, transparent 90%); will-change: transform;">
+                style="height: 95%; top: -25%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); mask-image: linear-gradient(to bottom, black 50%, transparent 90%); will-change: transform;">
 
             <!-- Layer 2 (Foreground): People looking up -->
             <div id="observers-people" class="absolute z-10 w-full"
@@ -1605,17 +1605,18 @@
                     if (tSmoothTop <= wh && (tSmoothTop + tRect.height) >= 0) {
                         const tProgress = (wh - tSmoothTop) / (wh + tRect.height);
 
-                        // Text scrolls up slowly, preventing it from crashing into the top section
-                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.15 * tRect.height)) + 'px,0)';
+                        // Text scrolls up faster (lifts off)
+                        obsText.style.transform = 'translate3d(0,' + (-(tProgress * 0.40 * tRect.height)) + 'px,0)';
 
-                        // Quantum computer drifts up faster (background parallax)
+                        // Quantum computer starts 25% lower and drifts up into place
                         if (obsQuantum) {
-                            obsQuantum.style.transform = 'translateX(-50%) translate3d(0,' + (-(tProgress * 0.35 * tRect.height)) + 'px,0)';
+                            const quantumY = (tRect.height * 0.25) - (tProgress * tRect.height * 0.50);
+                            obsQuantum.style.transform = `translateX(-50%) translate3d(0, ${quantumY}px, 0)`;
                         }
 
-                        // People drift up fastest (water feel)
+                        // People drift up even slower (closest to camera)
                         if (obsPeople) {
-                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.50 * tRect.height)) + 'px,0)';
+                            obsPeople.style.transform = 'translate3d(0,' + (-(tProgress * 0.10 * tRect.height)) + 'px,0)';
                         }
                     }
                 }
