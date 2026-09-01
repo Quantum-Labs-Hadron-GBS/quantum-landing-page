@@ -408,13 +408,24 @@
     <!-- =====================================================
          BUFFER SECTION: Smooth Long Transition Spacer
          ===================================================== -->
-    <div id="buffer-section" class="relative z-30 w-full flex items-center py-24" style="
-        min-height: 120vh;
-        background: 
-            radial-gradient(ellipse 120% 70% at 50% 100%, #0a0a0a 0%, #0a0a0a 25%, transparent 100%),
-            linear-gradient(180deg, #f3c069 0%, #f5c878 15%, #d9943d 45%, #6b3e02 75%, #0a0a0a 100%);
-    ">
-        <div class="max-w-[1400px] mx-auto w-full px-8 md:px-12 relative z-10 flex flex-col justify-center">
+    <div id="buffer-section" class="relative z-30 w-full overflow-hidden flex items-center py-24" style="min-height: 120vh;">
+        
+        <!-- Background Layer (Moves Slowest) -->
+        <div id="parallax-bg" class="absolute inset-0 w-full h-[130%] -top-[15%] pointer-events-none" style="
+            background: 
+                radial-gradient(ellipse 120% 70% at 50% 100%, #0a0a0a 0%, #0a0a0a 15%, transparent 100%),
+                linear-gradient(180deg, #f3c069 0%, #d9943d 35%, #6b3e02 65%, #1a0f05 85%, #0a0a0a 100%);
+            will-change: transform;
+        "></div>
+
+        <!-- Floating Assets Layer (Moves Fastest) -->
+        <div id="parallax-assets" class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden" style="will-change: transform;">
+            <div class="absolute top-[20%] left-[5%] w-[40vw] h-[40vw] rounded-full bg-brand-orange/5 blur-[120px]"></div>
+            <div class="absolute bottom-[20%] right-[5%] w-[50vw] h-[50vw] rounded-full bg-brand-orange/5 blur-[150px]"></div>
+        </div>
+
+        <!-- Text Layer (Moves Normal/Medium) -->
+        <div id="parallax-text" class="max-w-[1400px] mx-auto w-full px-8 md:px-12 relative z-10 flex flex-col justify-center" style="will-change: transform;">
             <div class="max-w-4xl">
                 <p class="text-white/60 text-xs font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
                     <span class="w-1.5 h-1.5 bg-brand-orange"></span>
@@ -1108,6 +1119,35 @@
                 plus.style.transform = 'rotate(0deg)';
             }
         }
+
+        // Parallax Logic for Buffer Section
+        window.addEventListener('scroll', function() {
+            const bufferSection = document.getElementById('buffer-section');
+            const parallaxBg = document.getElementById('parallax-bg');
+            const parallaxText = document.getElementById('parallax-text');
+            const parallaxAssets = document.getElementById('parallax-assets');
+            
+            if(!bufferSection || !parallaxBg) return;
+
+            const rect = bufferSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Only animate if section is in viewport
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                // Calculate progress from 0 (just entered bottom) to 1 (just left top)
+                const scrollProgress = 1 - ((rect.bottom) / (windowHeight + rect.height));
+                
+                // Background moves slightly slower than scroll (parallax down)
+                // Range: 0 to 15% of its own height to compensate for the -15% top
+                parallaxBg.style.transform = `translateY(${scrollProgress * 10}%)`;
+                
+                // Assets move faster (parallax up)
+                parallaxAssets.style.transform = `translateY(${-(scrollProgress * 15)}%)`;
+                
+                // Text moves at a tiny offset for a subtle float effect
+                parallaxText.style.transform = `translateY(${-(scrollProgress * 5)}%)`;
+            }
+        }, { passive: true });
     </script>
 </body>
 
