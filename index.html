@@ -126,8 +126,8 @@
                             class="text-lg md:text-xl font-bold tracking-tight text-white font-bank-gothic"
                             style="transition: color 0.3s;">Quantum Labs</span>
                     </a>
-                    <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors" style="height: 44px;"
-                        id="header-nav">
+                    <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
+                        style="height: 44px;" id="header-nav">
                         <a href="#about"
                             class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">ABOUT</a>
                         <a href="#investors"
@@ -137,10 +137,14 @@
                         <a href="#news"
                             class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">NEWS</a>
                         <a href="#dashboard"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">ETH DASHBOARD</a>
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">ETH
+                            DASHBOARD</a>
                         <a href="contact.html"
                             class="nav-link flex items-center px-5 border-r border-white/20 hover:bg-white/20 transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
                         </a>
                     </nav>
                 </div>
@@ -364,7 +368,7 @@
          TRANSITION SECTION: The Observers
          ===================================================== -->
     <div id="transition-section" class="relative z-30 w-full overflow-hidden"
-        style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #ffedd5 60%, #f59e0b 100%);">
+        style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #f4dec1 60%, #fff1d2 100%);">
 
         <!-- Text -->
         <div class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center">
@@ -387,13 +391,14 @@
 
             <!-- Layer 2 (Foreground): People looking up -->
             <!-- Wrapper uses multiply blend mode. The white gradient inside smoothly turns the silhouettes into the background orange -->
-            <div class="absolute z-10 w-full" style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply;">
+            <div class="absolute z-10 w-full"
+                style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply;">
                 <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787909936/ChatGPT_Image_Aug_27_2026_07_22_36_PM_1_ep9mqo.png"
                     alt="People looking up" class="w-full h-full object-cover object-bottom">
-                
+
                 <!-- Curved white fade at the bottom. Multiply turns this white perfectly into the golden background -->
-                <div class="absolute bottom-0 left-0 w-full h-[60vh] pointer-events-none" 
-                     style="background: radial-gradient(ellipse 150% 100% at 50% 100%, white 10%, rgba(255,255,255,0.9) 30%, transparent 80%);">
+                <div class="absolute bottom-0 left-0 w-full h-[60vh] pointer-events-none"
+                    style="background: radial-gradient(ellipse 150% 100% at 50% 100%, white 10%, rgba(255,255,255,0.9) 30%, transparent 80%);">
                 </div>
             </div>
 
@@ -403,29 +408,45 @@
     <!-- =====================================================
          BUFFER SECTION: Smooth Long Transition Spacer
          ===================================================== -->
-    <div id="buffer-section" class="relative z-30 w-full flex items-center py-24" style="min-height: 80vh; background: linear-gradient(180deg, 
-        #f59e0b 0%, 
-        #c27608 25%, 
-        #6b3e02 55%, 
-        #241503 80%, 
-        #0a0a0a 100%);">
-        
+    <div id="buffer-section" class="relative z-30 w-full flex items-center py-24" style="
+        min-height: 120vh;
+        background: linear-gradient(180deg,
+                #fff1d2 0%,
+                #f9d99d 16%,
+                #f5c878 32%,
+                #efad51 48%,
+                #d9943d 62%,
+                #bc762b 73%,
+                #96591f 83%,
+                #704117 91%,
+                #4b2a11 96%,
+                #0a0a0a 100%
+            );
+    ">
         <div class="max-w-[1400px] mx-auto w-full px-8 md:px-12 relative z-10 flex flex-col justify-center">
             <div class="max-w-4xl">
                 <p class="text-white/60 text-xs font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
                     <span class="w-1.5 h-1.5 bg-brand-orange"></span>
                     The AI Infrastructure Imperative
                 </p>
-                <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.1] text-white mb-8" style="font-family: 'Archivo', sans-serif;">
-                    Operating above existing schedulers to maximize fleet-wide utilization, minimize fragmentation, and prepare your enterprise for Post-Quantum Cryptography.
+                <h2 class="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight leading-[1.1] text-white mb-8"
+                    style="font-family: 'Archivo', sans-serif;">
+                    Operating above existing schedulers to maximize fleet-wide utilization, minimize fragmentation, and
+                    prepare your enterprise for Post-Quantum Cryptography.
                 </h2>
                 <p class="text-xl md:text-2xl text-white/50 font-light tracking-wide max-w-3xl leading-relaxed mb-12">
-                    Quantum-inspired algorithms solving multi-objective placement problems for the data centers of tomorrow.
+                    Quantum-inspired algorithms solving multi-objective placement problems for the data centers of
+                    tomorrow.
                 </p>
-                
-                <a href="#solutions" class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 h-12 text-xs font-bold tracking-widest uppercase hover:bg-white/20 transition-colors group">
+
+                <a href="#solutions"
+                    class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 h-12 text-xs font-bold tracking-widest uppercase hover:bg-white/20 transition-colors group">
                     LEARN MORE
-                    <svg class="w-4 h-4 ml-3 opacity-70 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <svg class="w-4 h-4 ml-3 opacity-70 group-hover:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                        </path>
+                    </svg>
                 </a>
             </div>
         </div>
@@ -513,17 +534,20 @@
          FAQ SECTION
          ===================================================== -->
     <section class="relative z-40 w-full bg-brand-light py-24 sm:py-32" id="faq-section">
-        <div class="max-w-[1400px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 items-start">
-            
+        <div
+            class="max-w-[1400px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 items-start">
+
             <!-- Left Column: FAQ Heading -->
             <div>
-                <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-brand-dark mb-6 leading-tight" style="font-family: 'Archivo', sans-serif;">
+                <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-brand-dark mb-6 leading-tight"
+                    style="font-family: 'Archivo', sans-serif;">
                     Frequently<br>Asked Questions
                 </h2>
                 <p class="text-brand-dark/70 text-lg leading-relaxed mb-8">
                     Everything you need to know about Hadron Quantum's enterprise infrastructure platform.
                 </p>
-                <a href="contact.html" class="inline-flex items-center justify-center bg-brand-dark text-white px-8 h-12 text-xs font-bold tracking-widest uppercase hover:bg-black transition-colors">
+                <a href="contact.html"
+                    class="inline-flex items-center justify-center bg-brand-dark text-white px-8 h-12 text-xs font-bold tracking-widest uppercase hover:bg-black transition-colors">
                     CONTACT SUPPORT
                 </a>
             </div>
@@ -532,64 +556,97 @@
             <div class="flex flex-col border-t border-brand-dark/10" id="faq-accordion">
                 <!-- FAQ Item 1 -->
                 <div class="faq-item border-b border-brand-dark/10">
-                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
-                        <span class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">How does Hadron integrate with existing Kubernetes and Slurm schedulers?</span>
+                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
+                        onclick="toggleFaq(this)">
+                        <span
+                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">How
+                            does Hadron integrate with existing Kubernetes and Slurm schedulers?</span>
                         <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
                             <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
-                            <div class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus"></div>
+                            <div
+                                class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus">
+                            </div>
                         </div>
                     </button>
-                    <div class="faq-answer overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                    <div class="faq-answer overflow-hidden transition-all duration-300"
+                        style="max-height: 0px; opacity: 0;">
                         <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed">
-                            Hadron operates as an intelligence layer above existing schedulers. It ingests queue state and cluster metadata via read-only APIs, formulates QUBO optimization problems, and outputs optimal placement directives into your standard scheduler workflow without needing kernel-level modifications.
+                            Hadron operates as an intelligence layer above existing schedulers. It ingests queue state
+                            and cluster metadata via read-only APIs, formulates QUBO optimization problems, and outputs
+                            optimal placement directives into your standard scheduler workflow without needing
+                            kernel-level modifications.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
                 <div class="faq-item border-b border-brand-dark/10">
-                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
-                        <span class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">Does Hadron require control-plane write access or proprietary agent installs?</span>
+                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
+                        onclick="toggleFaq(this)">
+                        <span
+                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">Does
+                            Hadron require control-plane write access or proprietary agent installs?</span>
                         <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
                             <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
-                            <div class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus"></div>
+                            <div
+                                class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus">
+                            </div>
                         </div>
                     </button>
-                    <div class="faq-answer overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                    <div class="faq-answer overflow-hidden transition-all duration-300"
+                        style="max-height: 0px; opacity: 0;">
                         <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed">
-                            No. Hadron uses a zero-trust, read-only telemetry architecture. It connects via standard DCIM API feeds and metrics collectors (e.g. Prometheus, DCGM), ensuring zero control-plane write risk and no inline performance degradation.
+                            No. Hadron uses a zero-trust, read-only telemetry architecture. It connects via standard
+                            DCIM API feeds and metrics collectors (e.g. Prometheus, DCGM), ensuring zero control-plane
+                            write risk and no inline performance degradation.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ Item 3 -->
                 <div class="faq-item border-b border-brand-dark/10">
-                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
-                        <span class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">How is the Post-Quantum Cryptography (PQC) Readiness Audit conducted?</span>
+                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
+                        onclick="toggleFaq(this)">
+                        <span
+                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">How
+                            is the Post-Quantum Cryptography (PQC) Readiness Audit conducted?</span>
                         <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
                             <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
-                            <div class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus"></div>
+                            <div
+                                class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus">
+                            </div>
                         </div>
                     </button>
-                    <div class="faq-answer overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                    <div class="faq-answer overflow-hidden transition-all duration-300"
+                        style="max-height: 0px; opacity: 0;">
                         <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed">
-                            Our PQC Audit maps your encryption algorithms, key distribution mechanisms, and data transport layers against government and regulatory mandates (NIST, CERT-In, RBI Q-Safe). We deliver an actionable vulnerability matrix and migration roadmap to quantum-safe algorithms.
+                            Our PQC Audit maps your encryption algorithms, key distribution mechanisms, and data
+                            transport layers against government and regulatory mandates (NIST, CERT-In, RBI Q-Safe). We
+                            deliver an actionable vulnerability matrix and migration roadmap to quantum-safe algorithms.
                         </p>
                     </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
                 <div class="faq-item border-b border-brand-dark/10">
-                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group" onclick="toggleFaq(this)">
-                        <span class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">What thermal and power constraints does the Capacity Optimizer handle?</span>
+                    <button class="w-full py-8 flex justify-between items-center text-left focus:outline-none group"
+                        onclick="toggleFaq(this)">
+                        <span
+                            class="text-lg md:text-xl font-medium text-brand-dark pr-8 group-hover:text-brand-orange transition-colors">What
+                            thermal and power constraints does the Capacity Optimizer handle?</span>
                         <div class="relative w-4 h-4 flex items-center justify-center shrink-0">
                             <div class="absolute w-full h-[2px] bg-brand-dark transition-transform duration-300"></div>
-                            <div class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus"></div>
+                            <div
+                                class="absolute w-[2px] h-full bg-brand-dark transition-transform duration-300 faq-plus">
+                            </div>
                         </div>
                     </button>
-                    <div class="faq-answer overflow-hidden transition-all duration-300" style="max-height: 0px; opacity: 0;">
+                    <div class="faq-answer overflow-hidden transition-all duration-300"
+                        style="max-height: 0px; opacity: 0;">
                         <p class="pb-8 text-brand-dark/70 text-base md:text-lg leading-relaxed">
-                            The solver accounts for per-rack power budgets, cooling bounds, thermal-interference terms between adjacent racks, and redundancy/availability-zone constraints to prevent thermal hotspots and stranded capacity.
+                            The solver accounts for per-rack power budgets, cooling bounds, thermal-interference terms
+                            between adjacent racks, and redundancy/availability-zone constraints to prevent thermal
+                            hotspots and stranded capacity.
                         </p>
                     </div>
                 </div>
@@ -602,23 +659,29 @@
          ===================================================== -->
     <footer class="relative z-40 bg-[#0a0a0a] overflow-hidden pt-24 pb-12 w-full">
         <!-- Giant background text -->
-        <div class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center overflow-hidden select-none translate-y-6">
-            <span class="text-[clamp(100px,25vw,350px)] font-black tracking-tighter text-white/[0.03] leading-none whitespace-nowrap font-bank-gothic">HADRON</span>
+        <div
+            class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center overflow-hidden select-none translate-y-6">
+            <span
+                class="text-[clamp(100px,25vw,350px)] font-black tracking-tighter text-white/[0.03] leading-none whitespace-nowrap font-bank-gothic">HADRON</span>
         </div>
 
         <div class="max-w-[1400px] mx-auto px-8 md:px-12 relative z-10 flex flex-col gap-24">
-            
+
             <!-- Top Signup & Links -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-                
+
                 <!-- Stay Sharp Signup -->
                 <div>
-                    <h3 class="text-3xl font-medium text-white mb-4" style="font-family: 'Archivo', sans-serif;">Stay optimized.</h3>
-                    <p class="text-white/50 text-lg mb-8 max-w-md">Subscribe to our newsletter for the latest insights in enterprise AI infrastructure and quantum tech.</p>
-                    
+                    <h3 class="text-3xl font-medium text-white mb-4" style="font-family: 'Archivo', sans-serif;">Stay
+                        optimized.</h3>
+                    <p class="text-white/50 text-lg mb-8 max-w-md">Subscribe to our newsletter for the latest insights
+                        in enterprise AI infrastructure and quantum tech.</p>
+
                     <form class="flex flex-col sm:flex-row gap-4 max-w-md" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="Email address" required class="flex-1 bg-white/5 border border-white/10 text-white px-6 py-4 rounded-none focus:outline-none focus:border-brand-orange transition-colors placeholder:text-white/30 text-sm">
-                        <button type="submit" class="bg-brand-orange text-white px-8 py-4 font-bold tracking-widest text-xs uppercase hover:bg-[#e68a1f] transition-colors shrink-0">
+                        <input type="email" placeholder="Email address" required
+                            class="flex-1 bg-white/5 border border-white/10 text-white px-6 py-4 rounded-none focus:outline-none focus:border-brand-orange transition-colors placeholder:text-white/30 text-sm">
+                        <button type="submit"
+                            class="bg-brand-orange text-white px-8 py-4 font-bold tracking-widest text-xs uppercase hover:bg-[#e68a1f] transition-colors shrink-0">
                             SIGN UP
                         </button>
                     </form>
@@ -628,21 +691,27 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
                     <div class="flex flex-col gap-4">
                         <h4 class="text-white/40 text-xs font-bold tracking-widest uppercase mb-2">Platform</h4>
-                        <a href="#solutions" class="text-white/80 hover:text-white text-sm transition-colors">Optimizer</a>
-                        <a href="#dashboard" class="text-white/80 hover:text-white text-sm transition-colors">Dashboard</a>
+                        <a href="#solutions"
+                            class="text-white/80 hover:text-white text-sm transition-colors">Optimizer</a>
+                        <a href="#dashboard"
+                            class="text-white/80 hover:text-white text-sm transition-colors">Dashboard</a>
                         <a href="#pqc" class="text-white/80 hover:text-white text-sm transition-colors">PQC Audit</a>
                     </div>
                     <div class="flex flex-col gap-4">
                         <h4 class="text-white/40 text-xs font-bold tracking-widest uppercase mb-2">Company</h4>
                         <a href="#about" class="text-white/80 hover:text-white text-sm transition-colors">About Us</a>
                         <a href="#news" class="text-white/80 hover:text-white text-sm transition-colors">News</a>
-                        <a href="contact.html" class="text-white/80 hover:text-white text-sm transition-colors">Contact</a>
+                        <a href="contact.html"
+                            class="text-white/80 hover:text-white text-sm transition-colors">Contact</a>
                     </div>
                     <div class="flex flex-col gap-4">
                         <h4 class="text-white/40 text-xs font-bold tracking-widest uppercase mb-2">Connect</h4>
-                        <a href="https://twitter.com/hadrongbs" class="text-white/80 hover:text-white text-sm transition-colors">Twitter</a>
-                        <a href="https://linkedin.com/company/hadrongbs" class="text-white/80 hover:text-white text-sm transition-colors">LinkedIn</a>
-                        <a href="https://github.com/hadrongbs" class="text-white/80 hover:text-white text-sm transition-colors">GitHub</a>
+                        <a href="https://twitter.com/hadrongbs"
+                            class="text-white/80 hover:text-white text-sm transition-colors">Twitter</a>
+                        <a href="https://linkedin.com/company/hadrongbs"
+                            class="text-white/80 hover:text-white text-sm transition-colors">LinkedIn</a>
+                        <a href="https://github.com/hadrongbs"
+                            class="text-white/80 hover:text-white text-sm transition-colors">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -654,8 +723,12 @@
                     <span class="text-white/50 text-sm font-medium tracking-wide">© 2026 Hadron Quantum Labs.</span>
                 </div>
                 <div class="flex gap-6">
-                    <a href="#privacy" class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Privacy Policy</a>
-                    <a href="#terms" class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Terms of Service</a>
+                    <a href="#privacy"
+                        class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Privacy
+                        Policy</a>
+                    <a href="#terms"
+                        class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Terms
+                        of Service</a>
                 </div>
             </div>
         </div>
@@ -1033,7 +1106,7 @@
         function toggleFaq(button) {
             const answer = button.nextElementSibling;
             const plus = button.querySelector('.faq-plus');
-            
+
             if (answer.style.maxHeight === '0px' || !answer.style.maxHeight) {
                 answer.style.maxHeight = answer.scrollHeight + 'px';
                 answer.style.opacity = '1';
@@ -1046,4 +1119,5 @@
         }
     </script>
 </body>
+
 </html>
