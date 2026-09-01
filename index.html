@@ -575,7 +575,7 @@
          ===================================================== -->
     <div id="transition-section" class="relative z-50 w-full overflow-hidden rounded-b-[2.5rem] md:rounded-b-[4rem] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
         <!-- Text (parallax: moves faster than scroll) -->
-        <div id="observers-text" class="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-[65px] md:pt-[113px] pb-16 text-center" style="will-change: transform;">
+        <div id="observers-text" class="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-16 md:pt-28 pb-16 text-center" style="will-change: transform;">
             <h2 class="text-5xl md:text-7xl font-medium tracking-tight text-brand-dark mb-6 leading-tight">
                 Witness the <br>Next Generation
             </h2>
@@ -1616,7 +1616,7 @@
 
                         // Quantum computer starts 25% lower (+25%) and drifts up
                         if (obsQuantum) {
-                            const quantumY = centerProgress * 0.50 * tRect.height;
+                            const quantumY = centerProgress * 0.575 * tRect.height;
                             obsQuantum.style.transform = `translateX(-50%) translate3d(0, ${quantumY}px, 0)`;
                         }
 
