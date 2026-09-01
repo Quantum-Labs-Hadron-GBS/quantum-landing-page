@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -8,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Archivo:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
         @font-face {
             font-family: 'Bank Gothic';
             src: local('Bank Gothic'), local('BankGothic Md BT'), local('BankGothic');
@@ -34,7 +36,7 @@
             line-height: 1.35;
             font-weight: 500;
         }
-        
+
         .sharplink-mono {
             font-family: 'Archivo Narrow', sans-serif;
             font-size: 13px;
@@ -74,46 +76,72 @@
             color: #0a0a0a;
             overflow-x: hidden;
         }
-        
+
         .bg-grid-pattern {
-            background-image: 
-                linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
             background-size: 64px 64px;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
 
         #hero-card {
             will-change: clip-path;
         }
     </style>
 </head>
+
 <body class="antialiased font-sans">
 
     <!-- Sticky Scroll Sequence Container -->
     <div id="scroll-sequence" class="relative w-full" style="height: 300vh;">
-        
-            <!-- Sticky Wrapper -->
+
+        <!-- Sticky Wrapper -->
         <div class="sticky top-0 h-screen w-full overflow-hidden bg-brand-light">
-            
+
             <!-- Navbar: fully transparent, only borders between links -->
-            <header id="main-header" class="absolute top-0 left-0 w-full z-50 flex justify-center" style="transition: none;">
+            <header id="main-header" class="absolute top-0 left-0 w-full z-50 flex justify-center"
+                style="transition: none;">
                 <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
                     <a href="/" class="flex items-center gap-2 py-3 md:py-4">
-                        <img id="header-logo" src="./favicon.svg" alt="Hadron" class="h-5 w-auto filter invert brightness-0" style="transition: filter 0.3s;" />
-                        <span id="header-text" class="text-lg md:text-xl font-bold tracking-tight text-white font-bank-gothic" style="transition: color 0.3s;">Quantum Labs</span>
+                        <img id="header-logo" src="./favicon.svg" alt="Hadron"
+                            class="h-5 w-auto filter invert brightness-0" style="transition: filter 0.3s;" />
+                        <span id="header-text"
+                            class="text-lg md:text-xl font-bold tracking-tight text-white font-bank-gothic"
+                            style="transition: color 0.3s;">Quantum Labs</span>
                     </a>
-                    <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wider" style="height: 56px;" id="header-nav">
-                        <a href="#about" class="nav-link flex items-center px-6 border-l border-white/20 text-white hover:opacity-70 transition-opacity">ABOUT</a>
-                        <a href="#investors" class="nav-link flex items-center px-6 border-l border-white/20 text-white hover:opacity-70 transition-opacity">INVESTORS</a>
-                        <a href="#solutions" class="nav-link flex items-center px-6 border-l border-white/20 text-white hover:opacity-70 transition-opacity">OPPORTUNITY</a>
-                        <a href="#news" class="nav-link flex items-center px-6 border-l border-white/20 text-white hover:opacity-70 transition-opacity">NEWS</a>
-                        <a href="#dashboard" class="nav-link flex items-center px-6 border-l border-white/20 text-white hover:opacity-70 transition-opacity">ETH DASHBOARD</a>
-                        <a href="contact.html" class="nav-link flex items-center px-4 border-l border-white/20 text-white hover:opacity-70 transition-opacity text-lg">→</a>
+                    <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors" style="height: 44px;"
+                        id="header-nav">
+                        <a href="#about"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">ABOUT</a>
+                        <a href="#investors"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">INVESTORS</a>
+                        <a href="#solutions"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">OPPORTUNITY</a>
+                        <a href="#news"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">NEWS</a>
+                        <a href="#dashboard"
+                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">ETH DASHBOARD</a>
+                        <a href="contact.html"
+                            class="nav-link flex items-center px-5 border-r border-white/20 hover:bg-white/20 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                        </a>
                     </nav>
                 </div>
             </header>
@@ -123,44 +151,57 @@
 
             <!-- LAYER 2: The Shrinking Hero Video (z-10) -->
             <!-- We put the hero text INSIDE this so it gets cropped by the clip-path as requested -->
-            <div id="hero-card" class="absolute inset-0 z-10 bg-[#1a1a1a] shadow-2xl overflow-hidden pointer-events-none" style="clip-path: inset(0px 0px 0px 0px);">
-                
+            <div id="hero-card"
+                class="absolute inset-0 z-10 bg-[#1a1a1a] shadow-2xl overflow-hidden pointer-events-none"
+                style="clip-path: inset(0px 0px 0px 0px);">
+
                 <!-- Golden Orange Gradient that fades in at the bottom (BEHIND VIDEO) -->
-                <div id="hero-glow" class="absolute inset-0 bg-gradient-to-t from-brand-orange/90 via-brand-orange/20 to-transparent opacity-0"></div>
+                <div id="hero-glow"
+                    class="absolute inset-0 bg-gradient-to-t from-brand-orange/90 via-brand-orange/20 to-transparent opacity-0">
+                </div>
 
                 <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-                    <source src="https://res.cloudinary.com/ax6dtcht/video/upload/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4" type="video/mp4">
+                    <source
+                        src="https://res.cloudinary.com/ax6dtcht/video/upload/v1787922968/Can_you_make_the_exact_same_vi_pqswoz.mp4"
+                        type="video/mp4">
                 </video>
                 <div class="absolute inset-0 bg-black/10"></div>
 
                 <!-- Original Hero Content (Fades out, gets cropped) -->
                 <div id="hero-content" class="absolute inset-0 z-20 pointer-events-auto flex flex-col">
                     <!-- Main content grid -->
-                    <div class="flex-1 max-w-[1400px] mx-auto w-full px-8 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-12 lg:gap-16 pb-12">
-                        
+                    <div
+                        class="flex-1 max-w-[1400px] mx-auto w-full px-8 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-12 lg:gap-16 pb-12">
+
                         <!-- Left Column -->
                         <div class="flex flex-col justify-between h-full">
                             <div class="mt-20 md:mt-24">
-                                <h1 class="text-5xl md:text-7xl font-medium tracking-tight mb-8 leading-[1.05] text-white">
+                                <h1
+                                    class="text-5xl md:text-7xl font-medium tracking-tight mb-8 leading-[1.05] text-white">
                                     Infrastructure<br>with an Edge
                                 </h1>
-                                
+
                                 <div class="flex flex-col gap-[2px] w-fit">
-                                    <a href="#dashboard" class="flex items-center justify-between bg-white text-brand-dark pl-5 pr-0 py-0 text-xs font-bold tracking-wide hover:bg-gray-200 transition-colors w-[260px] h-11">
+                                    <a href="#dashboard"
+                                        class="flex items-center justify-between bg-white text-brand-dark pl-5 pr-0 py-0 text-xs font-bold tracking-wide hover:bg-gray-200 transition-colors w-[260px] h-11">
                                         <span>EXPLORE THE DASHBOARD</span>
-                                        <span class="bg-brand-orange text-white h-full w-11 flex items-center justify-center text-base">→</span>
+                                        <span
+                                            class="bg-brand-orange text-white h-full w-11 flex items-center justify-center text-base">→</span>
                                     </a>
-                                    <a href="#investor" class="flex items-center justify-center bg-white/10 backdrop-blur text-white py-0 text-xs font-bold tracking-wide hover:bg-white/20 transition-colors w-[260px] h-11">
+                                    <a href="#investor"
+                                        class="flex items-center justify-center bg-white/10 backdrop-blur text-white py-0 text-xs font-bold tracking-wide hover:bg-white/20 transition-colors w-[260px] h-11">
                                         SEE INVESTOR INFORMATION
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <!-- Bottom Left -->
                             <div class="mt-auto">
-                                <div class="flex items-center gap-3 text-white/80 text-xs font-bold tracking-widest uppercase">
+                                <div
+                                    class="flex items-center gap-3 text-white/80 text-xs font-bold tracking-widest uppercase">
                                     <span>Powered By</span>
-                                    <span class="text-2xl font-bold tracking-tight text-white capitalize">Hadron GBS</span>
+                                    <span class="text-2xl font-bold tracking-tight text-white capitalize">Hadron
+                                        GBS</span>
                                 </div>
                             </div>
                         </div>
@@ -168,22 +209,27 @@
                         <!-- Middle Column -->
                         <div class="hidden lg:flex flex-col justify-end h-full">
                             <p class="text-white text-xl font-medium leading-relaxed mb-4">
-                                Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter, more productive path to scale.
+                                Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a
+                                smarter, more productive path to scale.
                             </p>
                         </div>
 
                         <!-- Right Column -->
                         <div class="hidden lg:flex flex-col justify-end h-full">
-                            <div class="bg-[#2a303c]/80 backdrop-blur-lg p-8 w-full group cursor-pointer hover:bg-[#2a303c] transition-colors text-white relative shadow-2xl">
+                            <div
+                                class="bg-[#2a303c]/80 backdrop-blur-lg p-8 w-full group cursor-pointer hover:bg-[#2a303c] transition-colors text-white relative shadow-2xl">
                                 <div class="absolute top-0 left-0 w-8 h-[3px] bg-brand-orange"></div>
                                 <div class="flex justify-between items-start mb-6">
                                     <p class="text-xs font-bold tracking-widest uppercase">
                                         Company News
                                     </p>
-                                    <p class="text-xs text-white/50 font-bold tracking-widest uppercase">AUG 28, 2026</p>
+                                    <p class="text-xs text-white/50 font-bold tracking-widest uppercase">AUG 28, 2026
+                                    </p>
                                 </div>
-                                <p class="text-[15px] font-medium leading-relaxed max-w-[85%] pr-8">Hadron Quantum releases Phase II CapEx Optimizer and Enterprise AI Readiness Tool.</p>
-                                <div class="absolute right-8 bottom-8 w-10 h-10 bg-white/10 flex items-center justify-center text-white group-hover:bg-brand-orange transition-colors">
+                                <p class="text-[15px] font-medium leading-relaxed max-w-[85%] pr-8">Hadron Quantum
+                                    releases Phase II CapEx Optimizer and Enterprise AI Readiness Tool.</p>
+                                <div
+                                    class="absolute right-8 bottom-8 w-10 h-10 bg-white/10 flex items-center justify-center text-white group-hover:bg-brand-orange transition-colors">
                                     →
                                 </div>
                             </div>
@@ -195,8 +241,9 @@
 
             <!-- LAYER 4: Content Layout (z-30) -->
             <div id="content-layer" class="absolute inset-0 z-30 pointer-events-none">
-                <div class="max-w-[1400px] mx-auto h-full grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-12 lg:gap-16 items-start pt-[120px] px-8">
-                    
+                <div
+                    class="max-w-[1400px] mx-auto h-full grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-12 lg:gap-16 items-start pt-[120px] px-8">
+
                     <!-- Left Column -->
                     <div class="w-full h-full relative">
                         <div id="left-col" class="absolute top-0 left-0 w-full flex flex-col pointer-events-auto mt-2">
@@ -205,38 +252,52 @@
                                 Pioneering<br>Productivity
                             </h2>
                             <p id="left-para" class="sharplink-body text-brand-dark/70 max-w-sm pb-12 opacity-0">
-                                By combining quantum-inspired optimization, hardware awareness, and enterprise-grade infrastructure planning, we set a new standard for how AI workloads utilize resources.
+                                By combining quantum-inspired optimization, hardware awareness, and enterprise-grade
+                                infrastructure planning, we set a new standard for how AI workloads utilize resources.
                             </p>
                         </div>
                     </div>
 
                     <!-- Middle Column & Graph Text -->
-                    <div id="middle-col-placeholder" class="relative w-full h-[700px] hidden lg:block rounded-3xl pointer-events-none">
-                        <div id="graph-content" class="absolute inset-0 opacity-0 flex flex-col p-10 pointer-events-auto">
+                    <div id="middle-col-placeholder"
+                        class="relative w-full h-[700px] hidden lg:block rounded-3xl pointer-events-none">
+                        <div id="graph-content"
+                            class="absolute inset-0 opacity-0 flex flex-col p-10 pointer-events-auto">
                             <div class="flex justify-between items-start mb-8 text-white">
-                                <p class="text-sm font-semibold tracking-widest uppercase text-white/70">Optimized Capacity</p>
-                                <p class="text-3xl font-bold font-mono tracking-tight">890,376 <span class="text-sm font-sans text-brand-orange ml-1">FLOPs</span></p>
+                                <p class="text-sm font-semibold tracking-widest uppercase text-white/70">Optimized
+                                    Capacity</p>
+                                <p class="text-3xl font-bold font-mono tracking-tight">890,376 <span
+                                        class="text-sm font-sans text-brand-orange ml-1">FLOPs</span></p>
                             </div>
-                            
+
                             <div class="flex justify-between items-start mb-16 text-white">
-                                <p class="text-sm font-semibold tracking-widest uppercase text-white/70">Resource Savings</p>
-                                <p class="text-xl font-bold font-mono tracking-tight">26,193 <span class="text-sm font-sans text-white/50 ml-1">kW</span></p>
+                                <p class="text-sm font-semibold tracking-widest uppercase text-white/70">Resource
+                                    Savings</p>
+                                <p class="text-xl font-bold font-mono tracking-tight">26,193 <span
+                                        class="text-sm font-sans text-white/50 ml-1">kW</span></p>
                             </div>
 
                             <!-- Trend Graph Overlay -->
                             <div class="relative flex-1 w-full border-t border-white/10 mt-4">
-                                <svg class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
-                                    <line x1="0" y1="20" x2="100" y2="20" stroke="rgba(255,255,255,0.1)" stroke-dasharray="2 2" stroke-width="0.5"/>
-                                    <line x1="0" y1="40" x2="100" y2="40" stroke="rgba(255,255,255,0.1)" stroke-dasharray="2 2" stroke-width="0.5"/>
-                                    <line x1="0" y1="60" x2="100" y2="60" stroke="rgba(255,255,255,0.1)" stroke-dasharray="2 2" stroke-width="0.5"/>
-                                    <line x1="0" y1="80" x2="100" y2="80" stroke="rgba(255,255,255,0.1)" stroke-dasharray="2 2" stroke-width="0.5"/>
-                                    <path d="M 0 90 Q 30 85 50 60 T 100 30" fill="none" stroke="#ffffff" stroke-width="2" class="path-anim"/>
+                                <svg class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none"
+                                    viewBox="0 0 100 100">
+                                    <line x1="0" y1="20" x2="100" y2="20" stroke="rgba(255,255,255,0.1)"
+                                        stroke-dasharray="2 2" stroke-width="0.5" />
+                                    <line x1="0" y1="40" x2="100" y2="40" stroke="rgba(255,255,255,0.1)"
+                                        stroke-dasharray="2 2" stroke-width="0.5" />
+                                    <line x1="0" y1="60" x2="100" y2="60" stroke="rgba(255,255,255,0.1)"
+                                        stroke-dasharray="2 2" stroke-width="0.5" />
+                                    <line x1="0" y1="80" x2="100" y2="80" stroke="rgba(255,255,255,0.1)"
+                                        stroke-dasharray="2 2" stroke-width="0.5" />
+                                    <path d="M 0 90 Q 30 85 50 60 T 100 30" fill="none" stroke="#ffffff"
+                                        stroke-width="2" class="path-anim" />
                                     <circle cx="100" cy="30" r="2" fill="#fff" />
                                 </svg>
                             </div>
-                            
+
                             <div class="w-full mt-auto pt-4 pointer-events-auto">
-                                <button class="w-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold py-4 text-sm tracking-widest uppercase transition-colors flex justify-between px-6 items-center border border-white/10">
+                                <button
+                                    class="w-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold py-4 text-sm tracking-widest uppercase transition-colors flex justify-between px-6 items-center border border-white/10">
                                     <span>More in Dashboard</span>
                                     <span>→</span>
                                 </button>
@@ -247,27 +308,50 @@
                     <!-- Right Column (Cards wrapper) -->
                     <div id="right-col" class="relative w-full h-[700px] flex flex-col gap-6 pointer-events-auto mt-2">
                         <!-- Card 1 -->
-                        <div id="card-1" class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
-                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">▪ 01</div>
+                        <div id="card-1"
+                            class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
+                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">
+                                ▪ 01</div>
                             <h3 class="text-xl font-medium text-brand-dark mb-12">Optimized since day one</h3>
-                            <div class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none" stroke="currentColor" stroke-width="1"><circle cx="50" cy="50" r="40" /><circle cx="50" cy="50" r="25" stroke-dasharray="4 4" /><path d="M50 10 L50 90 M10 50 L90 50" stroke-opacity="0.5"/></svg>
+                            <div
+                                class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
+                                    stroke="currentColor" stroke-width="1">
+                                    <circle cx="50" cy="50" r="40" />
+                                    <circle cx="50" cy="50" r="25" stroke-dasharray="4 4" />
+                                    <path d="M50 10 L50 90 M10 50 L90 50" stroke-opacity="0.5" />
+                                </svg>
                             </div>
                         </div>
                         <!-- Card 2 -->
-                        <div id="card-2" class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
-                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">▪ 02</div>
+                        <div id="card-2"
+                            class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
+                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">
+                                ▪ 02</div>
                             <h3 class="text-xl font-medium text-brand-dark mb-12">Enhanced capacity incentives</h3>
-                            <div class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none" stroke="currentColor" stroke-width="1"><polygon points="50,15 90,80 10,80" /><polygon points="50,35 75,70 25,70" stroke-dasharray="4 4"/></svg>
+                            <div
+                                class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
+                                    stroke="currentColor" stroke-width="1">
+                                    <polygon points="50,15 90,80 10,80" />
+                                    <polygon points="50,35 75,70 25,70" stroke-dasharray="4 4" />
+                                </svg>
                             </div>
                         </div>
                         <!-- Card 3 -->
-                        <div id="card-3" class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
-                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">▪ 03</div>
+                        <div id="card-3"
+                            class="bg-white p-8 rounded-2xl shadow-sm border border-brand-gray/50 relative overflow-hidden group hover:shadow-md transition-shadow opacity-0">
+                            <div class="bg-brand-dark text-white text-xs font-bold px-2 py-1 rounded inline-block mb-4">
+                                ▪ 03</div>
                             <h3 class="text-xl font-medium text-brand-dark mb-12">Trackable day-by-day</h3>
-                            <div class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
-                                <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none" stroke="currentColor" stroke-width="1"><rect x="20" y="20" width="60" height="60" rx="4" /><line x1="20" y1="40" x2="80" y2="40" /><line x1="40" y1="40" x2="40" y2="80" /></svg>
+                            <div
+                                class="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
+                                    stroke="currentColor" stroke-width="1">
+                                    <rect x="20" y="20" width="60" height="60" rx="4" />
+                                    <line x1="20" y1="40" x2="80" y2="40" />
+                                    <line x1="40" y1="40" x2="40" y2="80" />
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -279,8 +363,9 @@
     <!-- =====================================================
          TRANSITION SECTION: The Observers
          ===================================================== -->
-    <div id="transition-section" class="relative z-30 w-full overflow-hidden" style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #ffedd5 60%, #f59e0b 100%);">
-        
+    <div id="transition-section" class="relative z-30 w-full overflow-hidden"
+        style="background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 20%, #ffedd5 60%, #f59e0b 100%);">
+
         <!-- Text -->
         <div class="relative z-20 w-full max-w-7xl mx-auto px-8 pt-32 pb-16 text-center">
             <h2 class="text-5xl md:text-7xl font-medium tracking-tight text-brand-dark mb-6 leading-tight">
@@ -293,31 +378,37 @@
 
         <!-- Composition -->
         <div class="relative w-full flex justify-center items-end" style="height: 65vh; min-height: 500px;">
-            
+
             <!-- Layer 1 (Background): Quantum Computer Core -->
             <!-- mix-blend-multiply hides white background, mask-image fades the bottom out -->
-            <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png" 
-                 alt="Quantum Computer Core" 
-                 class="absolute z-0 w-auto object-contain"
-                 style="height: 95%; top: -25%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); mask-image: linear-gradient(to bottom, black 50%, transparent 90%);">
-            
-            <!-- Layer 2 (Foreground): People looking up -->
-            <!-- mix-blend-multiply turns white skies into the golden orange gradient -->
-            <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787909936/ChatGPT_Image_Aug_27_2026_07_22_36_PM_1_ep9mqo.png" 
-                 alt="People looking up" 
-                 class="absolute z-10 w-full object-cover object-bottom"
-                 style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply;">
+            <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787910444/ChatGPT_Image_Aug_28_2026_03_13_33_PM_plkqd2.png"
+                alt="Quantum Computer Core" class="absolute z-0 w-auto object-contain"
+                style="height: 95%; top: -25%; left: 50%; transform: translateX(-50%); mix-blend-mode: multiply; -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%); mask-image: linear-gradient(to bottom, black 50%, transparent 90%);">
 
-            <!-- Bottom dark fade to transition into the next #0a0a0a section perfectly -->
-            <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-20 pointer-events-none"></div>
+            <!-- Layer 2 (Foreground): People looking up -->
+            <!-- Wrapper uses multiply blend mode. The white gradient inside smoothly turns the silhouettes into the background orange -->
+            <div class="absolute z-10 w-full" style="bottom: 0; left: 0; height: 100%; min-height: 400px; mix-blend-mode: multiply;">
+                <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1787909936/ChatGPT_Image_Aug_27_2026_07_22_36_PM_1_ep9mqo.png"
+                    alt="People looking up" class="w-full h-full object-cover object-bottom">
+                
+                <!-- Curved white fade at the bottom. Multiply turns this white perfectly into the golden background -->
+                <div class="absolute bottom-0 left-0 w-full h-[60vh] pointer-events-none" 
+                     style="background: radial-gradient(ellipse 150% 100% at 50% 100%, white 10%, rgba(255,255,255,0.9) 30%, transparent 80%);">
+                </div>
+            </div>
+
         </div>
     </div>
 
     <!-- =====================================================
-         BUFFER SECTION: Smooth Transition Spacer
+         BUFFER SECTION: Smooth Long Transition Spacer
          ===================================================== -->
-    <div id="buffer-section" class="relative z-30 w-full flex items-center justify-center" style="min-height: 40vh; background: #0a0a0a;">
-        <!-- Placeholder for future content -->
+    <div id="buffer-section" class="relative z-30 w-full" style="height: 60vh; background: radial-gradient(ellipse 150% 100% at 50% 0%, 
+        #f59e0b 0%, 
+        #c27608 30%, 
+        #6b3e02 60%, 
+        #241503 80%, 
+        #0a0a0a 100%);">
     </div>
 
     <!-- =====================================================
@@ -340,7 +431,8 @@
                             The Stack for<br>Quantum Scale
                         </h2>
                         <p class="sharplink-body text-white/60 max-w-sm">
-                            Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter, more productive path to scale.
+                            Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter,
+                            more productive path to scale.
                         </p>
                     </div>
 
@@ -351,7 +443,8 @@
                             Built by<br>Proven Pioneers
                         </h2>
                         <p class="sharplink-body text-white/60 max-w-sm">
-                            Hadron is led by quantum computing researchers and enterprise infrastructure veterans, combining deep science with institutional-grade execution.
+                            Hadron is led by quantum computing researchers and enterprise infrastructure veterans,
+                            combining deep science with institutional-grade execution.
                         </p>
                     </div>
 
@@ -362,7 +455,8 @@
                             Compute as an<br>Operating System
                         </h2>
                         <p class="sharplink-body text-white/60 max-w-sm">
-                            We run optimization, scheduling, and resource allocation in-house — allowing the platform to be built with speed, precision, and total control.
+                            We run optimization, scheduling, and resource allocation in-house — allowing the platform to
+                            be built with speed, precision, and total control.
                         </p>
                     </div>
 
@@ -373,25 +467,23 @@
                             Committed to<br>Real-time Clarity
                         </h2>
                         <p class="sharplink-body text-white/60 max-w-sm">
-                            Full visibility into compute deployment, efficiency generation, and resource management — trackable day by day.
+                            Full visibility into compute deployment, efficiency generation, and resource management —
+                            trackable day by day.
                         </p>
                     </div>
 
                 </div>
             </div>
 
-    <!-- Right: Sticky Sketchfab quantum computer (Viewer API) -->
+            <!-- Right: Sticky Sketchfab quantum computer (Viewer API) -->
             <!-- CSS Mask feathers the edges of the iframe so the rectangular background disappears smoothly -->
-            <div class="w-1/2 relative overflow-hidden" style="height:100vh; -webkit-mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%); mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%);">
+            <div class="w-1/2 relative overflow-hidden"
+                style="height:100vh; -webkit-mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%); mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 75%);">
                 <!-- Scale iframe up to push Sketchfab UI off-screen, pointer-events-none so it doesn't trap scroll -->
-                <iframe
-                    id="sketchfab-iframe"
-                    title="Quantum Computer"
-                    frameborder="0"
+                <iframe id="sketchfab-iframe" title="Quantum Computer" frameborder="0"
                     allow="autoplay; fullscreen; xr-spatial-tracking"
-                    src="https://sketchfab.com/models/82006aac41744663a161ab844264ac2a/embed?autostart=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&dnt=1&autospin=0&preload=1"
-                    style="position:absolute; top:-10%; left:-10%; width:120%; height:120%; border:none; pointer-events:none;"
-                ></iframe>
+                    src="https://sketchfab.com/models/82006aac41744663a161ab844264ac2a/embed?autostart=1&transparent=1&ui_controls=0&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&dnt=1&autospin=0&preload=1&ui_help=0"
+                    style="position:absolute; top:-5%; left:-10%; width:120%; height:120%; border:none; pointer-events:none; clip-path: inset(0px 0px 15% 0px);"></iframe>
             </div>
 
         </div>
@@ -401,145 +493,148 @@
     <div style="height: 20vh;" class="bg-brand-light relative z-40"></div>
 
     <style>
-        .qs-slide { transition: opacity 0.6s ease, transform 0.6s ease; }
+        .qs-slide {
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
     </style>
     <!-- Sketchfab Viewer API -->
     <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
 
     <!-- Slide crossfade + Sketchfab scroll-driven rotation -->
     <script>
-        // Propositions section: crossfade text slides on scroll
-        (function() {
-            var section = document.getElementById('quantum-section');
-            var slides  = document.querySelectorAll('.qs-slide');
-            if (!section || !slides.length) return;
-            var N = slides.length;
+            // Propositions section: crossfade text slides on scroll
+            (function () {
+                var section = document.getElementById('quantum-section');
+                var slides = document.querySelectorAll('.qs-slide');
+                if (!section || !slides.length) return;
+                var N = slides.length;
 
-            function getSectionProgress() {
-                var rect  = section.getBoundingClientRect();
-                var total = section.offsetHeight - window.innerHeight;
-                return Math.max(0, Math.min(1, -rect.top / total));
-            }
-
-            // ── Text slide crossfade ──────────────────────────────
-            function updateSlides(p) {
-                var sf = p * (N - 0.001);
-                var si = Math.floor(sf);
-                var sp = sf - si;
-                slides.forEach(function(s, i) {
-                    var op = 0;
-                    if (i === si) {
-                        op = (i === 0) ? 1 : Math.min(Math.max((sp - 0.15) / 0.3, 0), 1);
-                        if (sp > 0.75) op = Math.max(1 - (sp - 0.75) / 0.2, 0);
-                    } else if (i === si + 1) {
-                        op = Math.min(Math.max((sp - 0.6) / 0.3, 0), 1);
-                    }
-                    s.style.opacity   = op;
-                    s.style.transform = (i < si) ? 'translateY(-12px)' : (i > si) ? 'translateY(12px)' : 'translateY(0)';
-                });
-            }
-
-            // ── Sketchfab Viewer API: scroll-driven camera orbit ──
-            var sfApi = null;
-            var camTarget   = [0, 0, 0];
-            var camRadius   = 4;
-            var camElevation = 1.2;
-            var startAngle  = 0;
-            var totalSwing  = Math.PI * 1.5;   // 270° horizontal rotation
-
-            var iframe = document.getElementById('sketchfab-iframe');
-            if (iframe && window.Sketchfab) {
-                var client = new Sketchfab(iframe);
-                client.init('82006aac41744663a161ab844264ac2a', {
-                    success: function(api) {
-                        sfApi = api;
-                        api.start();
-                        api.addEventListener('viewerready', function() {
-                            api.setUserInteraction(false);
-
-                            api.getCameraLookAt(function(err, camera) {
-                                if (err) return;
-                                camTarget = camera.target;
-                                // Sketchfab is Z-up (X=right, Y=forward/depth, Z=up)
-                                var dx = camera.position[0] - camTarget[0];
-                                var dy = camera.position[1] - camTarget[1];
-                                
-                                // Multiply by 0.15 to aggressively zoom in (make model even bigger)
-                                camRadius = Math.sqrt(dx*dx + dy*dy) * 0.15; 
-                                // Look perfectly straight-on (level with the center) instead of looking down
-                                camElevation = camTarget[2]; 
-                                
-                                startAngle = Math.atan2(dy, dx);
-                                updateCamera(getSectionProgress());
-                            });
-                        });
-                    },
-                    error: function() {
-                        console.warn('Sketchfab API failed to init');
-                    }
-                });
-            }
-
-            function updateCamera(p) {
-                if (!sfApi) return;
-                var angle = startAngle + (p * totalSwing);
-                // Orbit purely horizontally in the X-Y plane
-                var pos = [
-                    camTarget[0] + camRadius * Math.cos(angle),
-                    camTarget[1] + camRadius * Math.sin(angle),
-                    camElevation
-                ];
-                sfApi.setCameraLookAt(pos, camTarget, 0);
-            }
-
-            // Throttle to rAF for smooth performance
-            var ticking = false;
-            window.addEventListener('scroll', function() {
-                if (!ticking) {
-                    requestAnimationFrame(function() {
-                        var p = getSectionProgress();
-                        updateSlides(p);
-                        updateCamera(p);
-                        ticking = false;
-                    });
-                    ticking = true;
+                function getSectionProgress() {
+                    var rect = section.getBoundingClientRect();
+                    var total = section.offsetHeight - window.innerHeight;
+                    return Math.max(0, Math.min(1, -rect.top / total));
                 }
-            }, { passive: true });
 
-            // Init slides
-            updateSlides(0);
-        })();
+                // ── Text slide crossfade ──────────────────────────────
+                function updateSlides(p) {
+                    var sf = p * (N - 0.001);
+                    var si = Math.floor(sf);
+                    var sp = sf - si;
+                    slides.forEach(function (s, i) {
+                        var op = 0;
+                        if (i === si) {
+                            op = (i === 0) ? 1 : Math.min(Math.max((sp - 0.15) / 0.3, 0), 1);
+                            if (sp > 0.75) op = Math.max(1 - (sp - 0.75) / 0.2, 0);
+                        } else if (i === si + 1) {
+                            op = Math.min(Math.max((sp - 0.6) / 0.3, 0), 1);
+                        }
+                        s.style.opacity = op;
+                        s.style.transform = (i < si) ? 'translateY(-12px)' : (i > si) ? 'translateY(12px)' : 'translateY(0)';
+                    });
+                }
+
+                // ── Sketchfab Viewer API: scroll-driven camera orbit ──
+                var sfApi = null;
+                var camTarget = [0, 0, 0];
+                var camRadius = 4;
+                var camElevation = 1.2;
+                var startAngle = 0;
+                var totalSwing = Math.PI * 1.5;   // 270° horizontal rotation
+
+                var iframe = document.getElementById('sketchfab-iframe');
+                if (iframe && window.Sketchfab) {
+                    var client = new Sketchfab(iframe);
+                    client.init('82006aac41744663a161ab844264ac2a', {
+                        success: function (api) {
+                            sfApi = api;
+                            api.start();
+                            api.addEventListener('viewerready', function () {
+                                api.setUserInteraction(false);
+
+                                api.getCameraLookAt(function (err, camera) {
+                                    if (err) return;
+                                    camTarget = camera.target;
+                                    // Sketchfab is Z-up (X=right, Y=forward/depth, Z=up)
+                                    var dx = camera.position[0] - camTarget[0];
+                                    var dy = camera.position[1] - camTarget[1];
+
+                                    // Multiply by 0.15 to aggressively zoom in (make model even bigger)
+                                    camRadius = Math.sqrt(dx * dx + dy * dy) * 0.15;
+                                    // Look perfectly straight-on (level with the center) instead of looking down
+                                    camElevation = camTarget[2];
+
+                                    startAngle = Math.atan2(dy, dx);
+                                    updateCamera(getSectionProgress());
+                                });
+                            });
+                        },
+                        error: function () {
+                            console.warn('Sketchfab API failed to init');
+                        }
+                    });
+                }
+
+                function updateCamera(p) {
+                    if (!sfApi) return;
+                    var angle = startAngle + (p * totalSwing);
+                    // Orbit purely horizontally in the X-Y plane
+                    var pos = [
+                        camTarget[0] + camRadius * Math.cos(angle),
+                        camTarget[1] + camRadius * Math.sin(angle),
+                        camElevation
+                    ];
+                    sfApi.setCameraLookAt(pos, camTarget, 0);
+                }
+
+                // Throttle to rAF for smooth performance
+                var ticking = false;
+                window.addEventListener('scroll', function () {
+                    if (!ticking) {
+                        requestAnimationFrame(function () {
+                            var p = getSectionProgress();
+                            updateSlides(p);
+                            updateCamera(p);
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }, { passive: true });
+
+                // Init slides
+                updateSlides(0);
+            })();
         document.addEventListener('DOMContentLoaded', () => {
             const scrollContainer = document.getElementById('scroll-sequence');
             const heroCard = document.getElementById('hero-card');
             const placeholder = document.getElementById('middle-col-placeholder');
-            
+
             const heroVideo = heroCard.querySelector('video');
             const heroContent = document.getElementById('hero-content');
             const graphContent = document.getElementById('graph-content');
             const heroGlow = document.getElementById('hero-glow');
-            
+
             const gridBgPattern = document.getElementById('grid-bg-pattern');
             const leftCol = document.getElementById('left-col');
             const leftOrange = document.getElementById('left-orange');
             const leftPara = document.getElementById('left-para');
             const leftTitle = document.getElementById('animated-title');
-            
+
             const mainHeader = document.getElementById('main-header');
             const headerLogo = document.getElementById('header-logo');
             const headerText = document.getElementById('header-text');
             const headerNav = document.getElementById('header-nav');
+            const navLinks = document.querySelectorAll('.nav-link');
             const headerCta = document.getElementById('header-cta');
-            
+
             const card1 = document.getElementById('card-1');
             const card2 = document.getElementById('card-2');
             const card3 = document.getElementById('card-3');
-            
+
             // Setup randomized letter spans for title
             const words = leftTitle.innerHTML.split('<br>');
             leftTitle.innerHTML = '';
             const letterSpans = [];
-            
+
             words.forEach((word, index) => {
                 const wordSpan = document.createElement('span');
                 wordSpan.style.display = 'inline-block';
@@ -560,9 +655,9 @@
                     leftTitle.appendChild(document.createElement('br'));
                 }
             });
-            
+
             // Increase total scroll distance so we have plenty of room for both phases
-            const maxScrollDistance = window.innerHeight * 2.5; 
+            const maxScrollDistance = window.innerHeight * 2.5;
 
             // Helper to map a value from one range to another, clamped to min/max
             function mapRange(val, inMin, inMax, outMin, outMax) {
@@ -593,83 +688,84 @@
 
             function updateAnimation(animatedTop) {
                 const isMobile = window.innerWidth < 1024;
-                
+
                 if (animatedTop <= 0 && animatedTop > -maxScrollDistance) {
                     const scrolled = -animatedTop;
                     const progress = scrolled / maxScrollDistance; // 0.0 to 1.0
-                    
+
                     // Phase 1: Video shrinks (0.0 to 0.4)
                     const phase1End = 0.4;
                     const p1 = Math.min(progress / phase1End, 1);
-                    
+
                     // Phase 2: Elements slide up (finishes at 0.85 to leave 15% hang time before unpin)
                     const phase2End = 0.85;
                     const p2 = Math.max(0, (progress - phase1End) / (phase2End - phase1End));
-                    
+
                     // Texts start fading in when 25% of Phase 1 is left (75% of 0.4 = 0.3)
-                    const fadeStart = phase1End * 0.75; 
-                    
+                    const fadeStart = phase1End * 0.75;
+
                     if (!isMobile) {
                         const phRect = placeholder.getBoundingClientRect();
                         const targetTopClip = phRect.top;
                         const targetBottomClip = window.innerHeight - phRect.bottom;
                         const targetLeftClip = phRect.left;
                         const targetRightClip = window.innerWidth - phRect.right;
-                        
+
                         const currentTopClip = targetTopClip * p1;
                         const currentBottomClip = targetBottomClip * p1;
                         const currentLeftClip = targetLeftClip * p1;
                         const currentRightClip = targetRightClip * p1;
-                        
+
                         heroCard.style.clipPath = `inset(${currentTopClip}px ${currentRightClip}px ${currentBottomClip}px ${currentLeftClip}px)`;
-                        
-                        // Navbar color swap: white text/borders on dark, dark on light
-                        const navLinks = document.querySelectorAll('.nav-link');
+
+                        // Navbar logo color swap on scroll
                         if (currentTopClip > 30) {
                             // Over light background — flip to dark
                             mainHeader.style.transform = `translateY(${Math.min(currentTopClip * 0.2, 10)}px)`;
                             headerLogo.style.filter = 'brightness(0)';
                             headerText.style.color = '#0a0a0a';
+                            headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
                             navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
                         } else {
                             // Over dark hero — white
                             mainHeader.style.transform = 'translateY(0px)';
                             headerLogo.style.filter = 'invert(1) brightness(0) invert(1)';
                             headerText.style.color = '#ffffff';
+                            headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
                             navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
                         }
-                        
+
                         // Start Y is just from the middle of the screen to give it that "middle section" feel
                         const startY = window.innerHeight / 4;
                         const currentY = mapRange(progress, phase1End, phase2End, startY, 0);
-                        
+
                         // Left Column
                         const fadeProgress = mapRange(progress, fadeStart, phase1End, 0, 1);
                         leftOrange.style.opacity = fadeProgress;
                         leftPara.style.opacity = fadeProgress;
-                        
+
                         letterSpans.forEach(span => {
                             const th = parseFloat(span.dataset.threshold);
                             span.style.opacity = mapRange(fadeProgress, th, th + 0.2, 0, 1);
                         });
-                        
+
                         leftCol.style.transform = `translateY(${currentY}px)`;
-                        
+
                         // Card 1
                         card1.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                         card1.style.transform = `translateY(${currentY}px)`;
-                        
+
                         // Card 2
-                        const c2Op = progress <= phase1End 
-                            ? mapRange(progress, fadeStart, phase1End, 0, 0.5) 
+                        const c2Op = progress <= phase1End
+                            ? mapRange(progress, fadeStart, phase1End, 0, 0.5)
                             : mapRange(progress, phase1End, phase2End, 0.5, 1);
                         const c2X = mapRange(progress, phase1End, phase2End, 50, 0);
                         card2.style.opacity = c2Op;
                         card2.style.transform = `translate(${c2X}px, ${currentY}px)`;
-                        
+
                         // Card 3
-                        const c3Op = progress <= phase1End 
-                            ? mapRange(progress, fadeStart, phase1End, 0, 0.25) 
+                        const c3Op = progress <= phase1End
+                            ? mapRange(progress, fadeStart, phase1End, 0, 0.25)
                             : mapRange(progress, phase1End, phase2End, 0.25, 1);
                         const c3X = mapRange(progress, phase1End, phase2End, 100, 0);
                         card3.style.opacity = c3Op;
@@ -689,15 +785,15 @@
 
                     // Hero original text fades out and gets cropped
                     heroContent.style.opacity = mapRange(progress, 0, fadeStart, 1, 0);
-                    
+
                     // Video fades out to let the gradient take over completely
                     heroVideo.style.opacity = mapRange(progress, 0, phase1End, 1, 0);
-                    
+
                     // Graph overlay and grid background fade in
                     graphContent.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                     heroGlow.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
                     gridBgPattern.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
-                    
+
                 } else if (animatedTop > 0) {
                     // Reset to initial state
                     heroCard.style.clipPath = `inset(0px 0px 0px 0px)`;
@@ -711,12 +807,12 @@
                     card1.style.opacity = 0;
                     card2.style.opacity = 0;
                     card3.style.opacity = 0;
-                    
+
                     // Reset: white text on dark hero
-                    const navLinks = document.querySelectorAll('.nav-link');
                     mainHeader.style.transform = 'translateY(0px)';
                     headerLogo.style.filter = 'invert(1) brightness(0) invert(1)';
                     headerText.style.color = '#ffffff';
+                    headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
                     navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
                 } else if (animatedTop <= -maxScrollDistance) {
                     // Lock to final state
@@ -727,34 +823,34 @@
                         const targetLeftClip = phRect.left;
                         const targetRightClip = window.innerWidth - phRect.right;
                         heroCard.style.clipPath = `inset(${targetTopClip}px ${targetRightClip}px ${targetBottomClip}px ${targetLeftClip}px)`;
-                        
+
                         // Locked final: dark text on light bg
-                        const navLinks = document.querySelectorAll('.nav-link');
                         mainHeader.style.transform = 'translateY(10px)';
                         headerLogo.style.filter = 'brightness(0)';
                         headerText.style.color = '#0a0a0a';
+                        headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
                         navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
                     } else {
                         heroCard.style.transform = `scale(0.95)`;
                     }
-                    
+
                     heroContent.style.opacity = 0;
                     heroVideo.style.opacity = 0;
                     graphContent.style.opacity = 1;
                     heroGlow.style.opacity = 1;
                     gridBgPattern.style.opacity = 1;
-                    
+
                     leftOrange.style.opacity = 1;
                     leftPara.style.opacity = 1;
                     letterSpans.forEach(span => span.style.opacity = 1);
                     leftCol.style.transform = `translateY(0px)`;
-                    
+
                     card1.style.opacity = 1;
                     card1.style.transform = `translate(0px, 0px)`;
-                    
+
                     card2.style.opacity = 1;
                     card2.style.transform = `translate(0px, 0px)`;
-                    
+
                     card3.style.opacity = 1;
                     card3.style.transform = `translate(0px, 0px)`;
                 }
@@ -765,4 +861,5 @@
         });
     </script>
 </body>
+
 </html>
