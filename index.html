@@ -444,7 +444,7 @@
             <!-- LAYER 4: Content Layout (z-30) -->
             <div id="content-layer" class="absolute inset-0 z-30 pointer-events-none">
                 <div
-                    class="max-w-[1400px] mx-auto h-full grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-8 lg:gap-16 items-start pt-[100px] lg:pt-[120px] px-6 md:px-8">
+                    class="max-w-[1400px] mx-auto h-full grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] gap-8 lg:gap-16 items-center pt-[80px] px-6 md:px-8">
 
                     <!-- Left Column -->
                     <div class="w-full h-full relative lg:col-start-auto col-start-1 row-start-1">
@@ -1260,16 +1260,9 @@
                             navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
                         }
 
-                        const startY = window.innerHeight / 4;
-                        const leftY = mapRange(progress, phase1End, phase2End, startY, 0);
-
-                        // Calculate dynamic endY for right column to ensure 50% gap below 4th card
-                        const rightColEl = document.getElementById('right-col');
-                        const rightColBottom = 130 + rightColEl.offsetHeight; // 130px is approx top offset
-                        const targetBottom = window.innerHeight * 0.5; // 50% gap below
-                        const endY = Math.min(0, targetBottom - rightColBottom);
-                        
-                        const rightY = mapRange(progress, phase1End, phase2End, startY, endY);
+                        // Shared entry Y: both left col and right-col rise together from 60px below
+                        const startY = 60;
+                        const sharedY = mapRange(progress, phase1End, phase2End, startY, 0);
 
                         const fadeProgress = mapRange(progress, fadeStart, phase1End, 0, 1);
                         leftOrange.style.opacity = fadeProgress;
@@ -1280,26 +1273,32 @@
                             span.style.opacity = mapRange(fadeProgress, th, th + 0.2, 0, 1);
                         });
 
+                        // Left col: rises in sync with cards
                         leftCol.style.opacity = 1;
-                        leftCol.style.transform = `translateY(${leftY}px)`;
+                        leftCol.style.transform = `translateY(${sharedY}px)`;
 
+                        // Move the whole right-col container as one unit (maintains natural stacking)
+                        const rightColEl = document.getElementById('right-col');
+                        rightColEl.style.transform = `translateY(${sharedY}px)`;
+
+                        // Cards: fade + X stagger only — no individual Y transform
                         card1.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
-                        card1.style.transform = `translateY(${rightY}px)`;
+                        card1.style.transform = 'translateX(0px)';
 
                         const c2Op = progress <= phase1End ? mapRange(progress, fadeStart, phase1End, 0, 0.5) : mapRange(progress, phase1End, phase2End, 0.5, 1);
-                        const c2X = mapRange(progress, phase1End, phase2End, 50, 0);
+                        const c2X = mapRange(progress, phase1End, phase2End, 40, 0);
                         card2.style.opacity = c2Op;
-                        card2.style.transform = `translate(${c2X}px, ${rightY}px)`;
+                        card2.style.transform = `translateX(${c2X}px)`;
 
                         const c3Op = progress <= phase1End ? mapRange(progress, fadeStart, phase1End, 0, 0.25) : mapRange(progress, phase1End, phase2End, 0.25, 1);
-                        const c3X = mapRange(progress, phase1End, phase2End, 100, 0);
+                        const c3X = mapRange(progress, phase1End, phase2End, 80, 0);
                         card3.style.opacity = c3Op;
-                        card3.style.transform = `translate(${c3X}px, ${rightY}px)`;
+                        card3.style.transform = `translateX(${c3X}px)`;
 
                         const c4Op = progress <= phase1End ? 0 : mapRange(progress, phase1End, phase2End, 0, 1);
-                        const c4X = mapRange(progress, phase1End, phase2End, 150, 0);
+                        const c4X = mapRange(progress, phase1End, phase2End, 120, 0);
                         card4.style.opacity = c4Op;
-                        card4.style.transform = `translate(${c4X}px, ${rightY}px)`;
+                        card4.style.transform = `translateX(${c4X}px)`;
 
                     } else {
                         // Mobile specific animation mapping (Sequential Vertical Scrolling)
@@ -1419,14 +1418,15 @@
                     leftOrange.style.opacity = 0;
                     leftPara.style.opacity = 0;
                     letterSpans.forEach(span => span.style.opacity = 0);
+                    document.getElementById('right-col').style.transform = 'translateY(0)';
                     card1.style.opacity = 0;
-                    card1.style.transform = `translateY(0)`;
+                    card1.style.transform = 'translateX(0)';
                     card2.style.opacity = 0;
-                    card2.style.transform = `translateY(0)`;
+                    card2.style.transform = 'translateX(0)';
                     card3.style.opacity = 0;
-                    card3.style.transform = `translateY(0)`;
+                    card3.style.transform = 'translateX(0)';
                     card4.style.opacity = 0;
-                    card4.style.transform = `translateY(0)`;
+                    card4.style.transform = 'translateX(0)';
 
                     // Reset: white text on dark hero
                     mainHeader.style.transform = 'translateY(0px)';
@@ -1461,19 +1461,20 @@
                     leftOrange.style.opacity = 1;
                     leftPara.style.opacity = 1;
                     letterSpans.forEach(span => span.style.opacity = 1);
-                    leftCol.style.transform = `translateY(0px)`;
+                    leftCol.style.transform = 'translateY(0px)';
+                    document.getElementById('right-col').style.transform = 'translateY(0px)';
 
                     card1.style.opacity = 1;
-                    card1.style.transform = `translate(0px, 0px)`;
+                    card1.style.transform = 'translateX(0px)';
 
                     card2.style.opacity = 1;
-                    card2.style.transform = `translate(0px, 0px)`;
+                    card2.style.transform = 'translateX(0px)';
 
                     card3.style.opacity = 1;
-                    card3.style.transform = `translate(0px, 0px)`;
+                    card3.style.transform = 'translateX(0px)';
                     
                     card4.style.opacity = 1;
-                    card4.style.transform = `translate(0px, 0px)`;
+                    card4.style.transform = 'translateX(0px)';
                 }
             }
 
