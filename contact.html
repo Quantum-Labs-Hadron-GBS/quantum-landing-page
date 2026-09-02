@@ -1,78 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
-    <title>Contact Us | Hadron Quantum V2</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>Contact Us | Hadron Quantum Labs</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#ff9f2b',
+                            dark: '#0a0a0a',
+                            light: '#f8fafc',
+                            gray: '#f1f5f9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Archivo:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <style>
+        :root {
+            --brand-orange: #ff9f2b;
+            --brand-dark: #0a0a0a;
+            --off-white: #fdfbf7;
+        }
+
+        body {
+            background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5);
+            background-attachment: fixed;
+            color: #0a0a0a;
+            min-height: 100vh;
+        }
+
+        .sl-label {
+            font-family: 'Archivo Narrow', 'Arial', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1.04px;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        .sl-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Archivo Narrow', 'Arial', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.04px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .sl-btn--light {
+            background-color: var(--brand-dark);
+            color: white;
+            height: 48px;
+            padding: 0 32px;
+        }
+        .sl-btn--light:hover {
+            background-color: var(--brand-orange);
+            color: white;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-white text-black font-sans antialiased p-8">
-    
-    <main class="max-w-3xl mx-auto">
-        <h1 class="text-4xl font-bold mb-8 font-bank-gothic">Contact Us | Quantum Labs</h1>
+
+<body class="antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- Header Navigation -->
+    <header id="main-header" class="w-full z-50 flex justify-center bg-black/90 backdrop-blur-md border-b border-white/10 sticky top-0">
+        <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
+            <a href="/" class="flex items-center gap-2 py-3 md:py-4">
+                <img id="header-logo" src="https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png" alt="Hadron Quantum Labs" class="h-9 md:h-10 w-auto" />
+            </a>
+            <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20" style="height: 44px;">
+                <a href="/" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOME</a>
+                <a href="/blogs.html" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">BLOGS</a>
+                <a href="/#solutions" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">SOLUTIONS</a>
+                <a href="/#workflow" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">WORKFLOW</a>
+                <a href="/#pricing" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">OFFERINGS</a>
+                <a href="/#faq-accordion" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">FAQ</a>
+                <a href="contact.html" class="nav-link flex items-center px-5 border-r border-white/20 bg-brand-orange text-white font-bold transition-colors">
+                    CONTACT US
+                </a>
+            </nav>
+            <button id="mobile-menu-btn" class="flex md:hidden items-center justify-center w-12 h-12 text-white absolute right-4 top-2 z-[60]" aria-label="Open menu" onclick="toggleMobileMenu()">
+                <div class="w-6 h-3.5 relative flex flex-col justify-between cursor-pointer">
+                    <span class="block h-0.5 w-full bg-current rounded-full"></span>
+                    <span class="block h-0.5 w-full bg-current rounded-full"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10" aria-hidden="true">
+        <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
+            <a href="/" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Home</a>
+            <a href="/blogs.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Blogs</a>
+            <a href="/#solutions" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Solutions</a>
+            <a href="/#workflow" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Workflow</a>
+            <a href="/#pricing" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Offerings</a>
+            <a href="/#faq-accordion" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">FAQ</a>
+            <a href="contact.html" class="mobile-link text-brand-orange hover:text-brand-orange/80 transition-colors font-bold">Contact Us</a>
+            <div class="h-[1px] w-12 bg-brand-dark/10 my-2"></div>
+            <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-brand-dark/40 hover:text-brand-dark transition-colors flex items-center gap-2 text-xl">
+                Hadron GBS Main Site
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-4xl mx-auto w-full px-6 py-12 md:py-20">
         
-        <!-- Form Retained for Functionality -->
-        <div class="bg-gray-100 p-8 rounded-xl">
+        <!-- Hero Title Banner -->
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-black/5 rounded-full mb-4 border border-black/10">
+                <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
+                <span class="sl-label text-brand-dark/60">Direct Engineering & Audit Access</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-brand-dark mb-4" style="font-family: 'Archivo', sans-serif;">
+                Accelerate Your Quantum Strategy.
+            </h1>
+            <p class="text-lg text-brand-dark/70 max-w-xl mx-auto leading-relaxed">
+                Connect with our quantum research team to optimize your AI compute capacity, evaluate CapEx returns, or perform a PQC audit.
+            </p>
+        </div>
+        
+        <!-- Form Container Card -->
+        <div class="bg-white/90 backdrop-blur-xl p-8 md:p-12 border border-black/10 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-brand-orange"></div>
+            
             <form id="contact-page-form" class="space-y-6" novalidate>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div class="space-y-1.5">
-                        <label for="contact-name" class="block text-sm font-medium text-gray-700">Full Name <span class="text-orange-500">*</span></label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="contact-name" class="block text-xs font-bold uppercase tracking-wider text-brand-dark/70">Full Name <span class="text-brand-orange">*</span></label>
                         <input type="text" id="contact-name" name="name" required autocomplete="name"
-                            class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm"
-                            placeholder="John Smith">
+                            class="w-full bg-black/5 border border-black/10 text-brand-dark px-4 py-3.5 text-sm focus:outline-none focus:border-brand-orange transition-colors"
+                            placeholder="e.g. Dr. Alex Mercer">
                     </div>
-                    <div class="space-y-1.5">
-                        <label for="contact-email" class="block text-sm font-medium text-gray-700">Work Email <span class="text-orange-500">*</span></label>
+                    <div class="space-y-2">
+                        <label for="contact-email" class="block text-xs font-bold uppercase tracking-wider text-brand-dark/70">Work Email <span class="text-brand-orange">*</span></label>
                         <input type="email" id="contact-email" name="email" required autocomplete="email"
-                            class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm"
-                            placeholder="john@company.com">
+                            class="w-full bg-black/5 border border-black/10 text-brand-dark px-4 py-3.5 text-sm focus:outline-none focus:border-brand-orange transition-colors"
+                            placeholder="alex@enterprise.com">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div class="space-y-1.5">
-                        <label for="contact-org" class="block text-sm font-medium text-gray-700">Organization</label>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="contact-org" class="block text-xs font-bold uppercase tracking-wider text-brand-dark/70">Organization</label>
                         <input type="text" id="contact-org" name="organization" autocomplete="organization"
-                            class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm"
-                            placeholder="Enterprise Corp">
+                            class="w-full bg-black/5 border border-black/10 text-brand-dark px-4 py-3.5 text-sm focus:outline-none focus:border-brand-orange transition-colors"
+                            placeholder="Enterprise / Institution Name">
                     </div>
-                    <div class="space-y-1.5">
-                        <label for="contact-service" class="block text-sm font-medium text-gray-700">Interested Service</label>
+                    <div class="space-y-2">
+                        <label for="contact-service" class="block text-xs font-bold uppercase tracking-wider text-brand-dark/70">Interested Service</label>
                         <div class="relative">
                             <select id="contact-service" name="service"
-                                class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm appearance-none cursor-pointer">
+                                class="w-full bg-black/5 border border-black/10 text-brand-dark px-4 py-3.5 text-sm focus:outline-none focus:border-brand-orange transition-colors appearance-none cursor-pointer">
                                 <option value="" disabled selected>Select a Service</option>
                                 <option value="Capacity & AI Infrastructure Optimizer">Capacity & AI Infrastructure Optimizer</option>
                                 <option value="Enterprise CapEx Optimizer">Enterprise CapEx Optimizer</option>
                                 <option value="PQC Readiness Audit">PQC Readiness Audit</option>
                                 <option value="General Inquiry">General Inquiry</option>
                             </select>
+                            <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-dark/40 text-xs">▼</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="space-y-1.5">
-                    <label for="contact-desc" class="block text-sm font-medium text-gray-700">Message</label>
-                    <textarea id="contact-desc" name="description" rows="4"
-                        class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-black text-sm resize-none"
-                        placeholder="Describe your infrastructure challenges or questions..."></textarea>
+                <div class="space-y-2">
+                    <label for="contact-desc" class="block text-xs font-bold uppercase tracking-wider text-brand-dark/70">Message / Infrastructure Context</label>
+                    <textarea id="contact-desc" name="description" rows="5"
+                        class="w-full bg-black/5 border border-black/10 text-brand-dark px-4 py-3.5 text-sm focus:outline-none focus:border-brand-orange transition-colors resize-none"
+                        placeholder="Detail your fleet size, scheduler setup (Kubernetes/Slurm), or specific inquiry..."></textarea>
                 </div>
 
                 <!-- Status Message -->
-                <div id="form-status" class="hidden text-sm font-medium p-4 rounded-xl text-center"></div>
+                <div id="form-status" class="hidden text-sm font-medium p-4 rounded-none text-center border"></div>
 
                 <!-- Submit Button -->
-                <button type="submit" id="submit-btn"
-                    class="w-full bg-black text-white font-semibold py-4 rounded-xl hover:bg-gray-800 transition-all flex justify-center items-center gap-2 text-sm">
-                    Send Message
+                <button type="submit" id="submit-btn" class="sl-btn sl-btn--light w-full py-4 text-sm font-bold tracking-widest">
+                    Send Request to Engineering
                 </button>
             </form>
         </div>
     </main>
 
+    <!-- Rich Footer -->
+    <footer class="bg-[#0a0a0a] text-white pt-16 pb-12 w-full border-t border-white/10 mt-auto">
+        <div class="max-w-[1400px] mx-auto px-8 md:px-12 flex flex-col gap-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/10 pb-8">
+                <div class="flex items-center gap-4">
+                    <img src="./favicon.svg" alt="Hadron" class="h-6 w-auto opacity-70 filter invert brightness-0" />
+                    <span class="text-white/50 text-sm font-medium tracking-wide">© 2026 Hadron Quantum Labs — A Division of Hadron GBS.</span>
+                </div>
+                <div class="flex gap-6">
+                    <a href="javascript:void(0)" onclick="openLegalModal('privacy')" class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Privacy Policy</a>
+                    <a href="javascript:void(0)" onclick="openLegalModal('terms')" class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Legal Modal (Privacy Policy & Terms of Service) -->
+    <div id="legal-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4 sm:p-6 md:p-10">
+        <div class="bg-[#0a0a0a] border border-white/20 text-white w-full max-w-3xl max-h-[85vh] rounded-none flex flex-col relative shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/5">
+                <div class="flex gap-4">
+                    <button id="tab-privacy" onclick="switchLegalTab('privacy')" class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-brand-orange border-b-2 border-brand-orange">Privacy Policy</button>
+                    <button id="tab-terms" onclick="switchLegalTab('terms')" class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors">Terms of Service</button>
+                </div>
+                <button onclick="closeLegalModal()" class="text-white/50 hover:text-white text-xl font-bold px-2 py-1 transition-colors">&times;</button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-sm text-white/80 leading-relaxed font-sans" id="legal-modal-body"></div>
+            <div class="px-6 py-4 border-t border-white/10 bg-white/5 flex justify-end">
+                <button onclick="closeLegalModal()" class="sl-btn sl-btn--light">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Auto-select service dropdown based on URL query param ?service=...
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get('service');
+            if (serviceParam) {
+                const select = document.getElementById('contact-service');
+                for (let option of select.options) {
+                    if (option.value.toLowerCase() === serviceParam.toLowerCase() || option.value.toLowerCase().includes(serviceParam.toLowerCase())) {
+                        option.selected = true;
+                        break;
+                    }
+                }
+            }
+        });
+
+        // Form Submit Handler
         document.getElementById('contact-page-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
@@ -99,19 +279,72 @@
 
                 if (!response.ok || !result.success) throw new Error(result.message || 'Send failed');
 
-                statusEl.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'border-red-200');
-                statusEl.classList.add('bg-green-100', 'text-green-700', 'border', 'border-green-200');
-                statusEl.innerText = '✓ Message sent! We\'ll be in touch within 24 hours.';
+                statusEl.classList.remove('hidden', 'bg-red-950/50', 'text-red-300', 'border-red-500/30');
+                statusEl.classList.add('bg-green-950/50', 'text-green-300', 'border-green-500/30');
+                statusEl.innerText = '✓ Message sent! Our engineering team will reach out within 24 hours.';
                 document.getElementById('contact-page-form').reset();
             } catch (error) {
-                statusEl.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'border-green-200');
-                statusEl.classList.add('bg-red-100', 'text-red-700', 'border', 'border-red-200');
+                statusEl.classList.remove('hidden', 'bg-green-950/50', 'text-green-300', 'border-green-500/30');
+                statusEl.classList.add('bg-red-950/50', 'text-red-300', 'border-red-500/30');
                 statusEl.innerText = '✕ Something went wrong. Please email us directly at quantum.lab@hadrongbs.com';
             } finally {
                 btn.disabled = false;
-                btn.innerHTML = 'Send Message';
+                btn.innerHTML = 'Send Request to Engineering';
             }
         });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('opacity-0');
+            menu.classList.toggle('pointer-events-none');
+        }
+
+        // Legal Modal Handler
+        const legalTexts = {
+            privacy: `
+                <h3 class="text-2xl font-bold text-white mb-4">Privacy Policy</h3>
+                <p>Hadron Quantum Labs ("Hadron", "we", "us") respects your privacy and is committed to protecting the personal data of our users, enterprise clients, and audit partners.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">1. Information We Collect</h4>
+                <p>We collect technical telemetry, organization contact details, and audit parameters provided voluntarily via our forms or zero-trust DCIM APIs.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">2. How Information is Used</h4>
+                <p>Data gathered via contact or audit requests is strictly used to evaluate infrastructure capacity, run QUBO placement optimization models, and deliver requested technical reports.</p>
+            `,
+            terms: `
+                <h3 class="text-2xl font-bold text-white mb-4">Terms of Service</h3>
+                <p>By accessing or using Hadron Quantum Labs' website, benchmarks, or optimization APIs, you agree to comply with and be bound by these terms.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">1. Enterprise Services & Use</h4>
+                <p>Hadron Quantum provides AI infrastructure optimization algorithms and PQC readiness audits. You agree not to reverse engineer, decompile, or modify any proprietary solver components.</p>
+            `
+        };
+
+        function openLegalModal(tab = 'privacy') {
+            const modal = document.getElementById('legal-modal');
+            switchLegalTab(tab);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+        }
+
+        function closeLegalModal() {
+            const modal = document.getElementById('legal-modal');
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function switchLegalTab(tab) {
+            const modalBody = document.getElementById('legal-modal-body');
+            const tabPrivacy = document.getElementById('tab-privacy');
+            const tabTerms = document.getElementById('tab-terms');
+
+            modalBody.innerHTML = legalTexts[tab] || legalTexts.privacy;
+
+            if (tab === 'privacy') {
+                tabPrivacy.className = "text-xs font-bold uppercase tracking-widest px-3 py-2 text-brand-orange border-b-2 border-brand-orange";
+                tabTerms.className = "text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors";
+            } else {
+                tabTerms.className = "text-xs font-bold uppercase tracking-widest px-3 py-2 text-brand-orange border-b-2 border-brand-orange";
+                tabPrivacy.className = "text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors";
+            }
+        }
     </script>
 </body>
 </html>

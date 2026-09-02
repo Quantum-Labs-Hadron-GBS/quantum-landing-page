@@ -378,13 +378,13 @@
                                 </h1>
 
                                 <div class="flex flex-col gap-[2px] w-fit">
-                                    <a href="#dashboard"
+                                    <a href="#solutions"
                                         class="flex items-center justify-between bg-white text-brand-dark pl-5 pr-0 py-0 text-xs font-bold tracking-wide hover:bg-gray-200 transition-colors w-[260px] h-11">
-                                        <span>EXPLORE THE DASHBOARD</span>
+                                        <span>EXPLORE SOLUTIONS</span>
                                         <span
                                             class="bg-brand-orange text-white h-full w-11 flex items-center justify-center text-base">→</span>
                                     </a>
-                                    <a href="#investor"
+                                    <a href="contact.html?service=General+Inquiry"
                                         class="flex items-center justify-center bg-white/10 backdrop-blur text-white py-0 text-xs font-bold tracking-wide hover:bg-white/20 transition-colors w-[260px] h-11">
                                         SEE INVESTOR INFORMATION
                                     </a>
@@ -491,23 +491,23 @@
                             </div>
 
                             <div class="w-full mt-auto pt-4 pointer-events-auto">
-                                <button
+                                <a href="contact.html?service=Capacity+%26+AI+Infrastructure+Optimizer"
                                     class="w-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-semibold py-4 text-sm tracking-widest uppercase transition-colors flex justify-between px-6 items-center border border-white/10">
-                                    <span>More in Dashboard</span>
+                                    <span>Explore Optimizer & Dashboard</span>
                                     <span>→</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Right Column (Cards wrapper) -->
+                    <div id="solutions" class="relative"></div>
                     <div id="right-col" class="relative w-full h-auto lg:h-[700px] flex flex-col gap-3 pointer-events-auto mt-2 lg:col-start-auto col-start-1 row-start-1 pt-12 lg:pt-0">
                         <!-- Card 1 -->
                         <div id="card-1"
-                            class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
-                            <span class="sl-label text-brand-dark/40 mb-3 md:mb-4 block" style="font-size: 11px;">01</span>
-                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-2" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Infrastructure-First Approach</h3>
-                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[85%] relative z-10">Works seamlessly with existing data center infrastructure, no hardware replacement or operational disruption required.</p>
+                            class="sl-card has-pin has-pin--tr p-5 md:pt-4 md:pb-5 md:px-6 relative overflow-hidden group opacity-0">
+                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-1.5" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Infrastructure-First Approach</h3>
+                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[92%] relative z-10">Works seamlessly with existing data center infrastructure, no hardware replacement or operational disruption required.</p>
                             <div class="absolute -bottom-10 -right-10 w-32 h-32 md:w-44 md:h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity z-0 pointer-events-none">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
@@ -519,10 +519,9 @@
                         </div>
                         <!-- Card 2 -->
                         <div id="card-2"
-                            class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
-                            <span class="sl-label text-brand-dark/40 mb-3 md:mb-4 block" style="font-size: 11px;">02</span>
-                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-2" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Enterprise-Wide Intelligence</h3>
-                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[85%] relative z-10">Optimizes decisions across racks, clusters, and multiple data centers instead of individual systems.</p>
+                            class="sl-card has-pin has-pin--tr p-5 md:pt-4 md:pb-5 md:px-6 relative overflow-hidden group opacity-0">
+                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-1.5" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Enterprise-Wide Intelligence</h3>
+                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[92%] relative z-10">Optimizes decisions across racks, clusters, and multiple data centers instead of individual systems.</p>
                             <div class="absolute -bottom-10 -right-10 w-32 h-32 md:w-44 md:h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity z-0 pointer-events-none">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
@@ -533,10 +532,10 @@
                         </div>
                         <!-- Card 3 -->
                         <div id="card-3"
-                            class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
-                            <span class="sl-label text-brand-dark/40 mb-3 md:mb-4 block" style="font-size: 11px;">03</span>
-                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-2" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Future-Ready Optimization</h3>
-                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[85%] relative z-10">Built on a solver-agnostic architecture supporting classical optimization today and quantum methods as they mature.</p>
+                            class="sl-card has-pin has-pin--tr p-5 md:pt-4 md:pb-5 md:px-6 relative overflow-hidden group opacity-0">
+                            <span id="pqc"></span>
+                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-1.5" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Future-Ready Optimization</h3>
+                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[92%] relative z-10">Built on a solver-agnostic architecture supporting classical optimization today and quantum methods as they mature.</p>
                             <div class="absolute -bottom-10 -right-10 w-32 h-32 md:w-44 md:h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity z-0 pointer-events-none">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
@@ -548,10 +547,9 @@
                         </div>
                         <!-- Card 4 -->
                         <div id="card-4"
-                            class="sl-card has-pin has-pin--tr p-6 md:p-8 relative overflow-hidden group opacity-0">
-                            <span class="sl-label text-brand-dark/40 mb-3 md:mb-4 block" style="font-size: 11px;">04</span>
-                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-2" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Measurable Business Value</h3>
-                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[85%] relative z-10">Improves infrastructure utilization, delays unnecessary CapEx, and enables smarter operational planning.</p>
+                            class="sl-card has-pin has-pin--tr p-5 md:pt-4 md:pb-5 md:px-6 relative overflow-hidden group opacity-0">
+                            <h3 class="text-lg md:text-xl font-medium text-brand-dark mb-1.5" style="font-family: 'Archivo', sans-serif; letter-spacing: -0.02em;">Measurable Business Value</h3>
+                            <p class="text-sm text-brand-dark/70 leading-relaxed max-w-[92%] relative z-10">Improves infrastructure utilization, delays unnecessary CapEx, and enables smarter operational planning.</p>
                             <div class="absolute -bottom-10 -right-10 w-32 h-32 md:w-44 md:h-44 opacity-[0.06] group-hover:opacity-[0.12] transition-opacity z-0 pointer-events-none">
                                 <svg viewBox="0 0 100 100" class="w-full h-full text-brand-dark" fill="none"
                                     stroke="currentColor" stroke-width="1">
@@ -574,6 +572,7 @@
          TRANSITION SECTION: The Observers
          ===================================================== -->
     <div id="transition-section" class="relative z-50 w-full overflow-hidden rounded-b-[2.5rem] md:rounded-b-[4rem] bg-white shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+        <span id="about"></span>
         <!-- Text (parallax: moves faster than scroll) -->
         <div id="observers-text" class="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-16 md:pt-28 pb-16 text-center" style="will-change: transform;">
             <h2 class="text-5xl md:text-7xl font-medium tracking-tight text-brand-dark mb-6 leading-tight">
@@ -611,6 +610,7 @@
          STICKY HORIZONTAL ASCII CAROUSEL
          ===================================================== -->
     <div id="quantum-section" class="relative z-40 w-full" style="height: 400vh; background: #0a0a0a;">
+        <span id="workflow"></span>
         <!-- Background Grid -->
         <div class="absolute inset-0 w-full h-full pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 100px 100px;"></div>
         
@@ -623,17 +623,17 @@
             </div>
 
             <!-- Horizontal Track -->
-            <div id="quantum-track" class="flex items-center w-[max-content] h-[500px] md:h-[600px] px-8 md:px-24 pr-[15vw] md:pr-[25vw] gap-8 md:gap-16 will-change-transform">
+            <div id="quantum-track" class="flex items-center w-[max-content] h-[400px] md:h-[480px] px-8 md:px-24 pr-[15vw] md:pr-[25vw] gap-8 md:gap-12 will-change-transform">
                 
                 <!-- Card 1 -->
-                <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
+                <div id="pricing" class="w-[75vw] md:w-[56vw] h-full max-h-[480px] bg-[#f3f5f8] rounded-[1.75rem] p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 flex-shrink-0 shadow-2xl relative overflow-hidden group">
                     <div class="flex flex-col justify-center">
-                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-8">PROPOSITIONS</p>
-                        <h3 class="text-4xl md:text-5xl lg:text-6xl text-brand-dark font-medium leading-tight tracking-tight mb-8" style="font-family: 'Inter', system-ui, sans-serif;">The Stack for Quantum Scale</h3>
-                        <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter, more productive path to scale.</p>
+                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-4">PROPOSITIONS</p>
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl text-brand-dark font-medium leading-tight tracking-tight mb-4" style="font-family: 'Inter', system-ui, sans-serif;">The Stack for Quantum Scale</h3>
+                        <p class="text-base md:text-lg text-brand-dark/70 leading-relaxed font-normal">Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a smarter, more productive path to scale.</p>
                     </div>
-                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.5rem] p-6 shadow-sm border border-black/[0.03]">
-                        <pre class="text-[0.6rem] leading-[0.7rem] font-mono text-brand-dark/30 tracking-widest text-center">
+                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.25rem] p-4 md:p-5 shadow-sm border border-black/[0.03]">
+                        <pre class="text-[0.55rem] leading-[0.65rem] font-mono text-brand-dark/30 tracking-widest text-center">
           .-----------------.
          /                   \
         /_____________________\
@@ -663,14 +663,14 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
+                <div class="w-[75vw] md:w-[56vw] h-full max-h-[480px] bg-[#f3f5f8] rounded-[1.75rem] p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 flex-shrink-0 shadow-2xl relative overflow-hidden group">
                     <div class="flex flex-col justify-center">
-                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-8">LEADERSHIP</p>
-                        <h3 class="text-4xl md:text-5xl lg:text-6xl text-brand-dark font-medium leading-tight tracking-tight mb-8" style="font-family: 'Inter', system-ui, sans-serif;">Built by Proven Pioneers</h3>
-                        <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">Hadron is led by quantum computing researchers and enterprise infrastructure veterans, combining deep science with institutional-grade execution.</p>
+                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-4">LEADERSHIP</p>
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl text-brand-dark font-medium leading-tight tracking-tight mb-4" style="font-family: 'Inter', system-ui, sans-serif;">Built by Proven Pioneers</h3>
+                        <p class="text-base md:text-lg text-brand-dark/70 leading-relaxed font-normal">Hadron is led by quantum computing researchers and enterprise infrastructure veterans, combining deep science with institutional-grade execution.</p>
                     </div>
-                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.5rem] p-6 shadow-sm border border-black/[0.03]">
-                        <pre class="text-[0.6rem] leading-[0.7rem] font-mono text-brand-dark/30 tracking-widest text-center">
+                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.25rem] p-4 md:p-5 shadow-sm border border-black/[0.03]">
+                        <pre class="text-[0.55rem] leading-[0.65rem] font-mono text-brand-dark/30 tracking-widest text-center">
      _________________________
     |  _____________________  |
     | |  .----------------. | |
@@ -692,14 +692,14 @@
                 </div>
 
                 <!-- Card 3 -->
-                <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
+                <div class="w-[75vw] md:w-[56vw] h-full max-h-[480px] bg-[#f3f5f8] rounded-[1.75rem] p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 flex-shrink-0 shadow-2xl relative overflow-hidden group">
                     <div class="flex flex-col justify-center">
-                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-8">OPERATIONS</p>
-                        <h3 class="text-4xl md:text-5xl lg:text-6xl text-brand-dark font-medium leading-tight tracking-tight mb-8" style="font-family: 'Inter', system-ui, sans-serif;">Compute as an Operating System</h3>
-                        <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">We run optimization, scheduling, and resource allocation in-house — allowing the platform to be built with speed, precision, and total control.</p>
+                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-4">OPERATIONS</p>
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl text-brand-dark font-medium leading-tight tracking-tight mb-4" style="font-family: 'Inter', system-ui, sans-serif;">Compute as an Operating System</h3>
+                        <p class="text-base md:text-lg text-brand-dark/70 leading-relaxed font-normal">We run optimization, scheduling, and resource allocation in-house — allowing the platform to be built with speed, precision, and total control.</p>
                     </div>
-                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.5rem] p-6 shadow-sm border border-black/[0.03]">
-                        <pre class="text-[0.6rem] leading-[0.7rem] font-mono text-brand-dark/30 tracking-widest text-center">
+                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.25rem] p-4 md:p-5 shadow-sm border border-black/[0.03]">
+                        <pre class="text-[0.55rem] leading-[0.65rem] font-mono text-brand-dark/30 tracking-widest text-center">
          \           /
           \         /
            \       /
@@ -720,14 +720,14 @@
                 </div>
 
                 <!-- Card 4 -->
-                <div class="w-[85vw] md:w-[70vw] h-full max-h-[600px] bg-[#f3f5f8] rounded-[2rem] p-10 md:p-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 flex-shrink-0 shadow-2xl relative overflow-hidden group">
+                <div class="w-[75vw] md:w-[56vw] h-full max-h-[480px] bg-[#f3f5f8] rounded-[1.75rem] p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 flex-shrink-0 shadow-2xl relative overflow-hidden group">
                     <div class="flex flex-col justify-center">
-                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-8">TRANSPARENCY</p>
-                        <h3 class="text-4xl md:text-5xl lg:text-6xl text-brand-dark font-medium leading-tight tracking-tight mb-8" style="font-family: 'Inter', system-ui, sans-serif;">Committed to Real-time Clarity</h3>
-                        <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">Full visibility into compute deployment, efficiency generation, and resource management — trackable day by day.</p>
+                        <p class="text-[#d9943d] text-xs font-bold tracking-[0.2em] uppercase mb-4">TRANSPARENCY</p>
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl text-brand-dark font-medium leading-tight tracking-tight mb-4" style="font-family: 'Inter', system-ui, sans-serif;">Committed to Real-time Clarity</h3>
+                        <p class="text-base md:text-lg text-brand-dark/70 leading-relaxed font-normal">Full visibility into compute deployment, efficiency generation, and resource management — trackable day by day.</p>
                     </div>
-                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.5rem] p-6 shadow-sm border border-black/[0.03] overflow-hidden">
-                        <pre class="text-[0.7rem] leading-[0.8rem] font-mono text-brand-dark/20 tracking-widest text-center">
+                    <div class="hidden md:flex items-center justify-center bg-white rounded-[1.25rem] p-4 md:p-5 shadow-sm border border-black/[0.03] overflow-hidden">
+                        <pre class="text-[0.6rem] leading-[0.7rem] font-mono text-brand-dark/20 tracking-widest text-center">
  +--+--+--+--+--+--+--+--+--+
  |  |  |  |  |  |  |  |  |  |
  +--+--+--+--+--+--+--+--+--+
@@ -767,7 +767,7 @@
                         Latest News
                     </h2>
                 </div>
-                <a href="#blog" class="flex items-center gap-3 px-5 py-3 bg-black/5 hover:bg-black/10 transition-colors text-brand-dark text-[11px] font-bold tracking-[0.15em] uppercase rounded-sm">
+                <a href="/blogs.html" class="flex items-center gap-3 px-5 py-3 bg-black/5 hover:bg-black/10 transition-colors text-brand-dark text-[11px] font-bold tracking-[0.15em] uppercase rounded-sm">
                     Visit Our Blog
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
@@ -971,10 +971,10 @@
                     <span class="text-white/50 text-sm font-medium tracking-wide">© 2026 Hadron Quantum Labs.</span>
                 </div>
                 <div class="flex gap-6">
-                    <a href="#privacy"
+                    <a href="javascript:void(0)" onclick="openLegalModal('privacy')"
                         class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Privacy
                         Policy</a>
-                    <a href="#terms"
+                    <a href="javascript:void(0)" onclick="openLegalModal('terms')"
                         class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Terms
                         of Service</a>
                 </div>
@@ -1274,6 +1274,7 @@
                             span.style.opacity = mapRange(fadeProgress, th, th + 0.2, 0, 1);
                         });
 
+                        leftCol.style.opacity = 1;
                         leftCol.style.transform = `translateY(${leftY}px)`;
 
                         card1.style.opacity = mapRange(progress, fadeStart, phase1End, 0, 1);
@@ -1330,6 +1331,7 @@
                             leftY = -window.innerHeight * 0.5;
                         }
                         
+                        leftCol.style.opacity = leftOp;
                         leftCol.style.transform = `translateY(${leftY}px)`;
                         leftOrange.style.opacity = leftOp;
                         leftPara.style.opacity = leftOp;
@@ -1406,8 +1408,11 @@
                     heroGlow.style.opacity = 0;
                     if (!isMobile) graphContent.style.opacity = 0;
                     gridBgPattern.style.opacity = 0;
-                    leftCol.style.opacity = 0;
+                    leftCol.style.opacity = 1;
                     leftCol.style.transform = `translateY(0)`;
+                    leftOrange.style.opacity = 0;
+                    leftPara.style.opacity = 0;
+                    letterSpans.forEach(span => span.style.opacity = 0);
                     card1.style.opacity = 0;
                     card1.style.transform = `translateY(0)`;
                     card2.style.opacity = 0;
@@ -1419,8 +1424,7 @@
 
                     // Reset: white text on dark hero
                     mainHeader.style.transform = 'translateY(0px)';
-                    headerLogo.style.filter = 'invert(1) brightness(0) invert(1)';
-                    headerText.style.color = '#ffffff';
+                    headerLogo.style.filter = 'none';
                     headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
                     navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
                 } else if (animatedTop <= -maxScrollDistance) {
@@ -1447,6 +1451,7 @@
                     heroGlow.style.opacity = 1;
                     gridBgPattern.style.opacity = 1;
 
+                    leftCol.style.opacity = 1;
                     leftOrange.style.opacity = 1;
                     leftPara.style.opacity = 1;
                     letterSpans.forEach(span => span.style.opacity = 1);
@@ -1744,6 +1749,82 @@
         }
         
         document.addEventListener('DOMContentLoaded', fetchLatestNews);
+    </script>
+
+    <!-- Legal Modal (Privacy Policy & Terms of Service) -->
+    <div id="legal-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4 sm:p-6 md:p-10">
+        <div class="bg-[#0a0a0a] border border-white/20 text-white w-full max-w-3xl max-h-[85vh] rounded-none flex flex-col relative shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/5">
+                <div class="flex gap-4">
+                    <button id="tab-privacy" onclick="switchLegalTab('privacy')" class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-brand-orange border-b-2 border-brand-orange">Privacy Policy</button>
+                    <button id="tab-terms" onclick="switchLegalTab('terms')" class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors">Terms of Service</button>
+                </div>
+                <button onclick="closeLegalModal()" class="text-white/50 hover:text-white text-xl font-bold px-2 py-1 transition-colors">&times;</button>
+            </div>
+            <!-- Modal Content Body -->
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-sm text-white/80 leading-relaxed font-sans" id="legal-modal-body">
+                <!-- Injected via JS -->
+            </div>
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 border-t border-white/10 bg-white/5 flex justify-end">
+                <button onclick="closeLegalModal()" class="sl-btn sl-btn--light">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const legalTexts = {
+            privacy: `
+                <h3 class="text-2xl font-bold text-white mb-4">Privacy Policy</h3>
+                <p>Hadron Quantum Labs ("Hadron", "we", "us") respects your privacy and is committed to protecting the personal data of our users, enterprise clients, and audit partners.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">1. Information We Collect</h4>
+                <p>We collect technical telemetry, organization contact details, and audit parameters provided voluntarily via our forms or zero-trust DCIM APIs. We do not store raw workload data or unencrypted credentials.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">2. How Information is Used</h4>
+                <p>Data gathered via contact or audit requests is strictly used to evaluate infrastructure capacity, run QUBO placement optimization models, and deliver requested technical reports.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">3. Data Security & Retention</h4>
+                <p>All transmitted data is encrypted using post-quantum ready TLS protocols. We retain submission data only for as long as necessary to provide requested services.</p>
+            `,
+            terms: `
+                <h3 class="text-2xl font-bold text-white mb-4">Terms of Service</h3>
+                <p>By accessing or using Hadron Quantum Labs' website, benchmarks, or optimization APIs, you agree to comply with and be bound by these terms.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">1. Enterprise Services & Use</h4>
+                <p>Hadron Quantum provides AI infrastructure optimization algorithms and PQC readiness audits. You agree not to reverse engineer, decompile, or modify any proprietary solver components.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">2. Intellectual Property</h4>
+                <p>All patents, benchmarks, architecture documentation, logo designs, and solver models remain the exclusive intellectual property of Hadron Quantum Labs and Hadron GBS.</p>
+                <h4 class="text-lg font-semibold text-white mt-6 mb-2">3. Limitation of Liability</h4>
+                <p>Hadron Quantum Labs provides optimization estimates for planning purposes. Hadron is not liable for indirect or consequential hardware disruptions resulting from improper local deployment.</p>
+            `
+        };
+
+        function openLegalModal(tab = 'privacy') {
+            const modal = document.getElementById('legal-modal');
+            switchLegalTab(tab);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+        }
+
+        function closeLegalModal() {
+            const modal = document.getElementById('legal-modal');
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function switchLegalTab(tab) {
+            const modalBody = document.getElementById('legal-modal-body');
+            const tabPrivacy = document.getElementById('tab-privacy');
+            const tabTerms = document.getElementById('tab-terms');
+
+            modalBody.innerHTML = legalTexts[tab] || legalTexts.privacy;
+
+            if (tab === 'privacy') {
+                tabPrivacy.className = "text-xs font-bold uppercase tracking-widest px-3 py-2 text-brand-orange border-b-2 border-brand-orange";
+                tabTerms.className = "text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors";
+            } else {
+                tabTerms.className = "text-xs font-bold uppercase tracking-widest px-3 py-2 text-brand-orange border-b-2 border-brand-orange";
+                tabPrivacy.className = "text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors";
+            }
+        }
     </script>
 </body>
 
