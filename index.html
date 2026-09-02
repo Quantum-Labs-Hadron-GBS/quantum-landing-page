@@ -1573,20 +1573,26 @@
 
 
 
-                // --- Blog Section: Content parallax ---
+                // --- Blog Section: Content parallax (faster on entry) ---
                 if (blogSection) {
                     const blRect = blogSection.getBoundingClientRect();
                     const blSmoothTop = blRect.top + scrollDiff;
                     if (blSmoothTop <= wh && (blSmoothTop + blRect.height) >= 0) {
                         const blProgress = (wh - blSmoothTop) / (wh + blRect.height);
-                        
-                        // Separate header and grid to create distinct depth
+                        const centerProgress = 0.5 - blProgress; // +0.5 at entry, 0 at center, -0.5 at exit
+
+                        // Entry bias: square the progress on entry side so it rushes in faster
+                        const entryFactor = centerProgress > 0
+                            ? centerProgress * centerProgress * 4  // accelerated on entry
+                            : centerProgress;                        // linear on exit
+
                         const blogHeader = blogSection.querySelector('.flex.flex-col.md\\:flex-row');
                         const blogGrid = blogSection.querySelector('.grid');
-                        
-                        // Centered parallax: 0 in the middle, pushes down when entering, up when leaving
-                        if (blogHeader) blogHeader.style.transform = 'translate3d(0,' + ((0.5 - blProgress) * 0.10 * blRect.height) + 'px,0)';
-                        if (blogGrid) blogGrid.style.transform = 'translate3d(0,' + ((0.5 - blProgress) * 0.30 * blRect.height) + 'px,0)';
+
+                        // Header: noticeably faster parallax on entry
+                        if (blogHeader) blogHeader.style.transform = `translate3d(0, ${entryFactor * 0.22 * blRect.height}px, 0)`;
+                        // Grid: deeper / faster lift — creates strong depth separation on entry
+                        if (blogGrid) blogGrid.style.transform = `translate3d(0, ${entryFactor * 0.50 * blRect.height}px, 0)`;
                     }
                 }
 
