@@ -1514,6 +1514,23 @@
                 }
             }
 
+            // Keyboard Scroll Optimization for Parallax
+            window.addEventListener('keydown', (e) => {
+                // Ignore if user is typing in an input/textarea
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                
+                // Increase scroll speed for deep vh sections
+                const scrollAmount = window.innerHeight * 0.4;
+                
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    window.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+                }
+            }, { passive: false });
+
             // Start the render loop
             renderLoop();
         });
