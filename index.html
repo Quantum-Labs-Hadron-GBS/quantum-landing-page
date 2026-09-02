@@ -1474,25 +1474,27 @@
 
                 // Dynamic Navbar Adaptability
                 let isDark = false;
+                const scrollY = window.scrollY;
+                const wh = window.innerHeight;
+                const headerAbsY = scrollY + 32;
+
+                // 1. Hero Video is fullscreen and dark for the very beginning.
+                // As the user scrolls (progress > 0), the video shrinks and reveals the WHITE background ("Why Hadron" section).
+                // We switch to Light Mode (Black Text) after scrolling past 60vh.
+                if (scrollY < (wh * 0.6)) {
+                    isDark = true;
+                }
                 
-                // Check based on getBoundingClientRect which is robust
-                const headerRect = mainHeader.getBoundingClientRect();
-                const headerCenter = headerRect.top + (headerRect.height / 2) || 32;
-                
-                const darkSections = [
-                    document.getElementById('scroll-sequence'),
-                    document.getElementById('quantum-section')
-                ];
-                
-                for (const sec of darkSections) {
-                    if (sec) {
-                        const rect = sec.getBoundingClientRect();
-                        // If the header center is within the bounds of these specific sections
-                        if (headerCenter >= rect.top && headerCenter <= rect.bottom) {
-                            isDark = true;
-                            break;
-                        }
-                    }
+                // 2. Quantum Architecture section (Dark)
+                const quantumSeq = document.getElementById('quantum-section');
+                if (quantumSeq && headerAbsY >= quantumSeq.offsetTop && headerAbsY <= (quantumSeq.offsetTop + quantumSeq.offsetHeight)) {
+                    isDark = true;
+                }
+
+                // 3. Footer (Dark)
+                const footer = document.querySelector('footer');
+                if (footer && headerAbsY >= footer.offsetTop && headerAbsY <= (footer.offsetTop + footer.offsetHeight)) {
+                    isDark = true;
                 }
 
                 if (window.scrollY > 50) {
