@@ -1472,48 +1472,45 @@
                     card4.style.opacity = 1;
                     card4.style.transform = 'translateX(0px)';
                 }
-            }
-
-            // Dynamic Navbar Adaptability
-            let isDark = false;
-            
-            // Check based on getBoundingClientRect which is robust
-            const headerRect = mainHeader.getBoundingClientRect();
-            const headerCenter = headerRect.top + (headerRect.height / 2) || 32;
-            
-            const darkSections = [
-                document.getElementById('scroll-sequence'),
-                document.getElementById('quantum-section')
-            ];
-            
-            for (const sec of darkSections) {
-                if (sec) {
-                    const rect = sec.getBoundingClientRect();
-                    // If the header center is within the bounds of these specific sections
-                    if (headerCenter >= rect.top && headerCenter <= rect.bottom) {
-                        isDark = true;
-                        break;
-                    }
-                }
-            }
-
             if (window.scrollY > 50) {
                 mainHeader.style.transform = 'translateY(10px)';
             } else {
                 mainHeader.style.transform = 'translateY(0px)';
             }
 
-            // Apply classes
-            if (isDark) {
-                mainHeader.classList.add('header-dark-mode');
-                mainHeader.classList.remove('header-light-mode');
-            } else {
-                mainHeader.classList.add('header-light-mode');
-                mainHeader.classList.remove('header-dark-mode');
-            }
-
             // Start the render loop
             renderLoop();
+        });
+
+        // INDEPENDENT NAVBAR LOGIC
+        window.addEventListener('scroll', () => {
+            const mainHeader = document.getElementById('main-header');
+            if (!mainHeader) return;
+            
+            const y = window.scrollY + (mainHeader.offsetHeight / 2 || 32);
+            let isLight = false;
+            
+            const lightSections = [
+                document.getElementById('transition-section'),
+                document.getElementById('blog-section'),
+                document.getElementById('faq-section')
+            ];
+            
+            for (let i = 0; i < lightSections.length; i++) {
+                const sec = lightSections[i];
+                if (sec && y >= sec.offsetTop && y <= (sec.offsetTop + sec.offsetHeight)) {
+                    isLight = true;
+                    break;
+                }
+            }
+            
+            if (isLight) {
+                mainHeader.classList.add('header-light-mode');
+                mainHeader.classList.remove('header-dark-mode');
+            } else {
+                mainHeader.classList.add('header-dark-mode');
+                mainHeader.classList.remove('header-light-mode');
+            }
         });
 
         // FAQ Toggle Logic
