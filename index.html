@@ -1464,15 +1464,16 @@
             }
 
             // Dynamic Navbar Adaptability
-            let isDark = false;
+            let isLight = false;
             const headerRect = mainHeader.getBoundingClientRect();
-            const headerCenter = headerRect.top + (headerRect.height / 2);
+            // Fallback to 32px if height is 0 for some reason
+            const headerCenter = headerRect.top + (headerRect.height / 2) || 32;
             
-            const darkSections = document.querySelectorAll('#scroll-sequence, #quantum-section, footer');
-            darkSections.forEach(sec => {
+            const lightSections = document.querySelectorAll('#transition-section, #blog-section, #faq-section');
+            lightSections.forEach(sec => {
                 const rect = sec.getBoundingClientRect();
                 if (headerCenter >= rect.top && headerCenter <= rect.bottom) {
-                    isDark = true;
+                    isLight = true;
                 }
             });
 
@@ -1483,16 +1484,18 @@
             }
 
             const mobileBtn = document.getElementById('mobile-menu-btn');
-            if (isDark) {
-                headerLogo.style.filter = 'none';
-                headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
-                if (mobileBtn) mobileBtn.style.color = '#ffffff';
-            } else {
+            if (isLight) {
+                // OVER LIGHT SECTION -> DARK TEXT & LOGO
                 headerLogo.style.filter = 'invert(1) brightness(0)';
                 headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
                 navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
                 if (mobileBtn) mobileBtn.style.color = '#0a0a0a';
+            } else {
+                // OVER DARK SECTION -> WHITE TEXT & LOGO
+                headerLogo.style.filter = 'none';
+                headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
+                if (mobileBtn) mobileBtn.style.color = '#ffffff';
             }
 
             // Start the render loop
