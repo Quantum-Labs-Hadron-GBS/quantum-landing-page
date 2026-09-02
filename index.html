@@ -1500,15 +1500,11 @@
 
         // Parallax Logic — unified handler for Transition + Buffer sections
         (function() {
-
-
             // Transition section layers
             const transSection = document.getElementById('transition-section');
             const obsText = document.getElementById('observers-text');
             const obsQuantum = document.getElementById('observers-quantum');
             const obsPeople = document.getElementById('observers-people');
-
-
 
             // Additional sections for parallax
             const blogSection = document.getElementById('blog-section');
@@ -1518,98 +1514,152 @@
             const qSection = document.getElementById('quantum-section');
             const qTrack = document.getElementById('quantum-track');
 
+            // Hero cards for mouse parallax
+            const heroCard = document.getElementById('hero-card');
+            const contentLayer = document.getElementById('content-layer');
+
+            // Proposition cards for ambient float
+            const propCards = [
+                document.getElementById('card-1'),
+                document.getElementById('card-2'),
+                document.getElementById('card-3'),
+                document.getElementById('card-4'),
+            ].filter(Boolean);
+
             let targetScroll = window.scrollY;
             let currentScroll = window.scrollY;
             let isInitialized = false;
+
+            // Mouse position tracking (normalized -1 to 1)
+            let mouseX = 0, mouseY = 0;
+            let targetMouseX = 0, targetMouseY = 0;
+            window.addEventListener('mousemove', e => {
+                targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+                targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            }, { passive: true });
 
             window.addEventListener('scroll', () => {
                 targetScroll = window.scrollY;
             }, { passive: true });
 
-            function renderParallax() {
+            // Sine-wave easing — maps linear 0→1 through a smooth water curve
+            function waveLerp(t) {
+                return 0.5 - Math.cos(t * Math.PI) * 0.5;
+            }
+
+            // Ambient float: sine oscillation tied to time, staggered per card
+            const floatAmplitude = 5; // px
+            const floatFrequency = 0.0006; // cycles/ms — very slow ripple
+            const cardPhaseOffsets = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5]; // 90° apart
+
+            function renderParallax(timestamp) {
                 if (!isInitialized) {
                     currentScroll = targetScroll;
+                    mouseX = targetMouseX;
+                    mouseY = targetMouseY;
                     isInitialized = true;
                 }
 
-                // Lerp for smooth water flow feel
-                currentScroll += (targetScroll - currentScroll) * 0.15;
+                // Slightly lower lerp = more "floating water" momentum
+                currentScroll += (targetScroll - currentScroll) * 0.10;
                 const scrollDiff = targetScroll - currentScroll;
-                
-                const wh = window.innerHeight;
 
-                // --- Transition Section: Observers parallax ---
+                // Smooth mouse lerp — lags behind for a fluid, viscous feel
+                mouseX += (targetMouseX - mouseX) * 0.06;
+                mouseY += (targetMouseY - mouseY) * 0.06;
+
+                const wh = window.innerHeight;
+                const heroVisible = window.scrollY < wh;
+
+                // --- Mouse parallax on hero content (only when hero is visible) ---
+                if (heroVisible && contentLayer) {
+                    const tiltX = mouseX * 6;   // max ±6px horizontal
+                    const tiltY = mouseY * 4;   // max ±4px vertical
+                    contentLayer.style.transform = `translate3d(${tiltX}px, ${tiltY}px, 0)`;
+                } else if (contentLayer) {
+                    contentLayer.style.transform = 'translate3d(0,0,0)';
+                }
+
+                // --- Ambient wave float on proposition cards (when visible after animation) ---
+                if (!heroVisible && propCards.length && timestamp) {
+                    propCards.forEach((card, i) => {
+                        // Only float if card is fully visible (opacity ~1)
+                        const curOpacity = parseFloat(card.style.opacity || '0');
+                        if (curOpacity > 0.5) {
+                            const floatY = Math.sin(timestamp * floatFrequency + cardPhaseOffsets[i]) * floatAmplitude;
+                            // Blend float into existing X transform, preserving card's current translateX
+                            const currentTransform = card.style.transform || '';
+                            const xMatch = currentTransform.match(/translateX\(([-\d.]+)px\)/);
+                            const currentX = xMatch ? parseFloat(xMatch[1]) : 0;
+                            card.style.transform = `translate(${currentX}px, ${floatY}px)`;
+                        }
+                    });
+                }
+
+                // --- Transition Section: multi-speed depth parallax with wave easing ---
                 if (transSection && obsText) {
                     const tRect = transSection.getBoundingClientRect();
                     const tSmoothTop = tRect.top + scrollDiff;
 
                     if (tSmoothTop <= wh && (tSmoothTop + tRect.height) >= 0) {
                         const tProgress = (wh - tSmoothTop) / (wh + tRect.height);
+                        const centerProgress = 0.5 - tProgress;
 
-                        // We want all elements to be exactly in their default CSS positions (translateY = 0)
-                        // when the section is perfectly centered on screen.
-                        // Assuming section height ~ viewport height, this happens at tProgress = 0.5.
-                        const centerProgress = 0.5 - tProgress; // +0.5 at entry, 0 at center, -0.5 at exit
+                        // Wave-eased center progress — organic deceleration at center
+                        const waved = (0.5 - waveLerp(tProgress)) * 2; // -1 to 1, 0 at center
 
-                        // Text starts much lower (+30%) and scrolls up. Forcefully shifted up by 50px.
-                        const textY = (centerProgress * 0.60 * tRect.height) - 50;
+                        // Layer 1 (text) — fastest, most "surface"
+                        const textY = (waved * 0.30 * tRect.height) - 50;
                         obsText.style.transform = `translate3d(0, ${textY}px, 0)`;
 
-                        // Quantum computer starts 25% lower (+25%) and drifts up
+                        // Layer 2 (quantum image) — medium depth
                         if (obsQuantum) {
-                            const quantumY = centerProgress * 0.575 * tRect.height;
+                            const quantumY = waved * 0.20 * tRect.height;
                             obsQuantum.style.transform = `translateX(-50%) translate3d(0, ${quantumY}px, 0)`;
                         }
 
-                        // People layer starts slightly lower (+10%)
+                        // Layer 3 (people) — slowest, "deepest" layer
                         if (obsPeople) {
-                            const peopleY = centerProgress * 0.20 * tRect.height;
+                            const peopleY = waved * 0.08 * tRect.height;
                             obsPeople.style.transform = `translate3d(0, ${peopleY}px, 0)`;
                         }
                     }
                 }
 
-
-
-
-
-                // --- Blog Section: Content parallax (faster on entry) ---
+                // --- Blog Section: wave-eased parallax, fast entry ---
                 if (blogSection) {
                     const blRect = blogSection.getBoundingClientRect();
                     const blSmoothTop = blRect.top + scrollDiff;
                     if (blSmoothTop <= wh && (blSmoothTop + blRect.height) >= 0) {
                         const blProgress = (wh - blSmoothTop) / (wh + blRect.height);
-                        const centerProgress = 0.5 - blProgress; // +0.5 at entry, 0 at center, -0.5 at exit
+                        const centerProgress = 0.5 - blProgress;
 
-                        // Entry bias: square the progress on entry side so it rushes in faster
+                        // Entry: accelerated quadratic; Exit: wave-eased smooth deceleration
                         const entryFactor = centerProgress > 0
-                            ? centerProgress * centerProgress * 4  // accelerated on entry
-                            : centerProgress;                        // linear on exit
+                            ? centerProgress * centerProgress * 4
+                            : (0.5 - waveLerp(blProgress)) * 2;
 
                         const blogHeader = blogSection.querySelector('.flex.flex-col.md\\:flex-row');
                         const blogGrid = blogSection.querySelector('.grid');
 
-                        // Header: noticeably faster parallax on entry
-                        if (blogHeader) blogHeader.style.transform = `translate3d(0, ${entryFactor * 0.22 * blRect.height}px, 0)`;
-                        // Grid: deeper / faster lift — creates strong depth separation on entry
-                        if (blogGrid) blogGrid.style.transform = `translate3d(0, ${entryFactor * 0.50 * blRect.height}px, 0)`;
+                        if (blogHeader) blogHeader.style.transform = `translate3d(0, ${entryFactor * 0.20 * blRect.height}px, 0)`;
+                        if (blogGrid) blogGrid.style.transform = `translate3d(0, ${entryFactor * 0.48 * blRect.height}px, 0)`;
                     }
                 }
 
-                // --- FAQ Section: Content parallax ---
+                // --- FAQ Section: wave-eased two-column depth ---
                 if (faqSection) {
                     const fRect = faqSection.getBoundingClientRect();
                     const fSmoothTop = fRect.top + scrollDiff;
                     if (fSmoothTop <= wh && (fSmoothTop + fRect.height) >= 0) {
                         const fProgress = (wh - fSmoothTop) / (wh + fRect.height);
-                        
-                        // Separate left heading column from right accordion column
+                        const waved = (0.5 - waveLerp(fProgress)) * 2;
+
                         const faqHeading = faqSection.querySelector('.grid > div:first-child');
                         const faqAccordion = faqSection.querySelector('.grid > div:nth-child(2)');
-                        
-                        // Centered parallax with different speeds
-                        if (faqHeading) faqHeading.style.transform = 'translate3d(0,' + ((0.5 - fProgress) * 0.12 * fRect.height) + 'px,0)';
-                        if (faqAccordion) faqAccordion.style.transform = 'translate3d(0,' + ((0.5 - fProgress) * 0.28 * fRect.height) + 'px,0)';
+
+                        if (faqHeading) faqHeading.style.transform = `translate3d(0, ${waved * 0.10 * fRect.height}px, 0)`;
+                        if (faqAccordion) faqAccordion.style.transform = `translate3d(0, ${waved * 0.22 * fRect.height}px, 0)`;
                     }
                 }
 
@@ -1617,20 +1667,15 @@
                 if (qSection && qTrack) {
                     const qRect = qSection.getBoundingClientRect();
                     const qScrollDist = qRect.height - wh;
-                    
+
                     if (qScrollDist > 0) {
                         const qProgress = Math.max(0, Math.min(1, -qRect.top / qScrollDist));
-                        
-                        // Calculate how far the track needs to slide to the left
-                        // Max translation is (track width - viewport width)
-                        // However, flex items might overflow the container, so scrollWidth is better, 
-                        // but scrollWidth might not be available accurately until render.
-                        // We can just use the scrollWidth directly inside the loop.
                         const maxTranslate = qTrack.scrollWidth - wh;
-                        
+
                         if (maxTranslate > 0) {
-                            // Smoothly translate the track horizontally
-                            qTrack.style.transform = `translate3d(-${qProgress * maxTranslate}px, 0, 0)`;
+                            // Apply wave easing to the carousel scroll too
+                            const easedProgress = waveLerp(qProgress);
+                            qTrack.style.transform = `translate3d(-${easedProgress * maxTranslate}px, 0, 0)`;
                         }
                     }
                 }
@@ -1639,7 +1684,7 @@
             }
 
             // Start loop
-            renderParallax();
+            requestAnimationFrame(renderParallax);
         })();
 
         // Mobile Menu Logic
