@@ -276,6 +276,64 @@
 
 <body class="antialiased font-sans">
 
+    <!-- Original Hadron Navbar -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-[100] flex justify-center"
+        style="transition: none;">
+        <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
+            <a href="/" class="flex items-center gap-2 py-3 md:py-4">
+                <img id="header-logo" src="https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png" alt="Hadron Quantum Labs"
+                    class="h-9 md:h-10 w-auto" style="transition: filter 0.3s;" />
+            </a>
+            <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
+                style="height: 44px;" id="header-nav">
+                <a href="/"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOME</a>
+                <a href="/blogs.html"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">BLOGS</a>
+                <a href="#solutions"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">SOLUTIONS</a>
+                <a href="#workflow"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">WORKFLOW</a>
+                <a href="#pricing"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">OFFERINGS</a>
+                <a href="#faq-accordion"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">FAQ</a>
+                <a href="contact.html"
+                    class="nav-link flex items-center px-5 border-r border-white/20 hover:bg-white/20 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </nav>
+            <button id="mobile-menu-btn" class="flex md:hidden items-center justify-center w-12 h-12 text-white absolute right-4 top-2 z-[60] transition-colors" aria-label="Open menu">
+                <div class="w-6 h-3.5 relative flex flex-col justify-between cursor-pointer">
+                    <span class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
+                    <span class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10" aria-hidden="true">
+        <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
+            <a href="/" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Home</a>
+            <a href="/blogs.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Blogs</a>
+            <a href="#solutions" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Solutions</a>
+            <a href="#workflow" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Workflow</a>
+            <a href="#pricing" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Offerings</a>
+            <a href="#faq-accordion" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">FAQ</a>
+            <a href="contact.html" class="mobile-link text-brand-orange hover:text-brand-orange/80 transition-colors">Contact Us</a>
+            <div class="h-[1px] w-12 bg-brand-dark/10 my-2"></div>
+            <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-brand-dark/40 hover:text-brand-dark transition-colors flex items-center gap-2 text-xl">
+                Hadron GBS Main Site
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            </a>
+        </nav>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,159,43,0.15),transparent_60%)] pointer-events-none -z-10"></div>
+    </div>
+
     <!-- Sticky Scroll Sequence Container -->
     <div id="scroll-sequence" class="relative w-full" style="height: 300vh;">
 
@@ -285,63 +343,7 @@
             <!-- Sharplink gradient background layer (shows through shrinking hero) -->
             <div class="gradient-bg-light"></div>
 
-            <!-- Original Hadron Navbar -->
-            <header id="main-header" class="fixed top-0 left-0 w-full z-[100] flex justify-center"
-                style="transition: none;">
-                <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
-                    <a href="/" class="flex items-center gap-2 py-3 md:py-4">
-                        <img id="header-logo" src="https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png" alt="Hadron Quantum Labs"
-                            class="h-9 md:h-10 w-auto" style="transition: filter 0.3s;" />
-                    </a>
-                    <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
-                        style="height: 44px;" id="header-nav">
-                        <a href="/"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOME</a>
-                        <a href="/blogs.html"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">BLOGS</a>
-                        <a href="#solutions"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">SOLUTIONS</a>
-                        <a href="#workflow"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">WORKFLOW</a>
-                        <a href="#pricing"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">OFFERINGS</a>
-                        <a href="#faq-accordion"
-                            class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">FAQ</a>
-                        <a href="contact.html"
-                            class="nav-link flex items-center px-5 border-r border-white/20 hover:bg-white/20 transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M5 12h14M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </nav>
-                    <button id="mobile-menu-btn" class="flex md:hidden items-center justify-center w-12 h-12 text-white absolute right-4 top-2 z-[60] transition-colors" aria-label="Open menu">
-                        <div class="w-6 h-3.5 relative flex flex-col justify-between cursor-pointer">
-                            <span class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
-                            <span class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
-                        </div>
-                    </button>
-                </div>
-            </header>
 
-            <!-- Mobile Menu Overlay -->
-            <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10" aria-hidden="true">
-                <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
-                    <a href="/" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Home</a>
-                    <a href="/blogs.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Blogs</a>
-                    <a href="#solutions" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Solutions</a>
-                    <a href="#workflow" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Workflow</a>
-                    <a href="#pricing" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Offerings</a>
-                    <a href="#faq-accordion" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">FAQ</a>
-                    <a href="contact.html" class="mobile-link text-brand-orange hover:text-brand-orange/80 transition-colors">Contact Us</a>
-                    <div class="h-[1px] w-12 bg-brand-dark/10 my-2"></div>
-                    <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-brand-dark/40 hover:text-brand-dark transition-colors flex items-center gap-2 text-xl">
-                        Hadron GBS Main Site
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                    </a>
-                </nav>
-                <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,159,43,0.15),transparent_60%)] pointer-events-none -z-10"></div>
-            </div>
 
             <!-- LAYER 1: Light Grid Background (z-0) -->
             <div id="grid-bg-pattern" class="absolute inset-0 bg-brand-light bg-grid-pattern z-0 opacity-0"></div>
