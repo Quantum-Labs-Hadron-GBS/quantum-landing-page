@@ -271,6 +271,17 @@
             height: 48px;
         }
         .sl-btn--ghost-dark:hover { background: rgba(255,255,255,0.08); }
+
+        /* Dynamic Navbar Adaptability */
+        .header-dark-mode #header-logo { filter: none !important; }
+        .header-dark-mode #header-nav { background-color: rgba(255,255,255,0.1) !important; }
+        .header-dark-mode .nav-link { color: #ffffff !important; border-color: rgba(255,255,255,0.2) !important; }
+        .header-dark-mode #mobile-menu-btn { color: #ffffff !important; }
+
+        .header-light-mode #header-logo { filter: invert(1) brightness(0) !important; }
+        .header-light-mode #header-nav { background-color: rgba(0,0,0,0.05) !important; }
+        .header-light-mode .nav-link { color: #0a0a0a !important; border-color: rgba(0,0,0,0.15) !important; }
+        .header-light-mode #mobile-menu-btn { color: #0a0a0a !important; }
     </style>
 </head>
 
@@ -1464,17 +1475,26 @@
             }
 
             // Dynamic Navbar Adaptability
-            const headerAbsY = window.scrollY + 32; // Center of header in absolute document coordinates
             let isDark = false;
             
-            const scrollSeq = document.getElementById('scroll-sequence');
-            const quantumSeq = document.getElementById('quantum-section');
+            // Check based on getBoundingClientRect which is robust
+            const headerRect = mainHeader.getBoundingClientRect();
+            const headerCenter = headerRect.top + (headerRect.height / 2) || 32;
             
-            if (scrollSeq && headerAbsY >= scrollSeq.offsetTop && headerAbsY <= (scrollSeq.offsetTop + scrollSeq.offsetHeight)) {
-                isDark = true;
-            }
-            if (quantumSeq && headerAbsY >= quantumSeq.offsetTop && headerAbsY <= (quantumSeq.offsetTop + quantumSeq.offsetHeight)) {
-                isDark = true;
+            const darkSections = [
+                document.getElementById('scroll-sequence'),
+                document.getElementById('quantum-section')
+            ];
+            
+            for (const sec of darkSections) {
+                if (sec) {
+                    const rect = sec.getBoundingClientRect();
+                    // If the header center is within the bounds of these specific sections
+                    if (headerCenter >= rect.top && headerCenter <= rect.bottom) {
+                        isDark = true;
+                        break;
+                    }
+                }
             }
 
             if (window.scrollY > 50) {
@@ -1483,19 +1503,13 @@
                 mainHeader.style.transform = 'translateY(0px)';
             }
 
-            const mobileBtn = document.getElementById('mobile-menu-btn');
+            // Apply classes
             if (isDark) {
-                // OVER DARK SECTION -> WHITE TEXT & LOGO
-                headerLogo.style.filter = 'none';
-                headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
-                if (mobileBtn) mobileBtn.style.color = '#ffffff';
+                mainHeader.classList.add('header-dark-mode');
+                mainHeader.classList.remove('header-light-mode');
             } else {
-                // OVER REST -> DARK TEXT & LOGO
-                headerLogo.style.filter = 'invert(1) brightness(0)';
-                headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
-                navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
-                if (mobileBtn) mobileBtn.style.color = '#0a0a0a';
+                mainHeader.classList.add('header-light-mode');
+                mainHeader.classList.remove('header-dark-mode');
             }
 
             // Start the render loop
