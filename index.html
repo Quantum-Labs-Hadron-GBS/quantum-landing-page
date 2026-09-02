@@ -1429,11 +1429,7 @@
                     card4.style.opacity = 0;
                     card4.style.transform = 'translateX(0)';
 
-                    // Reset: white text on dark hero
-                    mainHeader.style.transform = 'translateY(0px)';
-                    headerLogo.style.filter = 'none';
-                    headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                    navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
+                    // Reset: white text on dark hero (handled by dynamic logic now)
                 } else if (animatedTop <= -maxScrollDistance) {
                     // Lock to final state
                     if (!isMobile) {
@@ -1443,11 +1439,7 @@
                         const tBottom = window.innerHeight - (placeholder.offsetTop + placeholder.offsetHeight);
                         heroCard.style.clipPath = `inset(${tTop}px ${tRight}px ${tBottom}px ${tLeft}px)`;
 
-                        // Locked final: dark text on light bg
-                        mainHeader.style.transform = 'translateY(10px)';
-                        headerLogo.style.filter = 'invert(1) brightness(0)';
-                        headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
-                        navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
+                        // Locked final: dark text on light bg (handled by dynamic logic now)
                     } else {
                         heroCard.style.transform = `scale(0.95)`;
                     }
@@ -1477,6 +1469,38 @@
                     card4.style.opacity = 1;
                     card4.style.transform = 'translateX(0px)';
                 }
+            }
+
+            // Dynamic Navbar Adaptability
+            let isDark = false;
+            const headerRect = mainHeader.getBoundingClientRect();
+            const headerCenter = headerRect.top + (headerRect.height / 2);
+            
+            const darkSections = document.querySelectorAll('#scroll-sequence, #quantum-section, footer');
+            darkSections.forEach(sec => {
+                const rect = sec.getBoundingClientRect();
+                if (headerCenter >= rect.top && headerCenter <= rect.bottom) {
+                    isDark = true;
+                }
+            });
+
+            if (window.scrollY > 50) {
+                mainHeader.style.transform = 'translateY(10px)';
+            } else {
+                mainHeader.style.transform = 'translateY(0px)';
+            }
+
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            if (isDark) {
+                headerLogo.style.filter = 'none';
+                headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
+                if (mobileBtn) mobileBtn.style.color = '#ffffff';
+            } else {
+                headerLogo.style.filter = 'invert(1) brightness(0)';
+                headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
+                navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
+                if (mobileBtn) mobileBtn.style.color = '#0a0a0a';
             }
 
             // Start the render loop
