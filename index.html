@@ -422,15 +422,11 @@
 
                         <!-- Middle Column -->
                         <div class="hidden lg:flex flex-col justify-end h-full">
-                            <p class="text-white text-xl font-medium leading-relaxed mb-4">
-                                Hadron Quantum is the enterprise-grade AI infrastructure platform giving builders a
-                                smarter, more productive path to scale.
-                            </p>
                         </div>
 
                         <!-- Right Column -->
                         <div class="hidden lg:flex flex-col justify-end h-full">
-                            <a href="/blogs.html"
+                            <a id="hero-news-card" href="#"
                                 class="bg-[#2a303c]/50 backdrop-blur-[24px] p-8 w-full group cursor-pointer hover:bg-[#2a303c]/70 transition-colors text-white relative shadow-2xl block" style="transform: translateZ(0); will-change: transform, opacity; -webkit-backdrop-filter: blur(24px);">
                                 <div class="absolute top-0 left-0 w-8 h-[3px] bg-brand-orange"></div>
                                 <div class="flex justify-between items-start mb-6">
@@ -1394,6 +1390,12 @@
 
                     // Hero original text fades out and gets cropped
                     heroContent.style.opacity = mapRange(progress, 0, fadeStart, 1, 0);
+                    
+                    // Fade out the news card quickly before the video shrinks away from it
+                    const heroNewsCard = document.getElementById('hero-news-card');
+                    if (heroNewsCard) {
+                        heroNewsCard.style.opacity = mapRange(progress, 0, 0.1, 1, 0);
+                    }
 
                     // Video fades out (Only on Desktop since mobile scrolls it away)
                     if (!isMobile) {
@@ -1786,10 +1788,10 @@
                 if (heroDate) heroDate.innerText = dateStrHero.toUpperCase();
                 if (heroTitle) heroTitle.innerText = latest.title;
                 
-                // Add click listener to whole hero block
-                const heroBlock = heroTitle ? heroTitle.closest('.group') : null;
+                // Add dynamic link to the whole hero block
+                const heroBlock = document.getElementById('hero-news-card');
                 if (heroBlock) {
-                    heroBlock.onclick = () => window.location.href = `/article.html?slug=${latest.slug}`;
+                    heroBlock.href = `/article.html?slug=${latest.slug}`;
                 }
 
                 // 2. Update Latest News Grid
