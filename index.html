@@ -4,7 +4,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <title>Hadron Quantum Labs | AI Infrastructure Optimization</title>
+    <title>Hadron Quantum Labs | Quantum-Inspired AI Infrastructure & PQC | Hadron GBS</title>
+    <meta name="description" content="Hadron Quantum Labs is the quantum technology division of Hadron Global Business Solutions (Hadron GBS), focused on quantum-inspired optimization, AI infrastructure optimization, and Post-Quantum Cryptography (PQC) readiness for enterprise data centers." />
+    
+    <!-- Structured Data (Entity Graph) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Hadron Quantum Labs",
+      "url": "https://quantum.hadrongbs.com/",
+      "logo": "https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png",
+      "description": "Quantum-inspired optimization, AI infrastructure optimization, and Post-Quantum Cryptography (PQC) readiness for enterprise data centers.",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Hadron Global Business Solutions",
+        "alternateName": "Hadron GBS",
+        "url": "https://www.hadrongbs.com"
+      }
+    }
+    </script>
+
     <!-- Preconnect & Resource Hints for Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -214,10 +234,10 @@
         }
 
         /* Sharplink-style scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 14px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #b8ccd8; border-radius: 0; }
-        ::-webkit-scrollbar-thumb:hover { background: #8aacbc; }
+        ::-webkit-scrollbar-thumb { background: #ff9f2b; border-radius: 7px; border: 3px solid transparent; background-clip: padding-box; }
+        ::-webkit-scrollbar-thumb:hover { background: #e0861b; border: 3px solid transparent; background-clip: padding-box; }
 
         #hero-card { will-change: clip-path; }
 
@@ -291,15 +311,15 @@
     <header id="main-header" class="fixed top-0 left-0 w-full z-[100] flex justify-center"
         style="transition: none;">
         <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
-            <a href="/" class="flex items-center gap-2 py-3 md:py-4">
+            <a href="index.html" class="flex items-center gap-2 py-3 md:py-4">
                 <img id="header-logo" src="https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png" alt="Hadron Quantum Labs"
                     class="h-9 md:h-10 w-auto" style="transition: filter 0.3s;" />
             </a>
             <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
                 style="height: 44px;" id="header-nav">
-                <a href="/"
+                <a href="index.html"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOME</a>
-                <a href="/blogs.html"
+                <a href="blogs.html"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">BLOGS</a>
                 <a href="#solutions"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">SOLUTIONS</a>
@@ -329,8 +349,8 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10" aria-hidden="true">
         <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
-            <a href="/" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Home</a>
-            <a href="/blogs.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Blogs</a>
+            <a href="index.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Home</a>
+            <a href="blogs.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Blogs</a>
             <a href="#solutions" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Solutions</a>
             <a href="#workflow" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Workflow</a>
             <a href="#pricing" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Offerings</a>
@@ -392,9 +412,13 @@
                         <div id="hero-left-content" class="flex flex-col justify-between h-full">
                             <div class="mt-20 md:mt-24">
                                 <h1
-                                    class="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-8 leading-[1.05] text-white">
+                                    class="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-6 leading-[1.05] text-white">
                                     Quantum-Inspired<br>Infrastructure <span class="text-brand-orange">Optimization</span>
                                 </h1>
+                                
+                                <p class="text-white/80 text-sm md:text-[15px] mb-8 max-w-[90%] font-medium leading-relaxed">
+                                    Hadron Quantum Labs is the quantum technology division of <strong>Hadron Global Business Solutions (Hadron GBS)</strong>, focused on quantum-inspired optimization, AI infrastructure optimization, and Post-Quantum Cryptography (PQC) readiness for enterprise data centers.
+                                </p>
 
                                 <div class="flex flex-col gap-[2px] w-fit">
                                     <a href="#solutions"
@@ -781,7 +805,7 @@
                         Latest News
                     </h2>
                 </div>
-                <a href="/blogs.html" class="flex items-center gap-3 px-5 py-3 bg-black/5 hover:bg-black/10 transition-colors text-brand-dark text-[11px] font-bold tracking-[0.15em] uppercase rounded-sm">
+                <a href="blogs.html" class="flex items-center gap-3 px-5 py-3 bg-black/5 hover:bg-black/10 transition-colors text-brand-dark text-[11px] font-bold tracking-[0.15em] uppercase rounded-sm">
                     Visit Our Blog
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
@@ -962,7 +986,7 @@
                     <div class="flex flex-col gap-4">
                         <h4 class="sl-label text-white/40 mb-2">Company</h4>
                         <a href="#about" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">About Us</a>
-                        <a href="/blogs.html" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">News & Blogs</a>
+                        <a href="blogs.html" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">News & Blogs</a>
                         <a href="contact.html"
                             class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Contact</a>
                     </div>
@@ -982,7 +1006,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 gap-6">
                 <div class="flex items-center gap-4">
                     <img src="./favicon.svg" alt="Hadron" class="h-6 w-auto opacity-70 filter invert brightness-0" />
-                    <span class="text-white/50 text-sm font-medium tracking-wide">© 2026 Hadron Quantum Labs.</span>
+                    <span class="text-white/50 text-sm font-medium tracking-wide">© 2026 Hadron Quantum Labs, the quantum technology division of Hadron Global Business Solutions (Hadron GBS).</span>
                 </div>
                 <div class="flex gap-6">
                     <a href="javascript:void(0)" onclick="openLegalModal('privacy')"
@@ -1514,6 +1538,30 @@
                 }
             }
 
+            // Custom smooth scroll function
+            function smoothScrollTo(targetY, duration = 700) {
+                const startY = window.scrollY;
+                const difference = targetY - startY;
+                const startTime = performance.now();
+
+                function step(currentTime) {
+                    let progress = (currentTime - startTime) / duration;
+                    if (progress > 1) progress = 1;
+
+                    // easeInOutCubic for a snappy but smooth feel
+                    const ease = progress < 0.5 
+                        ? 4 * progress * progress * progress 
+                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+                    window.scrollTo(0, startY + difference * ease);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
             // Keyboard Scroll Optimization for Parallax
             window.addEventListener('keydown', (e) => {
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
@@ -1544,51 +1592,52 @@
                         
                         // Exact vertical scroll distance to move exactly one card horizontally
                         const vScrollPerCard = cardTotalWidth * (qScrollDist / maxTranslate);
-                        window.scrollBy({ top: isDown ? vScrollPerCard : -vScrollPerCard, behavior: 'smooth' });
+                        smoothScrollTo(scrollY + (isDown ? vScrollPerCard : -vScrollPerCard), 500);
                         return;
                     }
                 }
 
-                // 2. Following Sections (Snap to section)
-                const heroSeq = document.getElementById('scroll-sequence');
-                const heroBottom = heroSeq ? heroSeq.offsetTop + heroSeq.offsetHeight : wh * 3;
+                // 2. All Sections (Snap to section seamlessly)
+                const snapPoints = [];
+                const seq = document.getElementById('scroll-sequence');
+                if (seq) {
+                    snapPoints.push(seq.offsetTop); // Hero start
+                    snapPoints.push(seq.offsetTop + seq.offsetHeight - wh); // "Why Hadron" state
+                }
                 
-                if (scrollY > heroBottom - wh) {
-                    const sections = [
-                        document.getElementById('transition-section'),
-                        document.getElementById('quantum-section'),
-                        document.getElementById('blog-section'),
-                        document.getElementById('faq-section'),
-                        document.querySelector('footer')
-                    ].filter(Boolean);
+                ['transition-section', 'quantum-section', 'blog-section', 'faq-section'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) snapPoints.push(el.offsetTop);
+                });
+                
+                const footer = document.querySelector('footer');
+                if (footer) snapPoints.push(footer.offsetTop);
 
-                    let targetY = null;
-                    if (isDown) {
-                        for (const sec of sections) {
-                            if (sec.offsetTop > scrollY + 10) {
-                                targetY = sec.offsetTop;
-                                break;
-                            }
-                        }
-                    } else {
-                        for (let i = sections.length - 1; i >= 0; i--) {
-                            if (sections[i].offsetTop < scrollY - 10) {
-                                targetY = sections[i].offsetTop;
-                                break;
-                            }
+                snapPoints.sort((a, b) => a - b);
+
+                let targetY = null;
+                if (isDown) {
+                    for (const pt of snapPoints) {
+                        if (pt > scrollY + 10) {
+                            targetY = pt;
+                            break;
                         }
                     }
-
-                    if (targetY !== null) {
-                        window.scrollTo({ top: targetY, behavior: 'smooth' });
-                        return;
+                } else {
+                    for (let i = snapPoints.length - 1; i >= 0; i--) {
+                        if (snapPoints[i] < scrollY - 10) {
+                            targetY = snapPoints[i];
+                            break;
+                        }
                     }
                 }
 
-                // 3. Hero Section (Continuous smooth scrolling)
-                const scrollAmount = wh * 0.35; // slightly smoother/smaller jump
-                window.scrollBy({ top: isDown ? scrollAmount : -scrollAmount, behavior: 'smooth' });
-
+                if (targetY !== null) {
+                    smoothScrollTo(targetY, 700);
+                } else {
+                    const scrollAmount = wh * 0.8;
+                    smoothScrollTo(scrollY + (isDown ? scrollAmount : -scrollAmount), 700);
+                }
             }, { passive: false });
 
             // Start the render loop
