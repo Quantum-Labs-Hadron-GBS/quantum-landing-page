@@ -1516,19 +1516,79 @@
 
             // Keyboard Scroll Optimization for Parallax
             window.addEventListener('keydown', (e) => {
-                // Ignore if user is typing in an input/textarea
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
                 
-                // Increase scroll speed for deep vh sections
-                const scrollAmount = window.innerHeight * 0.4;
+                const isDown = e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ';
+                const isUp = e.key === 'ArrowUp' || e.key === 'ArrowLeft';
+                if (!isDown && !isUp) return;
                 
-                if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
-                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    window.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
+                e.preventDefault();
+                
+                const scrollY = window.scrollY;
+                const wh = window.innerHeight;
+                
+                // 1. Quantum Architecture Section (Card by Card)
+                const qSection = document.getElementById('quantum-section');
+                const qTrack = document.getElementById('quantum-track');
+                if (qSection && qTrack) {
+                    const qTop = qSection.offsetTop;
+                    const qBottom = qTop + qSection.offsetHeight;
+                    
+                    // Allow snapping if we are anywhere near or inside the track
+                    if (scrollY >= qTop - 50 && scrollY < qBottom - wh) {
+                        const maxTranslate = qTrack.scrollWidth - wh;
+                        const qScrollDist = qSection.offsetHeight - wh;
+                        const card = qTrack.querySelector('div');
+                        const gap = window.innerWidth >= 768 ? 48 : 32;
+                        const cardTotalWidth = card.offsetWidth + gap;
+                        
+                        // Exact vertical scroll distance to move exactly one card horizontally
+                        const vScrollPerCard = cardTotalWidth * (qScrollDist / maxTranslate);
+                        window.scrollBy({ top: isDown ? vScrollPerCard : -vScrollPerCard, behavior: 'smooth' });
+                        return;
+                    }
                 }
+
+                // 2. Following Sections (Snap to section)
+                const heroSeq = document.getElementById('scroll-sequence');
+                const heroBottom = heroSeq ? heroSeq.offsetTop + heroSeq.offsetHeight : wh * 3;
+                
+                if (scrollY > heroBottom - wh) {
+                    const sections = [
+                        document.getElementById('transition-section'),
+                        document.getElementById('quantum-section'),
+                        document.getElementById('blog-section'),
+                        document.getElementById('faq-section'),
+                        document.querySelector('footer')
+                    ].filter(Boolean);
+
+                    let targetY = null;
+                    if (isDown) {
+                        for (const sec of sections) {
+                            if (sec.offsetTop > scrollY + 10) {
+                                targetY = sec.offsetTop;
+                                break;
+                            }
+                        }
+                    } else {
+                        for (let i = sections.length - 1; i >= 0; i--) {
+                            if (sections[i].offsetTop < scrollY - 10) {
+                                targetY = sections[i].offsetTop;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (targetY !== null) {
+                        window.scrollTo({ top: targetY, behavior: 'smooth' });
+                        return;
+                    }
+                }
+
+                // 3. Hero Section (Continuous smooth scrolling)
+                const scrollAmount = wh * 0.35; // slightly smoother/smaller jump
+                window.scrollBy({ top: isDown ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+
             }, { passive: false });
 
             // Start the render loop
@@ -1726,8 +1786,8 @@
                         const maxTranslate = qTrack.scrollWidth - wh;
 
                         if (maxTranslate > 0) {
-                            // Apply wave easing to the carousel scroll too
-                            const easedProgress = waveLerp(qProgress);
+                            // Remove wave easing so horizontal carousel maps exactly linearly to scroll (required for precise keyboard card-snapping)
+                            const easedProgress = qProgress;
                             qTrack.style.transform = `translate3d(-${easedProgress * maxTranslate}px, 0, 0)`;
                         }
                     }
