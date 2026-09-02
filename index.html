@@ -1250,15 +1250,9 @@
 
                         // Navbar logo color swap on scroll
                         if (currentTopClip > 30) {
-                            mainHeader.style.transform = `translateY(${Math.min(currentTopClip * 0.2, 10)}px)`;
-                            headerLogo.style.filter = 'invert(1) brightness(0)'; // Make white logo black
-                            headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
-                            navLinks.forEach(l => { l.style.color = '#0a0a0a'; l.style.borderColor = 'rgba(0,0,0,0.15)'; });
+                            // Let dynamic logic handle colors
                         } else {
-                            mainHeader.style.transform = 'translateY(0px)';
-                            headerLogo.style.filter = 'none'; // Keep it white
-                            headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
-                            navLinks.forEach(l => { l.style.color = '#ffffff'; l.style.borderColor = 'rgba(255,255,255,0.2)'; });
+                            // Let dynamic logic handle colors
                         }
 
                         // Shared entry Y: both left col and right-col rise together from 60px below
@@ -1312,11 +1306,9 @@
                         heroCard.style.borderRadius = '0px';
 
                         if (heroScroll > 0.1) {
-                            headerLogo.style.filter = 'invert(1) brightness(0)';
-                            headerNav.style.backgroundColor = 'rgba(0,0,0,0.05)';
+                            // Let dynamic logic handle colors
                         } else {
-                            headerLogo.style.filter = 'none';
-                            headerNav.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                            // Let dynamic logic handle colors
                         }
 
                         // 2. Left Col (Why Hadron)
