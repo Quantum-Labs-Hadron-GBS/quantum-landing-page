@@ -322,8 +322,16 @@
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOME</a>
                 <a href="blogs.html"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">BLOGS</a>
-                <a href="#solutions"
-                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">SOLUTIONS</a>
+                                <div class="relative group h-full flex">
+                    <a href="index.html#solutions" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors h-full">SOLUTIONS</a>
+                    <div class="absolute left-0 top-full w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div class="bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-b-lg shadow-2xl overflow-hidden py-2 flex flex-col">
+                            <a href="quantum-technology.html" class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">QUANTUM TECHNOLOGY</a>
+                            <a href="ai-infrastructure.html" class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">AI INFRASTRUCTURE</a>
+                            <a href="pqc-security.html" class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">PQC SECURITY</a>
+                        </div>
+                    </div>
+                </div>
                 <a href="#workflow"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">WORKFLOW</a>
                 <a href="#pricing"
@@ -352,7 +360,14 @@
         <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
             <a href="index.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Home</a>
             <a href="blogs.html" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Blogs</a>
-            <a href="#solutions" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Solutions</a>
+                        <div class="flex flex-col gap-4">
+                <a href="#solutions" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Solutions</a>
+                <div class="flex flex-col gap-3 pl-6 border-l-2 border-brand-dark/10">
+                    <a href="quantum-technology.html" class="text-xl font-medium text-brand-dark/60 hover:text-brand-dark transition-colors">Quantum Technology</a>
+                    <a href="ai-infrastructure.html" class="text-xl font-medium text-brand-dark/60 hover:text-brand-dark transition-colors">AI Infrastructure</a>
+                    <a href="pqc-security.html" class="text-xl font-medium text-brand-dark/60 hover:text-brand-dark transition-colors">PQC Security</a>
+                </div>
+            </div>
             <a href="#workflow" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Workflow</a>
             <a href="#pricing" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">Offerings</a>
             <a href="#faq-accordion" class="mobile-link text-brand-dark/70 hover:text-brand-dark transition-colors">FAQ</a>
@@ -945,81 +960,27 @@
     <!-- =====================================================
          RICH FOOTER SECTION
          ===================================================== -->
-    <footer class="relative z-40 bg-[#0a0a0a] overflow-hidden pt-24 pb-12 w-full">
-        <!-- Giant background text -->
-        <div
-            class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center overflow-hidden select-none translate-y-6">
-            <span
-                class="text-[clamp(100px,25vw,350px)] font-black tracking-tighter text-white/[0.03] leading-none whitespace-nowrap font-bank-gothic">HADRON</span>
+    
+    <!-- New CTA Section -->
+    <section class="w-full bg-[#fdfbf7] flex flex-col items-center pt-24 pb-0 relative z-30">
+        <h2 class="text-4xl md:text-6xl font-medium tracking-tight mb-8 text-center max-w-4xl px-4 text-brand-dark"
+            style="font-family: 'Archivo', sans-serif;">
+            Get your Organization's<br>Quantum Readiness Assessment Now?
+        </h2>
+
+        <a href="contact.html"
+            class="bg-[#111] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-black/80 transition-transform hover:scale-105 shadow-xl mb-12 relative z-10">
+            Contact Us
+        </a>
+
+        <div class="relative w-full max-w-[1600px] mx-auto">
+            <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1788440758/ChatGPT_Image_Sep_3_2026_at_06_35_22_PM_eaqqia.png"
+                alt="Quantum Engineers"
+                class="w-full h-auto object-cover object-bottom mix-blend-multiply">
+            <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
         </div>
+    </section>
 
-        <div class="max-w-[1400px] mx-auto px-8 md:px-12 relative z-10 flex flex-col gap-24">
-
-            <!-- Top Signup & Links -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-
-                <!-- Stay Sharp Signup -->
-                <div class="has-pin has-pin--dark has-pin--tl" style="padding-top: 16px;">
-                    <h3 class="text-3xl font-medium text-white mb-4" style="font-family: 'Archivo', sans-serif;">Stay
-                        optimized.</h3>
-                    <p class="text-white/50 text-lg mb-8 max-w-md" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Subscribe to our newsletter for the latest insights
-                        in enterprise AI infrastructure and quantum tech.</p>
-
-                    <form class="flex flex-col sm:flex-row max-w-md" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="Email address" required
-                            class="flex-1 bg-white/5 border border-white/10 text-white px-6 py-4 rounded-none focus:outline-none focus:border-brand-orange transition-colors placeholder:text-white/30 text-sm h-[48px]">
-                        <button type="submit" class="sl-btn" style="background: var(--brand-orange); color: #fff; height: 48px; padding: 0 28px;">
-                            SIGN UP
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Footer Links -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
-                    <div class="flex flex-col gap-4">
-                        <h4 class="sl-label text-white/40 mb-2">Platform</h4>
-                        <a href="#solutions"
-                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Optimizer</a>
-                        <a href="#workflow"
-                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Workflow Engine</a>
-                        <a href="#pqc" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">PQC Audit</a>
-                    </div>
-                    <div class="flex flex-col gap-4">
-                        <h4 class="sl-label text-white/40 mb-2">Company</h4>
-                        <a href="#about" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">About Us</a>
-                        <a href="blogs.html" class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">News & Blogs</a>
-                        <a href="contact.html"
-                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">Contact</a>
-                    </div>
-                    <div class="flex flex-col gap-4">
-                        <h4 class="sl-label text-white/40 mb-2">Connect</h4>
-                        <a href="https://x.com/HadronGBS" target="_blank" rel="noopener noreferrer"
-                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">X (Twitter)</a>
-                        <a href="https://www.linkedin.com/showcase/quantum-labs-hadron-gbs" target="_blank" rel="noopener noreferrer"
-                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">LinkedIn</a>
-                        <a href="https://github.com/hadrongbs" target="_blank" rel="noopener noreferrer"
-                            class="text-white/80 hover:text-white text-sm transition-colors" style="font-family: 'Archivo', sans-serif; font-weight: 500;">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Legal & Brand -->
-            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 gap-6">
-                <div class="flex items-center gap-4">
-                    <img src="./favicon.svg" alt="Hadron" class="h-6 w-auto opacity-70 filter invert brightness-0" />
-                    <span class="text-white/50 text-sm font-medium tracking-wide">© 2026 Hadron Quantum Labs, the quantum technology division of Hadron Global Business Solutions (Hadron GBS).</span>
-                </div>
-                <div class="flex gap-6">
-                    <a href="javascript:void(0)" onclick="openLegalModal('privacy')"
-                        class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Privacy
-                        Policy</a>
-                    <a href="javascript:void(0)" onclick="openLegalModal('terms')"
-                        class="text-white/40 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors">Terms
-                        of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
 
 
     <!-- Sketchfab Viewer API -->
