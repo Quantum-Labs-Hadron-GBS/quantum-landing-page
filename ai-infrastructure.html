@@ -691,14 +691,29 @@
             window.addEventListener('scroll', () => {
                 if (mainHeader) {
                     mainHeader.style.transform = window.scrollY > 50 ? 'translateY(10px)' : 'translateY(0)';
-                    const hero = document.querySelector('.bg-black');
-                    const threshold = hero ? hero.offsetHeight - 50 : window.innerHeight * 0.5;
-                    if (window.scrollY > threshold) {
-                        mainHeader.classList.add('header-light-mode');
-                        mainHeader.classList.remove('header-dark-mode');
-                    } else {
+                    const headerRect = mainHeader.getBoundingClientRect();
+                    const headerCenter = headerRect.top + headerRect.height / 2;
+                    const sections = document.querySelectorAll('.bg-black, main, .w-full.relative, section.w-full');
+                    
+                    let isDark = true;
+                    for (let sec of sections) {
+                        const rect = sec.getBoundingClientRect();
+                        if (rect.top <= headerCenter && rect.bottom >= headerCenter) {
+                            if (sec.classList.contains('bg-black')) {
+                                isDark = true;
+                            } else {
+                                isDark = false;
+                            }
+                            break;
+                        }
+                    }
+                    
+                    if (isDark) {
                         mainHeader.classList.add('header-dark-mode');
                         mainHeader.classList.remove('header-light-mode');
+                    } else {
+                        mainHeader.classList.add('header-light-mode');
+                        mainHeader.classList.remove('header-dark-mode');
                     }
                 }
                 const btt = document.getElementById('back-to-top');
