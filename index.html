@@ -1910,7 +1910,7 @@
                         const imgFlavor = index === 1 ? "opacity-60 filter hue-rotate-180" : (index === 2 ? "opacity-60 grayscale" : "opacity-90");
 
                         return `
-                        <a href="/article.html?slug=${doc.slug}" class="${classes}">
+                        <a href="article.html?slug=${doc.slug}" class="${classes}">
                             <div class="relative w-full aspect-[1.5] overflow-hidden bg-[#0a0a0a]">
                                 ${doc.cover_image 
                                     ? `<img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ${imgFlavor} mix-blend-screen">`
