@@ -445,17 +445,17 @@
                 
                 container.innerHTML = related.map(doc => {
                     const dateStr = new Date(doc.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                    return \`
-                        <a href="/article.html?slug=\${doc.slug}" class="group flex gap-4 items-start">
+                    return `
+                        <a href="/article.html?slug=${doc.slug}" class="group flex gap-4 items-start">
                             <div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm relative">
-                                \${doc.cover_image ? \`<img src="\${doc.cover_image}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />\` : \`<div class="w-full h-full bg-orange-50 text-orange-400 flex items-center justify-center font-bold text-xs border border-orange-200">HQ</div>\`}
+                                ${doc.cover_image ? `<img src="${doc.cover_image}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />` : `<div class="w-full h-full bg-orange-50 text-orange-400 flex items-center justify-center font-bold text-xs border border-orange-200">HQ</div>`}
                             </div>
                             <div class="flex-1 min-w-0 flex flex-col justify-center h-full py-1">
-                                <h4 class="text-sm font-bold text-gray-900 leading-tight mb-1 group-hover:text-[#ff9f2b] transition-colors line-clamp-3">\${doc.title}</h4>
-                                <p class="text-[11px] font-bold tracking-wider text-gray-400 uppercase mt-auto">\${dateStr}</p>
+                                <h4 class="text-sm font-bold text-gray-900 leading-tight mb-1 group-hover:text-[#ff9f2b] transition-colors line-clamp-3">${doc.title}</h4>
+                                <p class="text-[11px] font-bold tracking-wider text-gray-400 uppercase mt-auto">${dateStr}</p>
                             </div>
                         </a>
-                    \`;
+                    `;
                 }).join('');
                 
             } catch(e) {
