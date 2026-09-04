@@ -236,6 +236,75 @@
             if(tab==='privacy'){document.getElementById('tab-privacy').className='text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]';document.getElementById('tab-terms').className='text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors';}
             else{document.getElementById('tab-terms').className='text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]';document.getElementById('tab-privacy').className='text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors';}
         }
+
+        const SUPABASE_URL = 'https://clihxetmljczwldiupqv.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_MbLstDAvPAB0A7bKJdDubw_niZ807sl';
+
+        async function fetchArticle() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+
+            if (!slug) {
+                document.getElementById('article-container').innerHTML = '<div class="text-center py-20 text-red-500 font-medium">Article not found.</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/documents?slug=eq.${slug}&select=*`, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                
+                if (!response.ok) throw new Error('Failed to fetch article');
+                
+                const data = await response.json();
+                
+                if (data.length === 0) {
+                    document.getElementById('article-container').innerHTML = '<div class="text-center py-20 text-gray-500">This article does not exist or has been removed.</div>';
+                    return;
+                }
+
+                const doc = data[0];
+
+                document.title = `${doc.title} | Hadron Quantum Labs`;
+                if(doc.seo_metadata?.description) {
+                    let metaDesc = document.querySelector('meta[name="description"]');
+                    if(metaDesc) metaDesc.content = doc.seo_metadata.description;
+                }
+
+                const dateStr = new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                
+                let html = `
+                    <header class="mb-14">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="px-3 py-1 rounded-full bg-[#ff9f2b]/10 text-[#ff9f2b] text-xs font-semibold tracking-wide uppercase">${(doc.type_id || 'BLOG').replace(/_/g, ' ')}</span>
+                            <span class="text-gray-500 text-sm">${dateStr}</span>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0a0a0a] mb-6 leading-tight">${doc.title}</h1>
+                    </header>
+                `;
+
+                if (doc.cover_image) {
+                    html += `
+                    <div class="w-full aspect-video rounded-3xl overflow-hidden mb-14 border border-gray-200/60 shadow-sm">
+                        <img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover" />
+                    </div>`;
+                }
+
+                html += `
+                    <article class="prose prose-lg max-w-none prose-orange">
+                        ${doc.html || doc.markdown || '<p>No content available.</p>'}
+                    </article>
+                `;
+
+                document.getElementById('article-container').innerHTML = html;
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('article-container').innerHTML = '<div class="text-center py-20 text-red-500 font-medium">Error loading the article. Please try again later.</div>';
+            }
+        }
+
+        fetchArticle();
     </script>
     <!-- Vercel Speed Insights & Analytics Telemetry -->
     <script defer src="/_vercel/speed-insights/script.js"></script>
