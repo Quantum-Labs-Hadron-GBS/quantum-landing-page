@@ -722,14 +722,19 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        window.addEventListener('load', function() {
+        function initAOS() {
             AOS.init({
                 duration: 800,
                 once: true,
                 offset: 50,
                 easing: 'ease-out-cubic'
             });
-        });
+        }
+        if (document.readyState === 'complete') {
+            initAOS();
+        } else {
+            window.addEventListener('load', initAOS);
+        }
     </script>
 </body>
 
