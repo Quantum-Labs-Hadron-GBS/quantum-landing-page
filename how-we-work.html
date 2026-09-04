@@ -649,16 +649,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener('load', function() {
             AOS.init({
                 duration: 800,
                 once: true,
                 offset: 50,
                 easing: 'ease-out-cubic'
             });
-        });
-        window.addEventListener('load', function() {
-            AOS.refresh();
         });
     </script>
 </body>
