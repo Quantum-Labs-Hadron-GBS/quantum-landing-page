@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charSet="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <link rel="canonical" href="https://quantum.hadrongbs.com/ai-infrastructure.html" />
     <title>How We Work | Hadron GBS</title>
-    <meta name="description" content="How Hadron turns complex technology questions into practical action through a structured methodology." />
+    <meta name="description"
+        content="How Hadron turns complex technology questions into practical action through a structured methodology." />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,174 +23,476 @@
             }
         }
     </script>
-    <style>        /* Prose Light Theme Adjustments */
-        .prose h1 { font-size: 2.25rem; font-weight: 800; margin-top: 2em; margin-bottom: 1em; color: #111827; }
-        .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2em; margin-bottom: 1em; color: #111827; }
-        .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5em; margin-bottom: 0.5em; color: #1f2937; }
-        .prose p { margin-top: 1.25em; margin-bottom: 1.25em; line-height: 1.8; color: #4b5563; font-size: 1.125rem; }
-        .prose a { color: #f97316; text-decoration: underline; font-weight: 500; }
-        .prose a:hover { color: #ea580c; }
-        .prose ul, .prose ol { padding-left: 1.625em; margin-top: 1.25em; margin-bottom: 1.25em; color: #4b5563; font-size: 1.125rem; }
-        .prose li { margin-bottom: 0.5em; }
-        .prose blockquote { border-left-width: 4px; border-color: #f97316; padding-left: 1.25em; font-style: italic; color: #374151; margin-top: 1.6em; margin-bottom: 1.6em; background: #fff7ed; padding: 1.5em; border-radius: 0 12px 12px 0; }
-        .prose pre { background-color: #111827; border: 1px solid #374151; border-radius: 12px; padding: 1.5em; overflow-x: auto; color: #e5e7eb; font-family: monospace; font-size: 0.9em; margin-top: 2em; margin-bottom: 2em; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-        .prose code { color: #ea580c; background-color: #ffedd5; padding: 0.2em 0.4em; border-radius: 0.25rem; font-size: 0.875em; }
-        .prose pre code { color: inherit; background-color: transparent; padding: 0; border-radius: 0; }
-        .prose img { margin-top: 2.5em; margin-bottom: 2.5em; border-radius: 16px; max-width: 100%; height: auto; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .prose hr { border-color: #e5e7eb; margin-top: 3em; margin-bottom: 3em; }
-        .prose table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 2em; margin-bottom: 2em; overflow-x: auto; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
-        .prose thead { background-color: #f9fafb; }
-        .prose th { font-weight: 700; color: #111827; padding: 1rem; border-bottom: 2px solid #e5e7eb; }
-        .prose td { padding: 1rem; border-bottom: 1px solid #e5e7eb; color: #4b5563; }
-        .prose tr:last-child td { border-bottom: none; }
-        .prose tr:nth-child(even) { background-color: #fcfcfc; }
+    <style>
+        /* Prose Light Theme Adjustments */
+        .prose h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            color: #111827;
+        }
 
-        :root { --brand-orange: #ff9f2b; --brand-dark: #0a0a0a; --off-white: #fdfbf7; }
-        body { background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5); background-attachment: fixed; color: #0a0a0a; min-height: 100vh; }
-        ::-webkit-scrollbar { width: 14px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: #ff9f2b; border-radius: 7px; border: 3px solid transparent; background-clip: padding-box; } ::-webkit-scrollbar-thumb:hover { background: #e0861b; border: 3px solid transparent; background-clip: padding-box; }
-        .sl-label { font-family: "Archivo Narrow", "Arial", sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 1.04px; line-height: 1.4; text-transform: uppercase; }
-        .sl-btn { display: inline-flex; align-items: center; border-radius: 0; font-family: "Archivo Narrow", sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 1.04px; text-transform: uppercase; transition: background 0.2s, color 0.2s; cursor: pointer; }
-        .sl-btn--light { background: #0a0a0a; color: #fff; padding: 0 28px; height: 48px; }
-        .sl-btn--light:hover { background: var(--brand-orange); }
-        .has-pin { position: relative; }
-        .has-pin::before { background-color: var(--brand-orange); content: ""; height: 6px; pointer-events: none; position: absolute; width: 6px; z-index: 2; left: 0; top: 0; }
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            color: #111827;
+        }
 
-    
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            color: #1f2937;
+        }
+
+        .prose p {
+            margin-top: 1.25em;
+            margin-bottom: 1.25em;
+            line-height: 1.8;
+            color: #4b5563;
+            font-size: 1.125rem;
+        }
+
+        .prose a {
+            color: #f97316;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .prose a:hover {
+            color: #ea580c;
+        }
+
+        .prose ul,
+        .prose ol {
+            padding-left: 1.625em;
+            margin-top: 1.25em;
+            margin-bottom: 1.25em;
+            color: #4b5563;
+            font-size: 1.125rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5em;
+        }
+
+        .prose blockquote {
+            border-left-width: 4px;
+            border-color: #f97316;
+            padding-left: 1.25em;
+            font-style: italic;
+            color: #374151;
+            margin-top: 1.6em;
+            margin-bottom: 1.6em;
+            background: #fff7ed;
+            padding: 1.5em;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .prose pre {
+            background-color: #111827;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 1.5em;
+            overflow-x: auto;
+            color: #e5e7eb;
+            font-family: monospace;
+            font-size: 0.9em;
+            margin-top: 2em;
+            margin-bottom: 2em;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .prose code {
+            color: #ea580c;
+            background-color: #ffedd5;
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+
+        .prose pre code {
+            color: inherit;
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        .prose img {
+            margin-top: 2.5em;
+            margin-bottom: 2.5em;
+            border-radius: 16px;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .prose hr {
+            border-color: #e5e7eb;
+            margin-top: 3em;
+            margin-bottom: 3em;
+        }
+
+        .prose table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+            margin-top: 2em;
+            margin-bottom: 2em;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .prose thead {
+            background-color: #f9fafb;
+        }
+
+        .prose th {
+            font-weight: 700;
+            color: #111827;
+            padding: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .prose td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            color: #4b5563;
+        }
+
+        .prose tr:last-child td {
+            border-bottom: none;
+        }
+
+        .prose tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        :root {
+            --brand-orange: #ff9f2b;
+            --brand-dark: #0a0a0a;
+            --off-white: #fdfbf7;
+        }
+
+        body {
+            background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5);
+            background-attachment: fixed;
+            color: #0a0a0a;
+            min-height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff9f2b;
+            border-radius: 7px;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e0861b;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .sl-label {
+            font-family: "Archivo Narrow", "Arial", sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1.04px;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        .sl-btn {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 0;
+            font-family: "Archivo Narrow", sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.04px;
+            text-transform: uppercase;
+            transition: background 0.2s, color 0.2s;
+            cursor: pointer;
+        }
+
+        .sl-btn--light {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 0 28px;
+            height: 48px;
+        }
+
+        .sl-btn--light:hover {
+            background: var(--brand-orange);
+        }
+
+        .has-pin {
+            position: relative;
+        }
+
+        .has-pin::before {
+            background-color: var(--brand-orange);
+            content: "";
+            height: 6px;
+            pointer-events: none;
+            position: absolute;
+            width: 6px;
+            z-index: 2;
+            left: 0;
+            top: 0;
+        }
+
+
         /* Dynamic Navbar Adaptability */
-        .header-light-mode #header-logo { filter: invert(1) brightness(0) !important; }
-        .header-light-mode #header-nav { background-color: rgba(0,0,0,0.05) !important; }
-        .header-light-mode .nav-link { color: #0a0a0a !important; border-color: rgba(0,0,0,0.15) !important; }
-        .header-light-mode #mobile-menu-btn { color: #0a0a0a !important; }
+        .header-light-mode #header-logo {
+            filter: invert(1) brightness(0) !important;
+        }
 
+        .header-light-mode #header-nav {
+            background-color: rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .header-light-mode .nav-link {
+            color: #0a0a0a !important;
+            border-color: rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .header-light-mode #mobile-menu-btn {
+            color: #0a0a0a !important;
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;700&family=Archivo:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;700&family=Archivo:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="https://quantum.hadrongbs.com/favicon.svg" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
+
 <body class="antialiased font-sans overflow-x-hidden">
 
     <!-- Navbar (matches index.html) -->
-    <header id="main-header" class="fixed top-0 left-0 w-full z-[100] flex justify-center header-dark-mode" style="transition: transform 0.3s ease;">
+    <header id="main-header" class="fixed top-0 left-0 w-full z-[100] flex justify-center header-dark-mode"
+        style="transition: transform 0.3s ease;">
         <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
             <a href="index.html" class="flex items-center gap-2 py-3 md:py-4">
-                <img id="header-logo" src="https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png" alt="Hadron Quantum Labs"
-                    class="h-9 md:h-10 w-auto" style="transition: filter 0.3s;" />
+                <img id="header-logo"
+                    src="https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png"
+                    alt="Hadron Quantum Labs" class="h-9 md:h-10 w-auto" style="transition: filter 0.3s;" />
             </a>
             <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
                 style="height: 44px;" id="header-nav">
-                <a href="blogs.html" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors" style="background:rgba(255,159,43,0.1); color:#ff9f2b !important; border-color:rgba(255,159,43,0.2) !important;">BLOGS</a>
-                                <div class="relative group h-full flex">
-                    <a href="javascript:void(0)" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors h-full cursor-default">ENTERPRISE SOLUTIONS</a>
-                    <div class="absolute left-0 top-full w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                        <div class="bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-b-lg shadow-2xl overflow-hidden py-2 flex flex-col">
-                            <a href="quantum-technology.html" class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">QUANTUM TECHNOLOGY</a>
-                            <a href="ai-infrastructure.html" class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">AI INFRASTRUCTURE</a>
-                            <a href="pqc-security.html" class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">PQC SECURITY</a>
+                <a href="blogs.html"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors"
+                    style="background:rgba(255,159,43,0.1); color:#ff9f2b !important; border-color:rgba(255,159,43,0.2) !important;">BLOGS</a>
+                <div class="relative group h-full flex">
+                    <a href="javascript:void(0)"
+                        class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors h-full cursor-default">ENTERPRISE
+                        SOLUTIONS</a>
+                    <div
+                        class="absolute left-0 top-full w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div
+                            class="bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-b-lg shadow-2xl overflow-hidden py-2 flex flex-col">
+                            <a href="quantum-technology.html"
+                                class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">QUANTUM
+                                TECHNOLOGY</a>
+                            <a href="ai-infrastructure.html"
+                                class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">AI
+                                INFRASTRUCTURE</a>
+                            <a href="pqc-security.html"
+                                class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">PQC
+                                SECURITY</a>
                         </div>
                     </div>
                 </div>
-                <a href="how-we-work.html" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOW WE WORK</a>
-                <a href="contact.html" class="nav-link flex items-center gap-2 px-6 border-r border-white/20 hover:bg-white/20 transition-colors">CONTACT <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
+                <a href="how-we-work.html"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOW
+                    WE WORK</a>
+                <a href="contact.html"
+                    class="nav-link flex items-center gap-2 px-6 border-r border-white/20 hover:bg-white/20 transition-colors">CONTACT
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg></a>
             </nav>
-            <button id="mobile-menu-btn" class="flex md:hidden items-center justify-center w-12 h-12 text-white absolute right-4 top-2 z-[60] transition-colors" aria-label="Open menu">
+            <button id="mobile-menu-btn"
+                class="flex md:hidden items-center justify-center w-12 h-12 text-white absolute right-4 top-2 z-[60] transition-colors"
+                aria-label="Open menu">
                 <div class="w-6 h-3.5 relative flex flex-col justify-between cursor-pointer">
-                    <span class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
-                    <span class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
+                    <span
+                        class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
+                    <span
+                        class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
                 </div>
             </button>
         </div>
     </header>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10" aria-hidden="true">
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10"
+        aria-hidden="true">
         <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
             <a href="blogs.html" class="mobile-link transition-colors" style="color:#ff9f2b;">Blogs</a>
-                        <div class="flex flex-col gap-4">
-                <a href="javascript:void(0)" class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors cursor-default">Enterprise Solutions</a>
+            <div class="flex flex-col gap-4">
+                <a href="javascript:void(0)"
+                    class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors cursor-default">Enterprise
+                    Solutions</a>
                 <div class="flex flex-col gap-3 pl-6 border-l-2 border-[#0a0a0a]/10">
-                    <a href="quantum-technology.html" class="text-xl font-medium text-[#0a0a0a]/60 hover:text-[#0a0a0a] transition-colors">Quantum Technology</a>
-                    <a href="ai-infrastructure.html" class="text-xl font-medium text-[#0a0a0a]/60 hover:text-[#0a0a0a] transition-colors">AI Infrastructure</a>
-                    <a href="pqc-security.html" class="text-xl font-medium text-[#0a0a0a]/60 hover:text-[#0a0a0a] transition-colors">PQC Security</a>
+                    <a href="quantum-technology.html"
+                        class="text-xl font-medium text-[#0a0a0a]/60 hover:text-[#0a0a0a] transition-colors">Quantum
+                        Technology</a>
+                    <a href="ai-infrastructure.html"
+                        class="text-xl font-medium text-[#0a0a0a]/60 hover:text-[#0a0a0a] transition-colors">AI
+                        Infrastructure</a>
+                    <a href="pqc-security.html"
+                        class="text-xl font-medium text-[#0a0a0a]/60 hover:text-[#0a0a0a] transition-colors">PQC
+                        Security</a>
                 </div>
             </div>
             <a href="how-we-work.html" class="mobile-link hover:opacity-80 transition-colors">How We Work</a>
-            <a href="contact.html" class="mobile-link hover:opacity-80 transition-colors" style="color:#ff9f2b;">Contact Us</a>
+            <a href="contact.html" class="mobile-link hover:opacity-80 transition-colors" style="color:#ff9f2b;">Contact
+                Us</a>
             <div class="h-[1px] w-12 bg-black/10 my-2"></div>
-            <a href="https://www.hadrongbs.com" target="_blank" rel="noopener" class="text-black/40 hover:text-black transition-colors flex items-center gap-2 text-xl">
+            <a href="https://www.hadrongbs.com" target="_blank" rel="noopener"
+                class="text-black/40 hover:text-black transition-colors flex items-center gap-2 text-xl">
                 Hadron GBS Main Site
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 3h6v6" />
+                    <path d="M10 14 21 3" />
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                </svg>
             </a>
         </nav>
-        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,159,43,0.15),transparent_60%)] pointer-events-none -z-10"></div>
+        <div
+            class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,159,43,0.15),transparent_60%)] pointer-events-none -z-10">
+        </div>
     </div>
 
-        
+
     <!-- Premium Dark Hero -->
     <div class="relative w-full min-h-[60vh] bg-black overflow-hidden flex items-center pt-32 pb-16">
         <!-- Abstract gradient/video background -->
         <div class="absolute inset-0 bg-gradient-to-tr from-brand-orange/20 via-black to-black opacity-80"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-brand-orange/20 via-transparent to-transparent opacity-60"></div>
-        
-        <div class="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-brand-orange/20 via-transparent to-transparent opacity-60">
+        </div>
+
+        <div
+            class="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
             <div>
                 <div class="mb-6 flex items-center gap-3">
-                    <span class="px-3 py-1 rounded-full bg-brand-orange/20 text-brand-orange border border-brand-orange/30 text-xs font-bold tracking-widest uppercase">How We Work</span>
+                    <!-- <span
+                        class="px-3 py-1 rounded-full bg-brand-orange/20 text-brand-orange border border-brand-orange/30 text-xs font-bold tracking-widest uppercase">How
+                        We Work</span> -->
                 </div>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-6 leading-[1.05] text-white" style="font-family: 'Archivo', sans-serif;">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-6 leading-[1.05] text-white"
+                    style="font-family: 'Archivo', sans-serif;">
                     HOW WE TURN COMPLEXITY <br><span class="text-brand-orange">INTO ACTION.</span>
                 </h1>
                 <p class="text-white/80 text-sm md:text-lg mb-8 font-medium leading-relaxed max-w-xl">
-                    Every engagement follows a structured process designed to move organizations from theoretical technology questions to practical, validated business decisions.
+                    Every engagement follows a structured process designed to move organizations from theoretical
+                    technology questions to practical, validated business decisions.
                 </p>
                 <div class="flex gap-4" data-aos="fade-up">
-                    <a href="contact.html" class="sl-btn sl-btn--light bg-brand-orange hover:bg-orange-600 text-black border-none">Discuss Your Environment</a>
+                    <a href="contact.html"
+                        class="sl-btn sl-btn--light bg-brand-orange hover:bg-orange-600 text-black border-none">Discuss
+                        Your Environment</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Main Content -->
-    <main class="relative z-20" style="background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5); padding-bottom: 6rem;">
-        
+    <main class="relative z-20"
+        style="background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5); padding-bottom: 6rem;">
+
         <!-- Methodology Section -->
         <div class="max-w-[1400px] mx-auto px-6 md:px-12 pt-24 pb-16">
             <div class="max-w-3xl mb-16">
-                <h2 class="sharplink-h2 text-brand-dark text-4xl md:text-5xl mb-6" data-aos="fade-up">A Structured Methodology</h2>
+                <h2 class="sharplink-h2 text-brand-dark text-4xl md:text-5xl mb-6" data-aos="fade-up">A Structured
+                    Methodology for your Business</h2>
                 <p class="sharplink-body text-brand-dark/70 mb-6">
-                    Our workflow is consistent across all engagements, ensuring that technology exploration is always grounded in rigorous assessment, clear prioritization, and measurable action.
+                    Our workflow is consistent across all engagements, ensuring that technology exploration is always
+                    grounded in rigorous assessment, clear prioritization, and measurable action.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white/40 backdrop-blur-md border border-brand-dark/10 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
-                    <div class="w-12 h-12 rounded-full border border-brand-dark/20 flex items-center justify-center mb-6 bg-brand-dark group-hover:bg-brand-orange transition-colors duration-300">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                <div
+                    class="bg-white/40 backdrop-blur-md border border-brand-dark/10 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
+                    <div
+                        class="w-12 h-12 rounded-full border border-brand-dark/20 flex items-center justify-center mb-6 bg-brand-dark group-hover:bg-brand-orange transition-colors duration-300">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 uppercase tracking-widest text-sm">Understand</h3>
-                    <p class="text-brand-dark/70 text-sm leading-relaxed">Map the environment, baseline current operations, and discover where vulnerabilities or computational bottlenecks actually exist.</p>
+                    <p class="text-brand-dark/70 text-sm leading-relaxed">Map the environment, baseline current
+                        operations, and discover where vulnerabilities or computational bottlenecks actually exist.</p>
                 </div>
-                
-                <div class="bg-white/40 backdrop-blur-md border border-brand-dark/10 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
-                    <div class="w-12 h-12 rounded-full border border-brand-dark/20 flex items-center justify-center mb-6 bg-brand-dark group-hover:bg-brand-orange transition-colors duration-300">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+
+                <div
+                    class="bg-white/40 backdrop-blur-md border border-brand-dark/10 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
+                    <div
+                        class="w-12 h-12 rounded-full border border-brand-dark/20 flex items-center justify-center mb-6 bg-brand-dark group-hover:bg-brand-orange transition-colors duration-300">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 uppercase tracking-widest text-sm">Assess</h3>
-                    <p class="text-brand-dark/70 text-sm leading-relaxed">Evaluate classical, heuristic, quantum-inspired, and true quantum approaches against the defined operational requirements.</p>
+                    <p class="text-brand-dark/70 text-sm leading-relaxed">Evaluate classical, heuristic,
+                        quantum-inspired, and true quantum approaches against the defined operational requirements.</p>
                 </div>
 
-                <div class="bg-white/40 backdrop-blur-md border border-brand-dark/10 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
-                    <div class="w-12 h-12 rounded-full border border-brand-dark/20 flex items-center justify-center mb-6 bg-brand-dark group-hover:bg-brand-orange transition-colors duration-300">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <div
+                    class="bg-white/40 backdrop-blur-md border border-brand-dark/10 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
+                    <div
+                        class="w-12 h-12 rounded-full border border-brand-dark/20 flex items-center justify-center mb-6 bg-brand-dark group-hover:bg-brand-orange transition-colors duration-300">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 uppercase tracking-widest text-sm">Prioritize</h3>
-                    <p class="text-brand-dark/70 text-sm leading-relaxed">Focus resources exclusively on workloads and security dependencies that offer the highest measurable value or highest vulnerability impact.</p>
+                    <p class="text-brand-dark/70 text-sm leading-relaxed">Focus resources exclusively on workloads and
+                        security dependencies that offer the highest measurable value or highest vulnerability impact.
+                    </p>
                 </div>
 
-                <div class="bg-white/40 backdrop-blur-md border border-brand-dark/10 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
-                    <div class="w-12 h-12 rounded-full border border-brand-dark/20 flex items-center justify-center mb-6 bg-brand-orange transition-colors duration-300">
-                        <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                <div
+                    class="bg-white/40 backdrop-blur-md border border-brand-dark/10 p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group">
+                    <div
+                        class="w-12 h-12 rounded-full border border-brand-dark/20 flex items-center justify-center mb-6 bg-brand-orange transition-colors duration-300">
+                        <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
                     </div>
                     <h3 class="text-xl font-bold text-brand-dark mb-4 uppercase tracking-widest text-sm">Act</h3>
-                    <p class="text-brand-dark/70 text-sm leading-relaxed">Validate solutions against business KPIs and safely transition proven models and secured infrastructure into production.</p>
+                    <p class="text-brand-dark/70 text-sm leading-relaxed">Validate solutions against business KPIs and
+                        safely transition proven models and secured infrastructure into production.</p>
                 </div>
             </div>
         </div>
@@ -198,19 +502,25 @@
             <div class="max-w-[1400px] mx-auto px-6 md:px-12">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                     <div data-aos="fade-right">
-                        <h2 class="text-3xl md:text-5xl text-brand-dark font-medium leading-tight mb-6" style="font-family: 'Archivo', sans-serif;">
+                        <h2 class="text-3xl md:text-5xl text-brand-dark font-medium leading-tight mb-6"
+                            style="font-family: 'Archivo', sans-serif;">
                             Technology is not<br>the starting point.
                         </h2>
                         <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">
-                            We do not force organizational problems into quantum architectures. We evaluate business operations, identify computational bottlenecks, and apply the right computing approach—classical, quantum-inspired, or quantum—to solve them.
+                            We do not force organizational problems into quantum architectures. We evaluate business
+                            operations, identify computational bottlenecks, and apply the right computing
+                            approach—classical, quantum-inspired, or quantum—to solve them.
                         </p>
                     </div>
                     <div data-aos="fade-left" data-aos-delay="100">
-                        <h2 class="text-3xl md:text-5xl text-brand-dark font-medium leading-tight mb-6" style="font-family: 'Archivo', sans-serif;">
+                        <h2 class="text-3xl md:text-5xl text-brand-dark font-medium leading-tight mb-6"
+                            style="font-family: 'Archivo', sans-serif;">
                             Built around<br><span class="text-brand-orange">your environment.</span>
                         </h2>
                         <p class="text-lg md:text-xl text-brand-dark/70 leading-relaxed font-normal">
-                            Our work is designed to fit the way your organization operates. We work within the relevant technical, security, regulatory, and operational constraints — coordinating with the teams and technology partners required to move from assessment to execution.
+                            Our work is designed to fit the way your organization operates. We work within the relevant
+                            technical, security, regulatory, and operational constraints — coordinating with the teams
+                            and technology partners required to move from assessment to execution.
                         </p>
                     </div>
                 </div>
@@ -224,34 +534,46 @@
         <h2 class="text-4xl md:text-6xl font-medium tracking-tight mb-8 text-center max-w-4xl px-4 text-brand-dark"
             style="font-family: 'Archivo', sans-serif;">
             READY TO OPTIMIZE<br>YOUR INFRASTRUCTURE?
-        </h2><p class="text-brand-dark/70 mb-8 max-w-2xl text-center text-lg relative z-10">Let's identify where measurable improvements can be made across your workloads, resources, capacity, and operations.</p>
+        </h2>
+        <p class="text-brand-dark/70 mb-8 max-w-2xl text-center text-lg relative z-10">Let's identify where measurable
+            improvements can be made across your workloads, resources, capacity, and operations.</p>
 
         <a href="contact.html"
             class="bg-[#111] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-black/80 transition-transform hover:scale-105 shadow-xl mb-12 relative z-10">
             TALK TO OUR TEAM
         </a>
-        <p class="text-brand-dark/50 text-sm mt-4 font-medium mb-12 relative z-10">Start with your infrastructure. We'll help determine what can be improved.</p>
+        <p class="text-brand-dark/50 text-sm mt-4 font-medium mb-12 relative z-10">Start with your infrastructure. We'll
+            help determine what can be improved.</p>
 
         <div class="relative w-full max-w-[1600px] mx-auto">
             <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1788442466/ChatGPT_Image_Sep_3_2026_at_06_35_22_PM-Photoroom_k44aob.png"
-                alt="Quantum Engineers"
-                class="w-full h-auto object-cover object-bottom mix-blend-multiply">
-            <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none"></div>
+                alt="Quantum Engineers" class="w-full h-auto object-cover object-bottom mix-blend-multiply">
+            <div
+                class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none">
+            </div>
         </div>
     </section>
 
 
     <!-- Legal Modal -->
-    <div id="legal-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4 sm:p-6 md:p-10">
-        <div class="bg-[#0a0a0a] border border-white/20 text-white w-full max-w-3xl max-h-[85vh] rounded-none flex flex-col relative shadow-2xl overflow-hidden">
+    <div id="legal-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4 sm:p-6 md:p-10">
+        <div
+            class="bg-[#0a0a0a] border border-white/20 text-white w-full max-w-3xl max-h-[85vh] rounded-none flex flex-col relative shadow-2xl overflow-hidden">
             <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/5">
                 <div class="flex gap-4" data-aos="fade-up">
-                    <button id="tab-privacy" onclick="switchLegalTab('privacy')" class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]">Privacy Policy</button>
-                    <button id="tab-terms" onclick="switchLegalTab('terms')" class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors">Terms of Service</button>
+                    <button id="tab-privacy" onclick="switchLegalTab('privacy')"
+                        class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]">Privacy
+                        Policy</button>
+                    <button id="tab-terms" onclick="switchLegalTab('terms')"
+                        class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors">Terms
+                        of Service</button>
                 </div>
-                <button onclick="closeLegalModal()" class="text-white/50 hover:text-white text-xl font-bold px-2 py-1 transition-colors">&times;</button>
+                <button onclick="closeLegalModal()"
+                    class="text-white/50 hover:text-white text-xl font-bold px-2 py-1 transition-colors">&times;</button>
             </div>
-            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-sm text-white/80 leading-relaxed font-sans" id="legal-modal-body"></div>
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-sm text-white/80 leading-relaxed font-sans"
+                id="legal-modal-body"></div>
             <div class="px-6 py-4 border-t border-white/10 bg-white/5 flex justify-end">
                 <button onclick="closeLegalModal()" class="sl-btn sl-btn--light">Close</button>
             </div>
@@ -259,9 +581,12 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" 
-        class="fixed bottom-8 right-8 z-[9000] w-12 h-12 text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1" style="background:#ff9f2b;">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    <button id="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="fixed bottom-8 right-8 z-[9000] w-12 h-12 text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1"
+        style="background:#ff9f2b;">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
     </button>
 
     <script>
@@ -287,7 +612,18 @@
             }
             const mainHeader = document.getElementById('main-header');
             window.addEventListener('scroll', () => {
-                if (mainHeader) mainHeader.style.transform = window.scrollY > 50 ? 'translateY(10px)' : 'translateY(0)';
+                if (mainHeader) {
+                    mainHeader.style.transform = window.scrollY > 50 ? 'translateY(10px)' : 'translateY(0)';
+                    const hero = document.querySelector('.bg-black');
+                    const threshold = hero ? hero.offsetHeight - 50 : window.innerHeight * 0.5;
+                    if (window.scrollY > threshold) {
+                        mainHeader.classList.add('header-light-mode');
+                        mainHeader.classList.remove('header-dark-mode');
+                    } else {
+                        mainHeader.classList.add('header-dark-mode');
+                        mainHeader.classList.remove('header-light-mode');
+                    }
+                }
                 const btt = document.getElementById('back-to-top');
                 if (btt) {
                     if (window.scrollY > 200) { btt.classList.remove('opacity-0', 'pointer-events-none'); btt.classList.add('opacity-100', 'pointer-events-auto'); }
@@ -299,12 +635,12 @@
             privacy: `<h3 class="text-2xl font-bold text-white mb-4">Privacy Policy</h3><p>Hadron Quantum Labs respects your privacy and is committed to protecting your personal data.</p>`,
             terms: `<h3 class="text-2xl font-bold text-white mb-4">Terms of Service</h3><p>By accessing Hadron Quantum Labs websites or APIs, you agree to comply with these terms.</p>`
         };
-        function openLegalModal(tab) { var m=document.getElementById('legal-modal'); switchLegalTab(tab||'privacy'); m.classList.remove('opacity-0','pointer-events-none'); m.classList.add('opacity-100','pointer-events-auto'); }
-        function closeLegalModal() { var m=document.getElementById('legal-modal'); m.classList.remove('opacity-100','pointer-events-auto'); m.classList.add('opacity-0','pointer-events-none'); }
+        function openLegalModal(tab) { var m = document.getElementById('legal-modal'); switchLegalTab(tab || 'privacy'); m.classList.remove('opacity-0', 'pointer-events-none'); m.classList.add('opacity-100', 'pointer-events-auto'); }
+        function closeLegalModal() { var m = document.getElementById('legal-modal'); m.classList.remove('opacity-100', 'pointer-events-auto'); m.classList.add('opacity-0', 'pointer-events-none'); }
         function switchLegalTab(tab) {
-            document.getElementById('legal-modal-body').innerHTML = legalTexts[tab]||legalTexts.privacy;
-            if(tab==='privacy'){document.getElementById('tab-privacy').className='text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]';document.getElementById('tab-terms').className='text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors';}
-            else{document.getElementById('tab-terms').className='text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]';document.getElementById('tab-privacy').className='text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors';}
+            document.getElementById('legal-modal-body').innerHTML = legalTexts[tab] || legalTexts.privacy;
+            if (tab === 'privacy') { document.getElementById('tab-privacy').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]'; document.getElementById('tab-terms').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors'; }
+            else { document.getElementById('tab-terms').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]'; document.getElementById('tab-privacy').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors'; }
         }
     </script>
     <!-- Vercel Speed Insights & Analytics Telemetry -->
@@ -313,7 +649,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             AOS.init({
                 duration: 800,
                 once: true,
@@ -323,4 +659,5 @@
         });
     </script>
 </body>
+
 </html>
