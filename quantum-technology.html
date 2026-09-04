@@ -299,7 +299,7 @@
                 style="height: 2.75rem;" id="header-nav">
                 <a href="blogs.html"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors"
-                    style="background:rgba(255,159,43,0.1); color:#ff9f2b !important; border-color:rgba(255,159,43,0.2) !important;">BLOGS</a>
+                   >BLOGS</a>
                 <div class="relative group h-full flex">
                     <a href="javascript:void(0)"
                         class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors h-full cursor-default">ENTERPRISE
@@ -349,7 +349,7 @@
         class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-start md:justify-center pt-24 pb-12 overflow-y-auto px-10"
         aria-hidden="true">
         <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
-            <a href="blogs.html" class="mobile-link transition-colors" style="color:#ff9f2b;">Blogs</a>
+            <a href="blogs.html" class="mobile-link transition-colors">Blogs</a>
             <div class="flex flex-col gap-4">
                 <a href="javascript:void(0)"
                     class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors cursor-default">Enterprise
@@ -367,7 +367,7 @@
                 </div>
             </div>
             <a href="why-quantum.html" class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors">Why Quantum?</a>
-            <a href="contact.html" class="mobile-link hover:opacity-80 transition-colors" style="color:#ff9f2b;">Contact
+            <a href="contact.html" class="mobile-link hover:opacity-80 transition-colors">Contact
                 Us</a>
             <div class="h-[0.0625rem] w-12 bg-black/10 my-2"></div>
             <a href="https://www.hadrongbs.com" target="_blank" rel="noopener"
@@ -785,6 +785,46 @@
         } else {
             window.addEventListener('load', initAOS);
         }
+    </script>
+
+    <!-- Dynamic Active Nav Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Desktop Nav
+            document.querySelectorAll('#header-nav .nav-link, #header-nav a:not(.nav-link)').forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href || href === 'javascript:void(0)') return;
+                
+                // If the link matches exactly, or if we are on article.html and the link is blogs.html
+                if (href === currentPath || (currentPath.startsWith('article.html') && href === 'blogs.html')) {
+                    if (link.classList.contains('nav-link')) {
+                        link.style.background = 'rgba(255,159,43,0.1)';
+                        link.style.setProperty('color', '#ff9f2b', 'important');
+                        link.style.setProperty('border-color', 'rgba(255,159,43,0.2)', 'important');
+                    } else {
+                        link.style.color = '#ff9f2b';
+                    }
+                } else {
+                    link.style.background = '';
+                    link.style.color = '';
+                    link.style.borderColor = '';
+                }
+            });
+
+            // Mobile Menu
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href || href === 'javascript:void(0)') return;
+                
+                if (href === currentPath || (currentPath.startsWith('article.html') && href === 'blogs.html')) {
+                    link.style.setProperty('color', '#ff9f2b', 'important');
+                } else {
+                    link.style.color = '';
+                }
+            });
+        });
     </script>
 </body>
 

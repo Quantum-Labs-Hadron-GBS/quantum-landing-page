@@ -299,7 +299,7 @@
                 style="height: 2.75rem;" id="header-nav">
                 <a href="blogs.html"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors"
-                    style="background:rgba(255,159,43,0.1); color:#ff9f2b !important; border-color:rgba(255,159,43,0.2) !important;">BLOGS</a>
+                   >BLOGS</a>
                 <div class="relative group h-full flex">
                     <a href="javascript:void(0)"
                         class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors h-full cursor-default">ENTERPRISE
@@ -795,6 +795,46 @@
         } else {
             window.addEventListener('load', initAOS);
         }
+    </script>
+
+    <!-- Dynamic Active Nav Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            
+            // Desktop Nav
+            document.querySelectorAll('#header-nav .nav-link, #header-nav a:not(.nav-link)').forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href || href === 'javascript:void(0)') return;
+                
+                // If the link matches exactly, or if we are on article.html and the link is blogs.html
+                if (href === currentPath || (currentPath.startsWith('article.html') && href === 'blogs.html')) {
+                    if (link.classList.contains('nav-link')) {
+                        link.style.background = 'rgba(255,159,43,0.1)';
+                        link.style.setProperty('color', '#ff9f2b', 'important');
+                        link.style.setProperty('border-color', 'rgba(255,159,43,0.2)', 'important');
+                    } else {
+                        link.style.color = '#ff9f2b';
+                    }
+                } else {
+                    link.style.background = '';
+                    link.style.color = '';
+                    link.style.borderColor = '';
+                }
+            });
+
+            // Mobile Menu
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href || href === 'javascript:void(0)') return;
+                
+                if (href === currentPath || (currentPath.startsWith('article.html') && href === 'blogs.html')) {
+                    link.style.setProperty('color', '#ff9f2b', 'important');
+                } else {
+                    link.style.color = '';
+                }
+            });
+        });
     </script>
 </body>
 
