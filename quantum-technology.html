@@ -284,7 +284,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body class="antialiased font-sans">
+<body class="antialiased font-sans overflow-x-hidden">
 
     <!-- Navbar (matches index.html) -->
     <header id="main-header" class="fixed top-0 left-0 w-full z-[100] flex justify-center header-dark-mode"
@@ -297,14 +297,12 @@
             </a>
             <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
                 style="height: 44px;" id="header-nav">
-                <a href="index.html"
-                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOME</a>
                 <a href="blogs.html"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors"
                     style="background:rgba(255,159,43,0.1); color:#ff9f2b !important; border-color:rgba(255,159,43,0.2) !important;">BLOGS</a>
                 <div class="relative group h-full flex">
                     <a href="javascript:void(0)"
-                        class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors h-full cursor-default">SOLUTIONS</a>
+                        class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors h-full cursor-default">OFFERINGS</a>
                     <div
                         class="absolute left-0 top-full w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <div
@@ -325,15 +323,7 @@
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">WORKFLOW</a>
                 <a href="index.html#pricing"
                     class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">OFFERINGS</a>
-                <a href="index.html#faq-accordion"
-                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">FAQ</a>
-                <a href="contact.html"
-                    class="nav-link flex items-center px-5 border-r border-white/20 hover:bg-white/20 transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                </a>
+                <a href="contact.html" class="nav-link flex items-center gap-2 px-6 border-r border-white/20 hover:bg-white/20 transition-colors">CONTACT <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M12 5l7 7-7 7"></path></svg></a>
             </nav>
             <button id="mobile-menu-btn"
                 class="flex md:hidden items-center justify-center w-12 h-12 text-white absolute right-4 top-2 z-[60] transition-colors"
@@ -353,11 +343,10 @@
         class="fixed inset-0 bg-white/95 backdrop-blur-xl z-[9998] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-center px-10"
         aria-hidden="true">
         <nav class="flex flex-col gap-8 text-3xl font-medium tracking-tight">
-            <a href="index.html" class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors">Home</a>
             <a href="blogs.html" class="mobile-link transition-colors" style="color:#ff9f2b;">Blogs</a>
             <div class="flex flex-col gap-4">
                 <a href="javascript:void(0)"
-                    class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors cursor-default">Solutions</a>
+                    class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors cursor-default">Offerings</a>
                 <div class="flex flex-col gap-3 pl-6 border-l-2 border-[#0a0a0a]/10">
                     <a href="quantum-technology.html"
                         class="text-xl font-medium text-[#0a0a0a]/60 hover:text-[#0a0a0a] transition-colors">Quantum
@@ -374,8 +363,6 @@
                 class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors">Workflow</a>
             <a href="index.html#pricing"
                 class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors">Offerings</a>
-            <a href="index.html#faq-accordion"
-                class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors">FAQ</a>
             <a href="contact.html" class="mobile-link hover:opacity-80 transition-colors" style="color:#ff9f2b;">Contact
                 Us</a>
             <div class="h-[1px] w-12 bg-black/10 my-2"></div>
