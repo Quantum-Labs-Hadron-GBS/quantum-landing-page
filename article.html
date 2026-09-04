@@ -273,34 +273,194 @@
 
                 const dateStr = new Date(doc.published_at || doc.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
                 
+                // Calculate Read Time
+                const rawText = (doc.html || doc.markdown || '').replace(/<[^>]*>?/gm, '');
+                const wordCount = rawText.trim().split(/\s+/).length;
+                const readTime = Math.max(1, Math.ceil(wordCount / 220));
+                
                 let html = `
-                    <header class="mb-14">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="px-3 py-1 rounded-full bg-[#ff9f2b]/10 text-[#ff9f2b] text-xs font-semibold tracking-wide uppercase">${(doc.type_id || 'BLOG').replace(/_/g, ' ')}</span>
-                            <span class="text-gray-500 text-sm">${dateStr}</span>
-                        </div>
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0a0a0a] mb-6 leading-tight">${doc.title}</h1>
-                    </header>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative items-start">
+                        <!-- Main Content -->
+                        <div class="lg:col-span-8 xl:col-span-9" id="main-article-content">
+                            <a href="/blogs.html" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-[#ff9f2b] transition-colors mb-10 group">
+                                <svg class="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                Back to Blogs
+                            </a>
+                            
+                            <header class="mb-12">
+                                <div class="flex items-center gap-3 mb-6 flex-wrap">
+                                    <span class="px-3 py-1 rounded-full bg-[#ff9f2b]/10 text-[#ff9f2b] text-xs font-semibold tracking-wide uppercase">${(doc.type_id || 'BLOG').replace(/_/g, ' ')}</span>
+                                    <span class="text-gray-500 text-sm font-medium tracking-wide">${dateStr}</span>
+                                    <span class="text-gray-300 font-bold">·</span>
+                                    <span class="text-gray-500 text-sm font-medium tracking-wide">${readTime} min read</span>
+                                    ${doc.seo_metadata?.author ? `<span class="text-gray-300 font-bold">·</span><span class="text-gray-600 text-sm font-medium tracking-wide">By ${doc.seo_metadata.author}</span>` : ''}
+                                </div>
+                                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#0a0a0a] mb-6 leading-tight">${doc.title}</h1>
+                                ${doc.excerpt ? `<p class="text-xl text-gray-500 leading-relaxed">${doc.excerpt}</p>` : ''}
+                            </header>
                 `;
 
                 if (doc.cover_image) {
                     html += `
-                    <div class="w-full aspect-video rounded-3xl overflow-hidden mb-14 border border-gray-200/60 shadow-sm">
-                        <img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover" />
-                    </div>`;
+                            <div class="w-full aspect-video rounded-3xl overflow-hidden mb-16 border border-gray-200/60 shadow-sm">
+                                <img src="${doc.cover_image}" alt="${doc.title}" class="w-full h-full object-cover" />
+                            </div>`;
                 }
 
                 html += `
-                    <article class="prose prose-lg max-w-none prose-orange">
-                        ${doc.html || doc.markdown || '<p>No content available.</p>'}
-                    </article>
+                            <article class="prose prose-lg max-w-none prose-orange relative">
+                                ${doc.html || doc.markdown || '<p>No content available.</p>'}
+                            </article>
+                        </div>
+                        
+                        <!-- Sidebar -->
+                        <aside class="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-32 max-h-[calc(100vh-8rem)] overflow-y-auto pr-4" style="scrollbar-width: thin;">
+                            <div class="space-y-12 pb-16">
+                                <!-- Table of Contents -->
+                                <div id="toc-container" class="hidden relative">
+                                    <h3 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-4">In this article</h3>
+                                    <div class="absolute left-[3px] top-9 bottom-0 w-[2px] bg-gray-200 rounded-full"></div>
+                                    <div id="toc-progress-bar" class="absolute left-[3px] top-9 w-[2px] bg-[#ff9f2b] transition-all duration-300 h-0 rounded-full z-10"></div>
+                                    <ul id="toc-list" class="space-y-3 pl-5 relative z-20 text-sm font-medium">
+                                        <!-- Injected by JS -->
+                                    </ul>
+                                </div>
+                                
+                                <!-- Related Articles -->
+                                <div id="related-articles-container">
+                                    <h3 class="text-xs font-bold text-gray-400 tracking-widest uppercase mb-6">Related Reading</h3>
+                                    <div id="related-articles-list" class="space-y-6">
+                                        <div class="animate-pulse h-24 bg-gray-100 rounded-xl"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
                 `;
 
                 document.getElementById('article-container').innerHTML = html;
 
+                buildTableOfContents();
+                fetchRelatedArticles(doc.id, doc.type_id);
+
             } catch (err) {
                 console.error(err);
                 document.getElementById('article-container').innerHTML = '<div class="text-center py-20 text-red-500 font-medium">Error loading the article. Please try again later.</div>';
+            }
+        }
+
+        function buildTableOfContents() {
+            const article = document.querySelector('article.prose');
+            if (!article) return;
+            
+            const headings = article.querySelectorAll('h2, h3, h4');
+            if (headings.length === 0) return;
+            
+            document.getElementById('toc-container').classList.remove('hidden');
+            const tocList = document.getElementById('toc-list');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '-15% 0px -75% 0px',
+                threshold: [0, 1]
+            };
+            
+            let activeId = null;
+            
+            const updateProgress = () => {
+                if (!activeId) return;
+                const activeLink = document.querySelector(`#toc-list a[href="#${activeId}"]`);
+                if (activeLink) {
+                    document.querySelectorAll('#toc-list a').forEach(a => {
+                        a.classList.remove('text-[#ff9f2b]', 'font-bold');
+                        a.classList.add('text-gray-500');
+                    });
+                    activeLink.classList.remove('text-gray-500');
+                    activeLink.classList.add('text-[#ff9f2b]', 'font-bold');
+                    
+                    const li = activeLink.parentElement;
+                    const listRect = tocList.getBoundingClientRect();
+                    const liRect = li.getBoundingClientRect();
+                    const topOffset = liRect.top - listRect.top;
+                    
+                    const progressBar = document.getElementById('toc-progress-bar');
+                    progressBar.style.top = (36 + topOffset + 4) + 'px'; 
+                    progressBar.style.height = (liRect.height - 8) + 'px';
+                }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                let intersecting = Array.from(entries).filter(e => e.isIntersecting);
+                if (intersecting.length > 0) {
+                    activeId = intersecting[0].target.id;
+                    updateProgress();
+                }
+            }, observerOptions);
+
+            headings.forEach((heading, index) => {
+                if (!heading.id) {
+                    heading.id = heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + index;
+                }
+                
+                const level = parseInt(heading.tagName.substring(1));
+                let indent = '';
+                if (level === 3) indent = 'ml-4';
+                if (level === 4) indent = 'ml-8';
+                
+                const li = document.createElement('li');
+                li.className = indent;
+                li.innerHTML = `<a href="#${heading.id}" class="text-gray-500 hover:text-gray-900 transition-colors block py-0.5">${heading.textContent}</a>`;
+                
+                tocList.appendChild(li);
+                observer.observe(heading);
+                
+                li.querySelector('a').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const y = heading.getBoundingClientRect().top + window.scrollY - 100;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                });
+            });
+            
+            if (headings.length > 0) {
+                activeId = headings[0].id;
+                setTimeout(updateProgress, 100);
+            }
+        }
+        
+        async function fetchRelatedArticles(currentId, typeId) {
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/documents?id=neq.${currentId}&status_id=eq.3&order=published_at.desc&limit=2&select=slug,title,cover_image,published_at`, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                
+                if (!response.ok) throw new Error('Failed');
+                const related = await response.json();
+                
+                const container = document.getElementById('related-articles-list');
+                
+                if (related.length === 0) {
+                    document.getElementById('related-articles-container').style.display = 'none';
+                    return;
+                }
+                
+                container.innerHTML = related.map(doc => {
+                    const dateStr = new Date(doc.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                    return \`
+                        <a href="/article.html?slug=\${doc.slug}" class="group flex gap-4 items-start">
+                            <div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm relative">
+                                \${doc.cover_image ? \`<img src="\${doc.cover_image}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />\` : \`<div class="w-full h-full bg-orange-50 text-orange-400 flex items-center justify-center font-bold text-xs border border-orange-200">HQ</div>\`}
+                            </div>
+                            <div class="flex-1 min-w-0 flex flex-col justify-center h-full py-1">
+                                <h4 class="text-sm font-bold text-gray-900 leading-tight mb-1 group-hover:text-[#ff9f2b] transition-colors line-clamp-3">\${doc.title}</h4>
+                                <p class="text-[11px] font-bold tracking-wider text-gray-400 uppercase mt-auto">\${dateStr}</p>
+                            </div>
+                        </a>
+                    \`;
+                }).join('');
+                
+            } catch(e) {
+                console.error('Related error', e);
+                document.getElementById('related-articles-container').style.display = 'none';
             }
         }
 
