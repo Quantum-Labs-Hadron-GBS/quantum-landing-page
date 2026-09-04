@@ -284,7 +284,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body class="antialiased font-sans overflow-x-hidden">
+<body class="antialiased font-sans overflow-x-clip">
 
     <!-- Navbar (matches index.html) -->
     <header id="main-header" class="fixed top-0 left-0 w-full z-[100] flex justify-center header-dark-mode"
@@ -743,9 +743,12 @@
             AOS.init({
                 duration: 800,
                 once: true,
-                offset: 100,
+                offset: 50,
                 easing: 'ease-out-cubic'
             });
+        });
+        window.addEventListener('load', function() {
+            AOS.refresh();
         });
     </script>
 </body>
