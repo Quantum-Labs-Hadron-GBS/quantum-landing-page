@@ -276,11 +276,13 @@
                     isOpen = !isOpen;
                     if (isOpen) {
                         mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                        mobileMenuBtn.style.color = '#0a0a0a';
                         const lines = mobileMenuBtn.querySelectorAll('span');
                         lines[0].style.transform = 'translateY(5px) rotate(45deg)';
                         lines[1].style.transform = 'translateY(-5px) rotate(-45deg)';
                     } else {
                         mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                        mobileMenuBtn.style.color = '';
                         const lines = mobileMenuBtn.querySelectorAll('span');
                         lines[0].style.transform = 'none';
                         lines[1].style.transform = 'none';
