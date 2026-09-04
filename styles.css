@@ -25,3 +25,19 @@
         font-size: clamp(10px, calc(100vw / 1512 * 16), 24px);
     }
 }
+
+/* Global Mobile Menu Button Default */
+#mobile-menu-btn {
+    color: #ffffff !important;
+}
+
+/* Dynamic Navbar Adaptability (Global) */
+.header-dark-mode #header-logo { filter: none !important; }
+.header-dark-mode #header-nav { background-color: rgba(255,255,255,0.1) !important; }
+.header-dark-mode .nav-link { color: #ffffff !important; border-color: rgba(255,255,255,0.2) !important; }
+.header-dark-mode #mobile-menu-btn { color: #ffffff !important; }
+
+.header-light-mode #header-logo { filter: invert(1) brightness(0) !important; }
+.header-light-mode #header-nav { background-color: rgba(0,0,0,0.05) !important; }
+.header-light-mode .nav-link { color: #0a0a0a !important; border-color: rgba(0,0,0,0.15) !important; }
+.header-light-mode #mobile-menu-btn { color: #0a0a0a !important; }
