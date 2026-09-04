@@ -1,0 +1,100 @@
+                <div class="flex gap-4" data-aos="fade-up">
+                    <button id="tab-privacy" onclick="switchLegalTab('privacy')"
+                        class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]">Privacy
+                        Policy</button>
+                    <button id="tab-terms" onclick="switchLegalTab('terms')"
+                        class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors">Terms
+                        of Service</button>
+                </div>
+                <button onclick="closeLegalModal()"
+                    class="text-white/50 hover:text-white text-xl font-bold px-2 py-1 transition-colors">&times;</button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-sm text-white/80 leading-relaxed font-sans"
+                id="legal-modal-body"></div>
+            <div class="px-6 py-4 border-t border-white/10 bg-white/5 flex justify-end">
+                <button onclick="closeLegalModal()" class="sl-btn sl-btn--light">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="fixed bottom-8 right-8 z-[9000] w-12 h-12 text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1"
+        style="background:#ff9f2b;">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                let isOpen = false;
+                mobileMenuBtn.addEventListener('click', () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                        const lines = mobileMenuBtn.querySelectorAll('span');
+                        lines[0].style.transform = 'translateY(5px) rotate(45deg)';
+                        lines[1].style.transform = 'translateY(-5px) rotate(-45deg)';
+                    } else {
+                        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                        const lines = mobileMenuBtn.querySelectorAll('span');
+                        lines[0].style.transform = 'none';
+                        lines[1].style.transform = 'none';
+                    }
+                });
+            }
+            const mainHeader = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (mainHeader) {
+                    mainHeader.style.transform = window.scrollY > 50 ? 'translateY(10px)' : 'translateY(0)';
+                    const hero = document.querySelector('.bg-black');
+                    const threshold = hero ? hero.offsetHeight - 50 : window.innerHeight * 0.5;
+                    if (window.scrollY > threshold) {
+                        mainHeader.classList.add('header-light-mode');
+                        mainHeader.classList.remove('header-dark-mode');
+                    } else {
+                        mainHeader.classList.add('header-dark-mode');
+                        mainHeader.classList.remove('header-light-mode');
+                    }
+                }
+                const btt = document.getElementById('back-to-top');
+                if (btt) {
+                    if (window.scrollY > 200) { btt.classList.remove('opacity-0', 'pointer-events-none'); btt.classList.add('opacity-100', 'pointer-events-auto'); }
+                    else { btt.classList.remove('opacity-100', 'pointer-events-auto'); btt.classList.add('opacity-0', 'pointer-events-none'); }
+                }
+            }, { passive: true });
+        });
+        const legalTexts = {
+            privacy: `<h3 class="text-2xl font-bold text-white mb-4">Privacy Policy</h3><p>Hadron Quantum Labs respects your privacy and is committed to protecting your personal data.</p>`,
+            terms: `<h3 class="text-2xl font-bold text-white mb-4">Terms of Service</h3><p>By accessing Hadron Quantum Labs websites or APIs, you agree to comply with these terms.</p>`
+        };
+        function openLegalModal(tab) { var m = document.getElementById('legal-modal'); switchLegalTab(tab || 'privacy'); m.classList.remove('opacity-0', 'pointer-events-none'); m.classList.add('opacity-100', 'pointer-events-auto'); }
+        function closeLegalModal() { var m = document.getElementById('legal-modal'); m.classList.remove('opacity-100', 'pointer-events-auto'); m.classList.add('opacity-0', 'pointer-events-none'); }
+        function switchLegalTab(tab) {
+            document.getElementById('legal-modal-body').innerHTML = legalTexts[tab] || legalTexts.privacy;
+            if (tab === 'privacy') { document.getElementById('tab-privacy').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]'; document.getElementById('tab-terms').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors'; }
+            else { document.getElementById('tab-terms').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]'; document.getElementById('tab-privacy').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors'; }
+        }
+    </script>
+    <!-- Vercel Speed Insights & Analytics Telemetry -->
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
+        });
+    </script>
+</body>
+
+</html>

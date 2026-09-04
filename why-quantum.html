@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <link rel="canonical" href="https://quantum.hadrongbs.com/quantum-technology.html" />
+    <title>Quantum Risk & Readiness for Enterprises | Hadron Quantum Labs</title>
+    <meta name="description"
+        content="Hadron Quantum Labs is a leading quantum technology company in India developing enterprise solutions across quantum-inspired optimization and quantum readiness." />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-orange': '#ff9f2b',
+                        'brand-dark': '#0a0a0a',
+                    },
+                    fontFamily: { sans: ['Inter', 'Archivo', 'system-ui', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Prose Light Theme Adjustments */
+        .prose h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            color: #111827;
+        }
+
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            color: #111827;
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            color: #1f2937;
+        }
+
+        .prose p {
+            margin-top: 1.25em;
+            margin-bottom: 1.25em;
+            line-height: 1.8;
+            color: #4b5563;
+            font-size: 1.125rem;
+        }
+
+        .prose a {
+            color: #f97316;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .prose a:hover {
+            color: #ea580c;
+        }
+
+        .prose ul,
+        .prose ol {
+            padding-left: 1.625em;
+            margin-top: 1.25em;
+            margin-bottom: 1.25em;
+            color: #4b5563;
+            font-size: 1.125rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5em;
+        }
+
+        .prose blockquote {
+            border-left-width: 4px;
+            border-color: #f97316;
+            padding-left: 1.25em;
+            font-style: italic;
+            color: #374151;
+            margin-top: 1.6em;
+            margin-bottom: 1.6em;
+            background: #fff7ed;
+            padding: 1.5em;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .prose pre {
+            background-color: #111827;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            padding: 1.5em;
+            overflow-x: auto;
+            color: #e5e7eb;
+            font-family: monospace;
+            font-size: 0.9em;
+            margin-top: 2em;
+            margin-bottom: 2em;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .prose code {
+            color: #ea580c;
+            background-color: #ffedd5;
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+
+        .prose pre code {
+            color: inherit;
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        .prose img {
+            margin-top: 2.5em;
+            margin-bottom: 2.5em;
+            border-radius: 16px;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .prose hr {
+            border-color: #e5e7eb;
+            margin-top: 3em;
+            margin-bottom: 3em;
+        }
+
+        .prose table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+            margin-top: 2em;
+            margin-bottom: 2em;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .prose thead {
+            background-color: #f9fafb;
+        }
+
+        .prose th {
+            font-weight: 700;
+            color: #111827;
+            padding: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .prose td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            color: #4b5563;
+        }
+
+        .prose tr:last-child td {
+            border-bottom: none;
+        }
+
+        .prose tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        :root {
+            --brand-orange: #ff9f2b;
+            --brand-dark: #0a0a0a;
+            --off-white: #fdfbf7;
+        }
+
+        body {
+            background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5);
+            background-attachment: fixed;
+            color: #0a0a0a;
+            min-height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff9f2b;
+            border-radius: 7px;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e0861b;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .sl-label {
+            font-family: "Archivo Narrow", "Arial", sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1.04px;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        .sl-btn {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 0;
+            font-family: "Archivo Narrow", sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.04px;
+            text-transform: uppercase;
+            transition: background 0.2s, color 0.2s;
+            cursor: pointer;
+        }
+
+        .sl-btn--light {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 0 28px;
+            height: 48px;
+        }
+
+        .sl-btn--light:hover {
+            background: var(--brand-orange);
+        }
+
+        .has-pin {
+            position: relative;
+        }
+
+        .has-pin::before {
+            background-color: var(--brand-orange);
+            content: "";
+            height: 6px;
+            pointer-events: none;
+            position: absolute;
+            width: 6px;
+            z-index: 2;
+            left: 0;
+            top: 0;
+        }
+
+
+        /* Dynamic Navbar Adaptability */
+        .header-light-mode #header-logo {
+            filter: invert(1) brightness(0) !important;
+        }
+
+        .header-light-mode #header-nav {
+            background-color: rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .header-light-mode .nav-link {
+            color: #0a0a0a !important;
+            border-color: rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .header-light-mode #mobile-menu-btn {
+            color: #0a0a0a !important;
+        }
+    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;700&family=Archivo:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="https://quantum.hadrongbs.com/favicon.svg" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+</head>
+
+<body class="antialiased font-sans overflow-x-clip">
+
+    <!-- Navbar (matches index.html) -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-[100] flex justify-center header-dark-mode"
+        style="transition: transform 0.3s ease;">
+        <div class="w-full max-w-[1400px] flex items-center justify-between pl-6 md:pl-8 pr-0">
+            <a href="index.html" class="flex items-center gap-2 py-3 md:py-4">
+                <img id="header-logo"
+                    src="https://res.cloudinary.com/ax6dtcht/image/upload/v1786087098/Hadron_Quantum_Logo_Final_Monochrome_white-06_vbvvqu.png"
+                    alt="Hadron Quantum Labs" class="h-9 md:h-10 w-auto" style="transition: filter 0.3s;" />
+            </a>
+            <nav class="hidden md:flex items-stretch text-xs font-bold tracking-wide text-white bg-white/10 backdrop-blur-md border-l border-white/20 transition-colors"
+                style="height: 44px;" id="header-nav">
+                <a href="blogs.html"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors"
+                    style="background:rgba(255,159,43,0.1); color:#ff9f2b !important; border-color:rgba(255,159,43,0.2) !important;">BLOGS</a>
+                <div class="relative group h-full flex">
+                    <a href="javascript:void(0)"
+                        class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors h-full cursor-default">ENTERPRISE
+                        SOLUTIONS</a>
+                    <div
+                        class="absolute left-0 top-full w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div
+                            class="bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-b-lg shadow-2xl overflow-hidden py-2 flex flex-col">
+                            <a href="quantum-technology.html"
+                                class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">QUANTUM
+                                TECHNOLOGY</a>
+                            <a href="ai-infrastructure.html"
+                                class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">AI
+                                INFRASTRUCTURE</a>
+                            <a href="pqc-security.html"
+                                class="px-6 py-3 text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors">PQC
+                                SECURITY</a>
+                        </div>
+                    </div>
+            <a href="why-quantum.html" class="mobile-link text-[#0a0a0a]/70 hover:text-[#0a0a0a] transition-colors">Why Quantum?</a>
+                </div>
+                <a href="why-quantum.html" class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">WHY QUANTUM?</a>
+                <a href="how-we-work.html"
+                    class="nav-link flex items-center px-6 border-r border-white/20 hover:bg-white/20 transition-colors">HOW
+                    WE WORK</a>
+                <a href="contact.html"
+                    class="nav-link flex items-center gap-2 px-6 border-r border-white/20 hover:bg-white/20 transition-colors">CONTACT
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg></a>
+            </nav>
+            <button id="mobile-menu-btn"
+                class="flex md:hidden items-center justify-center w-12 h-12 text-white absolute right-4 top-2 z-[60] transition-colors"
+                aria-label="Open menu">
+                <div class="w-6 h-3.5 relative flex flex-col justify-between cursor-pointer">
+                    <span
+                        class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
+                    <span
+                        class="block h-0.5 w-full bg-current origin-center rounded-full transition-transform duration-300"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+    <!-- Premium Dark Hero -->
+    <div class="relative w-full min-h-[75vh] bg-black overflow-hidden flex items-center pt-32 pb-16">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-orange/10 rounded-full blur-[120px] mix-blend-screen transform translate-x-1/3 -translate-y-1/4"></div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] mix-blend-screen transform -translate-x-1/3 translate-y-1/4"></div>
+        </div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-10 z-0"></div>
+
+        <div class="w-full max-w-[1400px] mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm" data-aos="fade-up">
+                <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+                <span class="text-xs font-bold text-white/70 uppercase tracking-widest">Enterprise Briefing</span>
+            </div>
+            
+            <h1 class="font-bank-gothic text-5xl md:text-7xl lg:text-8xl text-white mb-8 tracking-wide leading-tight" data-aos="fade-up" data-aos-delay="100">
+                WHY <span class="text-brand-orange">QUANTUM?</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-white/80 max-w-3xl font-light leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="200">
+                QUANTUM IS CHANGING THE ASSUMPTIONS BEHIND COMPUTING.
+            </p>
+            
+            <div class="max-w-2xl text-white/60 text-base md:text-lg space-y-6 mb-16 font-sans leading-relaxed text-center" data-aos="fade-up" data-aos-delay="300">
+                <p>For decades, modern digital infrastructure has depended on mathematical problems that are extremely difficult for classical computers to solve.</p>
+                <p>Quantum computing changes that equation.</p>
+                <p>The implications are larger than faster computers. They reach into the cryptography that protects digital communication, while opening new possibilities for problems that classical systems struggle to solve.</p>
+            </div>
+
+            <div class="p-6 border border-white/20 bg-white/5 backdrop-blur-sm rounded-xl max-w-3xl" data-aos="zoom-in" data-aos-delay="400">
+                <p class="text-xl md:text-2xl font-bold text-white uppercase tracking-widest">
+                    The question is no longer whether quantum matters.<br>
+                    <span class="text-brand-orange">It is where it matters to your organization.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <main class="relative z-20" style="background: radial-gradient(ellipse 100% 130% at 50% -30%, #c4d5e7 45%, #fdfbf7 85%, #f7f7f5); padding-bottom: 6rem;">
+        
+        <!-- SECTION: The Internet Runs on Mathematics -->
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 py-24">
+            <h2 class="sharplink-h2 text-brand-dark text-4xl md:text-5xl mb-6" data-aos="fade-up">THE INTERNET RUNS ON MATHEMATICS.</h2>
+            <h3 class="text-xl md:text-2xl font-bold text-brand-dark/70 uppercase tracking-widest mb-12" data-aos="fade-up" data-aos-delay="100">AND SOME OF THAT MATHEMATICS WILL NOT SURVIVE A CRYPTANALYTICALLY RELEVANT QUANTUM COMPUTER.</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div class="space-y-6 text-brand-dark/80 text-lg leading-relaxed" data-aos="fade-right">
+                    <p>Public-key cryptography sits underneath much of today's digital infrastructure.</p>
+                    <p>It helps establish secure connections, authenticate systems, protect communications, secure certificates, and establish trust between organizations and machines.</p>
+                    <p>Algorithms such as RSA and elliptic-curve cryptography derive their security from mathematical problems that are difficult for classical computers.</p>
+                </div>
+                <div class="space-y-6 text-brand-dark/80 text-lg leading-relaxed" data-aos="fade-left">
+                    <p class="font-bold text-brand-dark">A sufficiently capable, fault-tolerant quantum computer could change that.</p>
+                    <p>Shor's algorithm provides a theoretical path to efficiently solving the mathematical problems behind widely used public-key systems.</p>
+                    <div class="bg-black text-white p-6 rounded-xl mt-8 shadow-xl border-l-4 border-brand-orange">
+                        <p class="font-bold text-lg mb-2">The internet does not need to disappear for its security model to change.</p>
+                        <p class="text-white/70 text-sm">The cryptographic assumptions underneath it do.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: Harvest Now -->
+        <div class="w-full bg-black text-white py-24 relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
+                <div class="text-center max-w-4xl mx-auto mb-16">
+                    <h2 class="sharplink-h2 text-white text-4xl md:text-5xl mb-6" data-aos="fade-up">THE THREAT IS NOT WAITING FOR THE QUANTUM COMPUTER.</h2>
+                    <div class="inline-block bg-brand-orange/20 text-brand-orange border border-brand-orange/30 px-6 py-2 rounded-full font-bold uppercase tracking-widest text-lg" data-aos="zoom-in">
+                        HARVEST NOW. DECRYPT LATER.
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 text-white/80 text-lg leading-relaxed" data-aos="fade-right">
+                        <p>Sensitive information does not necessarily need to be decrypted today to become a target today.</p>
+                        <p>An adversary can capture encrypted traffic now, retain it, and attempt to decrypt it later when sufficiently capable quantum computing becomes available.</p>
+                        <p>The risk is greatest for information whose confidentiality must survive for years or decades — <span class="text-white font-bold">intellectual property, strategic communications, personal information, financial records, credentials, research, and other long-lived data.</span></p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl" data-aos="fade-left">
+                        <p class="text-sm text-white/60 uppercase tracking-widest mb-4">Regulatory Recognition</p>
+                        <p class="text-white/90 italic mb-6">"The European Commission now explicitly identifies this risk, noting that data protected by quantum-vulnerable cryptography may already be at risk if it needs to remain confidential for a long period."</p>
+                        <p class="font-bold text-brand-orange text-xl">The quantum threat therefore has a present-tense dimension.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: Salt Typhoon Case Study -->
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 py-24 border-b border-brand-dark/10">
+            <h2 class="sharplink-h2 text-brand-dark text-4xl md:text-5xl mb-4 text-center" data-aos="fade-up">SALT TYPHOON SHOWED WHAT ACCESS LOOKS LIKE TODAY.</h2>
+            <h3 class="text-xl md:text-2xl font-bold text-center text-brand-dark/70 uppercase tracking-widest mb-16" data-aos="fade-up" data-aos-delay="100">QUANTUM WAS NOT THE ATTACK. THE LESSON IS WHY DATA HAS VALUE BEFORE IT CAN BE DECRYPTED.</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="col-span-1 lg:col-span-2 space-y-6 text-brand-dark/80 text-lg leading-relaxed" data-aos="fade-right">
+                    <p>The Salt Typhoon campaign demonstrated the strategic value of gaining access to telecommunications infrastructure.</p>
+                    <p>U.S. government investigations found that the campaign compromised multiple telecommunications companies and resulted in the theft of call-data records, limited private communications involving identified victims, and other information.</p>
+                    <p>The FBI described the activity as a broad campaign targeting telecommunications networks globally.</p>
+                    <p class="font-bold text-brand-orange text-2xl uppercase tracking-widest mt-8">This was not a quantum attack.</p>
+                    <p>That distinction matters.</p>
+                </div>
+                
+                <div class="col-span-1 flex flex-col gap-6" data-aos="fade-left">
+                    <div class="bg-[#f2f2f0] p-6 rounded-2xl border border-brand-dark/10 shadow-lg">
+                        <p class="text-sm text-brand-dark/60 uppercase tracking-widest mb-2">The First Half</p>
+                        <p class="font-bold text-brand-dark text-xl">DATA CAN BE COLLECTED TODAY.</p>
+                    </div>
+                    <div class="bg-brand-dark text-white p-6 rounded-2xl shadow-xl">
+                        <p class="text-sm text-white/50 uppercase tracking-widest mb-2">The Second Half</p>
+                        <p class="font-bold text-brand-orange text-xl">DATA THAT CANNOT BE DECRYPTED TODAY MAY NOT REMAIN SECURE FOREVER.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-xl font-bold text-brand-dark mt-16" data-aos="fade-up">That is why long-lived information deserves attention before a cryptographically relevant quantum computer exists.</p>
+        </div>
+
+        <!-- SECTION: The Computation Opportunity -->
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 py-24">
+            <h2 class="sharplink-h2 text-brand-dark text-4xl md:text-5xl mb-4 text-center" data-aos="fade-up">BUT QUANTUM IS NOT ONLY A SECURITY STORY.</h2>
+            <h3 class="text-xl md:text-2xl font-bold text-center text-brand-dark/70 uppercase tracking-widest mb-16" data-aos="fade-up" data-aos-delay="100">THE SAME TECHNOLOGY THAT CHALLENGES CRYPTOGRAPHY MAY OPEN NEW COMPUTATIONAL POSSIBILITIES.</h3>
+            
+            <p class="text-center text-lg text-brand-dark/80 max-w-4xl mx-auto mb-16" data-aos="fade-up">
+                Quantum computers process information according to the principles of quantum mechanics. That does not make them universally faster than classical computers. Instead, quantum algorithms can provide fundamentally different approaches to particular classes of problems.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <!-- Cards -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-brand-dark/5 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="font-bold text-brand-dark text-lg mb-4">SIMULATION</h4>
+                    <p class="text-sm text-brand-dark/70 leading-relaxed">Explore molecular and material systems that are difficult to model classically.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-brand-dark/5 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="font-bold text-brand-dark text-lg mb-4">OPTIMIZATION</h4>
+                    <p class="text-sm text-brand-dark/70 leading-relaxed">Investigate complex combinations and decision spaces where better solutions can have meaningful economic value.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-brand-dark/5 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="font-bold text-brand-dark text-lg mb-4">CHEMISTRY & MATERIALS</h4>
+                    <p class="text-sm text-brand-dark/70 leading-relaxed">Model systems whose quantum behaviour is difficult to reproduce efficiently using classical computation.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-brand-dark/5 hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="font-bold text-brand-dark text-lg mb-4">FINANCIAL MODELLING</h4>
+                    <p class="text-sm text-brand-dark/70 leading-relaxed">Explore specialised computational problems where quantum or hybrid methods may eventually provide an advantage.</p>
+                </div>
+            </div>
+            
+            <div class="text-center" data-aos="zoom-in">
+                <p class="text-xl text-brand-dark mb-4">The opportunity is real. So is the uncertainty.</p>
+                <p class="text-2xl font-bold text-brand-dark uppercase tracking-widest max-w-3xl mx-auto border-t border-b border-brand-dark/10 py-6">
+                    Quantum should not be adopted because it is quantum.<br>
+                    <span class="text-brand-orange">It should be adopted when it can solve a meaningful problem better.</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION: One Technology Two Directions -->
+        <div class="w-full bg-brand-dark text-white py-24">
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
+                <h2 class="sharplink-h2 text-white text-4xl md:text-5xl mb-4" data-aos="fade-up">ONE TECHNOLOGY. TWO DIRECTIONS.</h2>
+                <h3 class="text-xl md:text-2xl font-bold text-brand-orange uppercase tracking-widest mb-16" data-aos="fade-up" data-aos-delay="100">BREAK THE ASSUMPTIONS. EXPAND THE POSSIBILITIES.</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-16 text-left">
+                    <div class="p-8 border border-white/20 rounded-2xl bg-white/5 backdrop-blur-sm" data-aos="fade-right">
+                        <h4 class="font-bold text-2xl text-white mb-4">SECURITY</h4>
+                        <p class="text-white/70 leading-relaxed mb-4">Quantum computing threatens widely deployed public-key cryptographic systems.</p>
+                        <p class="text-white/70 leading-relaxed">RSA, Diffie-Hellman and elliptic-curve systems are among the cryptographic technologies that require migration planning for the quantum era.</p>
+                    </div>
+                    <div class="p-8 border border-white/20 rounded-2xl bg-white/5 backdrop-blur-sm" data-aos="fade-left">
+                        <h4 class="font-bold text-2xl text-white mb-4">COMPUTATION</h4>
+                        <p class="text-white/70 leading-relaxed mb-4">Quantum computing may provide new approaches to selected problems in simulation, optimization and other computational domains.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-black/50 p-8 rounded-2xl max-w-4xl mx-auto border border-brand-orange/30 shadow-2xl shadow-brand-orange/10" data-aos="zoom-in">
+                    <p class="text-sm text-white/50 uppercase tracking-widest mb-2">The Resulting Technology Transition:</p>
+                    <p class="text-xl md:text-2xl font-bold text-white leading-relaxed">
+                        Organizations need to prepare for what quantum could break —<br>
+                        <span class="text-brand-orange">while discovering what quantum could make possible.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: The Timelines -->
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 py-24">
+            <div class="text-center max-w-4xl mx-auto mb-16">
+                <h2 class="sharplink-h2 text-brand-dark text-4xl md:text-5xl mb-4" data-aos="fade-up">THE TIMELINES ARE ALREADY BEING SET.</h2>
+                <h3 class="text-xl md:text-2xl font-bold text-brand-dark/70 uppercase tracking-widest mb-8" data-aos="fade-up" data-aos-delay="100">GOVERNMENTS ARE PLANNING YEARS AHEAD OF THE MACHINE.</h3>
+                <p class="text-lg text-brand-dark/80" data-aos="fade-up" data-aos-delay="150">
+                    In August 2024, NIST finalized its first three principal post-quantum cryptography standards: <br>
+                    <span class="font-bold text-brand-dark">FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA)</span>.<br><br>
+                    The transition has moved from algorithm research to infrastructure planning.
+                </p>
+            </div>
+            
+            <div class="overflow-x-auto shadow-2xl rounded-2xl border border-brand-dark/10 mb-16" data-aos="fade-up">
+                <table class="w-full text-left bg-white text-sm md:text-base border-collapse">
+                    <thead>
+                        <tr class="bg-brand-dark text-white uppercase tracking-widest text-xs md:text-sm">
+                            <th class="p-6 font-bold w-1/4 border-b border-white/20">REGION</th>
+                            <th class="p-6 font-bold w-1/3 border-b border-white/20">CURRENT DIRECTION</th>
+                            <th class="p-6 font-bold border-b border-white/20">KEY MILESTONES</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-brand-dark/80 divide-y divide-brand-dark/10">
+                        <tr class="hover:bg-[#f2f2f0] transition-colors">
+                            <td class="p-6 font-bold text-brand-dark">United States</td>
+                            <td class="p-6">Federal migration to NIST-approved PQC</td>
+                            <td class="p-6">High-value/high-impact federal systems: PQC key establishment by <span class="font-bold text-brand-orange">2030</span>, digital signatures by <span class="font-bold text-brand-orange">2031</span>; broader transition continues toward <span class="font-bold text-brand-orange">2035</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#f2f2f0] transition-colors">
+                            <td class="p-6 font-bold text-brand-dark">United Kingdom</td>
+                            <td class="p-6">NCSC national migration guidance</td>
+                            <td class="p-6">Discovery & plan by <span class="font-bold text-brand-orange">2028</span> → priority migration by <span class="font-bold text-brand-orange">2031</span> → complete by <span class="font-bold text-brand-orange">2035</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#f2f2f0] transition-colors">
+                            <td class="p-6 font-bold text-brand-dark">European Union</td>
+                            <td class="p-6">Coordinated EU PQC roadmap</td>
+                            <td class="p-6">Member States transition by <span class="font-bold text-brand-orange">end-2026</span>; high-risk use cases by <span class="font-bold text-brand-orange">2030</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#f2f2f0] transition-colors">
+                            <td class="p-6 font-bold text-brand-dark">Australia</td>
+                            <td class="p-6">ASD quantum-safe migration guidance</td>
+                            <td class="p-6">Transition plan by <span class="font-bold text-brand-orange">2026</span> → migration underway by <span class="font-bold text-brand-orange">2028</span> → completion by <span class="font-bold text-brand-orange">2030</span></td>
+                        </tr>
+                        <tr class="hover:bg-[#f2f2f0] transition-colors">
+                            <td class="p-6 font-bold text-brand-dark">India</td>
+                            <td class="p-6">National Quantum-Safe Ecosystem roadmap</td>
+                            <td class="p-6">Quantum resiliency for critical infrastructure by <span class="font-bold text-brand-orange">2029</span> → enterprise-wide PQC adoption by <span class="font-bold text-brand-orange">2033</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center" data-aos="fade-up">
+                <p class="text-lg text-brand-dark/70 mb-4">These are not identical regulatory mandates, and they should not be presented as though they are.</p>
+                <p class="text-2xl font-bold text-brand-dark uppercase tracking-widest">
+                    They represent something more important:<br>
+                    <span class="text-brand-orange">The global direction is becoming increasingly clear.</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION: Ecosystem & Early Movers -->
+        <div class="w-full bg-[#f2f2f0] py-24 border-y border-brand-dark/10">
+            <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <div data-aos="fade-right">
+                    <h2 class="sharplink-h2 text-brand-dark text-4xl mb-4">WE HAVE SEEN THIS BEFORE.</h2>
+                    <h3 class="text-xl font-bold text-brand-dark/70 uppercase tracking-widest mb-8">CRYPTOGRAPHY DOES NOT CHANGE WITH A SWITCH.</h3>
+                    <div class="space-y-4 text-brand-dark/80 leading-relaxed mb-8">
+                        <p>The move toward stronger cryptographic systems was never simply an algorithm replacement. New standards had to become protocols. Protocols had to become software.</p>
+                        <p>Software had to work with certificates, hardware, identity systems, browsers, networks, and vendors.</p>
+                        <p>Elliptic-curve cryptography illustrates the pattern. Over time, the technology moved from an emerging alternative to a widely deployed part of modern cryptographic infrastructure.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow border border-brand-dark/5">
+                        <p class="font-bold text-brand-dark">The lesson is not that RSA-to-ECC and PQC migration are identical. They are not.</p>
+                        <p class="font-bold text-brand-orange text-xl mt-2">The lesson is that cryptographic transitions are ecosystem transitions.</p>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <h2 class="sharplink-h2 text-brand-dark text-4xl mb-4">THE EARLY MOVERS.</h2>
+                    <h3 class="text-xl font-bold text-brand-dark/70 uppercase tracking-widest mb-8">THE WEB IS TRANSITIONING BEFORE THE THREAT ARRIVES.</h3>
+                    <div class="space-y-4 text-brand-dark/80 leading-relaxed mb-8">
+                        <p>Google has been deploying post-quantum protections into Chrome's TLS stack. Chrome 116 introduced support for post-quantum key agreement.</p>
+                        <p>Google later enabled the hybrid mechanism by default on desktop Chrome 124. The approach combines classical and post-quantum key exchange so that compatible connections can provide protection against future quantum decryption.</p>
+                    </div>
+                    <div class="bg-black text-white p-6 rounded-xl shadow-xl">
+                        <p class="text-sm text-white/50 uppercase tracking-widest mb-2">An Important Signal</p>
+                        <p class="font-bold text-brand-orange text-xl">Infrastructure is being adapted while the ecosystem is still developing.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION: Final Strategy & CTA -->
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 py-24 text-center">
+            <h2 class="sharplink-h2 text-brand-dark text-4xl md:text-5xl mb-4" data-aos="fade-up">AWARENESS IS BECOMING PREPARATION.</h2>
+            <h3 class="text-xl md:text-2xl font-bold text-brand-dark/70 uppercase tracking-widest mb-16" data-aos="fade-up" data-aos-delay="100">THE QUESTION IS MOVING FROM “IS QUANTUM REAL?” TO “WHERE ARE WE EXPOSED?”</h3>
+            
+            <p class="text-xl text-brand-dark max-w-3xl mx-auto mb-12" data-aos="fade-up">Organizations do not need to predict the exact year a cryptographically relevant quantum computer will appear. They need to understand the systems that would be affected if it does. That means knowing:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-16 text-left">
+                <div class="bg-white p-6 rounded-xl shadow font-bold text-brand-dark uppercase tracking-wide border-l-4 border-brand-orange" data-aos="fade-up" data-aos-delay="100">What cryptography do we use?</div>
+                <div class="bg-white p-6 rounded-xl shadow font-bold text-brand-dark uppercase tracking-wide border-l-4 border-brand-orange" data-aos="fade-up" data-aos-delay="150">Where is it used?</div>
+                <div class="bg-white p-6 rounded-xl shadow font-bold text-brand-dark uppercase tracking-wide border-l-4 border-brand-orange" data-aos="fade-up" data-aos-delay="200">Which data must remain confidential — and for how long?</div>
+                <div class="bg-white p-6 rounded-xl shadow font-bold text-brand-dark uppercase tracking-wide border-l-4 border-brand-orange" data-aos="fade-up" data-aos-delay="250">Which systems cannot be easily replaced?</div>
+                <div class="bg-white p-6 rounded-xl shadow font-bold text-brand-dark uppercase tracking-wide border-l-4 border-brand-orange md:col-span-2" data-aos="fade-up" data-aos-delay="300">Which suppliers and technologies are part of the dependency chain?</div>
+            </div>
+
+            <div class="bg-brand-dark text-white p-12 rounded-3xl shadow-2xl max-w-4xl mx-auto" data-aos="zoom-in">
+                <h3 class="text-2xl md:text-3xl font-bold mb-6">THIS IS WHY QUANTUM MATTERS NOW.</h3>
+                <p class="text-white/80 text-lg mb-8 leading-relaxed">
+                    Not because the quantum computer has arrived. Because the decisions required to prepare for it have. The organizations that understand their position early will have more choices later.
+                </p>
+                <div class="flex justify-center">
+                    <a href="quantum-technology.html" class="inline-flex items-center gap-3 bg-brand-orange text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-brand-orange/90 transition-all hover:scale-105 active:scale-95 text-sm md:text-base">
+                        UNDERSTAND YOUR QUANTUM POSITION <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+    <!-- How We Deliver Section -->
+    <div class="w-full relative border-y border-brand-dark/10 bg-white/20">
+        <div class="absolute inset-0 bg-brand-light bg-grid-pattern z-0 opacity-10"></div>
+        <div class="max-w-[1400px] mx-auto px-6 md:px-12 py-24 relative z-10">
+            <h2 class="sharplink-h2 text-brand-dark text-4xl md:text-5xl mb-12 text-center" data-aos="fade-up">How We
+                Deliver</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl shadow-lg border border-black/5 relative"
+                    data-aos="zoom-in" data-aos-delay="50">
+                    <div
+                        class="w-10 h-10 bg-brand-orange text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-xl shadow-brand-orange/30">
+                        1</div>
+                    <h4 class="font-bold text-lg text-brand-dark mb-2">IDENTIFY</h4>
+                    <p class="text-brand-dark/60 text-xs">Find operational challenges suited for advanced computing.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl shadow-lg border border-black/5 relative"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <div
+                        class="w-10 h-10 bg-brand-dark text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-xl">
+                        2</div>
+                    <h4 class="font-bold text-lg text-brand-dark mb-2">ASSESS</h4>
+                    <p class="text-brand-dark/60 text-xs">Determine if quantum or quantum-inspired methods offer an
+                        advantage.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl shadow-lg border border-black/5 relative"
+                    data-aos="zoom-in" data-aos-delay="150">
+                    <div
+                        class="w-10 h-10 bg-brand-dark text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-xl">
+                        3</div>
+                    <h4 class="font-bold text-lg text-brand-dark mb-2">EVALUATE</h4>
+                    <p class="text-brand-dark/60 text-xs">Test the most effective hardware and software ecosystems.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl shadow-lg border border-black/5 relative"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <div
+                        class="w-10 h-10 bg-brand-dark text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-xl">
+                        4</div>
+                    <h4 class="font-bold text-lg text-brand-dark mb-2">VALIDATE</h4>
+                    <p class="text-brand-dark/60 text-xs">Measure results against classical baselines and business KPIs.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl shadow-lg border border-black/5 relative"
+                    data-aos="zoom-in" data-aos-delay="250">
+                    <div
+                        class="w-10 h-10 bg-brand-dark text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 shadow-xl">
+                        5</div>
+                    <h4 class="font-bold text-lg text-brand-dark mb-2">SCALE</h4>
+                    <p class="text-brand-dark/60 text-xs">Transition proven models into production workflows.</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up" data-aos-delay="300">
+                <p class="text-lg md:text-xl text-brand-dark/80 font-medium">
+                    Hadron coordinates the technical and business requirements needed to make quantum exploration
+                    practical.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- New CTA Section -->
+    <section class="w-full bg-[#fdfbf7] flex flex-col items-center pt-24 pb-0 relative z-30">
+        <div class="absolute inset-0 bg-grid-pattern z-0 opacity-40 pointer-events-none"></div>
+        <h2 class="text-4xl md:text-6xl font-medium tracking-tight mb-8 text-center max-w-4xl px-4 text-brand-dark"
+            style="font-family: 'Archivo', sans-serif;">
+            KNOW WHERE YOU STAND.<br>KNOW WHAT COMES NEXT.
+        </h2>
+        <p class="text-brand-dark/70 mb-8 max-w-2xl text-center text-lg">Start with visibility. Then decide what deserves attention before it becomes urgent.</p>
+
+        <a href="contact.html"
+            class="bg-[#111] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-black/80 transition-transform hover:scale-105 shadow-xl mb-12 relative z-10">
+            FIND YOUR QUANTUM EXPOSURE
+        </a>
+
+        <div class="relative w-full max-w-[1600px] mx-auto">
+            <img src="https://res.cloudinary.com/ax6dtcht/image/upload/v1788442466/ChatGPT_Image_Sep_3_2026_at_06_35_22_PM-Photoroom_k44aob.png"
+                alt="Quantum Engineers" class="w-full h-auto object-cover object-bottom mix-blend-multiply">
+            <div
+                class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Legal Modal -->
+    <div id="legal-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center p-4 sm:p-6 md:p-10">
+        <div
+            class="bg-[#0a0a0a] border border-white/20 text-white w-full max-w-3xl max-h-[85vh] rounded-none flex flex-col relative shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/5">
+                <div class="flex gap-4" data-aos="fade-up">
+                    <button id="tab-privacy" onclick="switchLegalTab('privacy')"
+                        class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]">Privacy
+                        Policy</button>
+                    <button id="tab-terms" onclick="switchLegalTab('terms')"
+                        class="text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors">Terms
+                        of Service</button>
+                </div>
+                <button onclick="closeLegalModal()"
+                    class="text-white/50 hover:text-white text-xl font-bold px-2 py-1 transition-colors">&times;</button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 text-sm text-white/80 leading-relaxed font-sans"
+                id="legal-modal-body"></div>
+            <div class="px-6 py-4 border-t border-white/10 bg-white/5 flex justify-end">
+                <button onclick="closeLegalModal()" class="sl-btn sl-btn--light">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="fixed bottom-8 right-8 z-[9000] w-12 h-12 text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1"
+        style="background:#ff9f2b;">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                let isOpen = false;
+                mobileMenuBtn.addEventListener('click', () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                        const lines = mobileMenuBtn.querySelectorAll('span');
+                        lines[0].style.transform = 'translateY(5px) rotate(45deg)';
+                        lines[1].style.transform = 'translateY(-5px) rotate(-45deg)';
+                    } else {
+                        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                        const lines = mobileMenuBtn.querySelectorAll('span');
+                        lines[0].style.transform = 'none';
+                        lines[1].style.transform = 'none';
+                    }
+                });
+            }
+            const mainHeader = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (mainHeader) {
+                    mainHeader.style.transform = window.scrollY > 50 ? 'translateY(10px)' : 'translateY(0)';
+                    const hero = document.querySelector('.bg-black');
+                    const threshold = hero ? hero.offsetHeight - 50 : window.innerHeight * 0.5;
+                    if (window.scrollY > threshold) {
+                        mainHeader.classList.add('header-light-mode');
+                        mainHeader.classList.remove('header-dark-mode');
+                    } else {
+                        mainHeader.classList.add('header-dark-mode');
+                        mainHeader.classList.remove('header-light-mode');
+                    }
+                }
+                const btt = document.getElementById('back-to-top');
+                if (btt) {
+                    if (window.scrollY > 200) { btt.classList.remove('opacity-0', 'pointer-events-none'); btt.classList.add('opacity-100', 'pointer-events-auto'); }
+                    else { btt.classList.remove('opacity-100', 'pointer-events-auto'); btt.classList.add('opacity-0', 'pointer-events-none'); }
+                }
+            }, { passive: true });
+        });
+        const legalTexts = {
+            privacy: `<h3 class="text-2xl font-bold text-white mb-4">Privacy Policy</h3><p>Hadron Quantum Labs respects your privacy and is committed to protecting your personal data.</p>`,
+            terms: `<h3 class="text-2xl font-bold text-white mb-4">Terms of Service</h3><p>By accessing Hadron Quantum Labs websites or APIs, you agree to comply with these terms.</p>`
+        };
+        function openLegalModal(tab) { var m = document.getElementById('legal-modal'); switchLegalTab(tab || 'privacy'); m.classList.remove('opacity-0', 'pointer-events-none'); m.classList.add('opacity-100', 'pointer-events-auto'); }
+        function closeLegalModal() { var m = document.getElementById('legal-modal'); m.classList.remove('opacity-100', 'pointer-events-auto'); m.classList.add('opacity-0', 'pointer-events-none'); }
+        function switchLegalTab(tab) {
+            document.getElementById('legal-modal-body').innerHTML = legalTexts[tab] || legalTexts.privacy;
+            if (tab === 'privacy') { document.getElementById('tab-privacy').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]'; document.getElementById('tab-terms').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors'; }
+            else { document.getElementById('tab-terms').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-[#ff9f2b] border-b-2 border-[#ff9f2b]'; document.getElementById('tab-privacy').className = 'text-xs font-bold uppercase tracking-widest px-3 py-2 text-white/50 hover:text-white transition-colors'; }
+        }
+    </script>
+    <!-- Vercel Speed Insights & Analytics Telemetry -->
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        function initAOS() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
+        }
+        if (document.readyState === 'complete') {
+            initAOS();
+        } else {
+            window.addEventListener('load', initAOS);
+        }
+    </script>
+</body>
+
+</html>
